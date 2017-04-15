@@ -1,2 +1,0 @@
-module TreatmentNotesHelper
-end

@@ -1,9 +1,0 @@
-development:
-  qbk_app_token:  'c180cb02bb941b4a80ba67bbf80c8db5de68'
-  qbk_customer_key:  'qyprd5HfLw6fRoMU1aM1Ke3IE449Te'
-  qbk_customer_secret:  'yG1RNQ7LNn13MZUPPN72ij0KOYpvIWf93Sf56rpl'
-
-production:
-  qbk_app_token:  '91c485b6bb673b4df6bbb59b04b3a99ed772'
-  qbk_customer_key:  'qyprdgSM62MymreAziNopQ7M6pfJqL'
-  qbk_customer_secret:  'lFWVw3aw4LItPouPJ1knZZQqPzmKM21i8Ivkmh6x'

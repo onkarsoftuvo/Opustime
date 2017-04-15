@@ -1,1 +1,0 @@
-invoice_id,issue_date,patient_full_name,patient_first_name,patient_last_name,practitioner,sub_total_amount,tax_amount,discount,Invoice_amount,notes,status,date_closed,created_by,appointment_id,business,invoice_to,extra_patient_info,patient_id,patient_date_of_birth,outstanding_balance

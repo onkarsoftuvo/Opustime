@@ -1,2 +1,0 @@
-module AppointmentRemindersHelper
-end

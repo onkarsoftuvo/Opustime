@@ -1,9 +1,0 @@
-invoice_id issue_date patient_full_name patient_first_name patient_last_name practitioner sub_total_amount tax_amount discount Invoice_amount notes status date_closed created_by appointment_id business invoice_to extra_patient_info patient_id patient_date_of_birth outstanding_balance
-1,2016-07-01,Mr_Rohan_Malik,Rohan,malik,Robert_Hook,1822.73,197.27,0.0,2020.0,hello_-_have_you_nice_day_:),open,"",Robert_Hook,42,Miongo,Mr_Rohan_Malik____Andaman_and_Nicobar_Islands_India,Extra_patient_info_is_here_!,000006,30-06-2016,520.0
-3,2016-07-01,Mr_Seema_Saini,Seema,saini,Dr_Brawn_kim,1613.64,136.36,0.0,1750.0,"",paid,01/07/2016,Robert_Hook,3,Miongo,Mr_Seema_Saini_flat-35_Kohala__Andaman_and_Nicobar_Islands_India_160057,"",000007,12-06-2001,0.0
-6,2016-07-01,Mr_Seema_Saini,Seema,saini,Sir_John_lamaba,2250.0,120.0,0.0,2370.0,"",paid,01/07/2016,Robert_Hook,25,Miongo,Mr_Seema_Saini_flat-35_Kohala__Andaman_and_Nicobar_Islands_India_160057,"",000007,12-06-2001,0.0
-4,2016-07-01,Rabbi_Richard_Parakar,Richard,parakar,Sir_John_lamaba,1850.31,305.94,0.0,2156.25,"",open,"",Robert_Hook,6,Miongo,Rabbi_Richard_Parakar_Hno-343___Andaman_and_Nicobar_Islands_India,"",000008,04-09-2007,2156.25
-7,2016-07-01,Rabbi_Richard_Parakar,Richard,parakar,Robert_Hook,6045.24,1061.02,0.0,7106.26,"",open,"",Robert_Hook,45,Miongo,Rabbi_Richard_Parakar_Hno-343___Andaman_and_Nicobar_Islands_India,"",000008,04-09-2007,6106.26
-2,2016-07-01,Miss_Neha_Raghav,Neha,Raghav,Robert_Hook,1982.24,321.77,0.0,2304.01,"",paid,"",Robert_Hook,57,Miongo,Miss_Neha_Raghav,"",000009,12-05-1993,0.0
-12,2016-07-02,Miss_Neha_Raghav,Neha,Raghav,Sir_John_lamaba,8400.0,0.0,0.0,8400.0,"",open,"",Robert_Hook,82,Nero,Miss_Neha_Raghav,"",000009,12-05-1993,2704.01
-5,2016-07-01,Miss_Kanchan_Sharma,Kanchan,Sharma,Dr_Brawn_kim,300.0,0.0,0.0,300.0,"",paid,01/07/2016,Robert_Hook,60,Miongo,Miss_Kanchan_Sharma,"",000010,17-05-2013,0.0

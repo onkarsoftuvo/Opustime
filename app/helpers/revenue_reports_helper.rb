@@ -1,2 +1,0 @@
-module RevenueReportsHelper
-end

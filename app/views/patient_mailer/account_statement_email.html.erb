@@ -1,9 +1,0 @@
-<% if @email_to_flag %>
-    <p> <%= t('.Hello') %> <%= @patient.first_name.capitalize %>, </p>
-<% else %>
-    <p> <%= t('.Hello') %> <%= @patient.first_name.capitalize %>, </p>
-<% end %>
-<p><%= t('.Please find attached your account statement for the month of') %></p>
-
-<p> <%= t('.Thank you') %> </p>
-<p><%= @business.name %></p>
