@@ -1,0 +1,173 @@
+<div class="tab-pane active" id="tab_2">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group filter-con">
+        <label>Filters</label>
+        <div class="col-md-3">
+         <%= form_tag("/business/#{@comp.id}/details_list", :method => :get)  do %>
+
+          <%= text_field_tag :User, params[:User], :placeholder => 'User Name', class: :"form-control"%>
+          <%= hidden_field_tag :tab_no , 0 %>
+        </div>
+        <div class="col-md-3">
+          <!-- <select id="tar" name="user[role]" class="form-control">
+          <% selected_val = "" %>
+          <% if params[:user].present? %>
+          <% selected_val = params[:user][:role] unless params[:user][:role].nil? %>
+          <%end%>
+
+            <% user_role = @comp.users.all.map { |user| [user.role, user.id] }  %>
+            <<option id="no-role" value="" selected="">Select Permission</option>
+            <%= options_for_select(user_role,selected_val) %>
+          </select>
+        </div> -->
+        <%= select_tag(:role, options_for_select([['administrator'],['practitioner'],['scheduler'],['receptionist'],['bookkeeper']]),{:class => "form-control",:prompt => "Select Permission"})%>
+         </div>
+        <div class="col-md-1">
+          <%= submit_tag "Filter", class: "btn btn-large btn-primary btns" %>
+        </div>
+
+        <!-- <div class="col-md-2 pull-right text-right">
+          <button class="btn btn-default">Clear Filter</button>
+        </div> -->
+         <%= link_to "business/#{@comp.id}/details_list", class: "btn btn-default" do %>Clear Filter
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="box-header remove_padding">
+        <h3 class="box-title">Users</h3>
+      </div>
+      <table id="example2" class="table table-bordered custom_table">
+        <thead>
+        <tr>
+          <!--<th class="no_sort text-center select_all"></th>-->
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>Phone No</th>
+          <th>Email ID</th>
+          <th>Last Login Date/Time</th>
+          <th>Permission Type</th>
+          <th class="no_sort text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user|%>
+            <tr>
+              <!--<td class="text-center">-->
+                <!--<input type="checkbox" name="" class="minimal">-->
+              <!--</td>-->
+              <td><%= @count_user += 1 %></td>
+              <td><%= user.try(:first_name) %></td>
+              <td><%= user.try(:phone) %></td>
+              <td><%= user.try(:email) %></td>
+              <td><%#= user.comapny.lastlogin.try(:strftime, '%d %B %Y,  %H:%M:%S') %></td>
+              <td><%= user.role %></td>
+
+              <td class="action_btns text-center">
+                <div class="btn-group class  btn btn-default">
+                   <%= link_to "business/#{user.id}/edit_user"    do %>
+                    <i class="fa fa-pencil-square-o"></i>
+                   <% end %>
+                </div>
+                <div class="btn-group class  btn btn-default">
+                  <%= link_to "#"  , :class => 'attemp' , :id=> "user_#{user.id}"   do %>
+                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12">
+      <hr>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group filter-con">
+        <label>Filters</label>
+        <div class="col-md-3">
+         <%= form_tag("/business/#{@comp.id}/details_list", :method => :get)  do %>
+
+          <%= text_field_tag :Business, params[:Business], :placeholder => 'Business Name', class: :"form-control"%>
+          <%= hidden_field_tag :tab_no , 1 %>
+        </div>
+        <!--<div class="col-md-3">
+          <select id="tar" name="user[id1]" class="form-control">
+          <% selected_val = "" %>
+          <% if params[:user].present? %>
+          <% selected_val = params[:user][:id1] unless params[:user][:id1].nil? %>
+          <%end%>
+            <% user_role = @comp.users.all.map { |user| [user.role, user.id] }  %>
+            <<option id="no-role" value="" selected="">Select Permission</option>
+            <%= options_for_select(user_role,selected_val) %>
+          </select>
+        </div>
+        <div class="col-md-3">
+        <select id="target" name="business[id1]" class="form-control">
+           <% selected_val = "" %>
+          <% if params[:business].present? %>
+          <% selected_val = params[:business][:id1] unless params[:business][:id1].nil? %>
+          <%end%>
+          <% business_array = @comp.businesses.all.map { |business| [business.name, business.id] }  %>
+          <option id="no-location" value="" selected="">Select Your Location</option>
+          <%= options_for_select(business_array,selected_val) %>
+           </select>
+        </div>-->
+        <div class="col-md-1">
+          <%= submit_tag "Filter", class: "btn btn-large btn-primary btns" %>
+        </div>
+         <%= link_to "business/#{@comp.id}/details_list", class: "btn btn-default" do %>Clear Filter
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="box-header remove_padding">
+        <h3 class="box-title">Locations</h3>
+      </div>
+      <table id="example1" class="table table-bordered custom_table">
+        <thead>
+        <tr>
+          <!--<th class="no_sort text-center select_all"></th>-->
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Postal Code</th>
+          <th>Contact Info</th>
+          <th>Website URL</th>
+          <th class="no_sort text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @business.each do |bsn|%>
+
+        <tr>
+          <!--<td class="text-center">-->
+            <!--<input type="checkbox" name="" class="minimal">-->
+          <!--</td>-->
+          <td><%= @count_business += 1 %></td>
+
+          <td><%= bsn.name %></td>
+          <td><%= bsn.try(:full_address) %></td>
+          <td><%= bsn.try(:pin_code) %></td>
+          <td><%= bsn.try(:contact_info) %></td>
+          <td><%= bsn.try(:web_url) %></td>
+          <td class="action_btns text-center">
+            <div class="btn-group class  btn btn-default">
+               <%= link_to "business/#{bsn.id}/edit_business" do %>
+             <i class="fa fa-pencil-square-o"></i>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

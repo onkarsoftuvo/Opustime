@@ -1,0 +1,2 @@
+module AdminSmsHelper
+end

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t('.Welcome') %> <%= t('.to') %> opustime</h1>
+    <p>
+      <%= t('.Your account have successfully created on') %> opustime.com
+      <%= t('.your email is') %>: <%= @user.email %><br>
+      <%= t('.your password is') %>: <%= @password %><br>
+    </p>
+    <p>
+      <%= t('.To login to the site just follow this link') %>: <%= link_to @url , @url %>
+    </p>
+    <p><%= t('.Thanks for joining and have a great day') %>!</p>
+  </body>
+</html>

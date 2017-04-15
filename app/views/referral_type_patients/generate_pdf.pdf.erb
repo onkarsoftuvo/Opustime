@@ -1,0 +1,49 @@
+<style>
+h2{
+	font-size: 16px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+.table{
+	width: 100%;
+}
+.table thead tr th{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+.table tbody tr td{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+</style>
+<h2><%= t('.Referral Type Report') %></h2>
+<table class="table" cellspacing="0"  border="1">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th><%= t('.Patient Name') %></th>
+			<th>Phone</th>
+			<th><%= t('.Extra Info') %></th>
+			<th><%= t('.Source Type') %></th>
+			<th><%= t('.Source Name') %></th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @result.each do |referral_type| %>
+			<tr>
+				<td><%= referral_type[:date]%> </td>
+				<td><%= referral_type[:name]%></td>
+				<td><%= referral_type[:number]%></td>
+				<td><%= referral_type[:extra_info]%></td>
+				<td><%= referral_type[:referral_type] %></td>
+				<td><%= referral_type[:referral_source]%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>	

@@ -1,0 +1,52 @@
+<style>
+h2{
+	font-size: 16px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+.table{
+	width: 100%;
+}
+.table thead tr th{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+.table tbody tr td{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+</style>
+<h2><%= t('.Patients Report') %></h2>
+<table class='table' cellspacing='0'  border='1'>
+	<thead>
+		<tr>
+			<th><%= t('.Name') %></th>
+			<th><%= t('.Phone') %></th>
+			<th><%= t('.Email Address') %></th>
+			<th><%= t('.Address') %></th>
+			<th><%= t('.Total Invoice') %></th>
+			<th><%= t('.Paid Amount') %>($)</th>
+			<th><%= t('.Outstanding Balance') %>($)</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @result.each do |patient| %>
+			<tr>
+				<td><%= patient[:name]%> </td>
+				<td><%= patient[:phone_no]%></td>
+				<td><%= patient[:email]%></td>
+				<td><%= patient[:address]%></td>
+				<td><%= patient[:total_invoiced]%></td>
+				<td><%= patient[:paid_amount]%></td>
+				<td><%= patient[:outstanding_bal]%></td>
+			</tr>	
+		<% end %>
+		
+	</tbody>
+</table>	

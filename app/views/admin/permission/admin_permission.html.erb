@@ -1,0 +1,1669 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Permissions
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Permissions</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-solid">
+          <!-- /.box-header -->
+          <div class="permissions">
+            <div class="box-group" id="accordion">
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapsedash" class="test ">
+                      Dashboard
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapsedash" class="panel-collapse collapse in">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professionals</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View Top Bar</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_top_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_top[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @apnt_permission.try(:dashboard_top).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View Appointment Reports</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_report_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_report[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dashboard_permission.try(:dashboard_report).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>View Appointment</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_appnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_appnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dashboard_permission.try(:dashboard_appnt).nil? %>>
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View Activity Feed</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_activity_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_activity[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dashboard_permission.try(:dashboard_activity).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View Sales Charts(professional)</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_chartpracti_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_chartpracti[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dashboard_permission.try(:dashboard_chartpracti).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View Sales Charts(products)</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dashboard_chartproduct_<%= index %>' data-skin="square" data-color="blue" <%= ((@dashboard_permission.dashboard_chartproduct[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dashboard_permission.try(:dashboard_chartproduct).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- responsive -->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+              <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="test ">
+                      Appointments
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse ">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+
+                            <% (1..6).each do |index| %>
+                                <td>
+
+                                  <input type="checkbox" class='icheck-me' id='appnt_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@apnt_permission.apnt_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @apnt_permission.try(:apnt_view).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='appnt_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@apnt_permission.apnt_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @apnt_permission.try(:apnt_create).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='appnt_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@apnt_permission.apnt_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @apnt_permission.try(:apnt_edit).nil? %>>
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='appnt_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@apnt_permission.apnt_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @apnt_permission.try(:apnt_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- responsive -->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="test">
+                      Clients
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professionals</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View (Basic Details only)</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Send SMS Messages</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_sms_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_sms[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_sms).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Archive/Activate</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_archive_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_archive[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_archive).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='patient_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@patient_permission.patient_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @patient_permission.try(:patient_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                       Client File Attachments
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Upload</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_upload_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_upload[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_upload).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View List (Names only)</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_viewname_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_viewname[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_viewname).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View Files</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Update File Description</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_update_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_update[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_update).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Delete Own Files</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_delown_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_delown[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_delown).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Delete All files</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='pntfile_delall_<%= index %>' data-skin="square" data-color="blue" <%= ((@pntfile_permission.pntfile_delall[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @pntfile_permission.try(:pntfile_delall).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Announcement">
+                      Announcement Messages
+                    </a>
+                  </h4>
+                </div>
+                <div id="Announcement" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Create/Read/Update/Edit Messages</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='announcemsg_crud_<%= index %>' data-skin="square" data-color="blue" <%= ((@announcemsg_permission.announcemsg_crud[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @announcemsg_permission.try(:announcemsg_crud).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Comment on Messages</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='announcemsg_comment_<%= index %>' data-skin="square" data-color="blue" <%= ((@announcemsg_permission.announcemsg_comment[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @announcemsg_permission.try(:announcemsg_comment).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#User_Information">
+                      User Information
+                    </a>
+                  </h4>
+                </div>
+                <div id="User_Information" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View their own details</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='userinfo_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@userinfo_permission.userinfo_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @userinfo_permission.try(:userinfo_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Edit their own details</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='userinfo_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@userinfo_permission.userinfo_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @userinfo_permission.try(:userinfo_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Add/Edit/View other users</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='userinfo_cru_<%= index %>' data-skin="square" data-color="blue" <%= ((@userinfo_permission.userinfo_cru[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @userinfo_permission.try(:userinfo_cru).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <!--responsive-->
+                      </div>
+                      <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                  </div>
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Invoices">
+                      Invoices
+                    </a>
+                  </h4>
+                </div>
+                <div id="Invoices" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='invoice_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@invoice_permission.invoice_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @invoice_permission.try(:invoice_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='invoice_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@invoice_permission.invoice_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @invoice_permission.try(:invoice_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='invoice_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@invoice_permission.invoice_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @invoice_permission.try(:invoice_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='invoice_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@invoice_permission.invoice_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @invoice_permission.try(:invoice_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Payments">
+                      Payments
+                    </a>
+                  </h4>
+                </div>
+                <div id="Payments" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='payment_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@payment_permission.payment_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @payment_permission.try(:payment_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='payment_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@payment_permission.payment_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @payment_permission.try(:payment_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='payment_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@payment_permission.payment_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @payment_permission.try(:payment_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='payment_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@payment_permission.payment_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @payment_permission.try(:payment_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Products">
+                      Products
+                    </a>
+                  </h4>
+                </div>
+                <div id="Products" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='product_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@product_permission.product_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @product_permission.try(:product_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='product_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@product_permission.product_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @product_permission.try(:product_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='product_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@product_permission.product_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @product_permission.try(:product_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Adjust Stock Level</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='product_stock_<%= index %>' data-skin="square" data-color="blue" <%= ((@product_permission.product_stock[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @product_permission.try(:product_stock).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='product_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@product_permission.product_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @product_permission.try(:product_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Expenses">
+                      Expenses
+                    </a>
+                  </h4>
+                </div>
+                <div id="Expenses" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='expense_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@expense_permission.expense_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @expense_permission.try(:expense_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='expense_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@expense_permission.expense_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @expense_permission.try(:expense_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='expense_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@expense_permission.expense_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @expense_permission.try(:expense_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='expense_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@expense_permission.expense_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @expense_permission.try(:expense_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                        <p>Can only view/edit expenses they have created themselves, not expenses anyone else has
+                          created.</p>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Contacts">
+                      Contacts
+                    </a>
+                  </h4>
+                </div>
+                <div id="Contacts" class="panel-collapse collapse">
+                  <div class="box box-primary ">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='contact_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@contact_permission.contact_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @contact_permission.try(:contact_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Create</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='contact_create_<%= index %>' data-skin="square" data-color="blue" <%= ((@contact_permission.contact_create[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @contact_permission.try(:contact_create).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Edit</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='contact_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@contact_permission.contact_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @contact_permission.try(:contact_edit).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='contact_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@contact_permission.contact_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @contact_permission.try(:contact_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Communications">
+                      Communications
+                    </a>
+                  </h4>
+                </div>
+                <div id="Communications" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='communication_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@communication_permission.communication_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @communication_permission.try(:communication_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Medical_Alerts">
+                      Medical Alerts
+                    </a>
+                  </h4>
+                </div>
+                <div id="Medical_Alerts" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View/Edit Create/Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='medical_crud_<%= index %>' data-skin="square" data-color="blue" <%= ((@medical_permission.medical_crud[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @medical_permission.try(:medical_crud).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Treatment_Notes">
+                      File Notes
+                    </a>
+                  </h4>
+                </div>
+                <div id="Treatment_Notes" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View/Create own notes</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='treatnote_view_<%= index %>' data-skin="square" data-color="blue" <%= ((@treatnote_permission.treatnote_view[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @treatnote_permission.try(:treatnote_view).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>View all Notes</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='treatnote_viewall_<%= index %>' data-skin="square" data-color="blue" <%= ((@treatnote_permission.treatnote_viewall[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @treatnote_permission.try(:treatnote_viewall).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Edit own Draft notes</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='treatnote_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@treatnote_permission.edit_own[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @treatnote_permission.try(:edit_own).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Delete</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='treatnote_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@treatnote_permission.treatnote_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @treatnote_permission.try(:treatnote_delete).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <p>The Administrator can set whether Professional can view all file notes or only their
+                          own file notes via Settings -> General</p>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+
+
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Letters">
+                      Letters
+                    </a>
+                  </h4>
+                </div>
+                <div id="Letters" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>View/Edit own letters</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='letter_viewown_<%= index %>' data-skin="square" data-color="blue" <%= ((@letter_permission.latter_viewown[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @letter_permission.try(:latter_viewown).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>View/Edit all letters</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='letter_viewall_<%= index %>' data-skin="square" data-color="blue" <%= ((@letter_permission.letter_viewall[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @letter_permission.try(:letter_viewall).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Delete letters</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='letter_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@letter_permission.letter_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @letter_permission.try(:letter_delete).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          </tbody>
+                        </table>
+                        <p>The Administrator can set whether Professional can view all letters or only their own
+                          letters via Settings -> General</p>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Recalls">
+                      Recalls
+                    </a>
+                  </h4>
+                </div>
+                <div id="Recalls" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Add Recall type</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_add_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_add[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_add).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Edit Recall type</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_edit_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_edit[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_edit).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Delete Recall type</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_delete_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_delete).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Add Recall to Client</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_addpnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_addpnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_addpnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Edit Recall on Client</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_editpnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_delete[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_delete).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Delete Recall on Client</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_deletepnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_deletepnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_deletepnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td>Mark client as Recalled</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='recall_markpnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@recall_permission.recall_markpnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @recall_permission.try(:recall_markpnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Reports">
+                      Reports
+                    </a>
+                  </h4>
+                </div>
+                <div id="Reports" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professional</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Appointment Schedule</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='report_apnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_apnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_apnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                            <!--<tr>-->
+                            <!--<td>Missed Appointments</td>-->
+                            <!--
+                              <% (1..6).each do |index| %>-->
+                                <!--<td>-->
+                                <!--<input type="checkbox" class='icheck-me' id='report_missapnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_missapnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_missapnt).nil? %> >-->
+                                <!--</td>-->
+                                <!--
+                              <% end %>-->
+                            <!--</tr>-->
+                            <tr>
+                              <td>Upcoming Birthdays</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_upbday_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_upbday[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_upbday).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Clients without upcoming appointments</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_pupapnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_pupapnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_pupapnt).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Clients By Total Invoiced</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_totinvoice_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_totinvoice[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_totinvoice).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Daily Payments</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_dpay_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_dpay[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_dpay).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Payment Summary</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_pmt_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_pmt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_pmt).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Outstanding Invoices</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_invoice_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_invoice[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_invoice).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <!--<tr>-->
+                            <!--<td>Practice Revenue</td>-->
+                            <!--
+                              <% (1..6).each do |index| %>-->
+                                <!--<td>-->
+                                <!--<input type="checkbox" class='icheck-me' id='report_revenue_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_revenue[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_revenue).nil? %> >-->
+                                <!--</td>-->
+                                <!--
+                              <% end %>-->
+                            <!--</tr>-->
+                            <tr>
+                              <td>Professional Revenue</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_prarevenue_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_prarevenue[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_prarevenue).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Expenses</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_expense_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_expense[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_expense).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Recalls</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_recall_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_recall[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_recall).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>Referral Sources</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='report_refersrc_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_refersrc[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_refersrc).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <!--<tr>-->
+                            <!--<td>Patients Marketing</td>-->
+                            <!--
+                              <% (1..6).each do |index| %>-->
+                                <!--<td>-->
+                                <!--<input type="checkbox" class='icheck-me' id='report_pntmarket_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_pntmarket[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_pntmarket).nil? %> >-->
+                                <!--</td>-->
+                                <!--
+                              <% end %>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                            <!--<td>Appointments Marketing</td>-->
+                            <!--
+                              <% (1..6).each do |index| %>-->
+                                <!--<td>-->
+                                <!--<input type="checkbox" class='icheck-me' id='report_apntmarket_<%= index %>' data-skin="square" data-color="blue" <%= ((@report_permission.report_apntmarket[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @report_permission.try(:report_apntmarket).nil? %> >-->
+                                <!--</td>-->
+                                <!--
+                              <% end %>-->
+                            <!--</tr>-->
+                            </tbody>
+                        </table>
+                        <p>Professionals can only run a Professional Revenue report for themselves.</p>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Data_Exports">
+                      Data Exports
+                    </a>
+                  </h4>
+                </div>
+                <div id="Data_Exports" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professionals</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Products</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dataexport_prod_<%= index %>' data-skin="square" data-color="blue" <%= ((@dataexport_permission.dataexport_prod[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dataexport_permission.try(:dataexport_prod).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          <tr>
+                            <td>Invoices (and invoice items)</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='dataexport_invoice_<%= index %>' data-skin="square" data-color="blue" <%= ((@dataexport_permission.dataexport_invoice[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dataexport_permission.try(:dataexport_invoice).nil? %> >
+                                </td>
+                            <% end %>
+                            <tr>
+                              <td>Payments</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='dataexport_pmt_<%= index %>' data-skin="square" data-color="blue" <%= ((@dataexport_permission.dataexport_pmt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dataexport_permission.try(:dataexport_pmt).nil? %> >
+                                  </td>
+                              <% end %>
+
+                            </tr>
+                            <tr>
+                              <td>Expenses</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='dataexport_expns_<%= index %>' data-skin="square" data-color="blue" <%= ((@dataexport_permission.dataexport_expns[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dataexport_permission.try(:dataexport_expns).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <td>All other exports</td>
+                              <% (1..6).each do |index| %>
+                                  <td>
+                                    <input type="checkbox" class='icheck-me' id='dataexport_allexprt_<%= index %>' data-skin="square" data-color="blue" <%= ((@dataexport_permission.dataexport_allexprt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @dataexport_permission.try(:dataexport_allexprt).nil? %> >
+                                  </td>
+                              <% end %>
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#Settings">
+                      Settings
+                    </a>
+                  </h4>
+                </div>
+                <div id="Settings" class="panel-collapse collapse">
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered custom_table text-center table-hover">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Scheduler</th>
+                            <th>Receptionist</th>
+                            <th>Professionals</th>
+                            <th>Bookkeeper</th>
+                            <th>Power Receptionist</th>
+                            <th>Administrator</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="text-left">Import Clients, Contacts, and Products</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_import_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_import[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_import).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Account General Settings</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_acnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_acnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_acnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Appointment Reminders</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_apntrem_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_apntrem[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_apntrem).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Appointment Types</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_apnttype_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_apnttype[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_apnttype).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Billable Items</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_bill_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_bill[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_bill).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Business Information</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_bsn_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_bsn[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_bsn).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Online Bookings</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_onbook_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_onbook[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_onbook).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Concession types</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_cns_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_cns[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_cns).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Documents and Printing</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_docprint_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_docprint[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_docprint).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Integrations</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_ingrt_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_ingrt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_ingrt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Invoice Settings</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_invcset_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_invcset[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_invcset).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Letter Templates</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_lettemp_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_lettemp[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_lettemp).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Sms Templates</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_smstemp_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_smstemp[ROLE[index-1]].eql?("true")) ? "" : "") unless @setting_permission.try(:setting_smstemp).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+
+
+                          <tr>
+                            <td class="text-left">Payment Types</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_pmttype_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_pmttype[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_pmttype).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Referral Sources</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_refsrc_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_refsrc[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_refsrc).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">SMS Settings</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_smsset_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_smsset[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_smsset).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Subscription</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_sub_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_sub[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_sub).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Taxes</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_tax_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_tax[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_tax).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">File Note Templates</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_tnt_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_tnt[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_tnt).nil? %> >
+                                </td>
+                            <% end %>
+
+                          </tr>
+                          <tr>
+                            <td class="text-left">Users and Professionals</td>
+                            <% (1..6).each do |index| %>
+                                <td>
+                                  <input type="checkbox" class='icheck-me' id='setting_userpract_<%= index %>' data-skin="square" data-color="blue" <%= ((@setting_permission.setting_userpract[ROLE[index-1]].eql?("true")) ? "checked" : "") unless @setting_permission.try(:setting_userpract).nil? %> >
+                                </td>
+                            <% end %>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<script>
+    function icheck() {
+        if ($(".icheck-me").length > 0) {
+            $(".icheck-me").each(function () {
+                var $el = $(this);
+                var skin = ($el.attr('data-skin') !== undefined) ? "_" + $el.attr('data-skin') : "",
+                        color = ($el.attr('data-color') !== undefined) ? "-" + $el.attr('data-color') : "";
+                var opt = {
+                    checkboxClass: 'icheckbox' + skin + color,
+                    radioClass: 'iradio' + skin + color
+                }
+                $el.iCheck(opt);
+            });
+        }
+    }
+
+    $(function () {
+        icheck();
+    })
+
+</script>
+
+<script type="text/javascript" src="/assets/admin/custom/test.js"></script>

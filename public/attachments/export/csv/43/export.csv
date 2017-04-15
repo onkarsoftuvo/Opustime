@@ -1,0 +1,7 @@
+invoice_id issue_date patient_full_name patient_first_name patient_last_name practitioner sub_total_amount tax_amount discount Invoice_amount notes status date_closed created_by appointment_id business invoice_to extra_patient_info patient_id patient_date_of_birth outstanding_balance
+8 2016-07-01 Dr_Gareeb_Das Gareeb Das Indus_Hospital 1009.09 90.91 0.0 1100.0  paid 01/07/2016 Indus_Hospital 90 Indus_Hospital Dr_Gareeb_Das____Andaman_and_Nicobar_Islands_India  000001 30-06-2016 0.0
+9 2016-07-01 Dr_Gareeb_Das Gareeb Das Indus_Hospital 727.28 72.72 0.0 800.0  paid 01/07/2016 Indus_Hospital  Indus_Hospital Dr_Gareeb_Das____Andaman_and_Nicobar_Islands_India  000001 30-06-2016 0.0
+10 2016-07-01 Dr_Gareeb_Das Gareeb Das Indus_Hospital 992.86 107.14 0.0 1100.0  paid 01/07/2016 Indus_Hospital  Indus_Hospital Dr_Gareeb_Das____Andaman_and_Nicobar_Islands_India  000001 30-06-2016 0.0
+14 2016-06-08 Dr_Gareeb_Das Gareeb Das Indus_Hospital 100.0 0.0 0.0 100.0  open  Indus_Hospital 111 Indus_Hospital Dr_Gareeb_Das____Andaman_and_Nicobar_Islands_India  000001 30-06-2016 100.0
+13 2016-07-02 Dr_Ameer_Das Ameer Das Indus_Hospital 50.0 0.0 0.0 50.0  open  Indus_Hospital 102 Cheema Dr_Ameer_Das__MOhali__Andaman_and_Nicobar_Islands_India_142025  000002 30-06-2016 50.0
+11 2016-07-01 Dr_Pinky_Sharma Pinky Sharma Indus_Hospital 1000.0 0.0 0.0 1000.0  paid 04/07/2016 Indus_Hospital 207 Indus_Hospital Dr_Pinky_Sharma____Andaman_and_Nicobar_Islands_India  000003 09-02-2016 0.0

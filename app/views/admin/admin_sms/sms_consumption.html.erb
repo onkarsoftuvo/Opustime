@@ -1,0 +1,101 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      SMS Consumption
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">SMS</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">SMS Consumption</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <!--<div class="form-group filter-con">-->
+                <!--<label>Filters</label>-->
+
+                <!--<div class="col-md-4">-->
+                <!--<select class="form-control">-->
+                <!--<option>Business</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                <!--<button class="btn btn-info">Filter</button>-->
+                <!--</div>-->
+                <!--<div class="col-md-3 pull-right text-right">-->
+                <!--<button class="btn btn-default">Clear Filter</button>-->
+                <!--</div>-->
+                <!--</div>-->
+              </div>
+            </div>
+            <table id="example1" class="table table-bordered custom_table">
+              <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Company</th>
+                <th>Total Users</th>
+                <th>Remaining Sms</th>
+                <th>Last Payment Amount(in $)</th>
+                <th>Last Payment Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <% @companies.each_with_index do |company, index| %>
+
+                    <td><%= index+1 %></td>
+                    <td><%= company.full_name %></td>
+                    <td><%= company.users.count %></td>
+                    <td><%= company.sms_setting.default_sms %></td>
+                    <% Company.last_sms_payment(company).each do |val| %>
+                        <td><%= val %></td>
+                    <% end %>
+                    <!--<td><#%= company.sms_setting.created_at.try(:strftime, '%d %B %Y,  %H:%M:%S %p') %></td>-->
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+    });
+
+
+</script>

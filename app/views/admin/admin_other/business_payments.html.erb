@@ -1,0 +1,103 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Business Payments
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Business Payments</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Business payments Report</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="business_payment" class="table table-bordered custom_table" data-source="<%= others_business_payments_path(format: :json) %>">
+              <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Business Id</th>
+                <th>Business Name</th>
+                <th>Total Sms Payment</th>
+                <th>Total Plan Payment</th>
+                <th class="no_sort text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-xs" id="smsCredits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Trial</h4>
+      </div>
+      <form class="form-horizontal">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Extending Date</label>
+
+            <div class="col-md-10">
+              <input type="text" name="" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ./wrapper -->
+
+<script>
+
+    var oTable;
+    $(document).ready(function () {
+        oTable = $('#business_payment').dataTable({
+            "language": {
+                "processing": "<img src='../assets/reload.gif'>"
+            },
+            "processing": true,
+            "serverSide": true,
+            "bStateSave": true,
+            "ajax": $('#business_payment').data('source'),
+            "pagingType": "full_numbers",
+            'columns': [
+                {'sortable': true, 'searchable': true},
+                {'sortable': true, 'searchable': true},
+                {'sortable': true, 'searchable': true},
+                {'sortable': false, 'searchable': false},
+                {'sortable': false, 'searchable': false},
+                {'sortable': false, 'searchable': false}
+            ]
+        });
+    });
+</script>

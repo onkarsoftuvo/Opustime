@@ -1,0 +1,9 @@
+<div class="col-md-6">
+    <form ng-submit="concessionf.$valid && concessionSubmit(concession);" id="concession" novalidate name="concessionf"> 
+	<h2>{{'settings.discount_type.Editing-seniors' | translate:translationData}}</h2>
+      <div class="form-group">
+        <label>{{'label.name' | translate:translationData}}</label>
+        <input type="text" class="form-control" placeholder="{{'settings.discount_type.placeholder-seniors' | translate:translationData}}" ng-model="concession.name" required>
+      </div>
+      </form>
+</div>

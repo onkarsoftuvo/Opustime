@@ -1,0 +1,217 @@
+<div class="dashboard-con settings">
+	<form ng-submit="UpdateDocPrint(docprintDetails); docprintFileUpload(docfile)" name="docprintSettings">
+        <div class="top_tabbing">
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.import" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.data-imports" href="">{{'settings.data_import.main_heading' | translate:translationData}}</a>
+          </div>
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.export" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.data-export" href="">{{'sidebar_menu.Data_Export' | translate:translationData}}</a>      
+          </div>
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.dc_print" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.document-and-printing" href="" class="active">{{'sidebar_menu.Print_Settings' | translate:translationData}}</a>      
+          </div>
+        </div>
+    	<div class="top-container">
+            <div class="col-md-4 col-xs-4 top-links">
+                <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>     
+            </div>
+            <div class="col-md-8 col-xs-8 top-btn">
+                <button class="save" type="submit">{{'button.save' | translate:translationData}}</button>
+                <button class="cancel" type="button" ng-click="getDocPrint()">{{'button.cancel' | translate:translationData}}</button>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 form-content printing" ng-scrollbars rebuild-on-resize>
+        	<div class="col-md-6">
+            	<h2>{{'settings.document_printing.heading_all_doc' | translate:translationData}}</h2>
+                <div class="form-group">
+                	<div class="col-md-7">
+                    	<label class="logo-com">{{'settings.online_booking.label_logo' | translate:translationData}}</label>
+                        <div class="img-con">
+                            <img ng-src="{{docfile}}" alt="" ng-hide="docprintsettings.file.$valid"/>
+                          <img ng-show="docprintsettings.file.$valid" ngf-src="docfile"
+               class="thumb">
+                        </div>
+                        <input type="button" value="{{'button.upload' | translate:translationData}}" ngf-select ng-model="docfile" name="file"    
+                 accept="image/*" class="upload-btn" required>
+                 	<div class="remove_logo" ng-if="docprintDetails.have_logo==true">
+                    	<div class="check-con">
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox"  ng-model="docprintDetails.remove_logo" value="false"><span></span> {{'settings.document_printing.removeLogo' | translate:translationData}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-5 logo-height">
+                    	<label>{{'settings.document_printing.label_height' | translate:translationData}}
+                        	<i class="ic info info-hover bottom">
+                                <span>{{'settings.document_printing.label_height_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.logo_height">
+                                <option ng-repeat="n in range(5,400,5)" >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.height_tip' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                </div>
+                <h2>{{'settings.document_printing.label_invoice' | translate:translationData}}</h2>
+                <div class="form-group clear-div">
+                	<div class="col-md-5 logo-height check-con enable">
+                    	<label class="ng-binding">{{'settings.document_printing.label_display' | translate:translationData}}</label>
+                        <div class="checkbox remove-margin">
+                            <label class="enable-check">
+                              <input type="checkbox" ng-model="docprintDetails.show_invoice_logo"><span></span>  {{'settings.document_printing.showInvoiceLogo' | translate:translationData}}
+                            </label>
+                        </div>
+                    </div>
+                	<div class="col-md-3 logo-height">
+                    	<label>{{'settings.document_printing.label_pagesize' | translate:translationData}}</label>
+                        <div class="logo-height-con">
+                            <select class="form-control"  ng-model="docprintDetails.in_page_size">
+                                <option value="A4">{{'settings.document_printing.label_pagesize_option1' | translate:translationData}}</option>
+                                <option value="Letter">{{'settings.document_printing.label_pagesize_option2' | translate:translationData}}</option>
+                                <option value="A5">{{'settings.document_printing.label_pagesize_option3' | translate:translationData}}</option>
+                            </select>
+                         </div>
+                    </div>
+                    <div class="col-md-4 logo-height">
+                    	<label>{{'settings.document_printing.label_top_margin' | translate:translationData}}
+                        	<i class="ic info info-hover">
+                                <span>{{'settings.document_printing.label_top_margin_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control"  ng-model="docprintDetails.in_top_margin">
+                                <option ng-repeat="n in range(5,150,5)">{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.height_tip' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                </div>
+                <h2>{{'settings.document_printing.heading_acc_state' | translate:translationData}}</h2>
+                <div class="form-group clear-it">
+                   <label>{{'label.title' | translate:translationData}}</label>
+                   <input type="text" class="form-control" placeholder="{{'settings.document_printing.heading_acc_state' | translate:translationData}}"  ng-model="docprintDetails.as_title"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+            	<h2>{{'settings.document_printing.heading_letter' | translate:translationData}}</h2>
+                <div class="form-group clear-div">
+                	<div class="col-md-5 logo-height check-con enable">
+                    	<label>{{'settings.document_printing.label_display' | translate:translationData}}</label>
+                        <div class="checkbox">
+                            <label class="enable-check">
+                              <input type="checkbox"  ng-model="docprintDetails.l_display_logo"><span></span> {{'settings.document_printing.label_display_check' | translate:translationData}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-7 logo-height">
+                    	<label>{{'settings.document_printing.label_space' | translate:translationData}}
+                        	<i class="ic info info-hover bottom">
+                                <span>{{'settings.document_printing.label_space_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control"  ng-model="docprintDetails.l_space_un_logo">
+                                <option ng-repeat="n in range(1,100)" >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="margin-count">
+                    <div class="col-md-3 logo-height clear-it">
+                        <label>{{'settings.document_printing.label_margin_top' | translate:translationData}}
+                            <i class="ic info info-hover">
+                                <span>{{'settings.document_printing.label_margin_top_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.l_top_margin">
+                                <option ng-repeat="n in range(5,250,5)"  >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                    <div class="col-md-3 logo-height">
+                        <label>{{'settings.document_printing.label_margin_bottom' | translate:translationData}}
+                            <i class="ic info info-hover">
+                                <span>{{'settings.document_printing.label_margin_bottom_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.l_bottom_margin">
+                                <option ng-repeat="n in range(5,200,5)"  >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                    <div class="col-md-3 logo-height">
+                        <label>{{'settings.document_printing.label_margin_left' | translate:translationData}}</label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.l_bleft_margin">
+                                <option ng-repeat="n in range(5,150,5)"  >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                    <div class="col-md-3 logo-height">
+                        <label>{{'settings.document_printing.label_margin_right' | translate:translationData}}</label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.l_right_margin">
+                                <option ng-repeat="n in range(5,150,5)"  >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                </div>
+                <h2>{{'settings.treatment_note.main_heading' | translate:translationData}}</h2>
+                <div class="form-group clear-div">
+                	<div class="col-md-5 logo-height check-con enable">
+                    	<label>{{'settings.document_printing.label_display' | translate:translationData}}</label>
+                        <div class="checkbox remove-margin">
+                            <label class="enable-check ">
+                              <input type="checkbox"  ng-model="docprintDetails.tn_display_logo"><span></span>  {{'settings.document_printing.label_logo_on' | translate:translationData}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 logo-height push-right">
+                    	<label>{{'settings.document_printing.label_pagesize' | translate:translationData}}</label>
+                        <div class="logo-height-con">
+                            <select class="form-control"  ng-model="docprintDetails.tn_page_size">
+                                <option value="A4">{{'settings.document_printing.label_pagesize_option1' | translate:translationData}}</option>
+                                <option value="Letter">{{'settings.document_printing.label_pagesize_option2' | translate:translationData}}</option>
+                                <option value="A5">{{'settings.document_printing.label_pagesize_option3' | translate:translationData}}</option>
+                            </select>
+                         </div>
+                    </div>
+                    <div class="col-md-4 logo-height">
+                    	<label>{{'settings.document_printing.label_top_margin' | translate:translationData}}
+                        	<i class="ic info info-hover right-side">
+                                <span>{{'settings.document_printing.label_top_margin_info' | translate:translationData}}</span>
+                            </i>
+                        </label>
+                        <div class="logo-height-con">
+                            <select class="form-control" ng-model="docprintDetails.tn_top_margin">
+                                <option ng-repeat="n in range(5,400,5)"  >{{n}}</option>
+                            </select>
+                            <span>{{'settings.document_printing.tip_mm' | translate:translationData}}</span>
+                         </div>
+                    </div>
+                    <div class="col-md-12 logo-height check-con enable">
+                    	<label>{{'settings.document_printing.label_hide' | translate:translationData}}</label>
+                        <div class="checkbox">
+                            <label class="enable-check">
+                              <input type="checkbox"  ng-model="docprintDetails.hide_us_cb"><span></span> {{'settings.document_printing.label_hide_check' | translate:translationData}}  
+                            </label>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </form>
+</div>

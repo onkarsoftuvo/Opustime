@@ -1,0 +1,60 @@
+/*online booking blue theme css*/
+.blue_theme .location ul.top-icn li.active i,
+.blue_theme .inner-container a,
+.blue_theme .social li a:hover,
+.blue_theme .location ul.top-icn li.active:before,
+.blue_theme .custom-btn button,
+.blue_theme .info-hover span,
+.blue_theme .extra-info button[type="submit"],
+.blue_theme .cancel-btns button{
+	background-color: #325881;
+}
+.blue_theme .custom-btn button.back {
+    background-color: #313538;
+}
+.blue_theme .location h4,
+.blue_theme .inner-container strong,
+.blue_theme .confirm-detail h3,
+.blue_theme .confirm-detail .pre-name{
+	color: #325881;
+}
+.blue_theme .cal_month .arrow-left{
+	background-image: url(/assets/new_arrow_left_blue.png) !important;
+}
+.blue_theme .cal_month .arrow-right{
+	background-image: url(/assets/new_arrow_right_blue.png) !important;
+}
+.blue_theme .day-con a{
+	border-color: #325881;
+	color: #325881;
+}
+.blue_theme .day-con a:hover{
+	background: #325881;
+	color: #fff;
+}
+.blue_theme .info{
+	background-image: url(/assets/info_blue.png);
+}
+.blue_theme .info-hover span:after{
+	background-image: url(/assets/info-arrow_blue.png);
+}
+
+
+.blue_theme .btn-default.disabled,
+.blue_theme .btn-default[disabled],
+.blue_theme fieldset[disabled] .btn-default,
+.blue_theme .btn-default.disabled:hover,
+.blue_theme .btn-default[disabled]:hover,
+.blue_theme fieldset[disabled] .btn-default:hover,
+.blue_theme .btn-default.disabled:focus,
+.blue_theme .btn-default[disabled]:focus,
+.blue_theme fieldset[disabled] .btn-default:focus,
+.blue_theme .btn-default.disabled:active,
+.blue_theme .btn-default[disabled]:active,
+.blue_theme fieldset[disabled] .btn-default:active,
+.blue_theme .btn-default.disabled.active,
+.blue_theme .btn-default[disabled].active,
+.blue_theme fieldset[disabled] .btn-default.active{
+	background-color: #325881;
+	border-color: #325881;
+}

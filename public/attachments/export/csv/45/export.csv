@@ -1,0 +1,95 @@
+id start_time end_time practitioner practitioner_id patient(s) patient_id(s) appointment_type appointment_note business did_not_arrive patient_arrived sms_reminder_sent email_reminder_sent cancellation_time cancellation_reason cancellation_note created_at treatment_notes_status invoice_id appointment_category source maximum_number_of_patients
+000012 10:10AM 11:40AM Robert_Hook 000002 Mr_Ramu_Kaka 000004 First_Appointment  Miongo true No false false    30/06/2016at08:14AM No      1
+000046 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000047 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000048 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000049 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000050 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000051 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000052 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000053 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000054 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000055 15:00PM 15:30PM Robert_Hook 000002 Mr_Ramu_Kaka 000004 Other  Miongo true No false false    30/06/2016at08:22AM No      1
+000035 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000036 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000037 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000038 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000039 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000040 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000041 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000042 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No 000001     1
+000043 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000044 10:30AM 11:00AM Robert_Hook 000002 Mr_Rohan_Malik 000006 VIP  Miongo true No false false    30/06/2016at08:20AM No      1
+000117 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000118 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000119 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000120 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000121 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000122 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000123 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000124 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000125 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000126 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000127 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000128 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000129 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000130 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000131 15:00PM 15:30PM Robert_Hook 000002 Mr_Rohan_Malik 000006 Casual  Miongo true No false false    30/06/2016at08:43AM No      1
+000021 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000022 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000023 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000024 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000025 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No 000006     1
+000026 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000027 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000028 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000029 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000030 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000031 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000032 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000033 12:45PM 13:30PM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    30/06/2016at08:15AM No      1
+000210 10:00AM 10:40AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:42AM No      1
+000211 10:00AM 10:40AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:42AM No      1
+000217 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000218 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000219 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000220 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000221 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000222 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000223 11:00AM 11:30AM Sir_John_lamaba 000004 Mr_Seema_Saini 000007 First_Appointment  Miongo true No false false    01/07/2016at09:45AM No      1
+000045 13:30PM 14:20PM Robert_Hook 000002 Rabbi_Richard_Parakar 000008 Casual  Miongo true No false false    30/06/2016at08:21AM No 000007     1
+000056 11:45AM 12:15PM Robert_Hook 000002 Miss_Neha_Raghav 000009 Casual  Miongo true No false false    30/06/2016at08:23AM No      1
+000057 11:45AM 12:15PM Robert_Hook 000002 Miss_Neha_Raghav 000009 Casual  Miongo true No false false    30/06/2016at08:23AM No 000002     1
+000058 11:45AM 12:15PM Robert_Hook 000002 Miss_Neha_Raghav 000009 Casual  Miongo true No false false    30/06/2016at08:23AM No      1
+000059 11:45AM 12:15PM Robert_Hook 000002 Miss_Neha_Raghav 000009 Casual  Miongo true No false false    30/06/2016at08:23AM No      1
+000069 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000070 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000071 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000072 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000073 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000074 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000075 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000076 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000077 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000078 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000079 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000080 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000081 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000082 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No 000012     1
+000083 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000084 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000085 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000086 13:30PM 14:40PM Sir_John_lamaba 000004 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:25AM No      1
+000114 15:30PM 16:55PM Dr_Brawn_kim 000005 Miss_Neha_Raghav 000009 First_Appointment hey_good Miongo true No false false    30/06/2016at08:42AM No      1
+000115 15:30PM 16:55PM Dr_Brawn_kim 000005 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:42AM No      1
+000116 15:30PM 16:55PM Dr_Brawn_kim 000005 Miss_Neha_Raghav 000009 First_Appointment  Miongo true No false false    30/06/2016at08:42AM No      1
+000060 11:30AM 12:40PM Dr_Brawn_kim 000005 Miss_Kanchan_Sharma 000010 First_Appointment  Miongo true No false false    30/06/2016at08:24AM No 000005     1
+000061 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000062 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000063 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000064 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000065 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000066 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000067 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000068 11:30AM 12:20PM Robert_Hook 000002 Miss_Kanchan_Sharma 000010 Casual  Miongo true No false false    30/06/2016at08:25AM No      1
+000224 10:45AM 11:15AM Dr_Brawn_kim 000005 Professor_Ajay_Garg 000011 Standard_Appointment  Miongo true No false false    01/07/2016at10:56AM No      1

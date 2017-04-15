@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>OTP</title>
+</head>
+<body style="margin:0;">
+<div style="width:600px; margin:auto; border: solid 1px #ccc; padding: 20px; box-sizing: border-box; border-radius: 10px; margin-top: 10px; background:#f5f8f9">
+  <%= image_tag attachments['logo.jpg'].url, :style => "width:220px;" %>
+  <h3 style="margin-bottom:10px; text-transform:uppercase;"><%= t('.Authentication OTP Code') %></h3>
+
+  <p><%= t('.Please use this otp code') %> (<%= t('.One Time Password') %>) : <%= @code %><%= t('. to login into Opustime') %>. <%= t('.This code is valid for 5 minutes only') %>. <%= t('.After that you have to regenerate new code to login') %>.</p>
+</div>
+</body>
+</html>

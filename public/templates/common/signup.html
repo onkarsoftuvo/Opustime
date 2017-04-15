@@ -1,0 +1,43 @@
+<div class="login-header" ng-show="isLoggedIn">
+<h1 class="text-center project-title">{{'Zulu.mainHeading' | translate:translationData}}</h1>
+</div>
+<div class="loginForm">
+<h3 class=" text-center">{{'login.treatYourself' | translate:translationData}}</h3>
+<form novalidate class="form-horizontal col-xs-6 center-block" ng-submit="doRegister(user)">
+<div class="row">
+  <div class="form-group">
+    <label for="inputCname3" class="col-sm-3 control-label">{{'contact.companyName' | translate:translationData}}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputCname3" placeholder="{{'contact.companyName' | translate:translationData}}" ng-model="user.CompanyName" required >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label">{{'login.email' | translate:translationData}}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="{{'login.email' | translate:translationData}}" ng-model="user.username" required >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label">{{'login.password' | translate:translationData}}</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="{{'login.password' | translate:translationData}}" ng-model="user.password" required >
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+      <button type="submit" class="btn btn-default btn-blue" ng-disabled="loading"><span ng-hide="loading">{{'login.signUp' | translate:translationData}}</span><div class="spinner" ng-show="loading"></div></button>
+      <a ui-sref="login_first" class="sign-up">{{'resetPassword.backToLogin' | translate:translationData}}</a>
+    </div>
+  </div>
+  </div>
+</form>
+<div class="error col-sm-8 col-sm-offset-2 animate-show" ng-show="error">
+  <div class="error-container text-center">
+    <p>
+      <i class="fa fa-warning"></i>
+      <span><span ng-repeat="errors in msg">{{errors.error_msg}}<br></span></span>
+    </p>
+  </div>
+</div>
+</div>

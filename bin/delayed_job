@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
+require 'delayed/command'
+SHARED_PATH = '/home/ubuntu/opustime/shared'
+ARGV << "--pid-dir=#{SHARED_PATH}/pids"
+Delayed::Command.new(ARGV).daemonize

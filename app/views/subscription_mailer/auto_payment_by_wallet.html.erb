@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>Opustime</title>
+</head>
+<body style="margin:0;">
+<div style="width:600px; margin:auto; border: solid 1px #ccc; padding: 20px; box-sizing: border-box; border-radius: 10px; margin-top: 10px; background:#f5f8f9">
+  <%= image_tag attachments['logo.jpg'].url, :style => "width:220px;" %>
+  <h3 style="margin-bottom:10px; text-transform:uppercase;"><%= t('.Auto Payment Reminder') %></h3>
+
+  <% if @payment_type.to_s.eql?('1') %>
+      <p><%= t('.Welcome') %> <%= t('.to') %> Opustime, <%= t('.we have used your') %> <%= t('.full wallet balance') %>
+        $<%= @subscription.payment_info[:used_wallet_amount] %> <%= t('.to make payment') %> <%= t('.of your current billing cycle') %>
+        <%= t('.of') %>  <%= Time.now.to_date %> <%= t('.and now your') %>
+        <%= t('.next billing cycle will be') %> <%= @subscription.next_billing_cycle.strftime('%A, %d %b %Y') %>.
+      </p>
+  <% else %>
+      <p><%= t('.Welcome') %> to Opustime, <%= t('.we have used your') %> <%= t('.partial wallet balance') %>
+        $<%= @subscription.payment_info[:used_wallet_amount] %> <%= t('.and') %> <%= t('.debit') %> <%= t('.your') %> <%= t('.credit card') %> <%= t('.for remaining payable amount') %>
+        $<%= @subscription.payment_info[:payable_amount] %> <%= t('.of your current billing cycle') %> <%= Time.now.to_date %> <%= t('.and now your') %>
+        <%= t('.next billing cycle will be') %> <%= @subscription.next_billing_cycle.strftime('%A, %d %b %Y') %>.
+      </p>
+  <% end %>
+</div>
+</body>
+</html>

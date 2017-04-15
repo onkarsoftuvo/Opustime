@@ -1,0 +1,88 @@
+<div class="dashboard-con settings">
+	<form ng-submit="settingSubmit(account)">
+        <div class="top_tabbing">
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.import" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.data-imports" href="" class="active">{{'settings.top_links.data_imports' | translate}}</a>
+          </div>
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.export" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.data-export" href="">{{'sidebar_menu.Data_Export' | translate:translationData}}</a>      
+          </div>
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.dc_data_sub_modules.dc_print" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.dc_data_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.dc_data_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.dc_data_total == 3}">
+            <a ui-sref="settings.document-and-printing" href="">{{'sidebar_menu.Print_Settings' | translate:translationData}}</a>      
+          </div>
+        </div>
+    	<div class="top-container">
+            <div class="col-md-12 col-xs-12 top-links">
+                <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>     
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 form-content" ng-scrollbars rebuild-on-resize>
+        	<div class="col-md-12">
+            	<h2 class="autowid">{{'settings.data_import.main_heading' | translate:translationData}}
+                    <i class="ic info info-hover bottom left-side">
+                        <span>{{'settings.data_import.main_heading_info' | translate:translationData}}</span>
+                    </i>
+                </h2>
+                <div class="clearfix"></div>
+                <div class="row dataImport">
+                    <div class="col-sm-2">
+                        <select class="form-control" ng-model="dataType">
+                          <option value="patient">{{'appointment.patient' | translate:translationData}}</option>
+                          <option value="contact">{{'patient_form.Contacts' | translate:translationData}}</option>
+                          <option value="product">{{'product_title' | translate:translationData}}</option>
+                          <option value="billableItem">{{'settings.billable_items.main_heading' | translate:translationData}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="importData()">{{'settings.treatment_note.import' | translate:translationData}}</button>
+                    </div>
+                </div>
+                <hr style="border-color:#ccc;">
+                <div class="form-group data-import">
+                    <label>{{'settings.data_import.label_list' | translate:translationData}}</label>
+                    <p>{{'settings.data_import.label_list_detail' | translate:translationData}}</p>
+                </div>
+                <div class="table-responsive import-data">
+                	<table class="table">
+                    	<thead>
+                        	<tr>
+                            	<th>{{'settings.data_import.table_heading_upload' | translate:translationData}}</th>
+                            	<th>{{'settings.data_import.table_heading_created' | translate:translationData}}</th>
+                                <th>{{'settings.data_import.table_heading_import_type' | translate:translationData}}</th>
+                                <th>{{'settings.data_import.table_heading_status' | translate:translationData}}</th>
+                            	<th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<tr ng-repeat="list in allImports">
+                                <td>
+                                    <span ng-if="list.status != 'started'" style="color:#000;">{{list.file_name}}</span>
+                                    <span ng-if="list.status == 'started'">
+                                        <a href="" ng-click="editAgain(list.id , list.import_type)" class="import_list_name">{{list.file_name}}</a>
+                                    </span>
+                                </td>
+                            	<td>{{list.created_at}}</td>
+                            	<td>{{list.import_type}}({{list.obj_count}})</td>
+                                <td>{{list.status}}</td>
+                            	<td class="import-btn-con text-right">
+                                	<a href="" class="delete" ng-if="list.show_btn" ng-click="deleteImport(list.id)">{{'button.delete' | translate:translationData}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Delete Modal for import--> 
+<script type="text/ng-template" id="DeleteImport.html">
+    <div class="modal-body confirm-body">
+        <div class="confirm">
+            <p>{{'settings.data_import.deleteLog' | translate}}</p>
+            <a href="" ng-click="deleteImportData()">{{'button.confirm' | translate:translationData}}</a>
+            <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+        </div>
+    </div>
+</script>

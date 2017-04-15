@@ -1,0 +1,258 @@
+<!--Account-->
+<div class="dashboard-con settings">
+  <div class="top-container">
+    <div class="col-sm-3 top-links">
+      <div class="top-links-container ng-scope">
+        <ul class="open-nav ng-scope">
+          <li>
+            <a href="">{{'patient.accountStatement.main_heading' | translate:translationData}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-4 top-links gray_btns top-button-links" style="position:static; padding:26px 25px 30px 0;">
+      <button class="btn btn-default" ng-if="accountstatement.patient_email!=null && accountstatement.patient_email != ''" ng-click="emailPatient(accountstatement.patient_email)">{{'button.emailToPatient' | translate:translationData}}<small>{{accountstatement.patient_email}}</small></button>
+      <button class="btn btn-default" ng-if="accountstatement.patient_other_email!=null && accountstatement.patient_other_email != ''"  ng-click="emailOther(accountstatement.patient_other_email)">{{'button.emailToOther' | translate:translationData}}<small>{{accountstatement.patient_other_email}}</small></button>
+      <button class="btn btn-default" ng-click="printAccountStatement()">{{'button.print' | translate:translationData}}</button>
+    </div>
+    <div class="col-sm-5 top-btn filters-btn">
+      <button class="save" type="submit" ng-click="applyFilter(filterAttr)">{{'patient.accountStatement.apply_filter' | translate:translationData}}</button>
+      <button class="cancel" type="button" ng-click="getAccountStatement()">{{'patient.accountStatement.clear_filter' | translate:translationData}}</button>
+      <button class="save" type="submit" ui-sref="patient-detail({patient_id:patient_id})">{{'button.back' | translate:translationData}}</button>
+    </div>
+  </div>
+  <div class="col-md-12 col-sm-12 form-content" ng-scrollbars>
+    <div class="product-con">      
+      <!-- //content -->    
+      <div class="dashboard-con settings">
+       <form ng-submit="applyFilter(filterAttr)">
+        <div class="row choose-range">
+          <div class="col-md-8 account">
+            <h6>{{'patient.accountStatement.chooseDataRange' | translate:translationData}}</h6>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6 col-sm-10 data-range account_data_range">
+          <div class="row">
+              <div class="col-sm-5">
+                <p class="input-group">
+                  <input type="text" ng-model="filterAttr.start_date" class="form-control" uib-datepicker-popup="{{format}}" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="{{'patient_detail.yyyy-mm-dd' | translate:translationData}}" close-text="Close"   />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span> </p>
+              </div>
+              <div class="col-sm-2"> <big class="" style="line-height:45px; text-align:center; display:block;">{{'appointment.to' | translate:translationData}}</big> </div>
+              <div class="col-sm-5">
+                <p class="input-group">
+                  <input type="text" ng-model="filterAttr.end_date" class="form-control" uib-datepicker-popup="{{format}}" is-open="opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="{{'patient_detail.yyyy-mm-dd' | translate:translationData}}" close-text="Close"   />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span> </p>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-4 filter-btn">
+        <button type="" ng-click="lastmonth()">{{'patient.accountStatement.lastMonth' | translate:translationData}}</button>
+        <button ng-click="thismonth()" >{{'patient.accountStatement.thisMonth' | translate:translationData}}</button>
+      </div>
+    </div>
+    <div class="row top-checkbox">
+      <div class="col-md-12">
+        <ul class="list-inline">
+          <li>
+            <div class="check-con">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="" ng-model="filterAttr.show_outstanding_invoice">
+                  <span></span> {{'patient.accountStatement.showOutstandingInvoice' | translate:translationData}} </label>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="check-con">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="" ng-model="filterAttr.hide_payment">
+                  <span></span> {{'patient.accountStatement.hidePayments' | translate:translationData}} </label>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="check-con">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="" ng-model="filterAttr.extra_patient_info">
+                  <span></span> {{'patient.accountStatement.includeExtraInfo' | translate:translationData}}</label>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="check-con" ng-if="accountstatement.has_patient_invoice_to">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="" ng-model="filterAttr.patient_invoice_to">
+                  <span></span> {{'patient.accountStatement.invoiceToPatient' | translate:translationData}} </label>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </form>
+    <div class="box address-heading">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5> <b> {{accountstatement.business_name}} </b> </h5>
+        </div>
+      </div>
+      <div class="row address">
+        <div class="col-md-7 col-sm-5">
+          <p>{{accountstatement.address}}<br>
+            {{accountstatement.city}} {{accountstatement.state}}<br>
+            {{accountstatement.country}}<br>
+            {{accountstatement.extra_business_info}}<br>
+            {{accountstatement.business_reg_name}} {{accountstatement.business_reg_number}} </p>
+          <div class="extra-info row">
+            <h6 class="col-sm-12">{{'invoice.invoiceTo' | translate:translationData}}: <span>{{accountstatement.invoice_to}}</span></h6>
+          </div>
+          <div class="extra-info row" ng-if="accountstatement.default_notes !=null">
+            <div class="col-sm-12">
+              <p>{{accountstatement.default_notes}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1 col-md-offset-2 col-sm-2 col-sm-offset-1 address-info">
+          <h6> <b>{{'appointment.date' | translate:translationData}} </b></h6>
+          <h6> <b> {{'patient.accountStatement.outstanding' | translate:translationData}} </b></h6>
+          <h6> <b>{{'patient.accountStatement.patient' | translate:translationData}} </b></h6>
+          <h6 ng-if="accountstatement.extra_patient_info != null"> <b>{{'appointment.extraInfo' | translate:translationData}} </b></h6>
+        </div>
+        <div class="col-md-2 col-sm-3 address-data">
+          <h6> {{accountstatement.date}} </h6>
+          <h6> {{accountstatement.patient_outstanding_balance}} </h6>
+          <h6> {{accountstatement.patient_name}} </h6>
+          <h6 ng-if="accountstatement.extra_patient_info != null">{{accountstatement.extra_patient_info}}</h6>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-12 invoice-payment-info">
+          <h5> {{'patient.accountStatement.invoices' | translate:translationData}} </h5>
+        </div>
+      </div>
+      <div class="box invoice-payment-table">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>{{'Invoice Id' | translate:translationData}}</th>
+                    <th class="invoice-text-color">{{'Date' | translate:translationData}}</th>
+                    <th>{{'settings.user_practitioners.practitioner' | translate:translationData}}</th>
+                    <th>{{'settings.user_practitioners.Professional Type/Number' | translate:translationData}}</th>
+                    <th>{{'Charges' | translate:translationData}}</th>
+                    <th class="invoice-text-color">{{'product.label_tax' | translate:translationData}}</th>
+                    <th>{{'Payment' | translate:translationData}}</th>
+                    <th>{{'Balance' | translate:translationData}}.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="invoice in accountstatement.invoices">
+                    <td>{{invoice.invoice_id}}</td>
+                    <td class="invoice-text-color">{{invoice.invoice_date}}</td>
+                    <td>{{invoice.practitoner}}</td>
+                    <td>{{invoice.practi_type}} / {{invoice.practi_number}}</td>
+                    <td>{{invoice.invoice_items}}: {{invoice.invoice_amount}}</td>
+                    <td class="invoice-text-color">{{invoice.tax}}</td>
+                    <td>{{invoice.payment}}</td>
+                    <td>{{invoice.invoice_outstanding}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-sm-5"> </div>
+        <div class="col-md-2 col-md-offset-1 col-sm-4 invoice-payment-total">
+          <h6> <b> {{'product.label_tax' | translate:translationData}} </b> </h6>
+        </div>
+        <div class="col-md-2 col-sm-3 invoice-payment-amount">
+          <h6>{{total_invoice_tax}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-sm-5"> </div>
+        <div class="col-md-2 col-md-offset-1 col-sm-4 invoice-payment-total">
+          <h6> <b> {{'expense.label_total_amount' | translate:translationData}} </b> </h6>
+        </div>
+        <div class="col-md-2 col-sm-3 invoice-payment-amount">
+          <h6>{{total_invoice_amount}}</h6>
+        </div>
+      </div>
+    </div>
+    <div ng-if="accountstatement.payments.length!=0">
+      <div class="row">
+        <div class="col-sm-12 invoice-payment-info">
+          <h5> {{'sidebar_menu.payments' | translate:translationData}} </h5>
+        </div>
+      </div>
+      <div class="box invoice-payment-table">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>{{'Payment Id' | translate:translationData}}</th>
+                    <th class="payment-text-color">{{'payment.date' | translate:translationData}}</th>
+                    <th class="payment-text-color">{{'Payment Type' | translate:translationData}}</th>
+                    <th>{{'Invoice Id' | translate:translationData}}</th>
+                    <th>{{'payment.total' | translate:translationData}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="payment in accountstatement.payments">
+                    <td>{{payment.payment_id}}</td>
+                    <td class="payment-text-color">{{payment.payment_date}}</td>
+                    <td class="payment-text-color">{{payment.source}}</td>
+                    <td>{{payment.used_invoices}}</td>
+                    <td>{{payment.total_paid}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-sm-5"> </div>
+        <div class="col-md-2 col-md-offset-1 col-sm-4 invoice-payment-total">
+          <h6> <b> {{'expense.label_total_amount' | translate:translationData}} </b> </h6>
+        </div>
+        <div class="col-md-2 col-sm-3 invoice-payment-amount">
+          <h6>{{total_payment_amount}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-sm-5"> </div>
+        <div class="col-md-2 col-md-offset-1 col-sm-4 invoice-payment-total">
+          <h6> <b> {{'invoice.outstandingBalance' | translate:translationData}} </b> </h6>
+        </div>
+        <div class="col-md-2 col-sm-3 invoice-payment-amount">
+          <h6>{{accountstatement.patient_outstanding_balance}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--container-end--> 
+  <!-- content end -->
+</div>
+</div>
+</div>
+<style>
+.form-control{width:100% !important;}
+</style>

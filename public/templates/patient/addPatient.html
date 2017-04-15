@@ -1,0 +1,400 @@
+<dialog-panel header="header">
+    <dialog-header header="header">
+        <button class="cancel_btn" ui-sref="patient" ng-if="!$stateParams.patient_id">
+            {{'button.cancel' | translate:translationData}}
+        </button>
+        <button class="cancel_btn" ui-sref="patient-detail({'patient_id' : $stateParams.patient_id})" ng-if="$stateParams.patient_id">
+           {{'button.cancel' | translate:translationData}}
+        </button>
+         <button class="save_btn" type="submit" form="patientForm" ng-if="!editPatient">
+            {{'button.save' | translate:translationData}}
+        </button>
+        <button class="save_btn" type="submit" form="patientForm" ng-if="editPatient">
+            {{'button.update' | translate:translationData}}
+        </button>
+    </dialog-header>
+    <div class="navigate_arrow" ng-if="hv_next_pre">
+        <div class="arrow_btn pre_btn">
+            <a href=""></a>
+        </div>
+        <div class="arrow_btn next_btn">
+            <a href=""></a>
+        </div>
+    </div>
+    <div class="tab_contents">
+      <form ng-submit="patientForm.$valid && CreatePatient(Patient.logo, Patient)" id="patientForm" class="products contact"  name="patientForm" novalidate>
+          <div class="row trim_row">
+            <div class="col-sm-6 note-prod">
+              <div class="row trim_row">
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.PersonalInformation' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.Title' | translate:translationData}}</label>
+                    <select class="form-control" ng-model="Patient.title" >
+                      <option value=""></option>
+                      <option value="mr">{{'title.mr' | translate:translationData}}</option>
+                      <option value="mrs">{{'title.mrs' | translate:translationData}}</option>
+                      <option value="ms">{{'title.ms' | translate:translationData}}</option>
+                      <option value="Miss">{{'title.miss' | translate:translationData}}</option>
+                      <option value="dr">{{'title.dr' | translate:translationData}}</option>
+                      <option value="Master">{{'title.master' | translate:translationData}}</option>
+                      <option value="RMT">{{'title.rmt' | translate:translationData}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.FirstName' | translate:translationData}} <span style="color:red;">*</span></label>
+                    <input type="text" class="form-control"  ng-model="Patient.first_name" required>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.LastName' | translate:translationData}} <span style="color:red;">*</span></label>
+                    <input type="text" class="form-control" ng-model="Patient.last_name" required>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="logo-com">{{'patient_form.patient_image' | translate:translationData}}</label>
+                    <div class="img-con">
+                      <img src="assets/missing.png" ng-if="Patient.logo == ''" alt="" ng-hide="patientForm.file.$valid" alt=""/>
+                       <img ngf-src="Patient.logo" class="thumb" ng-show="Patient.logo" alt=""/>
+                    </div>
+                    <input id="patientLogo" type="button" value="{{'button.upload' | translate:translationData}}" ngf-select ng-model="Patient.logo"  accept="image/*"  class="upload-btn uplBtn">
+                    <input ng-show="Patient.logo" id="patientLogo" type="button" value="Remove" class="upload-btn uplBtn" ng-click="Patient.logo = null">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>{{'patient_form.DOB' | translate:translationData}}</label>
+                    <p class="input-group">
+                      <input type="text" ng-model="Patient.dob" class="form-control" uib-datepicker-popup="{{format}}"  is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="{{'patient_detail.yyyy-mm-dd' | translate:translationData}}" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>{{'patient_form.Gender' | translate:translationData}}</label>
+                      <div class="radio_con">
+                          <div class="col-sm-3">
+                              <label>
+                                <input type="radio" ng-model="Patient.gender" name="test" value="Male"><span></span> {{'patient_form.Male' | translate:translationData}}
+                              </label>
+                          </div>
+                          <div class="col-sm-3">
+                              <label>
+                                <input type="radio" ng-model="Patient.gender" name="test" value="Female"><span></span> {{'patient_form.Female' | translate:translationData}}
+                              </label>
+                          </div>
+                          <div class="col-sm-3 patient-notAppl">
+                              <label>
+                                <input type="radio" ng-model="Patient.gender" name="test" value="Not Applicable"><span></span> {{'patient_form.NotApplicable' | translate:translationData}}
+                              </label>
+                          </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>{{'patient_form.relatedpatients' | translate:translationData}}</label>
+                  </div>
+                  <div class="row trim_row" ng-repeat="relatives in Patient.relationship">
+                    <div class="col-sm-5">
+                      <div class="form-group">
+                        <md-content class="md-padding">
+                          <md-autocomplete
+                            md-selected-item="relatives.patient" md-search-text="searchPatienttext" md-items="item in PatientListRefinef(searchPatienttext)" md-item-text="item.first_name+' '+item.last_name" placeholder="{{'settings.placeholder_search' | translate:translationData}}" md-min-length="0">
+                              <span md-highlight-text="searchText">{{item.first_name}}  {{item.last_name}}</span>
+                              <md-item-template>
+                                <span md-highlight-text="searchTextp" md-highlight-flags="^i">{{item.first_name}} {{item.last_name}}</span>
+                              </md-item-template>
+                              <md-not-found>
+                                {{'patient_form.Nomatching' | translate:translationData}} "{{searchPatienttext}}" {{'patient_form.werefound' | translate:translationData}}.
+                              </md-not-found>
+                          </md-autocomplete>
+                        </md-content>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <select class="form-control" ng-model="relatives.type">
+                          <option value="Parent">{{'patient_form.Parent' | translate:translationData}}</option>
+                          <option value="Child">{{'patient_form.Child' | translate:translationData}}</option>
+                          <option value="Sibling">{{'patient_form.Sibling' | translate:translationData}}</option>
+                          <option value="Partner">{{'patient_form.Partner' | translate:translationData}}</option>
+                          <option value="Spouse">{{'patient_form.Spouse' | translate:translationData}}</option>
+                          <option value="Relative">{{'patient_form.Relative' | translate:translationData}}</option>
+                          <option value="Other">{{'patient_form.Other' | translate:translationData}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 con-rem">
+                      <a href="" ng-click="removeRelative($index)" class="remove"><i class="ic cross"></i> {{'patient_form.Remove' | translate:translationData}}</a>
+                    </div>
+                  </div>
+                  <div class="row trim_row">
+                    <div class="col-sm-12">
+                      <a href="" ng-click="addRelative()" class="add-btn"><i class="ic add"></i> {{'patient_form.AddNew' | translate:translationData}}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.billing' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label>{{'patient_form.ConcessionType' | translate:translationData}}</label>
+                    <select class="form-control" ng-init="Patient.concession_type=''" ng-model="Patient.concession_type">
+                      <option value="">{{'patient_form.None' | translate:translationData}}</option>
+                      <option ng-repeat="concessions in ConcessionTypeList" value="{{concessions.id}}">{{concessions.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <label>{{'patient_form.EmailInvoice' | translate:translationData}}
+                      <i class="ic info info-hover">
+                        <span class="ng-binding">{{'patient_form.alterEmail'|translate:translationData}}.</span>
+                      </i>
+                    </label>
+                    <input type="text" class="form-control" ng-model="Patient.invoice_email">
+                  </div>
+                </div>
+                <div class="col-sm-6 mess">
+                  <div class="form-group">
+                    <label>{{'patient_form.InvoiceTo' | translate:translationData}}
+                      <i class="ic info info-hover left-side patient-span">
+                        <span class="ng-binding">{{'patient_form.default_invoice' | translate:translationData}}.</span>
+                      </i>
+                    </label>
+                    <textarea class="form-control" ng-model="Patient.invoice_to"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-6 mess">
+                  <div class="form-group">
+                    <label>{{'patient_form.Extra_invoice_info' | translate:translationData}}</label>
+                    <textarea class="form-control" ng-model="Patient.invoice_extra_info" placeholder="{{'patient_detail.eg_clam' | translate:translationData}}"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.otherinformation' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-6 ">
+                  <div class="form-group" >
+                    <label>{{'patient_form.Occupation' | translate:translationData}}</label>
+                    <input type="text" class="form-control" ng-model="Patient.occupation">
+                  </div>
+                </div>
+                <div class="col-sm-6 ">
+                  <div class="form-group" >
+                    <label>{{'patient_form.Emergencycontact' | translate:translationData}}</label>
+                    <input pattern="\d*" type="text" class="form-control" ng-model="Patient.emergency_contact">
+                  </div>
+                </div>
+                <div class="col-sm-6 ">
+                  <div class="form-group" >
+                    <label>{{'patient_form.Medicare_Number' | translate:translationData}}</label>
+                    <input type="text" class="form-control"  ng-model="Patient.medicare_number">
+                  </div>
+                </div>
+                <div class="col-sm-6 ">
+                  <div class="form-group" >
+                    <label>{{'patient_form.ReferenceNumber' | translate:translationData}}</label>
+                      <input type="text" class="form-control"  ng-model="Patient.reference_number">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group reff-docter rel-client">
+                    <label>{{'patient_form.ReferringDoctor' | translate:translationData}}</label>
+                      <div class="clearfix"></div>
+                        <md-content class="md-padding" ng-if="DoctorList.length">
+                          <md-autocomplete md-selected-item="Patient.refer_doctor" md-search-text="searchTextp" md-items="item in DoctorList" md-item-text="item.first_name +' '+ item.last_name"
+                            placeholder="{{'settings.placeholder_search' | translate:translationData}}" md-min-length="1" id="Auto">
+                            <span md-highlight-text="searchText">{{item.first_name}} {{item.last_name}}</span>
+                            <md-item-template>
+                              <span md-highlight-text="searchTextp" md-highlight-flags="^i">{{item.first_name}} {{item.last_name}}</span>
+                            </md-item-template>
+                          </md-autocomplete>
+                        </md-content >
+                      <p ng-if="!DoctorList.length">{{'patient_form.Dont_have_any' | translate:translationData}} <a href="" ui-sref="contact">{{'patient_form.Contacts' | translate:translationData}}</a> {{'patient_form.oftypeDoctor' | translate:translationData}}</p>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group mess">
+                    <label>{{'patient_form.Note' | translate:translationData}}</label>
+                    <textarea class="form-control" ng-model="Patient.notes"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 note-prod">
+              <div class="row trim_row">
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.ContactInformation' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group noMargin">
+                    <label>{{'patient_form.PhoneNumber' | translate:translationData}}</label>
+                  </div>
+                  <div class="row trim_row" ng-repeat="phoneNum in Patient.patient_contacts_attributes">
+                    <div class="col-sm-5">
+                      <div class="form-group">
+                        <input ng-if="phoneNum.contact_type != 'work'" type="text" class="form-control" ng-model="phoneNum.contact_no" name="patientContact" />
+                        <div class="col-sm-5" style="padding-left: 0px;">
+                          <input ng-if="phoneNum.contact_type == 'work'" type="text" class="form-control" ng-model="phoneNum.ext_no" name="patientExtNum" />
+                        </div>
+                        <div class="col-sm-7" style="padding-left: 0px; padding-right: 0px;">
+                          <input ng-if="phoneNum.contact_type == 'work'" type="text" class="form-control" ng-model="phoneNum.contact_no" name="patientWorkNum" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <select class="form-control" ng-model="phoneNum.contact_type">
+                            <option value="mobile">{{'patient_form.Mobile' | translate:translationData}}</option>
+                            <option value="home">{{'patient_form.Home' | translate:translationData}}</option>
+                            <option value="work">{{'patient_form.Work'| translate:translationData}}</option>
+                            <option value="fax">{{'patient_form.Fax' | translate:translationData}}</option>
+                            <option value="other">{{'patient_form.Other' | translate:translationData}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 con-rem">
+                        <a href="" ng-click="removePhone($index)" class="remove"><i class="ic cross"></i>{{'patient_form.Remove' | translate:translationData}}</a>
+                    </div>
+                  </div>
+                  <div class="row trim_row">
+                    <div class="col-sm-12">
+                      <a href="" ng-click="addPhone()" class="add-btn"><i class="ic add"></i>{{'patient_form.AddNew' | translate:translationData}}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>{{'patient_form.Email' | translate:translationData}}</label>
+                    <input type="email" class="form-control" ng-model="Patient.email"/>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.Address' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group mess">
+                    <textarea  ng-model="Patient.address" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>{{'patient_form.Country' | translate:translationData}}</label>
+                    <select  ng-model="Patient.country"  class="form-control" ng-change="GetStates(Patient.country)"  ng-model="cntry">
+                      <option ng-selected="" ng-repeat="countries in country" value="{{countries.code}}">{{countries.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.State' | translate:translationData}}</label>
+                    <select ng-model="Patient.state"  class="form-control" ng-disabled="state.length==0" ng-class="{'disabled-class': !state}">
+                      <option ng-selected="" value="" selected="selected">Select state</option>
+                      <option ng-selected="" ng-repeat="states in state" value="{{states.code}}">{{states.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.city' | translate:translationData}}</label>
+                    <input type="text" class="form-control" ng-model="Patient.city"/>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.PostalCode' | translate:translationData}}</label>
+                    <input type="text" class="form-control" ng-model="Patient.postal_code"/>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <h4>{{'patient_form.communication_preferences' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label style="white-space:nowrap;">{{'patient_form.auto_remind' | translate:translationData}}</label>
+                    <select ng-model="Patient.reminder_type"  class="form-control">
+                       <option value="">{{'patient_form.None' | translate:translationData}}</option>
+                       <option value="sms">{{'patient_form.SMS' | translate:translationData}}</option>
+                       <option value="email">{{'patient_form.Email' | translate:translationData}}</option>
+                       <option value="sms & email">{{'patient_form.SMS' | translate:translationData}} & {{'patient_form.Email' | translate:translationData}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group trim_check">
+                    <label>{{'patient_form.Unsubscribe' | translate:translationData}}</label>
+                    <div class="checkbox new_checkbox">
+                      <label>
+                        <input type="checkbox" ng-model="Patient.sms_marketing"><span></span>{{'patient_form.Unsubscribe_bulk_messages' | translate:translationData}}
+                      </label>
+                    </div>
+                 </div>
+                </div>
+                <div class="col-sm-12">
+                    <h4>{{'patient_form.Referralsource' | translate:translationData}}</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>{{'patient_form.ReferralType' | translate:translationData}}</label>
+                    <select ng-model="Patient.referral_type"  class="form-control" ng-change="BindRefreltype()">
+                      <option value="">{{'patient_form.None' | translate:translationData}}</option>
+                      <option ng-repeat="ReferralType in ReferralTypeList"  value="{{ReferralType.referral_source}}">{{ReferralType.referral_source}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group" ng-if="Patient.referral_type == 'Contact'">
+                    <label>{{'patient_form.Referrer' | translate:translationData}}</label>
+                    <md-content class="md-padding">
+                      <md-autocomplete md-selected-item="Patient.referrer" md-search-text="searchTextp" md-items="item in Contactf(searchTextp)" md-item-text="item.first_name +' '+ item.last_name" placeholder="{{'settings.placeholder_search' | translate:translationData}}" md-min-length="1">
+                        <span md-highlight-text="searchText">{{item.first_name}} {{item.last_name}}</span>
+                        <md-item-template>
+                          <span md-highlight-text="searchTextp" md-highlight-flags="^i">{{item.first_name}} {{item.last_name}}</span>
+                        </md-item-template>
+                      </md-autocomplete>
+                    </md-content >
+                  </div>
+                  <div class="form-group" ng-if="Patient.referral_type == 'Patient'">
+                    <label>{{'patient_form.Referrer' | translate:translationData}}</label>
+                    <md-content class="md-padding">
+                      <md-autocomplete md-selected-item="Patient.referrer" md-search-text="searchTextp" md-items="item in PatientListRefinef(searchTextp)" md-item-text="item.first_name +' '+ item.last_name" placeholder="{{'settings.placeholder_search' | translate:translationData}}" md-min-length="1">
+                        <span md-highlight-text="searchText">{{item.first_name}} {{item.last_name}}</span>
+                        <md-item-template>
+                          <span md-highlight-text="searchTextp" md-highlight-flags="^i">{{item.first_name}} {{item.last_name}}</span>
+                        </md-item-template>
+                      </md-autocomplete>
+                    </md-content >
+                  </div>
+                  <div class="form-group" ng-if="Patient.referral_type!= 'Patient' && Patient.referral_type != 'Contact' && Patient.referral_type!=null && !!Patient.referral_type &&  Patient.referral_type != 'Other'  &&  SelectedReferral_type_subcats.length" >
+                      <label>{{'patient_form.Sub-Category-Type' | translate:translationData}}</label>
+                      <select ng-model="Patient.referrer"  class="form-control">
+                        <option value="">{{'patient_form.None' | translate:translationData}}</option>
+                        <option ng-repeat="ReferralSubcat in SelectedReferral_type_subcats" value="{{ReferralSubcat.id}}">{{ReferralSubcat.sub_name}}</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-if="!!Patient.referral_type">
+                  <div class="form-group">
+                    <label>{{'patient_form.Extra_information' | translate:translationData}}</label>
+                    <input type="text" class="form-control" ng-model="Patient.extra_info"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </form>
+    </div>
+</dialog-panel>

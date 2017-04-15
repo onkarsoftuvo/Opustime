@@ -1,0 +1,53 @@
+<div class="tab-pane" id="tab_6">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group filter-con">
+        <label>Filters</label>
+        <div class="col-md-3">
+          <%= form_tag("/business/#{@comp.id}/details_list#tab_6", :method => :get) do %>
+              <%= text_field_tag :phone_no, params[:phone_no], :placeholder => 'Phone No', class: :"form-control" %>
+              <%= hidden_field_tag :tab_no, 6 %>
+              </div>
+              <div class="col-md-3">
+                <%= text_field_tag :name, params[:name], :placeholder => 'Name', class: :"form-control" %>
+              </div>
+              <div class="col-md-1">
+                <%= submit_tag "Filter", class: "btn btn-large btn-primary btns" %>
+              </div>
+              <%= link_to "business/#{@comp.id}/details_list#tab_6", class: "btn btn-default" do %>Clear Filter
+              <% end %>
+              </div>
+          <% end %>
+          </div>
+    <div class="col-md-12">
+      <table id="example11" class="table table-bordered custom_table">
+        <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @sms.each_with_index do |sms, index| %>
+            <tr>
+              <td><%= "#{index+1}" %></td>
+              <td><%= sms.get_sender.try(:full_name) %></td>
+              <td><%= sms.contact_from %></td>
+              <td><%= sms.contact_to %></td>
+              <td><%= sms.created_at.try(:strftime, '%d %B %Y') %></td>
+              <td><%= sms.created_at.try(:strftime, '%H:%M:%S %p') %></td>
+              <td><%= sms.status %></td>
+            </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

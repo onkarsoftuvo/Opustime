@@ -1,0 +1,105 @@
+<div class="reports-con">
+  <div class="top-container">
+    <div class="col-md-12 top-links" ng-include="'templates/reports/top-bar.html'"></div>
+  </div>
+  <div class="graph_con" ng-scrollbars rebuild-on-resize rebuild-on="rebuild:me">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>{{'reports.Patients_by_total_invoiced' | translate:translationData}}</h2>
+      </div>
+    </div>
+    <div class="reports_filters">
+      
+      <button class="pull-right apply export" ng-click="export()">{{'button.export' | translate:translationData}}</button>
+      <button class="pull-right apply export" ng-click="print()">{{'button.print' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="reports_filters">
+      <label>{{'communication.from' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="fromDate.opened" min-date="minDate" max-date="filter.to" datepicker-options="dateOptions" ng-click="openFrom($event)" ng-model="filter.from" show-button-bar="false">
+      <span class="divider"></span>
+      <label>{{'communication.to' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="toDate.opened" min-date="filter.from" max-date="dobMaxDate" datepicker-options="dateOptions" ng-click="openTo($event)" ng-model="filter.to" show-button-bar="false">
+
+      <div class="arr_con">
+        <div class="btn-group" uib-dropdown is-open="statu.isopen">
+          <button id="prac_filter" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            {{'appointment.practitioner' | translate:translationData}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="prac_filter" ng-click="stopEvent($event)">
+            <li role="menuitem" ng-repeat="list in allFilters.practitioners">
+              <label>
+                <input type="checkbox" ng-change="listChange(list)" ng-model="list.ischecked"><span></span> {{list.name}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="arr_con">
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+          <button id="business_filter" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            {{'appointment.bussieness' | translate:translationData}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="business_filter" ng-click="stopEvent($event)">
+            <li role="menuitem" ng-repeat="buslist in allFilters.locations">
+              <label>
+                <input type="checkbox" ng-model="buslist.ischecked"><span></span> {{buslist.name}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="arr_con filter_check" ng-show="show_outstanding">
+        <label>
+          <input type="checkbox" name="" ng-model="filter.outstanding"><span></span> With Outstanding Balance
+        </label>
+      </div>
+      <button class="pull-right apply" ng-click="allPatientsData()">{{'button.Clear' | translate:translationData}}</button>
+      <button class="pull-right apply" ng-click="allpatients()">{{'button.Apply' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive reports-table">
+      <table class="table table-hover" datatable="ng">
+        <thead>
+          <tr>
+            <th>{{'contact.Name' | translate:translationData}}</th>
+            <th>{{'contact.phone' | translate:translationData}}</th>
+            <th>{{'label.email_address' | translate:translationData}}</th>
+            <th>{{'settings.bussiness_info.address' | translate:translationData}}</th>
+            <th class="text-center">{{'reports.Total_Invoive' | translate:translationData}}</th>
+            <th class="text-center">{{'reports.Paid_Amount_doller' | translate:translationData}}</th>
+            <th class="text-center">{{'reports.Outstanding_Balance_doller' | translate:translationData}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="patients in allpatientsList">
+            <td width="200px">
+              <a href="" ui-sref="patient-detail({'patient_id' : patients.patient_id})">{{!patients.name ? 'N/A' : patients.name}}</a>
+            </td>
+            <td>
+              {{!patients.phone_no ? 'N/A' : patients.phone_no}}
+            </td>
+            <td>
+              {{!patients.email ? 'N/A' : patients.email}}
+            </td>
+            <td width="200px">
+              {{!patients.address ? 'N/A' : patients.address}}            
+            </td>
+            <td class="text-center">
+              <span ng-if="patients.total_invoiced == 0">0</span>
+              <span ng-if="patients.total_invoiced != 0">{{patients.total_invoiced | number:2}}</span>
+            </td>
+            <td class="text-center">
+              <span ng-if="patients.paid_amount == 0">0</span>
+              <span ng-if="patients.paid_amount != 0">{{patients.paid_amount | number:2}}</span>
+            </td>
+            <td class="text-center">
+              <span ng-if="patients.outstanding_bal == 0">0</span>
+              <span ng-if="patients.outstanding_bal != 0">{{patients.outstanding_bal | number:2}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

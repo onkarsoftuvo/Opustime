@@ -1,0 +1,145 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Customer Name
+    </h1>
+    <ol class="breadcrumb">
+      <i class="fa fa-dashboard"></i>
+      <%= render_breadcrumbs :tag => :li %>
+      <!-- <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Business</li> -->
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Edit Customer</h3>
+          </div>
+          <p style= "color:green;" id="notice"><%= flash[:notice] %></p>
+          <p style= "color:red;" id="warning"><%= flash[:alert] %></p>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <!-- <form>
+             <div class="box-body">
+               <div class="form-group">
+                 <label class="control-label">Customer Name</label>
+                 <input type="text" class="form-control" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label class="control-label">Phone No.</label>
+                 <input type="text" class="form-control" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label class="control-label">Email ID</label>
+                 <input type="email" class="form-control" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label class="control-label">Gender</label>
+                 <div class="clearfix"></div>
+                 <div class="row">
+                   <label class="col-xs-2">
+                     <input type="radio" class="minimal" name="gender"> Male
+                   </label>
+                   <label class="col-xs-4">
+                     <input type="radio" class="minimal" name="gender"> Female
+                   </label>
+                 </div>
+                 <div class="clearfix"></div>
+               </div>
+               <div class="form-group">
+                 <label class="control-label">Country</label>
+                 <select class="form-control">
+                   <option>India</option>
+                   <option>India</option>
+                   <option>India</option>
+                 </select>
+               </div>
+             </div>-->
+          <!-- /.box-body -->
+          <!--  <div class="box-footer">
+              <button type="submit" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-info pull-right">Save</button>
+            </div>
+            <!-- /.box-footer -->
+          <!--  </form> -->
+
+
+
+          <%= form_for(@patient, url: admin_admin_patient_path(@patient) , html: { :class => "box-body"}) do |form|%>
+              <div class="form-group">
+                <%= form.label :Customer_Name, :class => "control-label"%>
+                <%= form.text_field :first_name,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= form.label :Phone_No, :class => "control-label"%>
+
+                <%= form.fields_for :patient_contacts do |f| %>
+                    <%= f.text_field :contact_no,:required => true, :class =>"form-control" %>
+
+                <% end %>
+
+              </div>
+              <div class="form-group">
+                <%= form.label :Email_ID, :class => "control-label"%>
+                <%= form.text_field :email,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= form.label :Country, :class => "control-label"%>
+                <select class="form-control">
+                  <option>India</option>
+                  <option>India</option>
+                  <option>India</option>
+                </select>
+              </div>
+              <%= form.hidden_field :comming_from, :value => "admin" %>
+              <div class="box-footer">
+                <%= link_to "business/#{session[:comp_id]}/details_list", class: "btn btn-default" do %> Cancel
+                <%end%>
+
+                <%= form.submit "Save", class: "btn btn-info pull-right"  %>
+              </div>
+          <% end %>
+
+
+
+
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+
+<!-- page script -->
+<script>
+  $(function () {
+//    $("#example1").DataTable();
+//    $('#example2').DataTable({
+//      "paging": true,
+//      "lengthChange": false,
+//      "searching": false,
+//      "ordering": true,
+//      "info": true,
+//      "autoWidth": false
+//    });
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+  });
+
+   $("#notice" ).fadeOut(5000);
+   $("#warning" ).fadeOut(5000);
+
+</script>

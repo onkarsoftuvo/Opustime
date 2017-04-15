@@ -1,0 +1,51 @@
+<style>
+h2{
+	font-size: 16px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+.table{
+	width: 100%;
+}
+.table thead tr th{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+.table tbody tr td{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+</style>
+<h2><%= t('.Appointment') %> <%= t('.Report') %></h2>
+<table class="table" cellspacing="0"  border="1">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Patient</th>
+			<th><%= t('.Practitioner') %></th>
+			<th><%= t('.Service Type') %></th>
+			<th><%= t('.Contact No') %></th>
+			<th><%= t('.Email Address') %></th>
+			<th><%= t('.Business Location') %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @result.each do |appnt| %>
+			<tr>
+				<td><%= appnt[:appnt_date]%></td>
+				<% pat_name = appnt[:concession_type].nil? ? appnt[:patient] : "#{appnt[:patient]}(#{appnt[:concession_type]})"  %>
+				<td><%= pat_name %></td>
+				<td><%= appnt[:practitioner_name]%></td>
+				<td><%= appnt[:service_type]%></td>
+				<td><%= appnt[:contact_no]%></td>
+				<td><%= appnt[:email]%></td>
+				<td><%= appnt[:locations]%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>	

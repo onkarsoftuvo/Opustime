@@ -1,0 +1,179 @@
+<section class="working-area">
+	<div class="container">
+  	<div class="col-md-12">
+    	<div class="location">
+      	<ul class="top-icn">
+        	<li class="active"><i class="ci step1"></i></li>
+        	<li class="active"><i class="ci step2"></i></li>
+        	<li class="active"><i class="ci step3"></i></li>
+        	<li class="active"><i class="ci step4"></i></li>
+        	<li class="active"><i class="ci step5"></i></li>
+        </ul>
+        <h4>5.{{'OB.fillDetail' | translate:translationData}}</h4>
+        <div class="location-con detail-form">
+          <a ng-click="getRequest()" class="online_booking_sync_fb"><i class="fa fa-facebook" aria-hidden="true"></i>{{'button.facebook' | translate:translationData}}</a>
+
+          <form class="form-horizontal" name="aptfrm" ng-submit="aptfrm.$valid && CreateAppointment(appointment)" novalidate>
+            <div class="col-md-6">
+            	<h2 class="hv-info">{{'OB.information' | translate:translationData}}
+              	<i class="ic info info-hover left-side bottom">
+                    <span>{{'OB.information.tooltip' | translate:translationData}}</span>
+                </i>
+              </h2>
+              <div class="form-group clearfix">
+                <label class="col-sm-4 control-label">{{'label.firstName' | translate:translationData}}</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" ng-model="appointment.new_patient.first_name" placeholder="" required ng-blur="verifyProvince()">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">{{'label.lastName' | translate:translationData}}</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="" ng-model="appointment.new_patient.last_name" required ng-blur="verifyProvince()">
+                </div>
+              </div>
+              <div class="form-group" ng-if="bookingInfo.show_dob">
+                <label class="col-sm-4 control-label">{{'label.dob' | translate:translationData}}</label>
+                <!-- <label ng-model="appointment.new_patient.dob">{{birthYear}}-{{birthMonth}}-{{birthDay}}</label> -->
+                <div class="col-sm-8">
+                  <!-- <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" max-date="maxDate" ng-model="appointment.new_patient.dob" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" disabled="disabled" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </p> -->
+                  <!-- <md-datepicker class="newDatepicker" ng-model="appointment.new_patient.dob" md-placeholder="Enter date" ng-required="true" md-max-date="maxDate" md-open-on-focus required></md-datepicker> -->
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <select class="form-control" ng-model="appointment.new_patient.birthDay" ng-change="makeDob()">
+                        <option value="" ng-if="appointment.new_patient.birthDay == null">{{'label.day' | translate:translationData}}</option>
+                        <option ng-repeat="n in range(1,31,1)">{{n}}</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-5">
+                      <select class="form-control" ng-model="appointment.new_patient.birthMonth" ng-change="makeDob()">
+                        <option value="" ng-if="appointment.new_patient.birthMonth == null">{{'label.month' | translate:translationData}}</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-4">
+                      <select class="form-control" ng-model="appointment.new_patient.birthYear"  ng-change="makeDob()">
+                        <option value="" ng-if="appointment.new_patient.birthYear == null">{{'label.year' | translate:translationData}}</option>
+                        <option ng-repeat="year in yearList" value="{{year}}">{{year}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="hv-info">{{'OB.contactDetail' | translate:translationData}}
+                <i class="ic info info-hover left-side bottom">
+                  <span>{{'OB.contactDetail.tooltip' | translate:translationData}}</span>
+                </i>
+              </h2>
+              <div class="form-group clearfix">
+                <label class="col-sm-4 control-label">{{'label.email' | translate:translationData}}</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" placeholder="" ng-model="appointment.new_patient.email" required ng-blur="verifyProvince()">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">{{'label.mobileNo' | translate:translationData}}</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="" ng-model="appointment.new_patient.contact_no" required >
+                </div>
+              </div>
+              <div ng-if="bookingInfo.hide_patient_address">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.address' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" placeholder="" ng-model="appointment.new_patient.address" ></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.city' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="" ng-model="appointment.new_patient.city">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.country' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                    <select ng-model="appointment.new_patient.country" class="form-control" ng-change="updateState(country.code)">
+                      <option ng-repeat="country in countryList" value="{{country.code}}">{{country.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.state' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                     <select ng-if="stateList.length > 0" ng-model="appointment.new_patient.state" class="form-control">
+                      <option ng-selected="" value="" selected="selected">Select state</option>
+                      <option ng-repeat="state in stateList" value="{{state.code}}">{{state.name}}</option>
+                    </select>
+                    <p ng-if="stateList.length < 1">{{'label.noState' | translate:translationData}}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.postalCode' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="" ng-model="appointment.new_patient.postal_code">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 extra-info check-con">
+              <h2>{{'label.extraInfo' | translate:translationData}}</h2>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">{{'label.comments' | translate:translationData}}</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" placeholder="" ng-model="appointment.notes"></textarea>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 extra-info check-con" ng-show="appointment.new_patient.profile_pic != null">
+              <h2>{{'label.logo' | translate:translationData}}</h2>
+              <div class="form-group">
+                <div class="col-sm-8">
+                  <img ng-src="{{appointment.new_patient.profile_pic}}" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 extra-info check-con">
+              <div class="form-group">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="appointment.new_patient.remember_me" name="remember"><span></span> {{'label.rememberMe' | translate:translationData}}
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-12 terms" ng-if="bookingInfo.term_and_condition != null">
+              <h4>{{'OB.termOfUse' | translate:translationData}}</h4>
+              <p>{{bookingInfo.term_and_condition}}</p>
+              <p>{{'OB.agreeMsg' | translate:translationData}}</p>
+            </div>
+            <p class="extra-info text-center clearfix">
+              <button type="submit" class="btn btn-default" style="float: none;display: inline-block;" ng-disabled="disabled">{{'OB.bookApp' | translate:translationData}}</button>
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

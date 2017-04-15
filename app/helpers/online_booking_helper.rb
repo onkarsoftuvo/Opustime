@@ -1,0 +1,2 @@
+module OnlineBookingHelper
+end

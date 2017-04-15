@@ -1,0 +1,188 @@
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Businesses
+      </h1>
+      <ol class="breadcrumb">
+        <!-- <li><i class="fa fa-dashboard"></i> Home</li>
+        <li class="active">Business</li> -->
+        <i class="fa fa-dashboard"></i>
+        <%= render_breadcrumbs :tag => :li %>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Business Detail</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-primary">
+                      <div class="widget-user-image">
+                        <%= image_tag @comp.logo.url(:thumb),  {class: "img-circle"} %>
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username"><%= @comp.company_name %></h3>
+                      <h5 class="widget-user-desc"><%= @comp.try(:account).try(:owner)%></h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                      <div class="btm_detail">
+                        <p>
+                          <label>Address:</label>
+                          <span><%= @comp.businesses.head.first.full_address %></span>
+                        </p>
+                        <p>
+                          <label>Contact Info:</label>
+                          <span><%= @comp.businesses.head.first.contact_info %></span>
+                        </p>
+                      </div>
+                      <ul class="nav nav-stacked">
+                        <li>  <%= link_to "business/#{@comp.id}/details_list" do %>
+                        No. of Locations <span class="pull-right badge bg-blue"><%= @comp.businesses.count%></span>
+                        <% end %></li>
+                        <li>  <%= link_to "business/#{@comp.id}/details_list" do %>
+                        No. of Practitionars <span class="pull-right badge bg-aqua">
+                        <%= @comp.users.doctors.count %></span> <% end %> </li>
+                      </ul> 
+                      <div class="btm_detail">
+                      <label><p>Plan Name</p>
+                      <span><%= @comp.subscription.name %></span>
+                      </label>
+                      <label><p>Duration</p>
+                      <span><%= @comp.subscription.category %></span>
+                      </label>
+                      <label><p>Amount</p>
+                      <span>$<%= @comp.subscription.cost %></span>
+                      </label>
+                      </div>
+                      <div class="btm_btns text-right">
+                        <%= link_to "business/#{@comp.id}/details_list", class: "btn btn-default" do %>
+                        <i class="fa fa-pencil"> </i>
+                         <% end %> 
+                        <!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#smsCredits"><i class="fa fa-credit-card"></i></button>-->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+              </div>
+              
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-6">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit Business</h3>
+            </div>
+            <p style= "color:green;" id="notice"><%= flash[:notice] %></p>
+
+           <%= form_for(@business, url: admin_admin_business_path(@business) , html: { :class => "box-body"}) do |f|%>
+              <div class="form-group">
+                 <%= f.label :Business_Name, :class => "control-label"%>
+                  <%= f.text_field :name,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                  <% unless @business.company.try(:account).nil? %>
+                  <%= f.label :Owner_Name, :class => "control-label"%>
+                    <%= fields_for @business.company.try(:account) do |acc_form| %>
+                      <%= acc_form.text_field :first_name,:required => true, :class =>"form-control" %>
+                    <% end %>
+                  <% end %>  
+              </div>
+              <div class="form-group">
+                 <%= f.label :Address, :class => "control-label"%>
+                  <%= f.text_field :address,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                 <%= f.label :Contact_Info, :class => "control-label"%>
+                  <%= f.text_field :contact_info,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                 <%= f.label :Internal_Info, :class => "control-label"%>
+                  <%= f.text_field :internal_info,:class =>"form-control" %>
+              </div>      
+              <%= f.hidden_field :comming_from, :value => "admin" %>
+              <div class="box-footer">
+                <!--<#%= link_to "/list/business_list", class: "btn btn-default" do %> Cancel-->
+               <!--<#%end%>-->
+                <%= f.submit "Save", class: "btn btn-primary pull-right"  %>
+              </div>   
+            <% end %>  
+
+       
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <div class="modal fade bs-example-modal-xs" id="smsCredits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add SMS Credits</h4>
+        </div>
+        <form class="form-horizontal">
+          <div class="modal-body">
+              <div class="form-group">
+                <label class="col-md-2 control-label">Amount</label>
+                <div class="col-md-10">
+                  <input type="text" name="" class="form-control">
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+  $("#example3").DataTable();
+  $("#example4").DataTable();
+  $("#example5").DataTable();
+  $("#example6").DataTable();
+  $("#example7").DataTable();
+  $("#example8").DataTable();
+  $("#example9").DataTable();
+  $("#example10").DataTable();
+
+
+
+   $("#notice" ).fadeOut(5000);
+  
+</script>

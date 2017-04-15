@@ -1,0 +1,31 @@
+<div class="view-quest" ng-show="Templateinfo.temp_sections_attributes.length < 1">
+  <h2>{{'s_Treatment_no_sec' | translate:translationData}}</h2>
+</div>
+<div ng-repeat="section in Templateinfo.temp_sections_attributes" class="view-quest">
+  <h2>{{section.name}}</h2>
+  <div class="col-md-6 checkup" ng-repeat="question in section.questions_attributes">
+    <label>{{question.title}}</label>
+    <div class="form-group">
+      <div ng-if="question.q_type == 'Text'">
+          <input type="text" class="form-control" placeholder=""  ng-repeat="answers in question.quest_choices_attributes" disabled>
+      </div>
+      <div ng-if="question.q_type == 'Paragraph'">
+          <textarea type="text" class="form-control" placeholder="" disabled ng-repeat="answers in question.quest_choices_attributes"></textarea>
+      </div>
+      <div ng-if="question.q_type == 'Multiple_Choice'" class="medi">
+        <div style="clear:both" class="radio" ng-repeat="answers in question.quest_choices_attributes">
+          <label>
+            <input type="radio" name="medi" disabled><span></span>{{answers.title}}
+          </label>
+        </div>
+      </div>
+       <div ng-if="question.q_type == 'Checkboxes'" class="medi">
+        <div style="clear:both" class="checkbox" ng-repeat="answers in question.quest_choices_attributes">
+          <label>
+            <input type="checkbox" disabled><span></span>{{answers.title}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

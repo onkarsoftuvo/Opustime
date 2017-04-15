@@ -1,0 +1,2 @@
+module LetterTemplatesHelper
+end

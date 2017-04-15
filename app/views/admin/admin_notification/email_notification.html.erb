@@ -1,0 +1,82 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Email notification
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Notification</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Email notification Report</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+
+            <div class="table-responsive">
+              <table id="example1" class="table table-bordered custom_table">
+                <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Business Name</th>
+                  <th>Total Customer</th>
+                  <th>Total New Customer Last Week</th>
+                  <th>Time Left</th>
+                  <th class="no_sort text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @company.each do |comp|%>
+                    <tr>
+                      <td><%= @count += 1 %></td>
+                      <td><%=  comp.first_name %></td>
+                      <td><%= comp.patients.count%></td>
+                      <td>14</td>
+                      <td>20 days</td>
+                      <td class="action_btns text-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+                          <button type="button" class="btn btn-default"><i class="fa fa-eye"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                <% end %>
+                </tfoot>
+                </table>
+              </tbody>
+            </div>
+            <!--responsive-->
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>

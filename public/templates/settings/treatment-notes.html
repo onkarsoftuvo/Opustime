@@ -1,0 +1,76 @@
+<div class="dashboard-con settings">
+    <div class="top_tabbing" ng-if="true">
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.client_sub_modules.template_note" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.client_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.client_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.client_total == 3}">
+        <a ui-sref="settings.treatment-notes" href="" class="active">{{'sidebar_menu.Notes_Templates' | translate:translationData}}</a>
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.client_sub_modules.referral_type" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.client_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.client_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.client_total == 3}">
+        <a ui-sref="settings.referral-types" href="">{{'sidebar_menu.Refferral_Types' | translate:translationData}}</a>      
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.client_sub_modules.discount_type" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.client_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.client_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.client_total == 3}">
+        <a ui-sref="settings.discount-types" href="">{{'sidebar_menu.Discount_Types' | translate:translationData}}</a>      
+      </div>
+    </div>
+    <div class="top-container">
+        <div class="col-md-7 col-xs-5 top-links">
+            <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>    
+        </div>
+        <div class="col-md-5 col-xs-7 top-btn btn4" ng-show="BtnTreatmentNotes">
+            <button class="save" type="submit" ng-click="EditTemplate()" ng-hide="editDisabled">{{'button.edit' | translate:translationData}}</button>
+            <button class="save" type="submit" form="templateForm" ng-disabled="updateDisabled" ng-hide="clonebtn">{{updateBtnTxt | translate:translationData}}</button>
+            <button ng-show="clonebtn" class="save" ng-click="cloneTemplate()" ng-disabled="updateDisabled">{{updateBtnTxt | translate:translationData}}</button>
+            <button class="save" type="submit" ng-disabled="exportDisabled" ng-click="ExportData()">{{'button.export' | translate:translationData}}</button>
+            <button class="cancel" ng-click="treDelete('sm')" ng-if="!cancelDislable" >{{cancelBtnTxt | translate:translationData}}</button>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-2 bus-con">
+        <div class="col-md-2 side-bar-con">
+            <div class="side-bar">
+                <div class="side-bar-header">
+                    <h5 class="with-two-icn">{{'settings.treatment_note.main_heading' | translate:translationData}}</h5>
+                    <a class="" ui-sref="settings.treatment-notes.new">
+                    	<i ng-click="BtnTreatmentNotes=true" class="ic bus-icn tre"></i>
+                    	<span>{{'settings.tool-tip-addnew' | translate:translationData}}</span>
+                    </a>
+                    <a class="" >
+                    	<i class="ic bus-icn tre-edit"  ngf-select="upload($files)" ngf-multiple="false"></i>
+                    	<span>{{'settings.treatment_note.import' | translate:translationData}}</span>
+                    </a>
+                </div>
+                <div class="side-bar-search">
+                    <form>
+                        <input type="text" class="form-control" placeholder="{{'settings.placeholder_search' | translate:translationData}}" ng-model="TemplateFilter" />
+                        <button type="submit" disabled="disabled"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div ng-click="BtnTreatmentNotes=true" class="side-bar-links side-info billing-items treat-items" ng-scrollbarss rebuild-on-resize rebuild-on="rebuild:me">
+                	<ul>
+                    	<li ng-repeat="templates in TemplateNoteList | filter:{name : TemplateFilter}" >
+                        	<a href="" ui-sref="settings.treatment-notes.info({TnoteID:templates.id})" ui-sref-active="active">{{templates.name}}</a>
+                            <md-tooltip class="customtooltip angular-animate" md-direction="right">
+                                <ul>
+                                    <li><h6>{{'settings.treatment_note.sec_of' | translate:translationData}}</h6><p>{{templates.no_section}}</p></li>
+                                    <li><h6>{{'settings.treatment_note.que_of' | translate:translationData}}</h6><p>{{templates.no_quest}}</p></li>                
+                                    <li><h6>{{'settings.treatment_note.printing' | translate:translationData}}</h6><p>{{templates.option_list}}</p></li> 
+                                </ul>
+                              </md-tooltip>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-10 col-sm-10 form-content info-container " ng-scrollbars rebuild-on-resize rebuild-on="rebuild:me">
+    	<div ui-view></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+    <div class="modal-body confirm-body">
+		<div class="confirm">
+            <p>{{'settings.treatment_note.confirmation' | translate:translationData}}</p>
+            <a href="" ng-click="okdelete()">{{'button.confirm' | translate:translationData}}</a>
+            <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+        </div>
+    </div>
+</script>

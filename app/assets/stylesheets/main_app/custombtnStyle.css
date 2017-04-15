@@ -1,0 +1,64 @@
+.OB_overlay{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.7);
+}
+.OB_overlay .OB_Content{
+	height: 80%;
+	width: 90%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: relative;
+}
+.OB_overlay .OB_Content iframe{
+	width: calc(100% - 70px);
+	position: fixed;
+	height: calc(100% - 70px);
+	top: 35px;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.OB_close{
+	position: fixed;
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    line-height: 28px;
+    font-size: 20px;
+    transition: all ease-out 0.3s 0s;
+}
+a.OB_close:hover{
+	text-decoration: none;
+	color: #fff !important;
+	background: rgba(0,0,0,0.7);
+}
+a#OB_openbtn {
+    overflow: visible;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border: 0px;
+    display: inline-block;
+    outline: none;
+    padding: 10px 15px;
+    margin: 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration: none;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    box-shadow: none;
+}

@@ -1,0 +1,224 @@
+<dialog-panel header="header">
+    <dialog-header header="header">
+        <button class="cancel_btn" ui-sref="invoice" ng-if="!$stateParams.patient_id && !$state.includes('appointment')">
+            {{'button.cancel' | translate:translationData}}
+        </button>
+        <button class="cancel_btn" ui-sref="patient-detail({'patient_id' : $stateParams.patient_id})" ng-if="$stateParams.patient_id">
+            {{'button.cancel' | translate:translationData}}
+        </button>
+        <button class="cancel_btn" ui-sref="appointment" ng-if="$state.includes('appointment')">
+            {{'button.cancel' | translate:translationData}}
+        </button>
+         <button class="save_btn" type="submit" form="InvoiceForm" ng-if="!editInvoice">
+            {{'button.save' | translate:translationData}}
+        </button>
+        <button class="save_btn" type="submit" form="InvoiceForm" ng-if="editInvoice">
+            {{'button.update' | translate:translationData}}
+        </button>
+        <button class="delete_btn" form="newContacts" ng-if="editInvoice && !$stateParams.patient_id && !$state.includes('appointment')" ng-click="DeleteInvoice('sm', InvoiceDetails.tax_invoice, $event)">
+            {{'button.delete' | translate:translationData}}
+        </button>
+        <button class="print_btn" form="newContacts" ng-if="editInvoice" ng-click="PrintInvoice(InvoiceDetails.id)">
+            {{'button.print' | translate:translationData}}
+        </button>
+        <button class="email_btn" form="newContacts" ng-if="editInvoice" ng-click="emailPatient(InvoiceDetails.id,InvoiceDetails.email_to_patient)">
+            {{'button.emailToPatient' | translate:translationData}}
+        </button>
+        <button class="email_btn" type="submit" form="newContacts" ng-if="editInvoice" ng-click="emailOther(InvoiceDetails.id,InvoiceDetails.email_to_other)">
+            {{'button.emailToOther' | translate:translationData}}
+        </button>
+    </dialog-header>
+    <div class="navigate_arrow" ng-if="!$stateParams.patient_id && !$state.includes('appointment')">
+        <div class="arrow_btn pre_btn">
+            <a href="" ui-sref="invoice.edit({invoice_id : invoice.prev_invoice})" ng-if="invoice.prev_invoice != null"></a>
+        </div>
+        <div class="arrow_btn next_btn">
+            <a href="" ui-sref="invoice.edit({invoice_id : invoice.next_invoice})" ng-if="invoice.next_invoice != null"></a>
+        </div>
+    </div>
+    <div class="top_tabbing tabbing_menu ng-scope" ng-if="editInvoice">
+        <div class="col col-sm-6">
+            <a href="" class="active"><i class="icon invoice_icn"></i> <span>{{'invoice.Invoice_Summery' | translate:translationData}}</span></a>
+        </div>
+        <div class="col col-sm-6">
+            <a href="" ng-class="{'disabled' : InvoiceDetails.outstanding_balance==0}" ui-sref="invoice.newPayment({invoice_id:InvoiceDetails.tax_invoice})" ng-if="!$stateParams.patient_id && !$state.includes('appointment')"><i class="icon product_icn"></i> {{'button.enterPayment' | translate:translationData}}</a>
+            <a href="" ng-class="{'disabled' : InvoiceDetails.outstanding_balance==0}" ui-sref="patient-detail.invoicePayment({invoice_id:InvoiceDetails.tax_invoice})" ng-if="$stateParams.patient_id"><i class="icon product_icn"></i> {{'button.enterPayment' | translate:translationData}}</a>
+            <a href="" ng-class="{'disabled' : InvoiceDetails.outstanding_balance==0}" ui-sref="appointment.newPayment({invoice_id:InvoiceDetails.tax_invoice})" ng-if="$state.includes('appointment')"><i class="icon product_icn"></i> {{'button.enterPayment' | translate:translationData}}</a>
+        </div>
+    </div>
+    <div class="tab_contents" ng-class="{'have_tabs' : editInvoice}">
+      <form ng-submit="InvoiceForm.$valid && CreateInvoice(invoice)" id="InvoiceForm" class="products contact"  name="InvoiceForm" novalidate>
+          <div class="row trim_row">
+            <div class="col-sm-12 note-prod">
+              <h4>{{'invoice.Invoice_Detail' | translate:translationData}}</h4>
+            </div>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>{{'payment.patient' | translate:translationData}}</label>
+                      <md-content class="md-padding">
+                        <md-autocomplete
+                          md-input-name="auto_patient"
+                          md-selected-item="invoice.patient"
+                          md-selected-item-change="GetPatientDetails(invoice.patient)"
+                          md-search-text="searchPatienttext"
+                          md-items="item in PatientListDataf(searchPatienttext)"
+                          md-item-text="item.first_name+' '+item.last_name"
+                          placeholder="Search"
+                          md-min-length="1"
+                          md-autoselect="true"
+                          >
+                        <span md-highlight-text="searchText">{{item.first_name}}  {{item.last_name}}</span>
+                        <md-item-template> <span md-highlight-text="searchTextp" md-highlight-flags="^i">{{item.first_name}} {{item.last_name}}</span> </md-item-template>
+                        <md-not-found> {{'expense.no_matching' | translate:translationData}} "{{searchPatienttext}}" {{'expense.wereFound' | translate:translationData}}. </md-not-found>
+                      </md-content>
+                      </md-autocomplete>
+                      </md-content>
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>{{'invoice.practitioner' | translate:translationData}}</label>
+                      <select class="form-control" tabindex="0" ng-model="invoice.practitioner" ng-change="GetPractionerDetails(invoice.practitioner, invoice.business)" ng-options="p.id as p.first_name + ' ' + p.last_name for p in practitioners">
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>{{'payment.issueDate' | translate:translationData}}</label>
+                      <p class="input-group">
+                      <input type="text" ng-model="invoice.issue_date" class="form-control" uib-datepicker-popup="{{format}}" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="YYYY-MM-DD"  ng-required="true" close-text="Close"   />
+                      <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span> </p>
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>{{'invoice.business' | translate:translationData}}</label>
+                      <select class="form-control" ng-model="invoice.business" ng-options="b.id as b.name for b in BussinessList" ng-change="GetPractionerDetails(invoice.practitioner, invoice.business)">
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>{{'invoice.appointment' | translate:translationData}}</label>
+                  <select ng-if="patient.appointment.length" class="form-control" tabindex="0" ng-model="invoice.appointment" ng-change="getAppointmentTypeDetails(invoice.appointment)">
+                     <option value="">{{'invoice.none' | translate:translationData}}</option>
+                     <option ng-repeat="appontmenttypes in patient.appointment" value="{{appontmenttypes}}">{{appontmenttypes.appointment_name}}</option>
+                  </select>
+                  <select ng-if="!patient.appointment.length" class="form-control" tabindex="0" ng-model="invoice.appointment" ng-change="getAppointmentDetails(invoice.appointment)">
+                    <option value="">{{'invoice.none' | translate:translationData}}</option>
+                    <option ng-repeat="appontmenttypes in patient.appointment_type" value="{{appontmenttypes.id}}">{{appontmenttypes.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>{{'invoice.invoiceTo' | translate:translationData}}</label>
+                  <input type="text" class="form-control"  ng-model="invoice.invoice_to">
+                </div>
+              </div>
+              <div class="col-sm-12">
+                  <table class="total-list">
+                    <thead>
+                      <tr>
+                        <th>{{'invoice.item' | translate:translationData}} </th>
+                        <th>{{'invoice.unitPrice' | translate:translationData}}</th>
+                        <th>{{'invoice.quantity' | translate:translationData}}</th>
+                        <th>{{'invoice.tax' | translate:translationData}}</th>
+                        <th>{{'invoice.discount' | translate:translationData}}</th>
+                        <th>{{'invoice.totalPrice' | translate:translationData}}</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="invoices in invoice.invoice_items_attributes">
+                        <td class="col-sm-3" ng-if="invoices.item_type=='BillableItem'">
+                            <select class="form-control" id="Billable{{$index}}" ng-model="invoices.item_id" ng-change="BillableItemDetails(invoices)"  ng-options="p.item_id as p.name for p in BilableItemsList">
+                              <option value="">{{'invoice.selectBillable' | translate:translationData}}</option>
+                            </select>
+                            <input type="hidden" ng-model="invoices.concession_id">
+                            <span style=" position: absolute; color:green;" ng-if="invoices.show_concession == true" class="con_Name">{{Concession_Name}}</span>
+                        </td>
+                        <td class="col-sm-2" ng-if="invoices.item_type=='Product'">
+                            <select class="form-control" ng-change="ProductDetails(invoices)" ng-model="invoices.item_id"
+                                  ng-options="s.item_id as s.name for s in ProductsList">
+                              <option value="">{{'invoice.selectProduct' | translate:translationData}}</option>
+                            </select>
+                        </td>
+                        <td class="col-sm-2">
+                            <div class="currency"> <span class="dollor_sign">$</span> <span class="pull-right">
+                              <input type="text" ng-blur="Calculation()" class="form-control"  ng-model="invoices.unit_price" ng-disabled="!invoices.item_id">
+                              </span> </div>
+                        </td>
+                        <td class="col-sm-1">
+                            <input type="text" ng-blur="Calculation()"  class="form-control"  ng-model="invoices.quantity" ng-disabled="!invoices.item_id">
+                        </td>
+                        <td class="col-sm-1">
+                            <p >{{invoices.tax}}</p>
+                            <input type="hidden" ng-model="invoices.tax_amount">
+                        </td>
+                        <td class="col-sm-2" >
+                          <div class="discount-box">
+                            <input type="text" ng-blur="Calculation()" class="form-control pull-left"  ng-model="invoices.discount" ng-disabled="!invoices.item_id">
+                            <select class="form-control pull-right" ng-model="invoices.discount_type_percentage" ng-init="invoices.discount_type_percentage='%'" ng-change="Calculation()" ng-disabled="!invoices.item_id">
+                              <option value="%">%</option>
+                              <option value="$">$</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td class="col-sm-2">
+                          <div class=" total-price">
+                              <span class="pull-left">{{invoices.total_price}}</span>
+                          </div>
+                        </td>
+                        <td classs="">
+                          <div ng-click="RemoveBillableProduct($index)" class="form-group total-price cross-it">
+                              <a  href=""><i class="ic cross"></i> {{'expense.remove' | translate:translationData}}</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="remove-bg">
+                        <td colspan="3"><button type="Button" class="btn btn-black" ng-click="addBillableProduct()"><i class="fa fa-plus-circle"></i>{{'invoice.addBillableItem' | translate:translationData}}</button>
+                          </td>
+                        <td><button type="Button" ng-click="addProduct()" class="btn btn-black"><i class="fa fa-plus-circle"></i> {{'product.label_add_product' | translate:translationData}}</button></td>
+                        <td></td>
+                        <td class="invoice-full-details" colspan="2">
+                          <ul class="list-inline">
+                              <li><span class="pull-left" ng-modal="invoice.total_discount">{{'invoice.totalDiscount' | translate:translationData}}</span><span class="pull-right"><small ng-if="invoice.total_discount!=0">-</small>{{invoice.total_discount}} </span></li>
+                              <li><span ng-modal="invoice.subtotal" class="pull-left">{{'invoice.subTotal' | translate:translationData}}</span><span class="pull-right">{{invoice.subtotal}}</span></li>
+                              <li><span ng-modal="invoice.tax" class="pull-left">{{'product.label_tax' | translate:translationData}}</span><span  class="pull-right">{{invoice.tax}}</span></li>
+                              <li><span ng-modal="invoice.invoice_amount" class="pull-left">{{'payment.invoiceTotal' | translate:translationData}}</span><span  class="pull-right">{{invoice.invoice_amount | number: 2}}</span></li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group mess">
+                    <label>{{'invoice.extraInfo' | translate:translationData}} </label>
+                    <textarea placeholder="{{'invoice.eg_Claim_Number' | translate:translationData}}" ng-model="invoice.extra_patient_info"  class="form-control" ></textarea>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group mess">
+                    <label>{{'product.label_note' | translate:translationData}}</label>
+                    <textarea class="form-control" ng-model="invoice.notes"> </textarea>
+                  </div>
+              </div>
+          </div>
+      </form>
+    </div>
+</dialog-panel>
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'invoice.confirmDelete' | translate:translationData}}</p>
+      <a href="" ng-click="okdelete()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<style>

@@ -1,0 +1,14 @@
+<% if @email_to_flag %>
+	<p> <%= t('.Hi') %> <%= @patient.first_name.capitalize %>, </p>
+<% else %>
+	<p> <%= t('Hello') %><%= @patient.first_name.capitalize %>, </p>
+<% end %>
+<!--<p> <%#= t('.Attached') %> <%#= t('.is') %> <%#= t('.your') %> <%#= t('.Invoice') %> <%#= t('.from') %> <%#= @email_to_flag ? @business.name : @patient.first_name.capitalize  %>. <br />-->
+	<!--This invoice has &lt;!&ndash;already&ndash;&gt; been paid-->
+<!--</p>-->
+
+<p><%= t('.Please find attached your invoice details with this email') %>.</p>
+
+<p><%= t('.Thank you') %>  </p>
+<p><%= @business.name %></p>
+<p><%#= t('.The OpusTime Team') %>.</p>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><%= t('.Treatment Note') %></title>
+</head>
+
+<body style="margin:0;">
+<div style="margin:auto; width:800px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; ">
+	<div style="width: 50%; float: left;">
+		<h2 style="font-size:22px; margin-top:10px; color:#000; margin-top:5px; font-weight:400; margin-bottom:5px;"><%= @result[:patient][:name] %></h2>
+	</div>
+	<div style="width: 50%; float: left; text-align: right;">
+		<h3 style="font-size:14.67px; margin-top:10px; color:#7b7b7b; margin-top:5px; font-weight:400; margin-bottom:5px;"><%= @result[:template_default_title] %></h3>	
+	</div>
+	<div style="background:#edf2f6; overflow:auto; clear:both;">
+        <div style="width:60%; float:left; padding:24px 30px; box-sizing:border-box;">
+			<% if @show_invoice_logo %>
+				<%= wicked_pdf_image_tag @logo_url , :alt=> "logo.png" , :width=> "137" %>
+			<% end %>
+        </div>
+        <div style="width:40%; float:left; padding:19px 0; box-sizing:border-box;">
+        	<h3 style="font-size:14.67px; color:#7b7b7b; font-weight:400; margin-top:0; margin-bottom:8px;"><span style="font-size:14px; color:#000;"><%= t('.Occupation') %> :</span><%= @result[:patient][:occupation] %></h3>
+            <h3 style="font-size:14.67px; color:#7b7b7b; font-weight:400; margin-top:0; margin-bottom:8px;"><span style="font-size:14px; color:#000;"><%= t('.Medicare No') %> :</span><%= @result[:patient][:medicare_no] %></h3>
+            <h3 style="font-size:14.67px; color:#7b7b7b; font-weight:400; margin-top:0; margin-bottom:8px;"><span style="font-size:14px; color:#000;"><%= t('.Address') %> :</span><%= @result[:patient][:address] %></h3>
+        </div>
+    </div>
+    <div style=" padding:0 30px; box-sizing:border-box; margin-top:20px;">
+        <h1 style="margin:0; color:#b93e5b; text-transform:uppercase; border-bottom:solid 1px #ddd; font-size:19.19px; font-weight:400; padding: 0 25px; line-height: 44px; margin:0 -30px;"><%= @result[:treatment_title]%></h1>
+        <ul style="list-style:none; padding:0; overflow:auto; margin:15px 0;">
+        	<li style="float:left; font-size:16px; color:#7b7b7b; margin-right:20px;"><%= t('.Practitioner') %>:  <%= @result[:practitioner_name] %></li>
+            <li style="float:left; font-size:16px; color:#7b7b7b; margin-right:20px; white-space: nowrap;"><%= t('.Created') %>: <%= @result[:note_created_at] %></li>
+        </ul>
+        
+		<% @result[:treatment_sections_attributes].each do |section| %>        
+	        <h3 style="font-size:12.8px; color:#000; margin:0 -30px; background:#c0dbf0; padding:12.5px 30px;"><%= section[:name]%></h3>
+	        <ul style="list-style:none; padding:0; margin:0;">
+	        	<% section[:treatment_questions_attributes].each do |quest| %>
+		        	<li style="margin:0 -30px; border-bottom:solid 1px #edf2f6; padding:10px 30px;">
+		            	<h4 style=" font-size:12.8px; color:#b93e5b; margin:0;"><%= quest[:title]%></h4>
+		            	<% if (quest[:quest_type] <=> "Checkboxes") == 0 %>
+		            		<p style="font-size:12.8px; color:#7b7b7b; line-height:18px;">
+		            			<% last = quest[:ans].last %>
+		            			<% quest[:ans].each do |ans| %>
+		            				<%#= wicked_pdf_image_tag "tick_check.png" , :alt=> "logo.png" , :size=> "10" %>
+		            				<% if (ans <=> last) == 0 %>
+		            					<% if ans[:is_selected] %>
+		            						[X]
+		            					<% else %>
+		            						[ ]
+		            					<% end %>
+		            				 	<%= ans[:ans_option] %> 
+		            				<% else %>
+		            					<% if ans[:is_selected] %>
+		            						[X]
+		            					<% else %>
+		            						[ ]
+		            					<% end %>
+		            					<%= ans[:ans_option] %>; &nbsp; &nbsp;
+		            				<% end %>
+		            			<% end %>
+	            			</p>
+		            	<% else %>
+		            		<p style="font-size:12.8px; color:#7b7b7b; line-height:18px;"><%= quest[:ans]%></p>
+		            	<% end %>
+		                
+		            </li>
+	            <% end %>
+	            
+	        </ul>
+        <% end %>
+        
+    <div style=" background:#edf2f6; padding:14.5px 30px; overflow:auto; margin:0 -30px 0;">
+    	<ul style="list-style:none; padding:0; margin:0;">
+        	<li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;"><%= @result[:patient][:name] %></li>
+            <li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;">|</li>
+        	<li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;"><%= t('.DOB') %> <%= @result[:patient][:dob] %> </li>
+            <li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;">|</li>
+        	<li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;"><%= @result[:company_name] %></li>
+            <li style=" font-size:15px; font-weight:400; float:left; margin-right:10px;">|</li>
+        	<li style=" font-size:15px; font-weight:400; "><%= t('.Last updated') %> <%= @result[:note_last_updated] %>  </li>
+        </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

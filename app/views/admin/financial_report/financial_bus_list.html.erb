@@ -1,0 +1,175 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Businesses
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Business</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Business List Report</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group filter-con">
+                  <label>Filters</label>
+
+                  <div class="col-md-3">
+                    <%= form_tag list_financial_list_path, :method => :get, :class => "login-form" do %>
+
+                        <select id="states-of-country" name="project[state]" class="form-control">
+                          <option id="no-state" value="" selected>Select Your State</option>
+
+                          /* For states within IN */
+                          <% selected_val = "" %>
+                          <% if params[:project].present? %>
+                              <% selected_val = params[:project][:state] unless params[:project][:state].nil? %>
+                          <% end %>
+
+                          <%= options_for_select(customise_state(CS.states(:in)), selected_val) %>
+                        </select>
+                        </div>
+                        <div class="col-md-3">
+                          <select id="cities-of-state" name="project[city]" class="form-control">
+                            <option value="" selected>Select Your City</option>
+                          </select>
+
+                        </div>
+                        <div class="col-md-2">
+                          <%= submit_tag "Filter", class: "btn btn-large btn-primary btns" %>
+                        </div>
+
+                        <!-- <div class="col-md-2 pull-right text-right">
+                          <button class="btn btn-default">Clear Filter</button>
+                        </div> -->
+                        <%= link_to "/list/financial_list", class: "btn btn-default pull-right" do %>Clear Filter
+                        <% end %>
+                    <% end %>
+                    </div>
+              </div>
+            </div>
+
+
+            <table id="fin_list" class="display" data-source="<%= list_financial_list_path(format: :json) %>">
+              <thead>
+              <tr>
+                <th>Sr. No</th>
+                <th>Business Name</th>
+                <th>Earning From Subscription</th>
+                <th>Earning From SMS</th>
+                <th>Subscription Membership</th>
+                <th>Total Earning</th>
+                <!-- <th class="no_sort text-center">Actions</th> -->
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            <!--<table id="example1" class="table table-bordered custom_table">-->
+            <!--<thead>-->
+            <!--<tr>-->
+            <!--<th>Sr. No</th>-->
+            <!--<th>Business Name</th>-->
+            <!--<th>Business ID</th>-->
+            <!--<th>No. of Practitionars</th>-->
+            <!--<th>Earning Based on payment Recieved</th>-->
+            <!--&lt;!&ndash; <th class="no_sort text-center">Actions</th> &ndash;&gt;-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<#% @company.each do |comp| %>-->
+            <!--<tr>-->
+            <!--<td><#%= @count += 1 %></td>-->
+            <!--<td><#% comp.company_name %>-->
+            <!--</td>-->
+            <!--<td><#%= comp.id %></td>-->
+            <!--<td><#%= comp.patients.count %></td>-->
+            <!--<td><#%= comp.revenue_total %></td>-->
+            <!--&lt;!&ndash; <td class="action_btns text-center">-->
+            <!--<div class="btn-group">-->
+            <!--<button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>-->
+            <!--<button type="button" class="btn btn-default"><i class="fa fa-eye"></i></a>-->
+            <!--</div>-->
+            <!--</td> &ndash;&gt;-->
+            <!--</tr>-->
+            <!--<#% end %>-->
+            <!--</tfoot>-->
+            <!--</table>-->
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<script>
+
+
+    $(document).on('change', '#states-of-country', function (e) {
+        var cities_of_state, input_state, state;
+        input_state = $(this);
+        cities_of_state = $('#cities-of-state');
+        state = this.options[e.target.selectedIndex].id;
+        if (state === 'no-state') {
+            return cities_of_state.html('');
+        } else {
+            $.ajax({
+                url: '/cities/' + $(this).children(':selected').attr('id'),
+                success: function (data) {
+                    var opt;
+                    opt = '<option value="" selected>Select Your City</option>';
+                    if (data.length === 0) {
+
+                    } else {
+                        data.forEach(function (i) {
+                            opt += '<option value="' + i + '">' + i + '</option>';
+                        });
+                        cities_of_state.html(opt);
+                    }
+                }
+            });
+        }
+    });
+
+    jQuery(document).ready(function () {
+        $('#fin_list').dataTable({
+            "language": {
+                "processing": "<img src='../assets/reload.gif'>"
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": $('#fin_list').data('source'),
+            "pagingType": "full_numbers",
+            'columns': [
+                {'sortable': true, 'searchable': true},
+                {'sortable': false, 'searchable': true},
+                {'sortable': true, 'searchable': true},
+                {'sortable': true, 'searchable': true},
+                {'sortable': true, 'searchable': true},
+                {'sortable': true, 'searchable': true}
+
+            ]
+            // optional, if you want full pagination controls.
+            // Check dataTables documentation to learn more about
+            // available options.
+        });
+    });
+</script>
+

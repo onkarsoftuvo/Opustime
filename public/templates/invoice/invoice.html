@@ -1,0 +1,118 @@
+<div class="dashboard-con settings">
+  <div class="top-container">
+    <div class="top-links product-search" ng-class="{'col-md-12' : !invPerm.create, 'col-md-9' : invPerm.create}">
+      <div class="top-links-container ng-scope">
+        <ul class="open-nav ng-scope">
+          <li><a href="" class="ng-binding" ng-click="$state.go('invoice.list')">{{'invoice.main_heading' | translate:translationData}}</a><span style="color:#b93e5b" ng-show="AddnewInvoice"> / {{'invoice.add_new_invoice' | translate:translationData}}</span></li>
+        </ul>
+      </div>
+      <div class="top-links-container ng-scope top-search-con">
+        <input type="text" class="form-control" ng-model="paging.fromFilter" ng-change="invoiceLogs(paging)" placeholder="{{'invoice.search_placeholder' | translate:translationData}}"/>
+        <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+        <button type="submit" ng-click="clearLogs()" ng-show="paging.fromFilter!=''"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-3 top-btn cart-btn text-right" ng-if="invPerm.create"> <span style="cursor: pointer;" ui-sref="invoice.new">{{'invoice.addInvoice' | translate:translationData}}</span>
+      <button class="save ng-binding invc_icn" type="submit" ui-sref="invoice.new" ><i class="fa fa-file-code-o"></i></button>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 form-content no_topbar" ng-scrollbars ng-scrollbars-config="lazyload_config">
+    <div class="product-con">
+    <div class="text-center noRecord" ng-if="noRecordFount">
+        <h4>{{'invoice.noMatchFound' | translate:translationData}}</h4>
+    </div>
+    <div class="text-center noRecordToDisplay " ng-if="InvoiceList == null">
+        <i></i>
+        <h4><span>"{{'communication.oops' | translate:translationData}} </span> {{'communication.no_info' | translate:translationData}}"</h4>
+    </div>
+
+      <div class="clearfix"></div>
+      <!-- List  -->
+      <div class="invoice-list-page">
+        <div ng-repeat="Item in InvoiceList" class="listing_con" ng-click="editInvoiceDetail(Item.id)">
+          <div class="productsdetails invoiceDetails">
+            <div class="col-sm-2">
+              <span>{{'invoice.main_heading' | translate:translationData}}#</span>
+              <samp class="capText" ng-if="Item.number!= null"> : {{Item.id}}</samp>
+              <samp class="capText" ng-if="Item.number== null"> : N/A</samp>
+            </div>
+
+            <div class="col-sm-3">
+              <span>{{'payment.patient' | translate:translationData}} :</span>
+              <samp class="capText invoice_patient_text_wrap " ng-if="Item.patient!= null">  {{Item.patient}}</samp>
+              <samp class="capText" ng-if="Item.patient== null"> : N/A</samp>
+            </div>
+            
+            <div class="col-sm-2">
+              <span>{{'payment.date' | translate:translationData}}</span>
+              <samp class="capText" ng-if="Item.issue_date!=null"> : {{Item.issue_date}}</samp>
+              <samp class="capText" ng-if="Item.issue_date==null"> : N/A</samp>
+            </div>
+            <div class="col-sm-5 invoice_ammount">
+              <ul class="list-inline">
+                <li>
+                  <span>{{'invoice.invoiceAmount' | translate:translationData}}</span>
+                  : $ {{Item.invoice_amount}}</li>
+                <li>
+                  <span>{{'invoice.outstandingAmount' | translate:translationData}}</span>
+                  : $ {{Item.outstanding_balance}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--   <div class="text-right" ng-if="InvoiceList.pagination.total_pages>1">
+         	<nav>
+              <ul class="pagination pagination-sm">
+                <li ng-class="{disabled: InvoiceList.pagination.previous_url == null}">
+                  <a href aria-label="Previous" ng-click="hitPrev()">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li ng-repeat="pages in pagging" ng-class="{ active : InvoiceList.pagination.page == pages.pageNo}">
+                   <a href ng-bind="pages.pageNo" ng-click="nextPage(pages.pageNo)"></a>
+                </li>
+                <li  ng-class="{disabled: InvoiceList.pagination.next_url == null}">
+                  <a href="" aria-label="Next" ng-click="hitNext()">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+         </div> -->
+          <div class="" ng-if="paging.TotalItems > 30">
+            <div class="row" ng-controller="PagePaginationController" ng-show="showGrid">
+               <div class="col-lg-12 col-sm-12 col-md-12">
+                  <div class="col-lg-12 side_filter">
+                     <label style="border-right: none;">Page Size&nbsp;&nbsp;
+                     <select ng-model="pager.pageSize" ng-options="pageNo for pageNo in pager.pageSizeValues" ng-change="onSelectPageSize(paging, pager.pageSize)" class="paging-select" ng-disabled="pager.currentPage == pager.numPages" style="width: 50px; height: 25px;"></select>
+                     </label>
+                  </div>
+                  <div class="col-lg-10 col-sm-10 col-md-10">
+                  <pagination total-items="pager.totalItems" ng-model="pager.currentPage" max-size="pager.maxSize" items-per-page="pager.pageSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="pager.numPages" ng-change="onSelectPage(paging, pager.currentPage)">
+                  </pagination>
+                  </div>
+                  <div ng-init="initPager(paging);"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ui-view class="newView"></div>
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+  <div class="modal-body confirm-body">
+		<div class="confirm">
+      <p>{{'invoice.confirmDelete' | translate:translationData}}</p>
+      <a href="" ng-click="okdelete()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<style>
+.form-control{width:100% !important;}
+</style>

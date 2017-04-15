@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @import.file_name %>
+</p>
+
+<p>
+  <strong>Import type:</strong>
+  <%= @import.import_type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @import.status %>
+</p>
+
+<p>
+  <strong>Show delete:</strong>
+  <%= @import.show_delete %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @import.company %>
+</p>
+
+<%= link_to 'Edit', edit_import_path(@import) %> |
+<%= link_to 'Back', imports_path %>

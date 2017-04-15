@@ -1,0 +1,82 @@
+<div class="dashboard-con settings">
+  <div class="top-container">
+    <div class="col-md-9 col-xs-9 top-links product-search">
+      <div class="top-links-container ng-scope">
+        <ul class="open-nav ng-scope">
+          <li><a href="" class="ng-binding" ng-click="$state.go('payment.list')">{{'payment.main_heading' | translate:translationData}}</a>
+        </ul>
+      </div> 
+      
+    </div>
+    <div class="col-md-3 col-xs-3 top-btn cart-btn text-right" > <span style="cursor: pointer;"   ui-sref="payment.new">{{'payment.add_payment' | translate:translationData}}</span>
+      <button class="save ng-binding" type="submit" ui-sref="payment.new" ><i class="fa fa-users"></i></button>
+    </div>
+</div>
+<div class="form-content" ng-scrollbars ng-scrollbars-config="lazyloadConfig" lazyload="a()">
+
+<div class="clearfix" ></div>
+<div style="margin-top:40px;"></div>
+  <!-- List  -->
+  <div class="invoice-list-page payment_listing">
+  <div class="invoice-list-details">
+    <div class="col-sm-6">
+      <div class="invoice-title">
+        <h3>{{'payment.main_heading' | translate:translationData}} #{{PaymentDetails.id}}</h3>
+
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class=" pull-right">
+        <button class="btn-black"  ui-sref="payment.edit({payment_id:PaymentDetails.id})" ><i class="fa fa-edit"></i>{{'button.edit' | translate:translationData}}</button>
+        <button class="btn-black" ng-click="PrintPayment(PaymentDetails.id)"><i class="fa fa-print"></i> {{'button.print' | translate:translationData}}</button>
+
+        <button class="btn-black" ng-if="PaymentDetails.patient.email_to_patient!=null" ng-click="emailPatient(PaymentDetails.patient.id)"><i class="fa fa-envelope-o"> </i>{{'button.emailToPatient' | translate:translationData}}</button>
+        
+        <button class="btn-black"  ng-click="PaymentDelete('sm', Payments.id, $event)"><i class="fa fa-times"></i> {{'button_delete' | translate:translationData}}</button>
+      </div>
+    </div>
+    <div class="col-sm-12 invoice-info">
+      <div class="row">
+        <ul class="list-inline col-sm-8">
+          <li><p>{{'payment.date' | translate:translationData}} : </p>{{PaymentDetails.payment_date | date}}</li>
+          <li><p>{{'payment.patient' | translate:translationData}} : </p>{{PaymentDetails.patient.title}} {{PaymentDetails.patient.first_name}} {{PaymentDetails.patient.last_name}}</li>
+          <li><p>{{'payment.note' | translate:translationData}} : </p>{{PaymentDetails.notes}}</li>
+
+          <li ng-repeat="Paymenttype in PaymentDetails.payment_history.paid_payment_amount_list"><p>
+
+            {{Paymenttype.payment_type_name}}: $ {{Paymenttype.paid_money}}</p></li>
+          <li><p>{{'payment.total' | translate:translationData}} : </p>$ {{PaymentDetails.payment_history.total_amount}}</li>
+        </ul>
+
+        <div class="col-sm-4 text-right">
+          <div class="total-invoice">
+            <p>{{'payment.paymentApplied' | translate:translationData}}</p> 
+          
+            <div ng-repeat="invoicelisting in PaymentDetails.invoices_history.invoice_listing">
+            <p ng-if="!invoicelisting.invoice_status">
+               #{{invoicelisting.invoice_id}}
+               - $ {{invoicelisting.applied_amount}} (Deleted)
+             </p>
+             <p ng-if="invoicelisting.invoice_status">
+              <a ui-sref="invoice.view({invoice_id:invoicelisting.invoice_id})">#{{invoicelisting.invoice_id}}</a>
+               - $ {{invoicelisting.applied_amount}}
+             </p>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+        <div class="modal-body confirm-body">
+      <div class="confirm">
+                <p>{{'payment.confirmDelete' | translate:translationData}}</p>
+                <a href="" ng-click="okdelete()">{{'button_confirm' | translate:translationData}}</a>
+                <a href="" ng-click="cancel()">{{'button_cancel' | translate:translationData}}</a>
+            </div>
+        </div>
+</script>
+

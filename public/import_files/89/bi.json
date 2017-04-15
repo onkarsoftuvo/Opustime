@@ -1,0 +1,245 @@
+[{
+		"enateId": "5030",
+		"name": "Adjustment - Adult",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "39.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5054",
+		"name": "Adjustment Child - Student",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "25.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5055",
+		"name": "Adjustment - Charity",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5056",
+		"name": "New Patient Examination - Adult",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "99.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5057",
+		"name": "New Patient Examination - Student/Child",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "89.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5058",
+		"name": "PE - Progress Examination",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "20.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5059",
+		"name": "30 min Massage",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "50.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5060",
+		"name": "45 min massage",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "70.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5061",
+		"name": "1 hour massage",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "85.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5062",
+		"name": "1.5 hour massage",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "125.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5063",
+		"name": "Comparative Exam - Adult",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "50.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5064",
+		"name": "Comparative Exam Child - student",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "50.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5065",
+		"name": "Orthotics",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "400.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5066",
+		"name": " Initial Visit MVA",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "215.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5067",
+		"name": "Block 1 MVA",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "775.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5069",
+		"name": "Block 3 MVA",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "225.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5070",
+		"name": "supplementary Goods MVA",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "400.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5071",
+		"name": "MVA Case",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "1",
+		"status": "1"
+	}, {
+		"enateId": "5072",
+		"name": "WSIB Case",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5073",
+		"name": "WSIB Adjustment",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "25.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5074",
+		"name": "Administration fee",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5075",
+		"name": "Consultation ",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5076",
+		"name": "Other ",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "5433",
+		"name": "Block 2 MVA",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "500.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "prod2972",
+		"name": "Product",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "prod4493",
+		"name": "doTerra Oils",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}, {
+		"enateId": "prod4499",
+		"name": "Compression Stockings",
+		"code": "NULL",
+		"insurance_code": "",
+		"price": "0.00",
+		"tax": "0.00",
+		"insurable": "0",
+		"status": "1"
+	}
+]

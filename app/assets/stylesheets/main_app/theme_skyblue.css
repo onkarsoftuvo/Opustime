@@ -1,0 +1,574 @@
+.skyBlue_theme .navbar-inverse .navbar-nav> li:after{
+	background-color: #fff;
+}
+.skyBlue_theme .navbar-inverse,.skyBlue_theme .navbar-inverse .navbar-nav> li.active:after,.skyBlue_theme .navbar-twitch > .container .full-nav,.skyBlue_theme .top-btn .save{
+	background-color: #00adef;
+}
+.skyBlue_theme .settings_menu,.skyBlue_theme .settings_menu ul li > .side_menu_con ul{
+	background: rgba(78,82,81,0.9);
+}
+.skyBlue_theme .top_tabbing .col a{
+	background: #325881;
+	border-color: #5f86b1;	
+}
+.skyBlue_theme .top_tabbing .col a:hover,.skyBlue_theme .top_tabbing .col a.active{
+	background: #5077a1;
+}
+.skyBlue_theme .top_tabbing .col a.active{
+	pointer-events: none;
+}
+.skyBlue_theme .open-nav li a,.skyBlue_theme .open-nav li.active a{
+	color: #4e5251;
+}
+.skyBlue_theme .top-btn .cancel{
+	background: #cf1939;
+}
+.skyBlue_theme .info{
+	background: url(/assets/info_sky_blue.png) no-repeat;
+}
+.skyBlue_theme .user-icn{
+	background: url(/assets/user-icn_blue.png) no-repeat;
+}
+.skyBlue_theme .check-con .checkbox label span{
+	background-image: url(/assets/checkbox_sky_blue.png);
+}
+.skyBlue_theme .side-bar h5,.skyBlue_theme .avail-con h6{
+	color: #00adef;
+}
+.skyBlue_theme .on-off input[type="checkbox"] + span{
+	background-color: #cf1939;	
+}
+.skyBlue_theme .fac-con a:hover{
+	background-color: #5278a0;	
+}
+.skyBlue_theme .side-bar-links ul li a.active, .skyBlue_theme .side-bar-links ul li a:hover{
+	color: #00adef;	
+}
+.skyBlue_theme .info-hover span:after,.skyBlue_theme md-tooltip.md-default-theme.customtooltip .md-content:after,.skyBlue_theme .side-bar-header a span:after{
+	background: url(/assets/info-arrow_sky_blue.png) no-repeat;
+}
+.skyBlue_theme .email-toolbar .btn-default{
+	background-color: #00adef;
+	border-color: #00adef;
+	color: #fff;
+}
+.skyBlue_theme .email-toolbar .btn-default[disabled],.skyBlue_theme .btn-default[disabled]{
+	background-color: #5b85b0;
+	border-color: #5b85b0;
+}
+.skyBlue_theme .plan table a{
+	background-color: #ce1938;
+}
+.skyBlue_theme .productsdetails .col-sm-4 button, .skyBlue_theme .productsdetails .col-sm-2 button, .skyBlue_theme .productsdetails .col-sm-3 button, .skyBlue_theme .productsdetails .col-sm-1 button, .skyBlue_theme .productsdetails .col-sm-6 button, .skyBlue_theme .PatientList ul li button,.skyBlue_theme .select-account .dropdown-menu ul,.skyBlue_theme .select-account .dropdown-menu,.skyBlue_theme .select-account > a,.skyBlue_theme .embed_content .input-group-addon,.skyBlue_theme .facebook_content button[type="button"].add_online,.skyBlue_theme .confirm a,.skyBlue_theme .xero button.connect,.skyBlue_theme  .facebookBooking .addToFacebook,.skyBlue_theme .data-import .integration_error,.skyBlue_theme .integration_tabbing a.active,.skyBlue_theme .plan table a.select-plan,.skyBlue_theme .subscription a,.skyBlue_theme .upload-btn,.skyBlue_theme .info-hover span,.skyBlue_theme .bus-icn,.skyBlue_theme .fac-con a,.skyBlue_theme .avail .nav-tabs li.active a,.skyBlue_theme .on-off input[type="checkbox"]:checked + span,.skyBlue_theme md-tooltip.customtooltip .md-content,.skyBlue_theme .side-bar-header a span,.skyBlue_theme .bus-icn-other,.skyBlue_theme .multiple-sel .md-chips .md-chip,.skyBlue_theme .online_booking_tabbing a,.skyBlue_theme .view-sample,.skyBlue_theme .sms-con .sms-btns a,.skyBlue_theme .dataImport button,.skyBlue_theme .data-export button[type="submit"],.skyBlue_theme .import-data table tbody a{
+	background-color: #00adef;
+	color: #fff;
+}
+.skyBlue_theme .productsdetails .col-sm-4 button.pro-value, .skyBlue_theme .productsdetails .col-sm-6 button.pro-value, .skyBlue_theme .PatientList ul li button.pro-value{
+	background-color: #edf2f6;
+	color: #313538;
+}
+.skyBlue_theme .upload-btn{
+	border-color: #00adef;
+}
+.skyBlue_theme .select-account .dropdown-menu ul a{
+	color: #ccc;
+}
+.skyBlue_theme .select-account .dropdown-menu ul a:hover{
+	color: #fff;
+}
+.skyBlue_theme .chimp_link a,.skyBlue_theme .mailchip label,.skyBlue_theme .integration_tabbing a,.skyBlue_theme .mailchip_info a,.skyBlue_theme .sms-con h5,.skyBlue_theme .import-data table tbody tr td,.skyBlue_theme .plan table th,.skyBlue_theme .subscription h4 span,.skyBlue_theme .subscription strong,.skyBlue_theme .plan .table>tbody>tr>td strong{
+	color: #00adef;	
+}
+.skyBlue_theme .online_booking_tabbing a:hover,.skyBlue_theme .online_booking_tabbing a.active{
+	background-color: #5b85b0;
+}
+.skyBlue_theme .select-account > a:hover, .skyBlue_theme .select-account > a:focus{
+	background-color: #5b85b0 !important;	
+}
+.skyBlue_theme .sms-con strong{
+	background: #cf1939;
+}
+.skyBlue_theme .data-export button[type="submit"]{
+	border-color: #00adef;
+}
+.skyBlue_theme .import-data table tbody a.delete,.skyBlue_theme .hide-app a{
+	background-color: #ce1938;
+}
+.skyBlue_theme .chart_date > a.left{
+	background: url(/assets/new_arrow_left_skyblue.png) left no-repeat;
+}
+.skyBlue_theme .chart_date > a.right{
+	background: url(/assets/new_arrow_right_skyblue.png) right no-repeat;
+}
+.skyBlue_theme .app_sidebar,.skyBlue_theme .close_menu{
+	background-color: #4e5251;
+}
+.skyBlue_theme .tabbings li a,.skyBlue_theme .skip_ahead ul li a,.skyBlue_theme .availability a{
+	background-color: #00adef;
+}
+.skyBlue_theme .skip_ahead ul li a:hover,.skyBlue_theme .availability a:hover{
+	background-color: #fff;
+}
+.skyBlue_theme .btm_links li a{
+	border-color: #00adef
+}
+.skyBlue_theme .btm_links li a:hover{
+	background-color: #00adef;
+}
+.skyBlue_theme .fc-toolbar .fc-center button{
+	background-color: #00adef;
+}
+.skyBlue_theme .fc-toolbar .fc-center{
+	border-color: #00adef;
+}
+.skyBlue_theme .cart-btn span,.skyBlue_theme .invoice-list ul li h4{
+	color: #00adef;
+}
+.skyBlue_theme .fc-toolbar .fc-right button.fc-state-active{
+	background-color: #37c1f6;
+	border-color: #37c1f6;
+}
+.skyBlue_theme .red-text,.skyBlue_theme .pagination>li>a, .skyBlue_theme .pagination>li>span,.skyBlue_theme .PatientList ul li h4,.skyBlue_theme .productsdetails .col-sm-2 span, .skyBlue_theme .productsdetails .col-sm-4 span, .skyBlue_theme .productsdetails .right span, .skyBlue_theme .productsdetails .col-sm-3 span{
+	color: #37c1f6;
+}
+.skyBlue_theme .pagination>.active>a,.skyBlue_theme .pagination>.active>span, .skyBlue_theme .pagination>.active>a:hover, .skyBlue_theme .pagination>.active>span:hover, .skyBlue_theme .pagination>.active>a:focus, .skyBlue_theme .pagination>.active>span:focus{
+	background-color: #37c1f6;
+	color: #fff;
+	border-color: #37c1f6;
+}
+.skyBlue_theme .patient-links{
+	background-color: #37c1f6;
+}
+.skyBlue_theme .below-links{
+	background-color: #37c1f6;
+}
+.skyBlue_theme .btn-pink, .skyBlue_theme .gray_btns button.primary-btn, .skyBlue_theme .btn-pink{
+	background-color: #00adef;
+}
+.skyBlue_theme .btn-pink:hover, .skyBlue_theme .gray_btns button.primary-btn:hover, .skyBlue_theme .btn-pink:focus{
+	background-color: #37c1f6;	
+}
+.skyBlue_theme .patient-links a{
+	background-color: #fff;
+	color: #00adef;
+}
+.skyBlue_theme .patient-con h4,.skyBlue_theme .full-detail h4 label{
+	color: #00adef;
+}
+.skyBlue_theme .details-pages .date{
+	background-color: #00adef;
+}
+.skyBlue_theme .note-detail{
+	color: #00adef;
+	border-color: #00adef;
+	background-color: #e1e4ef
+}
+.skyBlue_theme .cross{
+	background-image: url(/assets/cross_skyblue.png);
+}
+.skyBlue_theme .waitlist a{
+	background: #00adef;
+	color: #fff
+}
+.skyBlue_theme .waitlist a:hover{
+	background: #fff;
+	color: #00adef;
+}
+.skyBlue_theme .waitlist a.dots{
+	background: none;
+}
+.skyBlue_theme .waitlist a.dots:hover{
+	color: #fff;
+}
+.skyBlue_theme .availability a.active{
+	background: #fff;
+	color: #000;
+}
+.skyBlue_theme .radios_btns label span{
+	background: #00adef;
+}
+.skyBlue_theme .radios_btns label span:after{
+	background: #00adef;
+}
+.skyBlue_theme .radios_btns label input[type="radio"]:checked + span:after {
+    background: #e2e4e5;
+}
+.skyBlue_theme .round-black{
+	background: #00adef
+}
+.skyBlue_theme .contact_icn{
+	background-image: url(/assets/contact-icon-skyblue.png);
+}
+.skyBlue_theme .email_icon{
+	background-image: url(/assets/email-icon-skyblue.png);
+}
+.skyBlue_theme .open-popups{
+	background-image: url(/assets/add-skyblue.png);
+}
+.skyBlue_theme .btn-delete-icon,.skyBlue_theme header.top-header .navbar-nav>li>a:hover, .skyBlue_theme header.top-header .navbar-nav>li>a:focus{
+	color: #00adef; 
+}
+
+.skyBlue_theme .navbar-inverse .navbar-nav> li > a > .full-nav:before{
+	border-color: transparent #00adef transparent transparent
+}
+.skyBlue_theme .btm_links li a:hover, .skyBlue_theme .top_icn a:hover, .skyBlue_theme .tabbings li a:hover{
+	background-color: #00adef;
+}
+.skyBlue_theme .radios label span{
+	background-image: url(/assets/radios_skyblue.png);
+}
+.skyBlue_theme .checkboxs label span{
+	background-image: url(/assets/checkboxes_sky_blue.png);
+}
+.skyBlue_theme .waitlistprac span small{
+	background-color: #00adef;
+}
+.skyBlue_theme .waitlistprac span small:after{
+	color: #00adef;	
+}
+.skyBlue_theme .waitListAcc .panel-open .radios label small,.skyBlue_theme .waitListAcc .radios label small:hover{
+	color: red;
+}
+.skyBlue_theme .skip_ahead h5{
+	opacity: 1;
+}
+.skyBlue_theme md-tooltip.md-default-theme.customtooltip ul li h6{
+	color: #fff;
+}
+.skyBlue_theme .medi .radio span{
+	background-image: url(/assets/radio_blue.png);
+}
+.skyBlue_theme .loginForm h3{
+	color: #37c1f6;
+}
+.skyBlue_theme .btn.btn-blue{
+	background-color: #00adef;
+	columns: #fff;
+}
+.skyBlue_theme .form-link i{
+	color: #36618c;
+}
+.skyBlue_theme .fa.fa-lock{
+	color: #37c1f6;	
+}
+.skyBlue_theme .login-check span{
+	background-image: url(/assets/login-check_skyblue.png);
+}
+.skyBlue_theme .invoice-listing li h6 a,.skyBlue_theme .invoice-listing li a:hover,.skyBlue_theme .invoice-listing li > a span{
+	background-color: #37c1f6;
+}
+.skyBlue_theme .fileattach h4{
+	color: #36618c;
+}
+.skyBlue_theme .merge button, .skyBlue_theme .sms button,.skyBlue_theme .attach-des-con span{
+	background: #36618c;
+}
+.skyBlue_theme .merge button[type="button"], .skyBlue_theme .sms button[type="button"]{
+	background: #cf1939;
+}
+.skyBlue_theme .attachments > a, .skyBlue_theme .no_note > p > a{
+	color: #36618c;
+	background-image: url(/assets/add-blue.png);
+}
+.skyBlue_theme .basket{
+	background-image: url(/assets/basket_sky_blue.png);
+}
+.skyBlue_theme .filter-btn button{
+	background-color: #00adef;
+	color: #fff;
+}
+.skyBlue_theme .address-heading h5{
+	color: #00adef;
+}
+.skyBlue_theme .data-export .non-edit-small input{
+	background-image: url(/assets/cal_blue.png);
+}
+.skyBlue_theme .top-btn .save.invc_icn{
+	background-color: #00adef;
+}
+.skyBlue_theme .creditFromContent button{
+	background-color: #00adef;
+}
+.skyBlue_theme .creditFromContent input[type="text"], .skyBlue_theme .creditFromContent select{
+	/*background-color: #e1dcdc;
+	border-color: #e1dcdc;*/
+}
+
+
+
+
+.skyBlue_theme .productsdetails .col-sm-4 button.auto_wid {
+    width: auto;
+    padding: 1px 10px;
+    min-width: 165px;
+}
+.skyBlue_theme .productsdetails .col-sm-2, 
+.skyBlue_theme .productsdetails .col-sm-4, 
+.skyBlue_theme .productsdetails .right, 
+.skyBlue_theme .productsdetails .col-sm-3,
+.skyBlue_theme .settings_menu ul li > span:before{
+	color: #4e5251;
+}
+.skyBlue_theme .settings_menu ul li > span{
+	background-color: #4e5251;
+}
+.skyBlue_theme .popUp .cross_bar,
+.skyBlue_theme .topBar_content
+{
+	background-color: rgba(78,82,81,0.9);
+}
+.skyBlue_theme .side_menu_con:before{
+	color: rgba(78,82,81,0.9);
+}
+.skyBlue_theme .cross_bar .cross_btn,.skyBlue_theme .topBar_content button{
+	background-color: rgba(78,82,81,0.7);
+}
+
+.skyBlue_theme .chart-con .chart_heading, 
+.skyBlue_theme .tab_contents h4,
+.skyBlue_theme .payment_table>thead>tr>th,
+.skyBlue_theme .table_view .table>thead>tr>th,
+.skyBlue_theme .appointments .app_header,
+.skyBlue_theme .message-box .message_header,
+.skyBlue_theme .sales_chart h4,
+.skyBlue_theme .mess_con h4,
+.skyBlue_theme .mess_con p,
+.skyBlue_theme .reports-table .table>thead>tr>th,
+.skyBlue_theme .reports_filters label{
+	color: #00adef;
+}
+.skyBlue_theme .printBtns a,
+.skyBlue_theme .button-table button.btn.btn-black,
+.skyBlue_theme .message-box .message_header button,
+.skyBlue_theme .content_box .exist_patient > div > a,
+.skyBlue_theme .content_box .add_link,
+.skyBlue_theme .radio_con label input[type="radio"] + span,
+.skyBlue_theme .radio_con label input[type="radio"] + span:after,
+.skyBlue_theme .next_apps .book_another button{
+	background-color: #00adef;
+}
+.skyBlue_theme .content_box .cancel_appointment button.btn-primary{
+	background-color: #00adef;
+	border-color: #00adef;
+}
+.skyBlue_theme .radio_con label input[type="radio"]:checked + span:after{
+	background-color: #fff;
+}
+.skyBlue_theme .top_tabbing .col a{
+	background-color: #37c1f6;
+	border-color: #207b9d;
+}
+.skyBlue_theme .top_tabbing .col a.active,
+.skyBlue_theme .top_tabbing .col a:hover,
+.skyBlue_theme .online_booking_tabbing a:hover, 
+.skyBlue_theme .online_booking_tabbing a.active{
+	background-color: #207b9d;
+}
+/*.skyBlue_theme .top_tabbing .col a:hover, 
+.skyBlue_theme .top_tabbing .col a.active{
+	background-color: #a9acab;
+	border-color: #fff;
+}*/
+.skyBlue_theme .dashboard_overview ul li{
+	background-color: #00adef;
+}
+.skyBlue_theme .dashboard_overview ul li:nth-child(2),
+.skyBlue_theme .dashboard_overview ul li:nth-child(5){
+	background-color: #4e5251;
+}
+.skyBlue_theme .dashboard_overview ul li:nth-child(3),
+.skyBlue_theme  .dashboard_overview ul li:nth-child(6){
+	background-color: #d3d3d3;
+}
+.skyBlue_theme .content_box .top_tabbing .col a{
+	background-color: #37c1f6;
+}
+.skyBlue_theme .reports_filters button.apply{
+	background-color: #1c94c2;	
+}
+.skyBlue_theme .reports-table .dataTables_info,
+.skyBlue_theme .sms_con .table>thead>tr>th,
+.skyBlue_theme .patient_filter label,
+.skyBlue_theme .patient_center_filter .form-group.cal label,
+.skyBlue_theme .side_filter label,
+.skyBlue_theme .sendTo label,
+.skyBlue_theme .left_side_pop .form-group label, 
+.skyBlue_theme .right_side_pop .form-group label,
+.skyBlue_theme .appointments .app_header span,
+.skyBlue_theme .list_bar ul li h5,
+.skyBlue_theme .tab_contents .total-list thead tr th,
+.skyBlue_theme .tab_contents .dollor_sign,
+.skyBlue_theme .invoice_ammount ul li span,
+.skyBlue_theme .reports_filters .arr_con .btn,
+.skyBlue_theme .message_history label,
+.skyBlue_theme a.sign-up,.skyBlue_theme .totalCount h6,
+.skyBlue_theme .noRecordToDisplay h4 span,
+.skyBlue_theme .message_form label,
+.skyBlue_theme .tab_contents .remove,
+.skyBlue_theme .total-price a{
+	color: #37c1f6;
+}
+.skyBlue_theme .appointments .app_header span > span{
+	color: #fff;
+	background: #37c1f6;
+}
+.skyBlue_theme .tab_contents .total-list button.btn.btn-black,
+.skyBlue_theme .reports_filters button.export,
+.skyBlue_theme .reports_filters_btn button.apply,
+.skyBlue_theme .filter_btns button, 
+.skyBlue_theme .side_filter > button,
+.skyBlue_theme .patient_right_filter a,
+.skyBlue_theme .focussed .btn-default,
+.skyBlue_theme .activity_tabs a,
+.skyBlue_theme .one_contact
+{
+	background-color: #37c1f6;
+	}
+.skyBlue_theme .focussed .btn-default{
+	border-color:#FFF;
+}
+.skyBlue_theme .reports-table .dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.skyBlue_theme .reports-table .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.skyBlue_theme .patient_filter input[type="radio"] + span,
+.skyBlue_theme  .side_filter label input[type="radio"] + span{
+	background-color: #37c1f6;
+	border-color:#37c1f6; 
+}	
+.skyBlue_theme .button-table button.btn.btn-black:hover{
+	background-color: #207b9d;
+}
+.skyBlue_theme .productsdetails .col-sm-4 button:hover, 
+.skyBlue_theme .productsdetails .col-sm-2 button:hover, 
+.skyBlue_theme .productsdetails .col-sm-3 button:hover, 
+.skyBlue_theme .productsdetails .col-sm-1 button:hover, 
+.skyBlue_theme .productsdetails .col-sm-6 button:hover, 
+.skyBlue_theme .PatientList ul li button:hover, 
+.skyBlue_theme .select-account .dropdown-menu:hover, 
+.skyBlue_theme .select-account > a:hover,  
+.skyBlue_theme .facebook_content button[type="button"].add_online:hover, 
+.skyBlue_theme .confirm a:hover,  
+.skyBlue_theme .xero button.connect:hover, 
+.skyBlue_theme .integration_tabbing a.active, 
+.skyBlue_theme .plan table a.select-plan:hover, 
+.skyBlue_theme .subscription a:hover, 
+.skyBlue_theme .upload-btn:hover, 
+.skyBlue_theme .info-hover span:hover, 
+.skyBlue_theme .fac-con a:hover, 
+.skyBlue_theme .avail .nav-tabs li.active a, 
+.skyBlue_theme .online_booking_tabbing a:hover, 
+.skyBlue_theme .sms-con .sms-btns a:hover, 
+.skyBlue_theme .dataImport button:hover, 
+.skyBlue_theme .data-export button[type="submit"]:hover, 
+.skyBlue_theme .import-data table tbody a:hover, 
+.skyBlue_theme .top-btn .save:hover,
+.skyBlue_theme .reports_filters button.export:hover,
+.skyBlue_theme .reports_filters button.apply:hover,
+.skyBlue_theme .reports_filters_btn button.apply:hover,
+.skyBlue_theme .filter_btns button:hover, 
+.skyBlue_theme .side_filter > button:hover,
+.skyBlue_theme .patient_right_filter a:hover,
+.skyBlue_theme .email-toolbar .focussed .btn-default.active,
+.skyBlue_theme .focussed .btn-default.active,
+.skyBlue_theme .activity_tabs a:hover,
+.skyBlue_theme .content_box .top_tabbing .col a.active,
+.skyBlue_theme .content_box .top_tabbing .col a:hover
+{
+	background-color: #207b9d;
+}
+.skyBlue_theme .patient_filter input[type="radio"]:checked + span:after,
+.skyBlue_theme  .side_filter label input[type="radio"]:checked + span:after{
+	background-color:#FFF; 
+}	
+.skyBlue_theme .textbox-con button[type="submit"]{
+	background-image: url(/assets/msg-btn-sky-blue.png)
+}
+.skyBlue_theme .dashboard_con header .dash_date{
+	background: url(/assets/cal_sky_blue.png) no-repeat left;	
+}
+.skyBlue_theme .dashboard_con header .dash_arrow a,.skyBlue_theme  .chart_heading a{
+	background: url(/assets/arrow_sky_blue.png) no-repeat center;
+}
+.skyBlue_theme .modal-large_modal .content_box input[type="checkbox"] + span{
+	background-image: url(/assets/checkbox_new_skyblue.png)
+}
+.skyBlue_theme .modal-large_modal .content_box .avail_days input[type="checkbox"] + span{
+	background-image: url(/assets/only_check_skyblue.png)	
+}
+.skyBlue_theme .time_bar h3,.skyBlue_theme .time_bar h5{
+	color: #4e5251;
+}
+.skyBlue_theme #elevio-widget-container .action-btn, 
+.skyBlue_theme #elevio-base-menu, 
+.skyBlue_theme #elevio-base-menu .mobile-close, 
+.skyBlue_theme #elevio-base-menu .bottom-cta, 
+.skyBlue_theme #elevio-widget-container #habla_offline_submit_input, 
+.skyBlue_theme #elevio-widget-container #habla_pre_chat_submit_input, 
+.skyBlue_theme #elevio-widget-container .elevio-menu-button, 
+.skyBlue_theme #elevio-inline .elevio-spinner > div{
+	background-color: #37c1f6 !important;
+}
+.skyBlue_theme .date_pickers input[type="text"]{
+	background-image: url(/assets/cal_sky_blue.png)	
+}
+.skyBlue_theme .user-profile>li>a:hover{
+	background-image: url(/assets/support-hover_skyblue.png);
+	color: #37c1f6;
+}
+.skyBlue_theme .user-profile>li:nth-child(2)>a:hover{
+	background-image: url(/assets/profile-hover_skyblue.png) 
+}
+.skyBlue_theme .loginForm .btn.btn-blue{
+	border-color: #37c1f6;
+}
+.skyBlue_theme .chart_btn > button{
+	color: #37c1f6;
+	border-color: #37c1f6;	
+}
+.skyBlue_theme .chart_date_picker table th small{
+	color: #37c1f6;
+}
+.skyBlue_theme .modal-large_modal .content_box .check-con input[type="checkbox"] + span{
+	background-image: url(/assets/checkbox_sky_blue.png);
+	width: 40px;
+    height: 40px;
+    background-size: 40px auto;
+    background-position: 0px -36px;
+}
+.skyBlue_theme .modal-large_modal .content_box .check-con input[type="checkbox"]:checked + span{
+	background-position: 0px 0px;	
+}
+.skyBlue_theme .sendIcon{
+	background-image: url(/assets/contact-icon-skyblue.png);
+}
+.skyBlue_theme .next_app_con ul li:before{
+	background-color: #00adef;
+}
+.skyBlue_theme .contact_icn{
+	background-image: url(/assets/contact-icon-skyblue.png);
+}
+.skyBlue_theme .contact_icn > span,.skyBlue_theme  .email_icon > span{
+	background-color: #00adef;
+}
+.skyBlue_theme .contact_icn > span:before,.skyBlue_theme .email_icon > span:before{
+	border-color: transparent #00adef transparent transparent;
+}
+.skyBlue_theme uib-accordion .panel-default>.panel-heading{
+	color: #00adef;
+}
+.skyBlue_theme .alert-form input[type="text"]{
+	color: #37c1f6 !important;
+	border-color: #37c1f6;
+}
+.skyBlue_theme .PatientList ul li h4:after{
+	background-color: #37c1f6;
+}
+.skyBlue_theme .dashboard_overview ul li > span.tooltip{
+	background-color: #00adef;
+}
+.skyBlue_theme .dashboard_overview ul li > span.tooltip:after{
+	border-color: transparent transparent #00adef transparent;
+}
+.cal_icn{
+	background-image: url(/assets/cal_sky_blue.png);
+}

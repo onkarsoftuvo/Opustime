@@ -1,0 +1,48 @@
+<style>
+h2{
+	font-size: 16px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+.table{
+	width: 100%;
+}
+.table thead tr th{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+.table tbody tr td{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+</style>
+<h2><%= t('.Appointment') %> <%= t('.Report') %></h2>
+<table class="table" cellspacing="0"  border="1">
+	<thead>
+		<tr>
+			<th><%= t('.Name') %></th>
+			<th><%= t('.Phone') %></th>
+			<th><%= t('.Email Address') %></th>
+			<th><%= t('.Address') %></th>
+			<th><%= t('.DOB') %></th>
+			<th><%= t('.Occupation') %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @result.each do |patient| %>
+			<tr>
+				<td><%= patient[:name]%></td>
+				<td><%= patient[:phone_no]%></td>
+				<td><%= patient[:email]%></td>
+				<td><%= patient[:address]%></td>
+				<td><%= patient[:dob]%></td>
+				<td><%= patient[:occupation]%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>	

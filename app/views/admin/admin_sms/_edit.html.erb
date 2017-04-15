@@ -1,0 +1,62 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Edit Subscription Package</h3>
+  </div>
+  <%= form_for(@sms_plan1, url: admin_sm_path, html: {:class => "orm-horizontal box-body", :id => 'plan_edit_from'}) do |f| %>
+
+      <div class="col-sm-12 form-group">
+        <!--<label class="col-sm-3 control-label">Email</label>-->
+        <%= f.label :No_Of_Sms, :class => "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <!--<input type="email" class="form-control" placeholder="">-->
+          <%= f.text_field :no_sms, :required => true, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-12 form-group">
+        <!--<label class="col-sm-3 control-label">Email</label>-->
+        <%= f.label :Price, :class => "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <!--<input type="email" class="form-control" placeholder="">-->
+          <%= f.text_field :amount, :required => true, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-12 form-group">
+        <!--<label class="col-sm-3 control-label">Email</label>-->
+        <%= f.label :Note, nil, :class => "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <!--<input type="email" class="form-control" placeholder="">-->
+          <%= f.text_field :notes, :class => "form-control" %>
+        </div>
+      </div>
+      <% if @sms_groups.present? %>
+          <div class="col-sm-12 form-group">
+            <!--<label class="col-sm-3 control-label">Email</label>-->
+            <%= f.label :sms_group, nil, :class => "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <!--<input type="email" class="form-control" placeholder="">-->
+              <%= f.select :sms_group_id, @sms_groups.collect {|u| [u.name, u.id]},{:prompt => 'Select SMS Group', :selected => @sms_plan1[:sms_group_id]}, {:class => 'form-control'} %>
+            </div>
+          </div>
+      <% end %>
+      <div class="col-sm-12 form-group">
+        <label class="col-sm-3 control-label" style="margin-top: 12px">Status</label>
+        <div class="col-sm-9">
+          <%= f.check_box :status%>
+        </div>
+      </div>
+
+      <div class="box-footer">
+        <%= f.submit "Save", class: "btn btn-info pull-right", :style => "margin-top: 18px;" %>
+      </div>
+  <% end %>
+</div>
+<script>
+    $("#sms_plan_status").bootstrapSwitch({
+        onText: 'Active',
+        offText: 'Inactive',
+        size: 'medium',
+        onColor: 'success'
+    });
+</script>

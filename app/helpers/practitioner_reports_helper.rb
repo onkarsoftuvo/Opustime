@@ -1,0 +1,2 @@
+module PractitionerReportsHelper
+end

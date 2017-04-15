@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Opus Time</title>
+  <style type="text/css">
+  	body{
+  		padding: 0; 
+  		margin: 0; 
+  		font-family: arial;
+  	}
+  	.main-con{
+  		width: 800px; 
+  		margin: auto; 
+  		box-sizing: border-box;
+  	}
+  	.header{
+  		background: #edf2f6; 
+  		padding: 14px 20px; 
+  		overflow: auto;
+  	}
+  	.header h3{
+  		padding: 0; 
+  		margin: 0; 
+  		font-size: 15.05px; 
+  		color: #b93e5b; 
+  		text-transform: uppercase; 
+  		float: left; 
+  		font-family: 'Open Sans';
+		font-weight: 600;
+  	}
+  	.header h3:last-child{
+  		float: right;
+  	}
+  	.booking_con{
+  		padding: 30px 20px;
+  	}
+  	.booking_con h5{
+  		font-size: 13px;
+  		color: #313538;
+  		text-transform: uppercase;
+  		font-family: "Montserrat";
+  		margin-bottom: 5px;
+  		margin-top: 0;
+  	}
+  	.booking_con h2{
+  		font-size: 18px;
+  		color: #7aa52d;
+  		text-transform: uppercase;
+  		margin: 0;
+  		font-family: "Montserrat";
+  		font-weight: 400;
+  	}
+  	.booking_con p{
+  		font-size: 14px;
+  		color: #616161;
+  		margin-top: 5px;
+  	}
+  	.detail_con{
+  		width: 100%;
+  	}
+  	.detail_con th{
+  		padding: 10px 20px;
+  		background: #c0dbf0;
+  		font-size: 14px;
+  		color: #313538;
+  		text-transform: uppercase;
+  		font-family: "Montserrat";
+  		text-align: left;
+
+  	}
+  	.detail_con td{
+  		padding: 25px 20px;
+  		vertical-align: top;
+  	}
+  	.detail_con td h4{
+  		font-size: 14px;
+  		color: #b93e5b;
+  		font-family: "Montserrat";
+  		font-weight: 400;
+  		margin: 0;
+  	}
+  	.detail_con td h3{
+  		font-size: 18px;
+  		color: #b93e5b;
+  		font-family: "Montserrat";
+  		font-weight: 400;
+  		margin: 0;
+  		margin-top: 10px;
+  	}
+  	.detail_con td p{
+  		margin-top: 5px;
+  		font-size: 14px;
+  		color: #848484;
+  		font-family: 'Open Sans';
+		font-weight: 600;
+		margin-bottom: 5px;
+  	}
+  	.detail_con td h6{
+  		font-size: 14px;
+  		color: #848484;
+  		font-family: 'Open Sans';
+		font-weight: 400;
+		margin: 0
+  	}
+  	.detail_con td h6 img{
+  		margin: 0 5px -3px 0
+  	}
+  	.footer{
+  		background: #edf2f6;
+  		overflow: auto;
+  		padding: 0 20px;
+  	}
+  	.footer h5{
+  		margin: 0;
+  		padding: 14px 0;
+  		font-size: 15px;
+  		color: #848484;
+  		font-family: 'Open Sans';
+		font-weight: 400;
+		float: left;
+		margin-right: 100px;
+    line-height: 40px;
+  	}
+  	.footer h5 img{
+  		float: left;
+  		margin-top: 2px;
+  		margin-right: 10px;
+  	}
+  </style>
+</head>
+<body>
+	<div class="main-con">
+		<div class="header">
+			<h3><%= @company.company_name %>-<%= t('.Book') %> <%= t('.appointment') %></h3>
+			<h3><%= @appointment.appnt_date.strftime("%m/%d/%Y") %></h3>
+		</div>
+		<div class="booking_con">
+			<h5><%= @company.company_name %></h5>
+			<h2><%= t('.booking confirmed') %></h2>
+			<p><%= t('.Fantastic') %> ! <%= t('.Your booking was successful') %>. </p>
+		</div>
+		<table class="detail_con" cellspacing="0">
+			<thead>
+				<tr>
+					<th><%= t('.Location') %></th>
+					<th><%= t('.Service') %></th>
+					<th><%= t('.Practitioner') %></th>
+					<th><%= t('.Time') %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width: 210px;">
+						<h4><%= @business.name%></h4>
+						<h6><%= @business.full_address %></h6>
+					</td>
+					<td>
+						<% unless @service.category.nil? %>
+							<h4><%= "#{@service.name}(#{@service.category})" %></h4>
+						<% else %>
+							<h4><%= "#{@service.name}(Other)" %></h4>
+						<% end %>
+						<p>$<%= @rate %></p>
+						<h6><%= wicked_pdf_image_tag "small_watch_black.png" %> <%= @service.duration_time %> Min</h6>
+					</td>
+					<td>
+						<h4><%= @doctor.full_name_with_title %></h4>
+						<p><%= @doctor.practi_info.try(:designation) %></p>
+					</td>
+					<td>
+						<h4><%= @appointment.appnt_date.strftime("%a , %d %B%Y at ") %><%= @appointment.appnt_time_start.strftime("%H:%M %P") %></h4>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		<div class="footer">
+			<h5><%= wicked_pdf_image_tag @account_logo_url  , height: "33"  %> &nbsp; <%= @business.web_url unless @business.web_url.nil? %></h5>
+		</div>
+    <div style="text-align: center;">
+      <h5><%= t('.Powered by OpusTime') %></h5>
+    </div>
+	</div>
+</body>
+</html>

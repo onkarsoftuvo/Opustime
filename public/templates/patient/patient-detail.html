@@ -1,0 +1,1437 @@
+<div class="dashboard-con settings" ng-if="PatientDetails.error == undefined">
+  <div class="patient-page col-md-12 col-sm-12 form-content" ng-scrollbars ng-scrollbars-config="lazyloadConfig" lazyload="LazyLoad()">
+    <div class="row patient-container new-patient">
+      <div class="col-sm-12 have-margin">
+        <div class="panel-heading">
+          <div class="productsdetails row" style="outline:none" ng-click="opened($index, Contacts.id)">
+            <div class="col-sm-9">
+              <div class="patient-name row">
+                <div class="col-sm-4 " id="pateintSet-width">
+                  <img  ng-if="((PatientDetails.gender=='Male' || PatientDetails.gender==null) && (PatientDetails.logo_flag == false))" src="assets/user.png" alt="" class="patient-img mCS_img_loaded">
+                  <img  ng-if="((PatientDetails.gender=='Female') && (PatientDetails.logo_flag == false)) " src="assets/user_female.png" alt="" class="patient-img mCS_img_loaded">
+                  <img  ng-if="((PatientDetails.gender=='null' || PatientDetails.gender == 'none' || PatientDetails.gender=='Not Applicable' || PatientDetails.gender=='') && (PatientDetails.logo_flag == false))" src="assets/user_not_app1.png" alt="" class="patient-img mCS_img_loaded">
+                  <img  ng-src="{{PatientDetails.logo}}" ng-if ="PatientDetails.logo_flag" alt="" class="patient-img mCS_img_loaded">
+                  <h2 class="ng-binding">{{PatientDetails.title}} {{PatientDetails.first_name}} {{PatientDetails.last_name}}</h2>
+                  <div class="top-button-links" id="topBack-btn">
+                    <button class="back-button" ui-sref="patient">{{'patient_detail.Back' | translate:translationData}}</button>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="patient-con row">
+                    <div class="col-sm-6">
+                      <h4>{{'patient_detail.contactNo' | translate:translationData}} : <span class="ng-binding">{{!PatientDetails.primary_no ? 'N/A' : PatientDetails.primary_no}}
+                        <a href="" ui-sref="patient-detail.sendSms({'phone_no' : PatientDetails.primary_no})" ng-if="PatientDetails.primary_no && roleData.result.send_sms" class="contact_icn"><span>Send SMS</span></a></span> </h4>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>{{'patient.DOB' | translate:translationData}} : <span ng-if="PatientDetails.dob" class="ng-binding">{{PatientDetails.dob}}/({{PatientDetails.age}}  {{'patient_detail.old' | translate:translationData}})</span></h4>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6 text-warp">
+                      <h4>{{'patient.Email' | translate:translationData}} : <span class="ng-binding" title="{{!PatientDetails.email ? 'N/A' : PatientDetails.email}}">{{!PatientDetails.email ? 'N/A' : PatientDetails.email}}
+                        <a ng-click="PatientPopup('newLetter', 'email-xl')" href="" ng-if="PatientDetails.email && roleData.result.letter_create" class="email_icon"><span>Send Email</span></a>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>{{'patient_form.ConcessionType' | translate:translationData}} :
+                        <span ng-if="PatientDetails.concession_name!=''">{{PatientDetails.concession_name}}</span>
+                        <span ng-if="PatientDetails.concession_name==''">{{'patient.None' | translate:translationData}}</span>
+                      </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 p_form text-left cilentAlert" ng-if="roleData.result.medical_alert">
+              <ul class="list-inline">
+                <li ng-repeat="Alerts in PatientAlertList.medical_alerts">
+                  <a href="" ng-show="anchorpatientalert">
+                    <span ng-click="UpdateAlert=true;anchorpatientalert=false">{{Alerts.alertName}}
+                    </span>
+                  </a>
+                  <div ng-show="UpdateAlert">
+                    <form  name="Updatepatientalert{{Alerts.id}}" ng-submit="UpdatePatientalert(Alerts,Alerts.id)" id="Updatepatientalert{{Alerts.id}}" class="alert-form ng-pristine ng-valid">
+                      <input style="margin-left: 0px;" ng-model="Alerts.alertName" type="text" class="form-control" placeholder="Enter Alert"/>
+                      <button form="Updatepatientalert{{Alerts.id}}" class="blank-btn" type="submit"><i title="Update" class="fa fa-refresh btn-delete-icon"></i> </button>
+                      <button class="blank-btn" type="button" ng-click="UpdateAlert=false;anchorpatientalert=true"><i title="Cancel" class="fa fa-times btn-delete-icon"></i></button><button class="blank-btn" type="button" ng-click="DeleteAlert(Alerts.id);"> <i title="Delete" class="fa fa-trash-o btn-delete-icon"></i></button>
+                    </form>
+                  </div>
+                </li>
+                <li>
+                  <button class="blank-btn" type="button"  ng-show='Showmedicalalert' ng-click="Showmedicalalert=false;alertform=true" >
+                    <i title="Add Alert" class="fa fa-bell btn-delete-icon"></i>
+                  </button>
+                </li>
+                <li ng-show='alertform'>
+                  <form name="Addpatientalert" ng-submit="AlertPatient(medical_alert)" id="Addpatientalert" class="alert-form ng-pristine ng-valid">
+                    <input ng-model="medical_alert.alertName" type="text" class="form-control" placeholder="Enter Alert" style="margin-left: 0px;">
+                    <button class="blank-btn marg-delete" type="submit"  form="Addpatientalert"> <i title="Add Alert" class="fa fa-plus btn-delete-icon"></i></button>
+                    <button class="blank-btn marg-cncl" type="button" ng-click="alertform=false;Showmedicalalert=true"><i title="Cancel" class="fa fa-times btn-delete-icon"></i> </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <uib-accordion close-others="true" class="clientfulldetail">
+          <uib-accordion-group class="my-group contact-list drop-down">
+            <uib-accordion-heading> <span ng-show="angledown" ng-click="angleup=true;angledown=false"><i class="fa fa-angle-down"></i></span> <span ng-show="angleup" ng-click="angleup=false;angledown=true"><i class="fa fa-angle-up"></i></span> </uib-accordion-heading>
+            <div class="no-animate">
+              <div class="ExpenseDetails">
+                <div class="col-sm-12 productInfo sms-detail">
+                  <div class="modal-body ">
+                    <div class="full-detail">
+                      <div class="col-sm-4">
+                        <h3>{{'patient_detail.GeneralInformation' | translate:translationData}}</h3>
+                        <h4>
+                          <label>{{'patient_form.Gender' | translate:translationData}} </label>
+                          <span>{{PatientDetails.gender}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.DOB' | translate:translationData}}</label>
+                          <span ng-if="PatientDetails.dob">{{PatientDetails.dob}} ({{PatientDetails.age}} {{'patient_detail.old' | translate:translationData}})</span></h4>
+                        <h4>
+                          <label>{{'patient_form.Occupation' | translate:translationData}} </label>
+                          <span>{{PatientDetails.occupation}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.Medicare_Number' | translate:translationData}}</label>
+                          <span>{{PatientDetails.medicare_number}}</span></h4>
+                        <h4>
+                          <label>{{'patient_detail.Referral_source' | translate:translationData}}</label>
+
+                          <span><!-- {{PatientDetails.referral_type}} --> {{PatientDetails.referrer.first_name}} {{PatientDetails.referrer.last_name}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.Emergencycontact' | translate:translationData}} </label>
+                          <span>{{PatientDetails.emergency_contact}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.ReferenceNumber' | translate:translationData}} </label>
+                          <span>{{PatientDetails.reference_number}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.ReferringDoctor' | translate:translationData}} </label>
+                          <span>{{PatientDetails.refer_doctor.first_name}}</span></h4>
+                        <h4>
+                          <label  class="pull-left">{{'patient_form.city' | translate:translationData}}</label>
+                          <span>{{PatientDetails.city}}</span></h4>
+                        <h4>
+                          <label  class="pull-left">{{'patient_form.PostalCode' | translate:translationData}}</label>
+                          <span>{{PatientDetails.postal_code}}</span></h4>
+                        <h4>
+                          <label  class="pull-left">{{'patient_detail.OtherContact' | translate:translationData}} </label>
+                          <span class="pull-left other-contact">
+                          <p ng-repeat="contacts in PatientDetails.patient_contacts_attributes">
+                          <span>{{contacts.contact_no}}
+                          (<span style="text-transform:capitalize;">{{contacts.contact_type}}</span>)
+                          <a href="" ui-sref="patient-detail.sendSms({'phone_no' : contacts.contact_no})" ng-if="contacts.contact_type == 'mobile'" class="contact_icn"></a> </p>
+                          </span></h4>
+                      </div>
+                      <div class="col-sm-5">
+                        <h3>{{'patient_form.communication_preferences' | translate:translationData}}</h3>
+                        <h4>
+                          <label>{{'patient_detail.auto_remind' | translate:translationData}}</label>
+                          <span>{{PatientDetails.reminder_type}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.Address' | translate:translationData}}</label>
+                          <span>{{PatientDetails.address}}</span></h4>
+                        <h4>
+                          <label>{{'patient_detail.SMSMarketing'|translate:translationData}}</label>
+                          <span>{{!PatientDetails.sms_marketing}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.relatedpatients' | translate:translationData}}</label>
+                          <span ng-repeat=" relations in PatientDetails.relationship">{{relations.patient.first_name}} {{relations.patient.last_name}} ({{relations.type}}) </span></h4>
+                        <h3>{{'patient_form.billing'|translate:translationData}}</h3>
+                        <h4>
+                          <label>{{'patient_form.ConcessionType' | translate:translationData}} </label>
+                          <span>{{PatientDetails.concession_name}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.InvoiceTo' | translate:translationData}}</label>
+                          <span>{{PatientDetails.invoice_to}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.EmailInvoice' | translate:translationData}}</label>
+                          <span>{{PatientDetails.invoice_email}}</span></h4>
+                        <h4>
+                          <label>{{'patient_form.Extra_invoice_info' | translate:translationData}} </label>
+                          <span>{{PatientDetails.invoice_extra_info}}</span></h4>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="note-detail">
+                          <h6>{{'patient_form.Note' | translate:translationData}}</h6>
+                          <p>{{PatientDetails.notes}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </uib-accordion-group>
+        </uib-accordion>
+      </div>
+      <div class="full-wid" ng-class="{'col-sm-6' : roleData.result.has_options, 'col-sm-12': !roleData.result.has_options}">
+        <div class="patient-links">
+          <div class="col-sm-6">
+            <h3 ng-if="PatientDetails.next_appointment_info!=null"> {{PatientDetails.next_appointment_info.practitioner_name}} <span>{{PatientDetails.next_appointment_info.appointment_name}}</span> </h3>
+            <h3 ng-if="PatientDetails.next_appointment_info==null" class="no_appointment"> {{'patient_detail.Noappointment' | translate:translationData}}</h3>
+          </div>
+          <div class="col-sm-6 text-right">
+            <a href="" ng-if="PatientDetails.next_appointment_info!=null" ng-click="createApp(PatientDetails.id, PatientDetails.title, PatientDetails.first_name, PatientDetails.last_name)">{{'patient_detail.NextAppointment' | translate:translationData}}</a>
+            <a href="" ng-click="createApp(PatientDetails.id, PatientDetails.title, PatientDetails.first_name, PatientDetails.last_name)" ng-if="PatientDetails.next_appointment_info==null">{{'patient_detail.NewAppointment' | translate:translationData}}</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="col-sm-6 full-wid" ng-if="roleData.result.has_options">
+        <div class="below-links">
+          <a ui-sref="patient-detail.edit({patient_id:PatientDetails.id})" ng-if="roleData.result.modify"><i class="fa fa-edit" ></i>{{'patient_detail.EditDetails' | translate:translationData}}</a>
+          <a href="" ng-click="PatientPopup('merge', 'email-xl')" ng-if="roleData.result.merge"><i class="fa fa-code-fork"></i> {{'patient_detail.Merge' | translate:translationData}}</a>
+          <a ng-show="Archive" ui-sref="patient-detail({patient_id:PatientDetails.id})" href="" ng-click="archive()" ng-if="roleData.result.archive_or_activate"><i class="fa fa-archive" ></i>{{'patient_detail.Archive' | translate:translationData}}</a>
+          <a ng-show="Delete" ui-sref="patient-detail({patient_id:PatientDetails.id})" href="#" ng-click="patientDelete(sm)" ng-if="roleData.result.delete"><i class="fa fa-trash" ></i>{{'button.delete'|translate:translationData}}</a>
+          <a href="" ng-click="historyReport()" ng-if="roleData.result.history_report"><i class="fa fa-history"></i> {{'patient_detail.HistoryReport' | translate:translationData}}</a>
+
+          <a href="#" ui-sref="AccountStatement({patient_id:PatientDetails.id})"  ng-if="roleData.result.account_statement"><i class="fa fa-newspaper-o"></i> {{'patient_detail.Account_Statement' | translate:translationData}}</a> </div>
+      </div>
+      <div class="col-sm-12 active-again" ng-show="(ArchiveCheck && roleData.result.delete)">
+        <p>{{'patient_detail.arrived_at' | translate:translationData}} {{someDate | date:'d MMMM yyyy' : 'UTC'}} <a ui-sref="patient-detail({patient_id:PatientDetails.id})" href="" ng-click="Activeagian()" ng-if="roleData.result.archive_or_activate">{{'patient_detail.makeActiveAgain' | translate:translationData}}</a></p>
+      </div>
+      <div class="balance_con">
+        <div class="active-again" ng-class="PatientDetails.credit_amount==0 ? 'col-sm-12' : 'col-sm-6'" ng-if="PatientDetails.outstanding_balance!=0">
+          <div class="outstanding-balance">
+            <p><i class="info_icn"></i>{{PatientDetails.first_name}} {{'patient_detail.Has_outstanding' | translate:translationData}} <span>$ {{PatientDetails.outstanding_balance | number : 2}}</span></p>
+          </div>
+        </div>
+        <div class="col-sm-6 active-again" ng-class="PatientDetails.outstanding_balance==0 ? 'col-sm-12' : 'col-sm-6'" ng-if="PatientDetails.credit_amount!=0">
+          <div class="outstanding-balance credit_amount">
+            <p><i class="info_icn credit_icn"></i>{{PatientDetails.first_name}} {{'patient_detail.Has_credit_amount' | translate:translationData}} <span>$ {{PatientDetails.credit_amount | number : 2}}</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="filter">
+        <div class="col-lg-12">
+          <ul class="list-inline checkboxes pull-left btndiv">
+            <li ng-if="roleData.result.appointment">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.appointment">
+                    <span></span> {{'sidebar_menu.appointments' | translate:translationData}} <a href="" class="time-con open-popups info info-hover top" ng-click="createApp(PatientDetails.id, PatientDetails.title, PatientDetails.first_name, PatientDetails.last_name)" ng-if="roleData.result.appointment_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.appointmentTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.appointments_count}})</p>
+                  </label>
+                  <!--  <i class="ic info info-hover top">
+                    <span>{{'settings.user_practitioners.label_change_password_info' | translate:translationData}}</span>
+                  </i> -->
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.treatment_note">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.treatment_note">
+                    <span></span> {{'settings.treatment_note.main_heading' | translate:translationData}} <a href="" class="time-con open-popups info info-hover top" ng-click="PatientPopup('addTreatmentNote', 'email-xl')" ng-if="roleData.result.treatment_note_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.treatmentTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.treatment_notes_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.invoice">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.invoice">
+                    <span></span> {{'settings.document_printing.label_invoice' | translate:translationData}} <a ui-sref="patient-detail.newInvoice()" class="time-con open-popups info info-hover top" ng-if="roleData.result.invoice_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.invoiceTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.invoices_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.payment">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.payment">
+                    <span></span> {{'sidebar_menu.payments' | translate:translationData}} <a ui-sref="patient-detail.newPayment({patient_id:current_patient_id})" class="time-con open-popups info info-hover top" ng-if="roleData.result.payment_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.paymentTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.payments_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.recall">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.recall">
+                    <span></span> {{'patient_detail.Recalls'|translate:translationData}} <a href="" class="time-con open-popups info info-hover top" ng-click="PatientPopup('recall', 'email-xl')" ng-if="roleData.result.recall_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.recallTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.recalls_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.file_attachment">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.file">
+                    <span></span> {{'patient_detail.Files' | translate:translationData}} <a href="" class="time-con open-popups info info-hover top" ng-click="PatientPopup('fileAttach', 'email-xl')" ng-if="roleData.result.file_attachment_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.filesTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.files_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.letter">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.letter">
+                    <span></span> {{'settings.document_printing.heading_letter' | translate:translationData}} <a href="" class="time-con open-popups info-hover top" ng-click="PatientPopup('newLetter', 'email-xl')" ng-if="roleData.result.letter_create">
+                      <span style="background-image: none; height: auto; min-width: 175px !important; margin-left: -90px;">{{'patient_detail.letterTooltip' | translate:translationData}}</span>
+                    </a>
+                    <p>({{CountClientFiles.letters_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li ng-if="roleData.result.communication">
+              <div class="check-con">
+                <div class="checkbox">
+                  <label class="ng-binding">
+                    <input type="checkbox" ng-change="filterClientFiles(filter)" ng-model="filter.communication">
+                    <span></span> {{'sidebar_menu.communications' | translate:translationData}}
+                    <p>({{CountClientFiles.communications_count}})</p>
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-inline text-uppercase pull-right">
+            <li>
+              <button class="btn btn-pink" ng-click="selectAll()"><i class="fa fa-check"></i> {{'patient_detail.Selectall' | translate:translationData}}</button>
+            </li>
+            <li style="padding-left:0;">
+              <button class="btn btn-pink" ng-click="clearAll()"><i class="fa fa-times"></i> {{'patient_detail.Clearall' | translate:translationData}}</button>
+            </li>
+          </ul>
+        </div>
+        <!-- Enate File Link -->
+        <div ng-if="PatientDetails.enate_id != false">
+          <div class="col-sm-2">Enate Report Link </div>
+          <div class="col-sm-9"><a style="font-size:12px;" target="_blank" href="http://www.e-nate.com/enate/GetNarrativeReportPortal.do?ssn={{PatientDetails.enate_id}}">http://www.e-nate.com/enate/GetNarrativeReportPortal.do?ssn={{PatientDetails.enate_id}}</a></div>        <!--</div>-->
+        </div>
+        <div class="text-center noRecordToDisplay patientDetail" ng-if="noRecord">
+          <i></i>
+          <h4><span>"{{'patient.oops' | translate:translationData}}! </span> {{'patient.no_info_to_display' | translate:translationData}}."</h4>
+        </div>
+
+
+          <div class="details-pages" ng-repeat="module in PatientsClientFiles.modules">
+          <ul class="list-unstyled first-ul">
+            <li class="main-date">
+              <div class="date">{{module.event_date | date:'dd MMM'}}</div>
+            </li>
+            <!--Involce-->
+            <li ng-if="roleData.result.invoice">
+              <div class="col-sm-2 text-uppercase"  ng-if="module.invoices.length!=0">
+                <div class="filter-title">{{'sidebar_menu.invoices'|translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10"  ng-if="module.invoices.length!=0">
+                <div class="detail-box" ng-repeat="invoice in module.invoices">
+                  <div class="col-sm-9">
+                    <ul class="list-inline list-unstyled">
+                      <li style="color: #dc0000;">{{'sidebar_menu.invoices'|translate:translationData}}# <span>{{invoice.id}}</span> </li>
+                      <li>{{'settings.user_practitioners.practitioner' | translate:translationData}} <span>{{invoice.practitioner | translate:translationData}}</span> </li>
+                      <li>{{'product.label_tax' | translate:translationData}} <span>$ {{invoice.tax}}</span> </li>
+                      <li style="color: #dc0000;">{{'patient_detail.InvoiceAmount' | translate:translationData}} <span>$ {{invoice.invoice_amount}}</span> </li>
+                      <li>{{'patient_detail.OutstandingBal' | translate:translationData}} <span>$ {{invoice.outstanding_balance}}</span> </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3 gray_btns">
+                    <button class="btn btn-default" ng-click="deleteInvoice(invoice.id)" ng-if="invoice.security_role.delete">{{'button.delete' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="editPaitentInvoice(invoice.id)" ng-if="invoice.security_role.modify">{{'button.edit'| translate:translationData}}</button>
+                    <button ng-click="PrintInvoice(invoice.id)" class="btn btn-default">{{'patient_detail.Print' | translate:translationData}}</button>
+                    <button class="btn btn-default primary-btn" ui-sref="patient-detail.invoiceView({invoice_id:invoice.id})">{{'patient_detail.ViewMore' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="SendInvoiceEmail(invoice.id)" ng-if="PatientDetails.email">{{'patient_detail.Sendemail' | translate:translationData}}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <!--Payment-->
+            <li ng-if="roleData.result.payment">
+              <div class="col-sm-2 text-uppercase"  ng-if="module.payments.length!=0">
+                <div class="filter-title">{{'sidebar_menu.payments' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10"  ng-if="module.payments.length!=0">
+                <div class="detail-box payment" ng-repeat="payment in module.payments">
+                  <div class="col-sm-3">
+                    <ul class="list-inline list-unstyled list-payment">
+                      <li style="color: #7aa038;">{{'sidebar_menu.payments' | translate:translationData}}# <span>{{payment.id}}</span> </li>
+                      <li>{{'patient_detail.Invoice_Total' | translate:translationData}} <span>${{payment.total_paid}}</span> </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6">
+                    <ul class="list-inline invoice-listing">
+                      <li ng-repeat="invoice_list in payment.invoices_history.invoice_listing">
+                        <h6 ng-if="invoice_list.invoice_status==true"> <a ui-sref="invoice.view({invoice_id:invoice_list.invoice_id})">#{{invoice_list.invoice_id}}- ${{invoice_list.applied_amount}}</a> </h6>
+                        <a href="" ng-click="PrintInvoice(invoice_list.invoice_id)"><i class="fa fa-print"></i><span>Print</span></a>
+                        <a href="" ng-if="PatientDetails.email" ng-click="SendInvoiceEmail(invoice_list.invoice_id)"><i class="fa fa-envelope-o"></i><span>{{'select.option_email' | translate:translationData}}</span></a>
+                        <h6 ng-if="invoice_list.invoice_status==false" class="non-active"> #{{invoice_list.invoice_id}}- ${{invoice_list.applied_amount}} </h6>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3 gray_btns">
+                    <button class="btn btn-default" ng-click="deletePayment(payment.id)" ng-if="payment.security_role.delete">{{'button.delete' | translate:translationData}}</button>
+                    <button class="btn btn-default" ui-sref="patient-detail.editPayment({payment_id:payment.id})" ng-if="payment.security_role.modify">{{'button.edit' | translate:translationData}}</button>
+                    <button ng-click="PrintPayment(payment.id)" class="btn btn-default">{{'patient_detail.Print' | translate:translationData}}</button>
+                    <button class="btn btn-default primary-btn" ui-sref="patient-detail.paymentView({payment_id:payment.id})">{{'patient_detail.ViewMore' | translate:translationData}}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <!-- Appointment -->
+            <li class="Appointment" ng-if="roleData.result.appointment || module.appointments.length!=0" style="overflow:visible">
+              <div class="col-sm-3 text-uppercase" ng-if="module.appointments.length!=0">
+                <div class="filter-title">{{'patient_detail.Appointment' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-9">
+                <div class="detail-box appointments-container" ng-repeat="appointment in module.appointments">
+                  <div class="col-sm-4" ng-class="{'canceled_App' : appointment.is_cancel}">
+                    <p ng-click="appointmentClicked(appointment.id)"><i class="fa fa-calendar"> </i> {{appointment.appnt_date}}
+                      <br><span class="patient-arrived" ng-if="appointment.patient_status==false">{{'patient_detail.Do_Not_Arrived' | translate}}</span>
+                      <small ng-if="appointment.is_cancel">This appointment has been cancelled. View logs for more information</small>
+                    </p>
+                  </div>
+                  <div class="col-sm-3 app-type"> {{appointment.appointment_type_name}} <span class="appoinment-type" style="background: {{appointment.appointment_type_color}}"> </span> </div>
+                  <div class="col-sm-5 gray_btns"> <span class="pull-left">{{'invoice.practitioner' | translate:translationData}} : {{appointment.practitioner}} </span>
+                    <button class="btn btn-default" ng-if="!checkStatus(appointment.id)" ng-click="showLog(appointment.id)">{{'patient_detail.ViewLog' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-if="checkStatus(appointment.id)" ng-click="hideLog(appointment.id, $index)">{{'patient_detail.Hide_Log' | translate}}</button>
+                  </div>
+                  <div class="col-sm-12" ng-if="checkStatus(appointment.id)">
+                    <div class="logs_con">
+                      <div class="text-center" ng-if="logs_load">
+                        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                      </div>
+                      <ul class="logs_detail appointDetail" ng-repeat="logs_cons in appIds" ng-if="logs_cons.id==appointment.id">
+                        <!-- <li ng-repeat="logs in logs_cons.logMessages">
+                          <span ng-bind-html="logs.msg"></span>
+                          <ul class="logs_detail" ng-if="logs.isOther">
+                            <li ng-if="logs.appntTimeEnd!=''">
+                              <span ng-bind-html="logs.appntTimeEnd"></span>
+                            </li>
+                            <li ng-if="logs.appntTimeStart!=''">
+                              <span ng-bind-html="logs.appntTimeStart"></span>
+                            </li>
+                            <li ng-if="logs.noteMsg!=''">
+                              <span ng-bind-html="logs.noteMsg"></span>
+                            </li>
+                            <li ng-if="logs.patientMsg!=''">
+                              <span ng-bind-html="logs.patientMsg"></span>
+                            </li>
+                            <li ng-if="logs.practitionarMsg!=''">
+                              <span ng-bind-html="logs.practitionarMsg"></span>
+                            </li>
+                          </ul>
+                        </li> -->
+                        <li ng-repeat="appLog in logs_cons.logMessages">
+                          <p ng-if="appLog.msg.action == 'create'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span ng-if="appLog.msg.total_appnts == 1">{{'dashboard.Created_appointment' | translate:translationData}} ({{appLog.msg.service}})</span> <span ng-if="appLog.msg.total_appnts > 1">{{'Created' | translate:translationData}} <b>({{appLog.msg.total_appnts}})</b> {{'recuring appointments' | translate:translationData}} ({{appLog.msg.service}})</span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.on' | translate:translationData}} <b>{{appLog.msg.booking_time}}</b> {{'dashboard.with' | translate:translationData}} <b>{{appLog.msg.doctor_name}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'Reschedule'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span>{{'dashboard.Rescheduled_appointment' | translate:translationData}} ({{appLog.msg.service}})</span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.from' | translate:translationData}} <b>{{appLog.msg.old_date}} {{appLog.msg.old_bk_str_time}} - {{appLog.msg.old_bk_end_time}}</b> {{'settings.data_export.label_to' | translate:translationData}} <b>{{appLog.msg.new_date}} {{appLog.msg.new_bk_str_time}} - {{appLog.msg.new_bk_end_time}}</b> {{'dashboard.with' | translate:translationData}} <b>{{appLog.msg.doctor_name}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'Cancel'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span>Cancelled appointment (reason {{appLog.msg.cancel_reason}}) </span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.on' | translate:translationData}} <b>{{appLog.msg.booking_time}}</b> {{'dashboard.with' | translate:translationData}} <b>{{appLog.msg.doctor_name}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'update'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b><span ng-if="appLog.msg.total_appnts == 1">{{'dashboard.modified_appointment' | translate:translationData}} ({{appLog.msg.service}}) </span> <span ng-if="appLog.msg.total_appnts > 1">{{'dashboard.modified' | translate:translationData}} <b>({{appLog.msg.total_appnts}})</b> {{'recuring appointments' | translate:translationData}} ({{appLog.msg.service}}) </span><b>{{appLog.msg.patient_name}}</b>{{'dashboard.on' | translate:translationData}} <b>{{appLog.msg.booking_time}}</b> {{'dashboard.with' | translate:translationData}} <b>{{appLog.msg.doctor_name}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'delete'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span ng-if="appLog.msg.total_appnts == 1">{{'Deleted appointment' | translate:translationData}} ({{appLog.msg.service}}) </span> <span ng-if="appLog.msg.total_appnts > 1">{{'Deleted' | translate:translationData}} <b>({{appLog.msg.total_appnts}}) </b>{{'recuring appointments' | translate:translationData}} ({{appLog.msg.service}})</span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.on' | translate:translationData}} <b>{{appLog.msg.booking_time}}</b> {{'dashboard.with' | translate:translationData}} <b>{{appLog.msg.doctor_name}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'appnt_status'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span>{{'updated appointment status' | translate:translationData}} </span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.from' | translate:translationData}} <b>{{appLog.msg.old_appnt_status}}</b> {{'to' | translate:translationData}} <b>{{appLog.msg.new_appnt_status}}</b>
+                          </p>
+                          <p ng-if="appLog.msg.action == 'patient_status'">
+                            {{appLog.msg.created_at}} - <b>{{appLog.msg.creator}}</b> <span>{{'updated patient status' | translate:translationData}} </span> {{'appointment.for' | translate:translationData}} <b>{{appLog.msg.patient_name}}</b> {{'dashboard.from' | translate:translationData}} <b>{{appLog.msg.old_patient_status}}</b> {{'to' | translate:translationData}} <b>{{appLog.msg.new_patient_status}}</b>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <!--Communication-->
+            <li ng-if="roleData.result.communication">
+              <div class="col-sm-2 text-uppercase side-title" ng-if="module.communications.length!=0">
+                <div class="filter-title">{{'settings.account.heading_communication' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10">
+                <div class="communication detail-box" ng-repeat="communication in module.communications">
+                  <div class="col-sm-12 gray_btns heading-cpmmunication"> <span class="red-text pull-left">{{communication.msg_subject}}</span>
+                    <!-- <button class="btn btn-default">{{'patient_detail.Print' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="PatientPopup('newEmail', 'email-xl')">{{'patient_detail.Sendemail' | translate:translationData}}</button> -->
+                  </div>
+                  <div class="col-lg-12" ng-bind-html="communication.msg"></div>
+                  <div class="col-lg-12">
+                    <div class="box">
+                      <ul class="list-inline list-unstyled">
+                        <li>{{'expense.label_date' | translate:translationData}}<span>{{communication.comm_date}}</span> </li>
+                        <li>{{'settings.user_practitioners.label_type' | translate:translationData}}<span>{{communication.comm_type}}</span> </li>
+                        <li>{{'settings.user_practitioners.label_security_role_option3' | translate:translationData}}<span>{{communication.practitioner}}</span> </li>
+                        <li>{{'expense.label_category' | translate:translationData}}<span>{{communication.category}}</span> </li>
+                        <li>{{'patient_detail.Message' | translate:translationData}}<span>{{communication.msg_subject}}</span> </li>
+                        <li>{{'patient_detail.Direction' | translate:translationData}}<a href="" ng-click="CommDetail(communication)" class="round-black pull-right" ng-if="communication.security_role.show"><i class="fa fa-ellipsis-h "></i></a><span>{{communication.direction}}</span> </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <!--letter-->
+            <li ng-if="roleData.result.letter">
+              <div class="col-sm-2 text-uppercase" ng-if="module.letters.length!=0">
+                <div class="filter-title">{{'patient_detail.Letter' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10">
+                <div class="communication detail-box" ng-repeat="letter in module.letters">
+                  <div class="col-sm-12 gray_btns heading-cpmmunication"> <span class="red-text pull-left">{{letter.description}}</span>
+                    <button class="btn btn-default" ng-click="deleteLetter(letter.id)" ng-if="letter.security_role.delete">{{'patient_detail.Delete' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="PatientPopup('newLetter', 'email-xl', letter.id)"  ng-if="letter.security_role.modify">{{'button.edit' | translate:translationData}}</button>
+                    <button ng-click="ForLetterPrint(letter.id)" class="btn btn-default" ng-if="letter.security_role.print">{{'patient_detail.Print' | translate:translationData}}</button>
+                    <button ng-click="ForLetterDownload(letter.id)" class="btn btn-default" ng-if="letter.security_role.download">{{'patient_detail.DownloadasPDF' | translate:translationData}}</button>
+
+                    <button class="btn btn-default" ng-click="PatientPopup('letteremail', 'email-xl', letter.id)" ng-if="letter.security_role.send_email">{{'patient_detail.Sendemail' | translate:translationData}}</button>
+                  </div>
+                  <div class="col-lg-12" ng-bind-html="letter.content"></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+
+            <!--Treatment Note-->
+            <li ng-if="roleData.result.treatment_note">
+              <div class="col-sm-2 text-uppercase" ng-if="module.treatment_notes.length!=0">
+                <div class="filter-title">{{'patient_detail.TreatmentNote' | translate:translationData}} </div>
+              </div>
+              <div class="col-sm-10 treatment-container">
+                <div class="light-pink communication detail-box" ng-repeat="treatment_note in module.treatment_notes" ng-class="treatment_note.save_final ? 'final' : 'not-final'">
+                  <div class="col-sm-12 gray_btns heading-cpmmunication"> <span class="pull-left"> <span class="red-text-cap">{{treatment_note.treatment_title}}</span> <span>by <span class="red-text">{{treatment_note.created_by}}</span> on {{treatment_note.created}}<span ng-if="treatment_note.last_updated!=null">(Last Update on {{treatment_note.last_updated}})</span></span> <small class="red-text" ng-if="treatment_note.save_final==false">(Draft)</small> </span>
+                    <button class="btn btn-default" ng-click="deleteNotes_Confirm(treatment_note.id)" ng-if="treatment_note.security_role.delete">Delete</button>
+                    <button class="btn btn-default" ng-if="treatment_note.save_final==false && treatment_note.security_role.modify"
+                            ng-click="PatientPopup('addTreatmentNote', 'email-xl', treatment_note.id)">{{'button.edit' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="TreatmentPrint(treatment_note.id)" ng-if="treatment_note.security_role.export_pdf">{{'appointment.exportToPDF' | translate}}</button>
+                  </div>
+                  <div class="border-center hidden-xs"></div>
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-6 treatment-ans-con" ng-repeat="sections in treatment_note.treatment_sections_attributes">
+                        <div class="row">
+                          <div class="col-sm-5">
+                            <p>{{sections.name}}</p>
+                          </div>
+                          <div class="col-sm-7">
+                            <div class="treatment_ans" ng-repeat="treatment_questions_attribute in sections.treatment_questions_attributes">
+                              <h5>{{treatment_questions_attribute.title}}</h5>
+                              <p ng-bind-html="treatment_questions_attribute.ans | parseUrlFilter:'_blank'"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+            <!-- Recall -->
+
+            <li ng-if="roleData.result.recall">
+              <div class="col-sm-2 text-uppercase" ng-if="module.recalls.length!=0">
+                <div class="filter-title">{{'patient_detail.Recall' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10">
+                <div class="light-blue detail-box" ng-repeat="recall in module.recalls">
+                  <div class="col-sm-11">
+                    <ul class="list-inline list-unstyled table-fixed-layout">
+                      <li><strong>{{'patient_detail.RecallOn' | translate:translationData}}</strong><span>{{recall.recall_on_date}}</span> </li>
+                      <li style="color: #b93e5b;"><strong>{{'settings.user_practitioners.label_type' | translate:translationData}}</strong> <span>{{recall.recall_type_name}}</span> </li>
+                      <li><strong>{{'patient_form.Note' | translate:translationData}}</strong> <span style="text-transform:none">{{recall.note}}</span> </li>
+                      <li ng-if="recall.security_role.check_option"><strong>{{'patient_detail.Recalled' | translate:translationData}}?</strong> <span>
+                        <div class="check-con recalled_on">
+                          <div class="checkbox">
+                            <label class="ng-binding">
+                              <input type="checkbox" ng-model="recall.is_selected" ng-change="getRecallDate(recall.is_selected, recall.id)">
+                              <span></span>{{recall.recall_set_date}}
+                              <p>{{'patient_detail.by' | translate:translationData}} {{recall.created_by_user}}</p>
+                            </label>
+                          </div>
+                        </div>
+                        </span> </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-1"> <span class="gray_btns pull-right">
+                    <button class="btn btn-default" ng-click="deleteRecall_Confirm(recall.id)" ng-if="recall.security_role.delete">{{'patient_detail.Delete' | translate:translationData}}</button>
+                    <button class="btn btn-default" ng-click="PatientPopup('recall', 'email-xl', recall.id)" ng-if="recall.security_role.modify">{{'button.edit' | translate:translationData}}</button>
+                    </span> </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+
+            <!-- Attachments -->
+            <li ng-if="roleData.result.file_attachment">
+              <div class="col-sm-2 text-uppercase" ng-if="module.files.length!=0">
+                <div class="filter-title">{{'patient_detail.Attachments' | translate:translationData}}</div>
+              </div>
+              <div class="col-sm-10 attachments">
+                <div class="gray-bg file-attach"  ng-if="module.files.length!=0">
+                  <div  class="col-sm-3 attach-con" ng-repeat="file in module.files" ng-if="file.has_permission">
+                    <a style="text-decoration:none" href="{{file.file_url}}" target="_blank" ng-if="file.security_role.clickable_link==true" style="display:block;">
+                      <div class="attach-img">
+                        <i class="type-icn type-pdf" ng-if="file.type=='pdf'"></i>
+                        <i class="type-icn type-msword" ng-if="file.type=='msword'"></i>
+                        <img ng-src="{{file.file_url}}" ng-if="file.type=='image'">
+                        <i class="type-icn type-excel" ng-if="file.type=='excel'"></i>
+                        <i class="type-icn type-spreadsheetml" ng-if="file.type=='spreadsheetml'"></i>
+                        <i class="type-icn type-wordprocessingml" ng-if="file.type=='wordprocessingml'"></i>
+                        <i class="type-icn type-other" ng-if="file.type=='other'"></i>
+                        <i class="type-icn type-text" ng-if="file.type=='text'"></i>
+                      </div>
+                      <p class="red-text" style="width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{file.name}}</p></a>
+                    <p class="red-text" style="width: 100%;  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" ng-if="file.security_role.clickable_link==false">{{file.name}}</p>
+                    <div class="attach-des-con">
+                      <p class="attach-des">{{file.description}}</p>
+                      <span ng-if="file.description!=''">{{file.description}}</span>
+                    </div>
+                    {{chunkedData}}
+                    <p class="publish-date gray-text">{{file.created_on}} by {{file.created_by}},{{file.file_size}}</p>
+                    <div class="gray_btns">
+                      <span ng-if="file.security_role.clickable_link"><a href="{{file.file_url}}" download class="" ng-if="file.type!='image'"><button  class="pull-left btn btn-default">{{'button.download' | translate:translationData}}
+                        <span>{{file.file_size}}</span></button></a></span>
+                      <a href=""><button  class="pull-left btn btn-default" ng-if="file.security_role.modify" ng-click="PatientPopup('attachmentEdit', 'md', file.id)">{{'button.edit' | translate:translationData}}</button></a>
+                      <a href="" download><button  class="pull-left btn btn-default delete-btn" ng-click="deleteAttachment(file.id)" ng-if="file.security_role.delete"><I class="fa fa-trash"></I></button></a>
+                    </div>
+                  </div>
+                  <div  class="col-sm-6 attach-con" ng-repeat="file in module.files" ng-if="!file.has_permission">
+                      <div class="attach-img">
+                        <i class="type-icn type-text"></i>
+                        <p class="red-text" style="width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{'label.fileAttachmentWithoutPermissions' | translate:translationData}}</p>
+                      </div>
+                    {{chunkedData}}
+                    <p class="publish-date gray-text">{{file.created_on}} by {{file.created_by}},{{file.file_size}}</p>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="clearfix"></div>
+        </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="col-md-12 text-center" ng-show="slowLoad">
+      <i class="fa fa-spinner fa-spin fa-2x"></i>
+    </div>
+  </div>
+</div>
+</div>
+<div class="text-center patientNotFound" ng-if="PatientDetails.error">
+  <p><i><img src="/assets/user-select.png" alt=""></i>
+    {{'patient_detail.PatientNotFound' | translate}}</p>
+</div>
+<style>
+  .form-control {
+    width: 100% !important;
+  }
+</style>
+<!-- Modal -->
+<script type="text/ng-template" id="fileAttach.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>{{'patient_datail.FileAttachments' | translate:translationData}}</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <div>
+            <div class="sms treatment-note-con">
+              <div class="drag_drop">
+                <!-- <p>Click here and paste(Ctrl+v) your screen shot</p> -->
+                <div class="dragit" ngf-drop="upload($files)" ngf-multiple="true" ng-model="fileAttach" ngf-select="upload($files)" ng-pristine="upload($files)" multiple="multiple" >
+                  <input type="text" style="opacity:0;position:absolute;" autofocus="true">
+                  <div class="drag_con" ng-hide="uploadingFile">
+                    <div class="drag_btn">
+                      <button type="button" ngf-select="upload($files)" ng-modal="fileAttach"  multiple="multiple">{{'patient_detail.AddFile' | translate:translationData}}</button>
+                      <p class="text-center">Drag and drop files to this page</p>
+                      <p class="text-center">Or</p>
+                      <p>Press "print screen" button from the keyboard to take current screen shot and press "Ctrl + V" to upload that screen shot</p>
+                    </div>
+
+                  </div>
+                  <div class="drag_con1" ng-show="uploadingFile">
+                    <label><!-- {{uploadedName}} -->
+                      <br>
+                      <span ng-show="CurrentlyUploading">{{'patient_detail.CurrentlyUploading' | translate:translationData}}...</span>
+                      <span ng-show="UploadedSuccessfully">{{'patient_detail.UploadedSuccessfully' | translate:translationData}}</span>
+                      <span ng-show="ErrorWhileUpload">{{'patient_detail.Errorwhileupoloading' | translate:translationData}}...!</span>
+                    </label>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{progressPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progressPercentage}}%">
+                        <span class="sr-only">{{progressPercentage}} {{'patient_detail.Complete' | translate:translationData}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</script>
+
+<!-- Merge patient Modal -->
+<script type="text/ng-template" id="merge.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>{{'patient_detail.Merge' | translate:translationData}}</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" ng-click="cancel()" class="cancel_btn">{{'button.cancel' | translate:translationData}}</button>
+              <button type="submit" ng-click="mergePatientPost()" class="save_btn" ng-if="MergeList.identical_patients.length!=0">{{
+                'patient_detail.Merge' | translate:translationData}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <div>
+            <div class="merge">
+              <p>{{'patient_detail.ConfirmDrag' | translate:translationData}}.</p>
+              <p>{{'patient_detail.confirmMerge' | translate:translationData}}.</p>
+              <h5>{{'patient_detail.PossibleDuplicates' | translate:translationData}}</h5>
+              <div class="merge-list">
+                <p ng-if="MergeList.identical_patients.length==0">{{'patient_detail.no_duplicates' | translate:translationData}}.</p>
+                <div class="table-responsive" ng-if="MergeList.identical_patients.length!=0">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>{{'patient_detail.Merge' | translate:translationData}}?</th>
+                      <th>{{'label.name' | translate:translationData}}</th>
+                      <th>{{'patient_detail.D.O.B' | translate:translationData}}</th>
+                      <th>{{'patient_detail.MobileNumber' | translate:translationData}}</th>
+                      <th>{{'settings.data_export.table_heading_created' | translate:translationData}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="mergeList in MergeList.identical_patients">
+                      <td>
+                        <div class="check-con">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" ng-model="mergeList.identicalPatient"><span></span>
+                            </label>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{mergeList.name}}</td>
+                      <td>{{mergeList.dob}}</td>
+                      <td>{{mergeList.mobile_no}}</td>
+                      <td>{{mergeList.created}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</script>
+
+<!-- SMS Modal -->
+<script type="text/ng-template" id="smsModal.html">
+  <div class="modal-body fileattach">
+    <a href="" ng-click="cancel()" class="close-popup"></a>
+    <div class="drag_drop">
+      <h4>{{'patient_detail.SendSMS' | translate:translationData}}</h4>
+      <div class="sms">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{'patient_detail.To' | translate:translationData}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{'patient_detail.EgBradPitt' | translate:translationData}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{'settings.user_practitioners.label_num'| translate:translationData}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{'patient_detail.MobileNo' | translate:translationData}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{'patient_detail.Message' | translate:translationData}}</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit">{{'patient_detail.Send' | translate:translationData}}</button>
+              <button type="button" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- Recall Modal -->
+<script type="text/ng-template" id="recall.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>{{'patient_detail.Recalls' | translate:translationData}}</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" ng-click="cancel()" class="cancel_btn">{{'button.cancel' | translate:translationData}}</button>
+              <button type="submit" ng-click="addRecall(recallData)" ng-show="recallBtns" class="save_btn">{{'button.save' | translate:translationData}}</button>
+              <button type="submit" ng-click="updateRecall(recallData)" ng-hide="recallBtns" class="save_btn">{{'button.update' | translate:translationData}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <div>
+            <div class="sms treatment-note-con">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{'patient_detail.RecallType' | translate:translationData}}</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" ng-options="recalls.id as recalls.name for recalls in RecallList" ng-model="recallData.recall.recall_types_recall_attributes.recall_type_id" ng-change="getMoreInfo(recallData.recall.recall_types_recall_attributes.recall_type_id)">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{'patient_detail.RecallAt' | translate:translationData}}</label>
+                  <div class="col-sm-9 non-edit">
+                    <input  type="text" class="form-control calander" uib-datepicker-popup="{{format}}" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-click="open($event)" ng-model="recallData.recall.recall_on_date" placeholder="{{'patient_detail.yyyy-mm-dd' | translate:translationData}}" ng-change="onlyNumber(recallData.recall.recall_on_date)" ng-disabled="true">
+                    <button class="openPicker" ng-click="open($event)" style="background:none;"></button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{'product.label_note' | translate:translationData}}</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" ng-model="recallData.recall.notes"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</script>
+
+<!-- Attachment edit Modal -->
+<script type="text/ng-template" id="attachmentEdit.html">
+  <div class="modal-body fileattach">
+    <div class="modal_loading" ng-show="showLoading"><i class="fa fa-spinner fa-spin"></i></div>
+    <a href="" ng-click="cancel()" class="close-popup"></a>
+    <div class="drag_drop">
+      <h4>{{'patient_detail.EditingAttachmentDetails' | translate:translationData}}</h4>
+      <div class="sms">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{'label.name' | translate:translationData}}</label>
+            <div class="col-sm-9">
+              <label  class="control-label">{{attachmentData.file_name}}</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{'settings.appointment_type.label_des' | translate:translationData}}</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" ng-model="attachmentData.description"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" ng-click="updateAttachment(attachmentData)">{{'button.update' | translate:translationData}}</button>
+              <button type="button" ng-click="cancel()">{{'button.cancel' |translate:translationData}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- treatment note Modal -->
+<script type="text/ng-template" id="addTreatmentNote.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>File Note</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" ng-click="cancel()" class="cancel_btn">{{'button.cancel' | translate:translationData}}</button>
+              <button type="" ng-click="saveTretementNote(Getformat,'true')" ng-show="addNewNote" class="save_btn">{{'appointment.saveAsFinal' | translate:translationData}}</button>
+              <button type="" ng-click="saveTretementNote(Getformat,'false')" ng-show="addNewNote" class="save_btn">{{'appointment.saveAsDraft' | translate:translationData}}</button>
+              <button type="" ng-click="updateTretementNote(Getformat,'true')" ng-hide="addNewNote" class="save_btn">{{'appointment.saveAsFinal' | translate:translationData}}</button>
+              <button type="" ng-click="updateTretementNote(Getformat,'false')" ng-hide="addNewNote" class="save_btn">{{'appointment.saveAsDraft' | translate:translationData}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <div>
+            <div class="sms treatment-note-con">
+              <form class="">
+                <div class="row trim_row">
+                  <div class="col-sm-12">
+                    <h3 style="margin:0;">{{Getformat.treatment_note.title}}
+                      <span style="font-size:12px;" ng-if="Getformat.treatment_note.treatment_notes_template_note_attributes.template_note_name!=Getformat.treatment_note.title">(Edited From:{{Getformat.treatment_note.treatment_notes_template_note_attributes.template_note_name}})</span>
+                    </h3>
+                  </div>
+                  <div class="col-sm-12 copy_note">
+                    <a href="" class="pull-right copy_previous" ng-click="getPreviousNote()" ng-hide="hideCopyLink"><i class="add_icn"></i>{{'appointment.copyPreviousNote' | translate:translationData}}</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>{{'appointment.template' | translate:translationData}}</label>
+                      <select class="form-control" ng-options="treatmentList.id as treatmentList.name for treatmentList in GetList" ng-change="GetTamplateFormat(noteTamplate)" ng-model="noteTamplate">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">{{appointmentList}}
+                    <div class="form-group">
+                      <label>{{'appointment.appointment' | translate:translationData}}</label>
+                      <select class="form-control" ng-model="Getformat.treatment_note.appointment_id">
+                        <option value="null">{{'appointment.none' | translate:translationData}}</option>
+                        <option ng-repeat="appointments in appointmentList" value="{{appointments.id}}">{{appointments.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 section-con" ng-repeat="sections in Getformat.treatment_note.treatment_sections_attributes" ng-init="roundOfQust=(sections.treatment_questions_attributes.length/2 | number:0)">
+                    <h4>{{sections.name}}</h4>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-12" ng-repeat="questions in sections.treatment_questions_attributes | limitTo:roundOfQust">
+                            <div class="form-group" ng-if="questions.quest_type=='Text'">
+                              <label>{{questions.title}}</label>
+                              <div ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <input type="text" class="form-control" ng-model="answers.treatment_answer_attributes.ans">
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Paragraph'">
+                              <label>{{questions.title}}</label>
+                              <div ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <textarea class="form-control" ng-model="answers.treatment_answer_attributes.ans"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Multiple_Choice'">
+                              <label>{{questions.title}}</label>
+                              <div class="clearfix"></div>
+                              <div class="medi radio-con">
+                                <div class="radio" ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                  <label>
+                                    <input type="radio" ng-model="questions.ans" name="{{questions.q_id}}" value="{{answers.title}}"><span></span> {{answers.title}}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Checkboxes'">
+                              <label>{{questions.title}}</label>
+                              <div class="check-con patient-detail" ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" ng-model="answers.treatment_answer_attributes.is_selected"><span></span> {{answers.title}}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-12" ng-repeat="questions in sections.treatment_questions_attributes" ng-if="$index >= roundOfQust">
+                            <div class="form-group" ng-if="questions.quest_type=='Text'">
+                              <label>{{questions.title}}</label>
+                              <div ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <input type="text" class="form-control" ng-model="answers.treatment_answer_attributes.ans">
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Paragraph'">
+                              <label>{{questions.title}}</label>
+                              <div ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <textarea class="form-control" ng-model="answers.treatment_answer_attributes.ans"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Multiple_Choice'">
+                              <label>{{questions.title}}</label>
+                              <div class="clearfix"></div>
+                              <div class="medi radio-con">
+                                <div class="radio" ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                  <label>
+                                    <input type="radio" ng-model="questions.ans" name="{{questions.q_id}}" value="{{answers.title}}"><span></span> {{answers.title}}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group" ng-if="questions.quest_type=='Checkboxes'">
+                              <label>{{questions.title}}</label>
+                              <div class="check-con patient-detail" ng-repeat="answers in questions.treatment_quest_choices_attributes">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" ng-model="answers.treatment_answer_attributes.is_selected"><span></span> {{answers.title}}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- new email Modal -->
+<script type="text/ng-template" id="newEmail.html">
+  <div class="modal-body fileattach">
+    <a href="" ng-click="cancel()" class="close-popup"></a>
+    <div class="drag_drop">
+      <h4>{{'patient_detail.NewEmail' | translate:translationData}}</h4>
+      <div class="sms treatment-note-con">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-5">
+              <h3>{{'patient_detail.selectLetterTemp' | translate:translationData}}</h3>
+              <label>{{'settings.letter_tamplate.heading_letter_template' | translate:translationData}}</label>
+              <select class="form-control">
+                <option>{{'patient_detail.BirthdayWishMail' | translate:translationData}}</option>
+              </select>
+
+              <h3>{{'patient_detail.Selectinformation' | translate:translationData}}</h3>
+
+              <label>{{'settings.user_practitioners.practitioner' | translate:translationData}}</label>
+              <select class="form-control">
+                <option>Rupinderpal Singh</option>
+              </select>
+              <label>{{'patient_detail.Contact' | translate:translationData}}</label>
+              <select class="form-control">
+                <option>{{'patient_detail.search_contact' | translate:translationData}}</option>
+              </select>
+              <label>{{'patient_detail.Business' | translate:translationData}}</label>
+              <select class="form-control">
+                <option>{{'patient_detail.Forever' | translate:translationData}}</option>
+              </select>
+            </div>
+            <div class="col-sm-7">
+              <h3>{{'patient_detail.EdittheMail' | translate:translationData}}</h3>
+              <label>{{'patient_detail.Subject' | translate:translationData}}</label>
+              <input type="text" class="form-control">
+
+              <label>{{'settings.appointment_type.label_des' | translate:translationData}}</label>
+              <input type="text" class="form-control">
+              <h3>{{'patient_detail.Content' | translate:translationData}}</h3>
+              <div class="row email-btns">
+                <div class="col-md-12 email-toolbar">
+                  <text-angular-toolbar ta-toolbar="[['h_1','h_2','normal','bold', 'italics', 'underline', 'ul', 'ol', 'indent', 'outdent']]" name="myToolbar"></text-angular-toolbar>
+                  <text-angular ng-model="data.htmlcontent" ta-target-toolbars='myToolbar'></text-angular>
+                </div>
+                <div class="col-sm-12">
+                  <button type="submit">{{'patient_detail.Send' | translate:translationData}}</button>
+                  <button type="button" ng-click="cancel()">cancel</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- new letter Modal -->
+<script type="text/ng-template" id="newLetter.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>{{'patient_detail.New_Letter' | translate:translationData}}</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" ng-click="cancel()" class="cancel_btn">{{'button.cancel' | translate:translationData}}</button>
+              <button type="submit" ng-click="saveLetter(letterTamplateData)" ng-show="letterBtns" class="save_btn">{{'button.save' | translate:translationData}}</button>
+              <button type="submit" ng-click="UpdateLetter(letterTamplateData)" ng-hide="letterBtns" class="save_btn">{{'button.update' | translate:translationData}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <form class="">
+            <div class="row trim_row">
+              <div class="col-sm-5" ng-if="letterBtns">
+                <h4>{{'patient_detail.selectLetterTemp' | translate:translationData}}</h4>
+                <div class="form-group">
+                  <label>{{'settings.letter_tamplate.heading_letter_template' | translate:translationData}}</label>
+                  <select class="form-control" ng-options="letterTamplate.id as letterTamplate.template_name for letterTamplate in letterTamplateList" ng-change="GetLetterFormat(letterTamplate)" ng-model="letterTamplate">
+                  </select>
+                </div>
+                <h4 ng-if="letterTamplateData.tabs_info.practitioner.length>0 && letterTamplateData.tabs_info.contact.length>0 && letterTamplateData.tabs_info.business.length>0">{{'patient_detail.Selectinformation' | translate:translationData}}</h4>
+                <div class="form-group">
+                  <label ng-if="letterTamplateData.tabs_info.practitioner.length>0">{{'settings.user_practitioners.practitioner' | translate:translationData}}</label>
+                  <select ng-if="letterTamplateData.tabs_info.practitioner.length>0" class="form-control" ng-model="letterTamplateData.letter.practitioner" ng-options="practitioners.id as practitioners.first_name for practitioners in letterTamplateData.tabs_info.practitioner" ng-change="refessh_content(letterTamplateData.letter.practitioner, letterTamplateData.letter.contact, letterTamplateData.letter.business)">
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label ng-if=" letterTamplateData.tabs_info.contact.length>0">{{'patient_detail.Contact' | translate:translationData}}</label>
+                  <select ng-if=" letterTamplateData.tabs_info.contact.length>0" class="form-control" ng-model="letterTamplateData.letter.contact" ng-options="contacts.id as contacts.first_name for contacts in letterTamplateData.tabs_info.contact" ng-change="refessh_content(letterTamplateData.letter.practitioner, letterTamplateData.letter.contact, letterTamplateData.letter.business)"> </select>
+                </div>
+                <div class="form-group">
+                  <label ng-if="letterTamplateData.tabs_info.business.length>0">{{'patient_detail.Business' | translate:translationData}}</label>
+                  <select ng-if="letterTamplateData.tabs_info.business.length>0" class="form-control" ng-model="letterTamplateData.letter.business" ng-options="businesses.id as businesses.name for businesses in letterTamplateData.tabs_info.business" ng-change="refessh_content(letterTamplateData.letter.practitioner, letterTamplateData.letter.contact, letterTamplateData.letter.business)"></select>
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <h4>{{'patient_detail.editLetter' | translate:translationData}}</h4>
+                <div class="form-group">
+                  <label>{{'settings.appointment_type.label_des' | translate:translationData}}</label>
+                  <input type="text" class="form-control" ng-model="letterTamplateData.letter.description">
+                </div>
+                <h4>{{'patient_detail.Content' | translate:translationData}}</h4>
+                <div class="row email-btns">
+                  <div class="col-md-12 email-toolbar">
+                    <text-angular-toolbar ta-toolbar="[['h_1','h_2','normal','bold', 'italics', 'underline', 'ul', 'ol', 'indent', 'outdent']]" name="myToolbar"></text-angular-toolbar>
+                    <text-angular ng-model="letterTamplateData.letter.content" ta-target-toolbars='myToolbar'></text-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</script>
+
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.confirm_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="okdelete()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+
+<!-- Delete Modal fot Treatment Note-->
+<script type="text/ng-template" id="DeleteTreatment.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'settings.treatment_note.confirmation' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDelete()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<!-- Delete Modal for Recall-->
+<script type="text/ng-template" id="DeleteRecall.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.confirm_recall_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDeleteRecall()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<!-- Delete Modal for payment-->
+<script type="text/ng-template" id="DeletePayment.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.payment_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDeletePayment()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<!-- Delete Modal for Invoice-->
+<script type="text/ng-template" id="DeleteInvoice.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.invoice_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDeleteInvoice()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+
+<!-- Delete Modal for Letter-->
+<script type="text/ng-template" id="DeleteLetter.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.letter_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDeleteLetter()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+
+<!-- Delete Modal for Attachment-->
+<script type="text/ng-template" id="DeleteAttachment.html">
+  <div class="modal-body confirm-body">
+    <div class="confirm">
+      <p>{{'patient_detail.attachment_delete' | translate:translationData}}.</p>
+      <a href="" ng-click="confirmDeleteAttachment()">{{'button.confirm' | translate:translationData}}</a>
+      <a href="" ng-click="cancel()" ng-class= "{'dispnone' : hidepopup}">{{'button.cancel' | translate:translationData}}</a>
+    </div>
+  </div>
+</script>
+<!-- Communication Detail Modal -->
+<script type="text/ng-template" id="ComDetail.html">
+  <div class="modal-body fileattach">
+    <a href="" ng-click="cancel()" class="close-popup"></a>
+    <div class="drag_drop">
+      <div class="sms treatment-note-con">
+        <div class="commDetailModal">
+          <div class="row" style="margin-right:0;">
+            <div class="col-sm-4">
+              <label>{{'expense.label_date' | translate:translationData}} </label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.comm_date}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.Patient' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.patient_name}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'settings.user_practitioners.label_type' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.comm_type}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.From' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.from}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.To' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.to}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'settings.appointment_type.label_cat' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.category}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.SentSuccessfully' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p ng-if="CommDetails.send_status">{{'patient_detail.yes' | translate:translationData}}</p>
+              <p ng-if="CommDetails.send_status!=true">{{'patient_detail.no' | translate:translationData}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.Direction' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.direction}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.Message' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <div class="treatment_msg" ng-bind-html="CommDetails.msg"></div>
+            </div>
+            <div class="col-sm-4">
+              <label>{{'patient_detail.Links' | translate:translationData}}</label>
+            </div>
+            <div class="col-sm-8">
+              <p>{{CommDetails.comm_date}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<!-- Letter Email Modal -->
+<script type="text/ng-template" id="letteremail.html">
+  <div class="popUp">
+    <div class="cross_bar">
+      <a href="" class="cross_btn" ng-click="cancel()"></a>
+    </div>
+    <div class="rightSide_content">
+      <div class="content_box">
+        <div class="topBar_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>{{'patient_detail.Emailletter' | translate:translationData}}</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" ng-click="cancel()" class="cancel_btn">{{'button.cancel' | translate:translationData}}</button>
+              <button type="submit" class="save_btn" form="sendEmail">{{'patient_detail.Sendemail' | translate:translationData}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab_contents">
+          <form class="form-horizontal" ng-submit="sendLetter(letterData)" id="sendEmail" name="sendEmail">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">{{'patient_detail.Sendto' | translate:translationData}}</label>
+              <div class="col-sm-11">
+                <div class="letter_email_con">
+                  <div class="check-con" ng-if="letterData.send_to.patient_email!=null">
+                    <div class="checkbox">
+                      <label class="ng-binding">
+                        <input type="checkbox" ng-model="check.PatientEmail"><span></span> {{'patient_detail.Patient' | translate:translationData}} <small>({{letterData.send_to.patient_email}})</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="check-con" ng-if="letterData.send_to.refer_doc!=null">
+                    <div class="checkbox">
+                      <label class="ng-binding">
+                        <input type="checkbox" ng-model="check.DocterEmail"><span></span> {{'patient_detail.RefferDocter' | translate:translationData}} <small>({{letterData.send_to.refer_doc}})</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="check-con" ng-if="letterData.send_to.contact_email!=null">
+                    <div class="checkbox">
+                      <label class="ng-binding">
+                        <input type="checkbox" ng-model="check.ContactEmail"><span></span> {{'patient_detail.Contact' | translate:translationData}} <small>({{letterData.send_to.contact_email}})</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="check-con">
+                    <div class="checkbox">
+                      <label class="ng-binding">
+                        <input type="checkbox" ng-model="custom_emails" ng-change="enableCustomEmail()"><span></span> {{'patient_detail.NewRecipient' | translate:translationData}}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 new_Recipient" ng-if="custom_email==true">
+                    <div class="form-group" ng-repeat="cust_emails in letterData.custom_email">
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" ng-model="cust_emails.email" placeholder="{{'patient_detail.Recipientemail' | translate:translationData}}">
+                      </div>
+                      <div class="col-sm-3">
+                        <a href="" href="" class="remove" ng-click="removeCurrent($index)">{{'settings.user_practitioners.link_remove' | translate:translationData}}</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <a href="" ng-click="addNewRecipient()" class="addNew">{{'patient_form.AddNew' | translate:translationData}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">{{'patient_detail.Subject' | translate:translationData}}</label>
+              <div class="col-sm-11">
+                <input type="text" class="form-control" ng-model="letterData.letter_subject">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">{{'patient_detail.From' | translate:translationData}}</label>
+              <div class="col-sm-11">
+                <select class="form-control from_email" ng-change="selectFrom(fromEmail)" ng-model="fromEmail">
+                  <option ng-repeat="emails in letterData.recepient_list" value="{{emails.recepeint_email}}" ng-selected="emails.recepeint_email==currentEmail">{{emails.recepeint_email}} - {{emails.recepeint_name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">{{'patient_detail.Format' | translate:translationData}}</label>
+              <div class="col-sm-11">
+                <div class="letter_email_con">
+                  <div class="medi radio-con">
+                    <div class="radio">
+                      <label class="ng-binding">
+                        <input type="radio" name="format-type" ng-model="letterData.format" value="true"><span></span> {{'patient_detail.Send_letter' | translate:translationData}}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="medi radio-con">
+                    <div class="radio">
+                      <label class="ng-binding">
+                        <input type="radio" name="format-type" ng-model="letterData.format" value="false"><span></span> {{'patient_detail.pdf_attached' | translate:translationData}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" ng-if="letterData.format=='false'">
+              <label class="col-sm-3 control-label">{{'settings.appointment_reminder.label_Email_content' | translate:translationData}}</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" ng-model="letterData.email_content"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</script>
+<style>
+  .form-control {
+    width: 100% !important;
+  }
+</style>
+<div class="newView" ui-view></div>

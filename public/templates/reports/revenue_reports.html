@@ -1,0 +1,173 @@
+<div class="reports-con">
+  <div class="top-container">
+    <div class="col-md-12 top-links" ng-include="'templates/reports/top-bar.html'"></div>
+  </div>
+  <div class="graph_con" ng-scrollbars rebuild-on-resize rebuild-on="rebuild:me">
+    <div class="graph">
+      <div class="chart_con">
+        <canvas id="line" class="chart chart-line" chart-data="revChart.data"
+        chart-labels="revChart.labels" colours="colours" chart-fontStyle="bold" chart-legend="true" chart-options="chart_options" chart-series="revChart.series" chart-click="onClick" >
+        </canvas>
+      </div>
+      <div class="chart_menu">
+        <div class="chart_date">
+          <a href="" class="left" ng-click="preDate(chartDate)"></a>
+          <div class="chart_date_inner">
+            {{firstday | date:'dd'}} {{getMonthName(firstday)}} {{firstday | date:'yyyy'}} - {{lastday | date:'dd'}} {{getMonthName(lastday)}} {{lastday | date:'yyyy'}}
+            <button ng-click="showPicker()"><i class="fa fa-calendar"></i></button>
+            <div class="chart_date_picker" ng-if="showDatePicker">
+              <uib-datepicker ng-model="chartDate" class="calendar well well-sm" datepicker-options="inlineOptionss" ng-change="updateChart(chartDate)" show-weeks="false" id="calendar"></uib-datepicker>
+            </div>
+          </div>
+          <a href="" class="right" ng-click="nextDate(chartDate)"></a>
+        </div>
+        <select class="form-control" ng-model="type" ng-change="getChartData()">
+          <option value="doctor">{{'sidebar_menu.Practitioners' | translate:translationData}}</option>
+          <option value="business">{{'expense.business' | translate:translationData}}</option>
+          <option value="prod">{{'expense.product' | translate:translationData}}</option>
+          <option value="b_item">{{'reports.Services' | translate:translationData}}</option>
+        </select>
+        <select class="form-control" ng-model="chartFilter" ng-change="getChartData()">
+          <option value="0">{{'reports.Open_Invoice' | translate:translationData}}</option>
+          <option value="1">{{'reports.Closed_Invoice' | translate:translationData}}</option>
+          <option value="2">{{'reports.Raised_Invoice' | translate:translationData}}</option>
+        </select>
+        <div class="chart_btn">
+          <button ng-click="showWeek()" ng-class="{'active' : activeBtn == 0}">{{'button.Week' | translate:translationData}}</button>
+          <button ng-click="showMonth()" ng-class="{'active' : activeBtn == 1}">{{'button.Month' | translate:translationData}}</button>
+          <button ng-click="showYear()" ng-class="{'active' : activeBtn == 2}">{{'button.Yearly' | translate:translationData}}</button>
+        </div>
+        <div class="addToDash">
+          <h2>{{'reports.Add_to_Dashboard' | translate:translationData}}</h2>
+          <label class="on-off">
+              <input type="checkbox" ng-model="addDash.revenue" ng-change="addToDashboard(addDash.revenue)">
+              <span class="bg"></span>
+          </label>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="reports_filters">
+      <button class="pull-right apply export" ng-click="export()">{{'button.export' | translate:translationData}}</button>
+      <button class="pull-right apply export" ng-click="print()">{{'button.print' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="reports_filters">
+      <label>{{'communication.from' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="fromDate.opened" min-date="minDate" max-date="filter.to" datepicker-options="dateOptions" ng-click="openFrom($event)" ng-model="filter.from" show-button-bar="false">
+      <span class="divider"></span>
+      <label>{{'appointment.to' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="toDate.opened" min-date="filter.from" max-date="dobMaxDate" datepicker-options="dateOptions" ng-click="openTo($event)" ng-model="filter.to" show-button-bar="false">
+
+      <div class="arr_con">
+        <div class="btn-group" uib-dropdown is-open="statu.isopen">
+          <button id="prac_filter" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            {{'sidebar_menu.Practitioners' | translate:translationData}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="prac_filter" ng-click="stopEvent($event)">
+            <li role="menuitem" ng-repeat="list in allFilters.practitioners">
+              <label>
+                <input type="checkbox" ng-change="listChange(list)" ng-model="list.ischecked"><span></span> {{list.name}}
+              </label>
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="arr_con">
+        <div class="btn-group" uib-dropdown is-open="statuss.isopen">
+          <button id="service_filter" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            {{'payment.paymentType' | translate:translationData}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="service_filter" ng-click="stopEvent($event)">
+            <li role="menuitem" ng-repeat="payList in allFilters.payment_types">
+              <label>
+                <input type="checkbox" ng-model="payList.ischecked"><span></span> {{payList.name}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="arr_con">
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+          <button id="business_filter" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            {{'invoice.business' | translate:translationData}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="business_filter" ng-click="stopEvent($event)">
+            <li role="menuitem" ng-repeat="buslist in allFilters.locations">
+              <label>
+                <input type="checkbox" ng-model="buslist.ischecked"><span></span> {{buslist.name}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="pull-right apply" ng-click="allRevenueData()">{{'button.Clear' | translate:translationData}}</button>
+      <button class="pull-right apply" ng-click="allRevenue()">{{'button.Apply' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive reports-table">
+      <table class="table table-hover">
+        <thead ng-if="!noData">
+          <tr>
+            <th>{{'invoice.totalInvoice' | translate:translationData}}</th>
+            <th>{{'invoice.totalCharges' | translate:translationData}}</th>
+            <th>{{'invoive.totalPayments' | translate:translationData}}</th>
+            <th>{{'invoice.totalOutstanding' | translate:translationData}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" class="text-center noData" ng-if="!allFilters">No Data to Display</td>
+          </tr>
+          <tr ng-if="allFilters" style="margin-top: 10px;">
+            <td>{{allFilters.invoice_details.total_invoces}}</td>
+            <td>{{allFilters.invoice_details.total_charges}}</td>
+            <td>{{allFilters.invoice_details.total_payments}}</td>
+            <td>{{allFilters.invoice_details.total_outstanding}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <div class="table-responsive reports-table">
+      <table class="table table-hover" datatable="ng">
+        <thead>
+          <tr>
+            <th>{{'expense.label_date' | translate:translationData}}</th>
+            <th style="width:160px;">{{'payment.practitioner' | translate:translationData}}</th>
+            <th>{{'payment.paymentType' | translate:translationData}}</th>
+            <th style="width:160px;">{{'product.btn_product' | translate:translationData}}</th>
+            <th style="width:200px;">{{'reports.Services' | translate:translationData}}</th>
+            <th>{{'Business' | translate:translationData}}</th>
+            <th>{{'payment.total_payment' | translate:translationData}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="list in allRevenueList">
+            <td>
+              {{list.date | date: 'dd/MM/yyyy'}} {{list.at_date}}<!-- {{app.apnt_time}} -->
+            </td>
+            <td>
+              {{!list.doctors_name ? 'N/A' : list.doctors_name}}
+            </td>
+            <td>
+              {{!list.payment_types ? 'N/A' : list.payment_types}}
+            </td>
+            <td>
+              {{!list.used_products ? 'N/A' : list.used_products}}
+            </td>
+            <td>
+              {{!list.used_service ? 'N/A' : list.used_service}}
+            </td>
+            <td>
+              {{!list.location ? 'N/A' : list.location}}             
+            </td>
+            <td>
+              {{!list.total_payment ? 'N/A' : list.total_payment}}                                                 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

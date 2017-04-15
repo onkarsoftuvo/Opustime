@@ -1,0 +1,58 @@
+<div class="reports-con">
+  <div class="top-container">
+    <div class="col-md-12 top-links" ng-include="'templates/reports/top-bar.html'"></div>
+  </div>
+  <div class="graph_con" ng-scrollbars rebuild-on-resize rebuild-on="rebuild:me">
+    <div class="reports_filters">
+      <button class="pull-right apply export" ng-click="export()">{{'settings.data_export.label_export' | translate:translationData}}</button>
+      <button class="pull-right apply export" ng-click="print()">{{'patient_detail.Print' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="reports_filters">
+      <label>{{'patient_detail.From' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="fromDate.opened" min-date="minDate" max-date="filter.to" datepicker-options="dateOptions" ng-click="openFrom($event)" ng-model="filter.from" show-button-bar="false">
+      <span class="divider"></span>
+      <label>{{'settings.data_export.label_to' | translate:translationData}}</label>
+      <input type="text" name="" placeholder="YYYY-MM-DD" uib-datepicker-popup="{{format}}" is-open="toDate.opened" min-date="filter.from" max-date="dobMaxDate" datepicker-options="dateOptions" ng-click="openTo($event)" ng-model="filter.to" show-button-bar="false">
+      <button class="pull-right apply" ng-click="patientNoApp()">{{'button.Clear' | translate:translationData}}</button>
+      <button class="pull-right apply" ng-click="filterpatientNoApp()">{{'button.Apply' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive reports-table">
+      <table class="table table-hover" datatable="ng">
+        <thead>
+          <tr>
+            <th>{{'contact.Name' | translate:translationData}}</th>
+            <th>{{'contact.phone' | translate:translationData}}</th>
+            <th>{{'label.email_address' | translate:translationData}}</th>
+            <th>{{'settings.bussiness_info.address' | translate:translationData}}</th>
+            <th>{{'appointment.DOB' | translate:translationData}}</th>
+            <th>{{'patient_form.Occupation' | translate:translationData}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="noApp in patientsNoAppList">
+            <td>
+            <a href="" ui-sref="patient-detail({'patient_id' : noApp.patient})">{{!noApp.name ? 'N/A' : noApp.name}}</a>
+            </td>
+            <td>
+              {{!noApp.phone_no ? 'N/A' : noApp.phone_no}}
+            </td>
+            <td>
+              {{!noApp.email ? 'N/A' : noApp.email}}
+            </td>
+            <td>
+              {{!noApp.address ? 'N/A' : noApp.address}}            
+            </td>
+            <td>
+              {{!noApp.dob ? 'N/A' : noApp.dob}}
+            </td>
+            <td>
+              {{!noApp.occupation ? 'N/A' : noApp.occupation}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

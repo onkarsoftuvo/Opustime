@@ -1,0 +1,13 @@
+<form id="smstemplateForm" ng-submit="smstemplateForm.$valid && smsTemplateSubmit(smsTemplateItems);" novalidate name="smstemplateForm">
+  <div class="col-md-6 letter-temp">
+  	<h2 style="margin-top: 5px;"></h2>
+    <div class="form-group">
+      <label>{{'settings.letter_tamplate.label_tname' | translate:translationData}}</label>
+      <input type="text" class="form-control" placeholder="" ng-model="smsTemplateItems.template_name" required>
+    </div>
+  </div>
+  <div class="col-md-12 custom-toolbar-con sms-temp">
+    <text-angular-toolbar ta-toolbar="[['patient', 'practitioner', 'business', 'contact', 'refDcotor', 'general']]" name="myToolbar"></text-angular-toolbar>
+      <text-angular ng-model="smsTemplateItems.body" ta-target-toolbars='myToolbar' ></text-angular>
+  </div>
+</form>

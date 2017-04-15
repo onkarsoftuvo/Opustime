@@ -1,0 +1,5 @@
+id,item code,name,serial number,tax name,tax amount(%),stock level,price(ex tax),cost price,supplier name,created at,updated at,note
+000001,15,Aloe Gel,985,"",117.38999999999999,5,782.61,1200.0,Eno,30-06-2016 at 08:03AM,30-06-2016 at 08:03AM,good one.
+000002,156,Aloe Berry,985,"",120.0,12,1000.0,1344.0,Eno,30-06-2016 at 08:03AM,08-07-2016 at 14:19PM,""
+000003,6,Bee Honey,9,"",136.3599999999999,10,1363.64,2000.0,Ankur,30-06-2016 at 08:06AM,30-06-2016 at 08:06AM,Good one
+000004,841,Forever Freedom,645,"",251.69000000000005,12,1398.31,2000.0,Eno,30-06-2016 at 08:06AM,30-06-2016 at 08:06AM,great job.

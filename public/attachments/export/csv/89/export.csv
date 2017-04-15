@@ -1,0 +1,14 @@
+id,start time,end time,practitioner,practitioner id,patient(s),patient id(s),appointment type,appointment note,business,did not arrive,patient arrived,sms reminder sent,email reminder sent,cancellation time,cancellation reason,cancellation note,created at,treatment notes status,invoice id,appointment category,source,maximum number of patients
+000128,15:00PM,15:30PM, Robert Hook,000002,Mr Rohan Malik,000006,Casual,,Miongo,true,No,false,false,"","","",30/06/2016at08:43AM,No,"", , ,1
+000129,15:00PM,15:30PM, Robert Hook,000002,Mr Rohan Malik,000006,Casual,,Miongo,true,No,false,false,"","","",30/06/2016at08:43AM,No,"", , ,1
+000130,15:00PM,15:30PM, Robert Hook,000002,Mr Rohan Malik,000006,Casual,,Miongo,true,No,false,false,"","","",30/06/2016at08:43AM,No,"", , ,1
+000131,15:00PM,15:30PM, Robert Hook,000002,Mr Rohan Malik,000006,Casual,,Miongo,true,No,false,false,"","","",30/06/2016at08:43AM,No,"", , ,1
+000081,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000082,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,000012, , ,1
+000083,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000084,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000085,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000086,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000087,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000088,13:30PM,14:40PM,Sir John lamaba,000004,Miss Neha Raghav,000009,First Appointment,,Miongo,true,No,false,false,"","","",30/06/2016at08:25AM,No,"", , ,1
+000224,10:45AM,11:15AM,Dr Brawn kim,000005,Professor Ajay Garg,000011,Standard Appointment,,Miongo,true,No,false,false,"","","",01/07/2016at10:56AM,No,"", , ,1

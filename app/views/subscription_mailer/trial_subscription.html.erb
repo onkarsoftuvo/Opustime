@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title><%= t('.Account Notification') %></title>
+</head>
+
+<p> <%= t('.Hello') %> <%= @company.first_name.capitalize %>, </p>
+
+<body style="margin:0;">
+
+<div style="width:600px; margin:auto; border: solid 1px #ccc; padding: 20px; box-sizing: border-box; border-radius: 10px; margin-top: 10px; background:#f5f8f9">
+  <% @company_url = "http://#{@company.first_name.downcase}.opustime.com/#!/login" %>
+  <%= image_tag attachments['logo.jpg'].url, :style => "width:220px;" %>
+  <h3 style="margin-bottom:10px; text-transform:uppercase;"><%= t('.Welcome to OpusTime') %> </h3>
+  <p> <%= t('.Thank you for choosing us') %>. <%= t('.We are pleased to have you and are eager to give you a tour through our OpusTime’s rich features') %>.
+    <%= t('.To access your OpusTime account you can visit your personal URL') %> <a href="<%=@company_url%>"><%=@company_url%></a> <%= t('.Your user name is') %>
+    <%= @company.users.first.email %>. <%= t('.Feel free to contact our dedicated team for any kind of assistance') %>
+   <%= t('.You can also write to us at') %> support@opustime.com.<%= t('.or can call us on any of the numbers mentioned on the website') %>.
+    <%= t('.Join us and become a proud user of OpusTime') %>.
+
+    <%= t('.Thank You') %>
+    <%= t('.The Opustime Team') %>
+  </p>
+</div>
+</body>
+</html>

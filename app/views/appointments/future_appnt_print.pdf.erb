@@ -1,0 +1,56 @@
+<style>
+    h2{
+        font-size: 16px;
+        border-bottom: solid 1px #ccc;
+        padding-bottom: 5px;
+    }
+    .table{
+        width: 100%;
+    }
+    .table thead tr th{
+        text-align: left;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .table tbody tr td{
+        text-align: left;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    thead { display: table-header-group }
+    tfoot { display: table-row-group }
+    tr { page-break-inside: avoid }
+</style>
+<% if @future_appointments.length > 0 %>
+    <h2><%=@patient.full_name %>'s<%= t('.Future') %> <%= t('.appointments') %></h2>
+    <table class="table" cellspacing="0" border="1">
+      <thead>
+      <tr>
+        <th>S.no</th>
+        <th><%= t('.Service Type') %></th>
+        <th><%= t('.Appointment Date') %></th>
+        <th><%= t('.Appointment') %> <%= t('.Time') %></th>
+        <th><%= t('.Patient') %></th>
+        <th><%= t('.Practitioner') %></th>
+        <th><%= t('.Location') %></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @future_appointments.each_with_index do |appnt , index| %>
+          <tr>
+            <td><%= index + 1 %> </td>
+            <td><%= appnt.appointment_type.try(:name) %> </td>
+            <td><%= appnt.appnt_date.strftime('%d-%m-%Y') %> </td>
+            <td><%= appnt.time_interval  %> </td>
+            <td><%= appnt.patient.try(:full_name) %> </td>
+            <td><%= appnt.user.try(:full_name_with_title) %> </td>
+            <td><%= appnt.business.try(:full_address) %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+<% else %>
+    <h2><%=@patient.full_name %> <%= t('.has no appointment in future') %>. </h2>
+<% end %>

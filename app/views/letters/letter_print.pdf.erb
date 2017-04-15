@@ -1,0 +1,14 @@
+<div>
+	<% if @show_logo %>
+		<center>
+			<%= wicked_pdf_image_tag @logo_url , height: @logo_size %>
+		</center>
+	<% end %>
+</div>
+<div style="margin-top: <%= @logo_underneath_space %>px;">
+	<% if @email_body.nil? %>
+		<%= @letter.content.html_safe %>
+	<% else %>
+		<%= @email_body %>
+	<% end %>
+</div>

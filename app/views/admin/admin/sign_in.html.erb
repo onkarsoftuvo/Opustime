@@ -1,0 +1,117 @@
+<header class="header">
+  <div class="container contain_custom">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><%= image_tag 'logo.jpg', :style => 'width: 180px !important;' %></a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to 'Sign Up', admin_signup_path %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main-wrap">
+
+
+  <section class="main-padding">
+    <div class="col-lg-12">
+      <div class="row form-center">
+        <div class="col-lg-offset-4 col-lg-4 form-width">
+          <h4 class="login-heading">Login</h4>
+
+
+          <div class="isa_error hidden" id="error_notice">
+            <i class="fa fa-times-circle"></i>
+            <%= flash.now[:error] %>
+          </div>
+
+          <div class="isa_success hidden" id="success_notice">
+            <i class="fa fa-check"></i>
+            <%= flash.now[:success] %>
+          </div>
+
+          <div class="isa_warning hidden" id="warning_notice">
+            <i class="fa fa-warning"></i>
+            <%= flash.now[:warning] %>
+          </div>
+
+          <div class="isa_info hidden" id="info_notice">
+            <i class="fa fa-info-circle"></i>
+            <%= flash.now[:info] %>
+          </div>
+
+
+          <p class="success_message hidden" id="success_notice"><%= flash.now[:success] %></p>
+          <!--<p class="error_message hidden" id="error_notice"><#%= flash.now[:error] %></p>-->
+
+          <%= form_tag admin_login_path, :method => :POST do %>
+
+              <div class="form-group">
+                <%= email_field_tag :email, params[:email], :class => "form-control text-box email-bg", :required => true, :placeholder => 'Email' %>
+                <!--<input type="email" class="form-control text-box email-bg" placeholder="Email">-->
+              </div>
+              <div class="form-group">
+                <%= password_field_tag :password, params[:password], :class => "form-control text-box password-bg", :required => true, :placeholder => 'Password' %>
+              </div>
+
+              <div class="form-group">
+                <div class="radio_wrap text-left">
+                  <%= radio_button_tag :user_type, '0' %>
+                  <%= label :user_type, 'Admin' %>
+                </div>
+                <div class="radio_wrap">
+                  <%= radio_button_tag :user_type, '1' %>
+                  <%= label :user_type, 'Sale' %>
+                </div>
+                <div class="radio_wrap text-right">
+                  <%= radio_button_tag :user_type, '2' %>
+                  <%= label :user_type, 'Marketing' %>
+                </div>
+              </div>
+              <%= submit_tag "Sign in", :class => "form-control login-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="clearfix"></div>
+</div>
+
+<footer>
+  <div class="container contain_custom">
+    <div class="col-lg-6 footer-copyrt">
+      Copyright © 2016 Opustime. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        if (<%= flash[:error].present? %>) {
+            $('#error_notice').removeClass('hidden');
+            $('#error_notice').delay(5000).fadeOut(400);
+        } else if (<%= flash[:info].present? %>) {
+            $('#info_notice').removeClass('hidden');
+            $('#info_notice').delay(5000).fadeOut(400);
+        } else if (<%= flash[:warning].present? %>) {
+            $('#warning_notice').removeClass('hidden');
+            $('#warning_notice').delay(5000).fadeOut(400);
+        }else if  (<%= flash[:success].present? %>){
+            $('#success_notice').removeClass('hidden');
+            $('#success_notice').delay(5000).fadeOut(400);
+        }
+    });
+</script>
+

@@ -1,0 +1,233 @@
+<dialog-panel header="header">
+    <dialog-header header="header">
+        <button class="cancel_btn" ng-click="hitCancel()">
+            {{'button.cancel' | translate}}
+        </button>
+         <button class="save_btn" type="submit" form="newContacts" ng-if="!editCon">
+            {{'button.save' | translate}}
+        </button>
+        <button class="save_btn" type="submit" form="newContacts" ng-if="editCon && conPerm.modify">
+            {{'button.update' | translate}}
+        </button>
+    </dialog-header>
+    <div class="navigate_arrow" ng-if="hv_next_pre">
+        <div class="arrow_btn pre_btn">
+            <a href="" ui-sref="contact.edit({'con_id' : Contact.prev})" ng-if="Contact.prev != null"></a>
+        </div>
+        <div class="arrow_btn next_btn">
+            <a href="" ui-sref="contact.edit({'con_id' : Contact.next})" ng-if="Contact.next != null"></a>
+        </div>
+    </div>
+    <div class="tab_contents">
+        <div class="detail_con" ng-if="editCon">
+            <h4>{{Contact.title}} {{Contact.first_name}} {{Contact.last_name}}</h4>
+            <div class="detail_content">
+                <div class="row">
+                    <div class="col-sm-4  detailName">
+                        <h5 class="text-capitalize">{{'communication.type' | translate:translationData}} : {{Contact.contact_type}}</h5>
+                        <h5 class="text-capitalize">{{'contact.occupation' | translate:translationData}} : {{Contact.occupation}}</h5>
+                        <h5 class="text-capitalize">{{'contact.preferredName' | translate:translationData}} : {{Contact.preffered_name}}</h5>
+                        <h5>{{'contact.companyName' | translate:translationData}} : {{Contact.company_name}}</h5>
+                        <h5 ng-if="Contact.contact_type == 'Doctor'">{{'contact.providerNo' | translate:translationData}} : {{Contact.provider_number}}</h5>
+                        <h5>{{'label.email_address' | translate:translationData}} : {{Contact.email}}</h5>
+                        <h5>{{'label.phone' | translate:translationData}} : 
+                            <span ng-repeat="phones in ContactDetails.phone_list" class=" phone_numbers" ng-if="phones.contact_no">
+                            <span class="pull-left">{{phones.contact_no}} <strong class="text-capitalized">({{phones.type}})</strong></span>
+                            <a href="" ui-sref="contact.sendSMS({'contact_id' : Contact.id, 'phone_no' : phones.contact_no})" ng-if="phones.type == 'mobile'" class="sendIcon contact_icn" style="margin-top:-4px;"><span>Send SMS</span></a></span> <br>
+                        </h5>
+                    </div>
+                    <div class="col-sm-4 detailName">
+                        <h5>{{'contact.address' | translate:translationData}} : {{Contact.address}} </h5>
+                        <h5>{{'contact.country' | translate:translationData}} : 
+                            <span ng-repeat="countries in country | filter:{code:Contact.country}">{{countries.name}}</span>
+                        </h5>
+                        <!--<h5>{{'contact.state' | translate:translationData}} : -->
+                            <!--<span ng-repeat="states in state | filter:{code:Contact.state}">{{states.name}}</span>-->
+                        <!--</h5>-->
+                        <h5>{{'contact.city' | translate:translationData}} : {{Contact.city}}</h5>
+                        <h5>{{'contact.postCode' | translate:translationData}} : {{Contact.post_code}}</h5>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1 note_container detailN">
+                        <div class="note_con">
+                            {{!Contact.notes? "Note" : Contact.notes}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form ng-submit="newContacts.$valid && CreateContact(Contact)"  class="products contact" novalidate name="newContacts" id="newContacts" ng-if="createEdit">
+            <div class="row trim_row">
+                <div class="col-sm-6 resp-contact">
+                    <div class="row trim_row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <h4 class="ng-binding">{{'contact.contactType' | translate:translationData}}</h4>
+                                <div class="radio_con">
+                                    <div class="col-sm-3">
+                                        <label>
+                                          <input type="radio" ng-model="Contact.contact_type" name="test" value="Standard"><span></span> {{'contact.standard' | translate:translationData}}
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>
+                                          <input type="radio" ng-model="Contact.contact_type" name="test" value="Doctor"><span></span> {{'contact.doctor' | translate:translationData}}
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-3 thrdPrty">
+                                        <label>
+                                          <input type="radio" ng-model="Contact.contact_type" name="test" value="3rd party Payer"><span></span> {{'contact.thirdParty' | translate:translationData}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{'contact.personal_info' | translate:translationData}}</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'label.title' | translate:translationData}}</label>
+                                <select class="form-control" ng-model="Contact.title">
+                                    <option value=""></option>
+                                    <option value="mr">{{'title.mr' | translate:translationData}}</option>
+                                    <option value="mrs">{{'title.mrs' | translate:translationData}}</option>
+                                    <option value="ms">{{'title.ms' | translate:translationData}}</option>
+                                    <option value="Miss">{{'title.miss' | translate:translationData}}</option>
+                                    <option value="dr">{{'title.dr' | translate:translationData}}</option>
+                                    <option value="Master">{{'title.master' | translate:translationData}}</option>
+                                    <option value="RMT">{{'title.rmt' | translate:translationData}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'label.first_name' | translate:translationData}}</label>
+                                <input type="text" class="form-control"  ng-model="Contact.first_name" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'label.last_name' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.last_name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>{{'contact.occupation' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.occupation">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>{{'contact.preferredName' | translate:translationData}}</label>
+                                <input type="text" class="form-control"  ng-model="Contact.preffered_name">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>{{'contact.companyName' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.company_name"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 angular-animate" ng-if="Contact.contact_type == 'Doctor'">
+                            <div class="form-group">
+                                <label>{{'contact.providerNo' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.provider_number"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{'contact.contact_info' | translate:translationData}}</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>{{'label.phone' | translate:translationData}}</label>
+                                <div class="row trim_row multiElements" ng-repeat="phoneNum in Contact.phone_list">
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" ng-model="phoneNum.contact_no"/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" ng-model="phoneNum.type">
+                                            <option value="mobile">{{'label.mobile' | translate:translationData}}</option>
+                                            <option value="home">{{'label.home' | translate:translationData}}</option>
+                                            <option value="work">{{'label.work' | translate:translationData}}</option>
+                                            <option value="fax">{{'label.fax' | translate:translationData}}</option>
+                                            <option value="other">{{'label.other' | translate:translationData}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3 con-rem">
+                                        <a href="" ng-click="removePhone($index)" class="remove"><i class="ic cross"></i> {{'contact.remove' | translate:translationData}}</a>
+                                    </div>
+                                </div>
+                                <div class="row trim_row">
+                                    <div class="col-sm-12">
+                                        <a href="" ng-click="addPhone()" class="add-btn"><i class="ic add"></i> {{'contact.add_new' | translate:translationData}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>{{'label.email_address' | translate:translationData}}</label>
+                                <input type="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" class="form-control" ng-model="Contact.email"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 resp-contact">
+                    <div class="row trim_row">
+                        <div class="col-sm-12">
+                            <h4>{{'contact.address' | translate:translationData}}</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group mess">
+                                <textarea  ng-model="Contact.address" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>{{'contact.country' | translate:translationData}}</label>
+                                <select  ng-model="Contact.country"  class="form-control" ng-change="GetStates(Contact.country)"  >
+                                   <option ng-selected="{{Contact.country == countries.code}}" ng-repeat="countries in country" value="{{countries.code}}">{{countries.name}}</option>
+                                </select>
+                                    {{Contact.selectedCountry }}                               
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'contact.state' | translate:translationData}}</label>
+                                <select ng-model="Contact.state"  class="form-control" ng-disabled="state.length==0" ng-class="{'disabled-class': !state}">
+                                   <option ng-selected="{{Contact.state == states.code}}" ng-repeat="states in state" value="{{states.code}}">{{states.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'contact.city' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.city"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>{{'contact.postCode' | translate:translationData}}</label>
+                                <input type="text" class="form-control" ng-model="Contact.post_code">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>{{'contact.other' | translate:translationData}}</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group notes-box">
+                                <label>{{'product.label_note' | translate:translationData}}</label>
+                                <textarea ng-model="Contact.notes" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</dialog-panel>

@@ -1,0 +1,64 @@
+<div class="dashboard-con settings">
+    <div class="top_tabbing" ng-if="true">
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.communication_sub_modules.recall_type" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.communication_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.communication_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.communication_total == 3}">
+        <a ui-sref="settings.recall-types" href="" class="active">{{'sidebar_menu.Recalls' | translate:translationData}}</a>
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.communication_sub_modules.letter_template" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.communication_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.communication_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.communication_total == 3}">
+        <a ui-sref="settings.letter-templates" href="">{{'sidebar_menu.Letter_templates' | translate:translationData}}</a>
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.communication_sub_modules.sms_template" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.communication_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.communication_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.communication_total == 3}">
+        <a ui-sref="settings.sms-templates" href="">{{'reports.SMS_Templates' | translate:translationData}}</a>
+      </div>
+    </div>
+    <div class="top-container">
+        <div class="col-md-8 col-xs-6 top-links">
+            <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>
+        </div>
+        <div class="col-md-4 col-xs-6 top-btn recallbtn" ng-show="BtnRecalltype">
+            <button class="save" type="submit" form="RecallForm" ng-if="recallPermissions.add || recallPermissions.modify">{{btnText | translate:translationData}}</button>
+            <button ng-click="$state.go('settings.recall-types');BtnRecalltype=false" class="cancel">{{'button.cancel' | translate:translationData}}</button>
+            <button class="cancel" ng-click="reDelete('sm')" ng-hide="recallDeleteBtn">{{'button.delete' | translate:translationData}}</button>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-2 bus-con">
+        <div class="col-md-2 side-bar-con">
+            <div class="side-bar">
+                <div class="side-bar-header">
+                    <h5>{{'settings.recall.main_heading' | translate:translationData}}</h5>
+                    <a class="" ui-sref="settings.recall-types.info({recallID:'new'})" ng-show="recallPermissions.add">
+                    	<i ng-click="recallDeleteBtn = true;BtnRecalltype=true" class="ic bus-icn recell-icn"></i>
+                    	<span>{{'settings.tool-tip-addnew' | translate:translationData}}</span>
+                    </a>
+                </div>
+                <div class="side-bar-search">
+                    <form>
+                        <input type="text" class="form-control" placeholder="{{'settings.placeholder_search' | translate:translationData}}" ng-model="FilterRecal" />
+                        <button type="submit" disabled="disabled"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div ng-click="BtnRecalltype = recallPermissions.modify ; recallDeleteBtn = !recallPermissions.delete" class="side-bar-links" ng-scrollbars rebuild-on-resize>
+                	<ul>
+                    	<li ng-repeat="recalltypes in RecallList | filter:{name:FilterRecal}" >
+                            <a href="" ui-sref="settings.recall-types.info({recallID:recalltypes.id})" ui-sref-active="active" ng-if="recallPermissions.modify">{{recalltypes.name}}</a>
+                            <a ng-if="!recallPermissions.modify" ui-sref="settings.recall-types">{{recalltypes.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-10 col-sm-10 form-content info-container " ng-scrollbars rebuild-on-resize>
+    	<div ui-view></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<script type="text/ng-template" id="DeleteModal.html">
+    <div class="modal-body confirm-body">
+		<div class="confirm">
+            <p>{{'settings.recall.confirmation-msg' | translate:translationData}}</p>
+            <a href="" ng-click="okdelete()">{{'button.confirm' | translate:translationData}}</a>
+            <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+        </div>
+    </div>
+</script>

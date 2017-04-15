@@ -1,0 +1,17 @@
+
+development:
+  host: '127.0.0.1'
+  port: '6379'
+  
+test:
+  host: '127.0.0.1'
+  port: '6379'
+  
+  
+production:
+#  host: 'opustime.hsgwuv.0001.use1.cache.amazonaws.com' # For Production
+#  port: '6379'
+#  host: 'opustime2.hsgwuv.0001.use1.cache.amazonaws.com'  # For staging
+#  port: '6379'
+  host: '127.0.0.1'
+  port: '6379'

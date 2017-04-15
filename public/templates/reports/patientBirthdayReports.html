@@ -1,0 +1,72 @@
+<div class="reports-con">
+  <div class="top-container">
+    <div class="col-md-12 top-links" ng-include="'templates/reports/top-bar.html'"></div>
+  </div>
+  <div class="graph_con" ng-scrollbars rebuild-on-resize rebuild-on="rebuild:me">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>{{'label.Patient_birthdays' | translate:translationData}}</h2>
+      </div>
+      <div class="col-sm-8 text-right">
+        <p class="birthdayINfo">There <span ng-if="birthdayList.length == 1">{{'reports.is' | translate:translationData}} {{birthdayList.length}} {{'reports.patient_with_birthday' | translate:translationData}}</span><span ng-if="birthdayList.length > 1">{{'reports.are' | translate:translationData}} {{birthdayList.length}} {{'reports.patient_with_birthdays' | translate:translationData}}</span><span ng-if="birthdayList.length == 0">{{'reports._no_patient_with_birthday' | translate:translationData}}</span>  {{'reports.in_the_month_of' | translate:translationData}} {{curMonth}}.</p>
+      </div>
+    </div>
+    <div class="reports_filters">
+      <div class="arr_con">
+        <select class="fill-width" ng-model="monthName">
+          <option value="1">{{'reports.January' | translate:translationData}}</option>
+          <option value="2">{{'reports.February' | translate:translationData}}</option>
+          <option value="3">{{'reports.March' | translate:translationData}}</option>
+          <option value="4">{{'reports.April' | translate:translationData}}</option>
+          <option value="5">{{'reports.May' | translate:translationData}}</option>
+          <option value="6">{{'reports.June' | translate:translationData}}</option>
+          <option value="7">{{'reports.July' | translate:translationData}}</option>
+          <option value="8">{{'reports.August' | translate:translationData}}</option>
+          <option value="9">{{'reports.September' | translate:translationData}}</option>
+          <option value="10">{{'reports.October' | translate:translationData}}</option>
+          <option value="11">{{'reports.November' | translate:translationData}}</option>
+          <option value="12">{{'reports.December' | translate:translationData}}</option>
+        </select>
+      </div>
+      <button class="pull-right apply export" ng-click="exportBirthday()">{{'button.export' | translate:translationData}}</button>
+      <button class="pull-right apply export" ng-click="printBirthday()">{{'button.print' | translate:translationData}}</button>
+      <button class="apply" ng-click="patientBirthDayList()">{{'button.Apply' | translate:translationData}}</button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive reports-table" style="min-height:50px;">
+      <table class="table table-hover">
+        <thead ng-if="!noBirthday">
+          <tr>
+            <th>{{'settings.online_booking.label-min-option_day' | translate:translationData}}</th>
+            <th>{{'contact.Name' | translate:translationData}}</th>
+            <th>{{'label.email_address' | translate:translationData}}</th>
+            <th>{{'contact.phone' | translate:translationData}}</th>
+            <th>{{'contact.address' | translate:translationData}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-center noData" ng-if="noBirthday">{{'reports.No_Data_to_Display' | translate:translationData}}</td>
+          </tr>
+          <tr ng-repeat="birthdays in birthdayList">
+            <td>
+              {{!birthdays.day ? 'N/A' : birthdays.day}}
+            </td>
+            <td>
+              <a href="" ui-sref="patient-detail({'patient_id' : birthdays.patient_id})">{{!birthdays.name ? 'N/A' : birthdays.name}}</a>
+            </td>
+            <td>
+              {{!birthdays.email ? 'N/A' : birthdays.email}}
+            </td>
+            <td>
+              {{!birthdays.phone_no ? 'N/A' : birthdays.phone_no}}
+            </td>
+            <td>
+              {{!birthdays.address ? 'N/A' : birthdays.address}}            
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

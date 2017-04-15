@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>opustime</title>
+  <style>
+      thead { display: table-header-group }
+      tfoot { display: table-row-group }
+      tr { page-break-inside: avoid }
+      .topLogo > img{
+          width:auto;
+      }
+  </style>
+</head>
+
+<body style="margin:0;">
+<div style="margin:auto; width:800px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; ">
+	<div style="background:#edf2f6; overflow:auto;">
+        <div style="width:70%; float:left; padding:24px 30px; box-sizing:border-box;" class="topLogo">
+			<%= wicked_pdf_image_tag @logo_url.to_s , size: @logo_size,  :alt=> "/assets/no-business.jpg" %>
+        </div>
+        <div style="width:30%; float:left; padding:19px 0; box-sizing:border-box;">
+            <h2 style="margin-top:0; font-size:17.25px; color:#b93e5b; text-transform:uppercase; margin-bottom:5px;"><%= @result[:business_name] %></h2>
+            <h3 style="font-size:15.05px; color:#000; margin:0; line-height:22.58px; font-weight:300;"><%= @result[:address]%>,<%= @result[:city]%><br>
+               <%= @result[:state]%> , <%= @result[:pin_code]%><br>
+               <%= @result[:country]%></h3>
+        </div>
+    </div>
+    <div style=" padding:0 30px; box-sizing:border-box; margin-top:20px;">
+    	<h4 style=" font-size:10.66px; margin-bottom:5px; text-transform:uppercase;"><%= @title %></h4>
+        <div style="margin-bottom:40px;">
+        	<h2 style="font-size:16px; margin-top:10px; color:#373737; font-weight:400; margin-bottom:5px;">Date : <span style="color:#7b7b7b;"><%= @result[:date]%></span></h2>
+            <h2 style="font-size:16px; margin-top:10px; color:#373737; font-weight:400; margin-bottom:5px;"><%= t('.Outstanding') %> : <span style="color:#7b7b7b;"><%= @result[:patient_outstanding_balance]%></span></h2>
+            <h2 style="font-size:16px; margin-top:10px; color:#373737; font-weight:400; margin-bottom:5px;">Client  : <span style="color:#7b7b7b;"><%= @result[:patient_name] %></span></h2>
+	<% if @result[:include_extra_patient_info] == "true" %>
+            <h2 style="font-size:16px; margin-top:10px; color:#373737; font-weight:400; margin-bottom:5px;"><%= t('.Extra') %> patient info : <span style="color:#7b7b7b;"><%= @result[:extra_patient_info] %></span></h2>
+	<% end %> 
+	<% if @result[:only_outstanding_invoice] == true || @result[:only_outstanding_invoice] == "true" %>
+		<b> <%= t('.Outstanding') %> <%= t('.invoices') %> <%= t('.only') %> </b>
+	<% end %>
+        </div>
+        <h4 style=" font-size:10.66px; margin-bottom:5px; text-transform:uppercase;"><%= t('.Invoice to') %></h4>
+        <div style="margin-bottom:40px;">
+        	<h2 style="font-size:19px; color:#7b7b7b; font-weight:400; margin-bottom:5px;"><%= @result[:invoice_to] %></h2>
+            
+            <p style="font-size:16px; color:#7b7b7b;"><%= @result[:default_notes] %>.</p>
+        </div>
+	<% if @result[:invoices].length > 0 %>
+        <h4 style="font-size:20px; color:#b93e5b; text-transform:uppercase; font-weight:400;"><%= t('.Invoices') %></h4>
+        <table style="width:100%; margin:0;" cellpadding="0" >
+        	<thead>
+            	<tr>
+                	<th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 30px; background:#c0dbf0;"><%= t('.INVOICE ID') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;">DATE</th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.PROFESSIONAL') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.PROFESSIONAL type/number') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.CHARGES') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.TAX') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.PAYMENT') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.BALANCE') %></th>
+                </tr>
+            </thead>
+            <tbody>
+		<% tax_total = 0 %>
+        <% invoice_total = 0 %>
+
+		<% @result[:invoices].each do |invoice| %>
+            	<tr>
+        	    <td style="font-size:12.8px; font-weight:400; padding:12.5px 30px;"><%= invoice[:invoice_id] %></td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= invoice[:invoice_date] %> </td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= invoice[:practitoner] %></td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= invoice[:practi_type] %> / <%= invoice[:practi_number] %></td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= %><%= invoice[:invoice_items] %>: <%=invoice[:invoice_amount] %></td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= invoice[:tax] %></td>
+                  <% tax_total = tax_total.to_i + invoice[:tax].to_i  %>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"> <%= invoice[:payment] %></td>
+                  <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"> <%= invoice[:invoice_outstanding] %></td>
+                  <% invoice_total = invoice_total.to_i + invoice[:invoice_amount].to_i  %>
+                </tr>
+		<% end %>
+            </tbody>
+        </table>
+          <div style=" border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; overflow:auto; margin:0 -30px; padding:15px 0;">
+            <div style="width:250px; float:right;">
+              <h4 style="margin:5px 0;"><label style="width:150px; text-align:right; display:inline-block; margin-right:10px; font-size:12.8px; color:#000;">Total <%= t('.tax') %> :</label><span style="font-weight:700; font-size:12.8px;"><%= '%.2f'% tax_total.to_f %></span></h4>
+              <h4 style="margin:5px 0;"><label style="width:150px; text-align:right; display:inline-block; margin-right:10px; font-size:12.8px; color:#000;">Total <%= t('.Amount') %> :</label><span style="font-weight:700; font-size:12.8px;"><%= '%.2f'% invoice_total.to_f %></span></h4>
+            </div>
+          </div>
+	<% end %>
+
+        <% unless @result[:payments].length == 0  %> 
+        <h4 style="font-size:20px; color:#b93e5b; text-transform:uppercase; font-weight:400;"><%= t('.Payment') %></h4>
+        <table style="width:100%; margin:0;" cellpadding="0" cellspacing="0">
+        	<thead>
+            	<tr>
+                	<th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 30px; background:#c0dbf0;"><%= t('.PAYMENT') %> ID</th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;">DATE</th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.PAYMENT') %> TYPE</th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.INVOICE ID') %></th>
+                    <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% payment_total = 0 %>
+                <% @result[:payments].each do |payment| %> 
+            	<tr>
+                    <td style="font-size:12.8px; font-weight:400; padding:12.5px 30px;"><%= payment[:payment_id] %></td>
+                    <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= payment[:payment_date] %></td>
+                    <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px; width:300px;"><%= payment[:source] %></td>
+                    <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px; width:300px;"><%= payment[:used_invoices] %></td>
+                    <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= payment[:total_paid] %></td>
+                    <% payment_total = payment_total.to_i + payment[:total_paid].to_i  %>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+          <div style=" border-top:solid 1px #ccc; overflow:auto; margin:0 -30px; padding:15px 0;">
+            <div style="width:250px; float:right;">
+              <h4 style="margin:5px 0;">
+                <label style="width:150px; text-align:right; display:inline-block; margin-right:10px; font-size:12.8px; color:#000;">
+                  Total <%= t('.Amount') %> :
+                </label>
+                    <span style="font-weight:700; font-size:12.8px;">
+                        <%= '%.2f'%(payment_total.to_f) %>
+                    </span>
+              </h4>
+              <h4 style="margin:5px 0;">
+                <label style="width:150px; text-align:right; display:inline-block; margin-right:10px; font-size:12.8px; color:#000;">
+                  <%= t('.Outstanding_Balance') %> :
+                </label>
+                    <span style="font-weight:700; font-size:12.8px;">
+                        <%= '%.2f'% (@result[:patient_outstanding_balance]).to_f %>
+                    </span>
+              </h4>
+            </div>
+          </div>
+        <% end %>
+
+    <div style=" background:#edf2f6; padding:14.5px 30px; overflow:auto; margin:30px -30px 0;">
+    	<% unless @result[:reg_name].nil? %>
+	    	<div style="width:33%; float:left;">
+	        	<label style=" font-size:17.25px; font-weight:400;"><%= t('.Registration') %> Name : <span style="font-weight:700;"><%= @result[:reg_name] %></span></label>
+	        </div>
+        <% end %>
+        <% unless @result[:reg_number].nil? %>
+	    	<div style="width:40%; float:left; text-align:center;">
+	        	<label style=" font-size:17.25px; font-weight:400;"><%= t('.Registration') %> Number : <span style="font-weight:700;"><%= @result[:reg_number] %></span></label>
+	        </div>
+        <% end %>
+        <% unless @result[:web_url].nil? %>
+	    	<div style="width:27%; float:left; text-align:right;">
+	        	<label style=" font-size:17.25px; font-weight:400; float:right;"><%= @result[:web_url] %></label><%= wicked_pdf_image_tag 'globe.png' , :style=>"float:right; margin-right:10px;"%>
+	        </div>
+        <% end %>
+    </div>
+</div>
+</div>
+</body>
+</html>

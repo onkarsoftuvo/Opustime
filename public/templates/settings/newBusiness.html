@@ -1,0 +1,56 @@
+<form ng-submit="businessForm.$valid &&CreateBusiness(businessInfo)" name="businessForm" id="businessForm" novalidate>
+  <div class="col-md-6">
+  	<h2>{{'settings.bussiness_info.heading_business_information' | translate:translationData}}</h2>
+      <div class="form-group">
+        <label>{{'settings.bussiness_info.business_name' | translate:translationData}}</label>
+        <input ng-model="businessInfo.name" type="text" class="form-control" placeholder="{{'settings.bussiness_info.business_name-placeholder' | translate:translationData}}" required>
+      </div>
+      <div class="form-group">
+        <label>{{'settings.bussiness_info.address' | translate:translationData}}</label>
+        <input ng-model="businessInfo.address" type="text" class="form-control" placeholder="{{'settings.bussiness_info.address_placeholder' | translate:translationData}}">
+      </div>
+      <div class="form-group">
+        <label>{{'settings.bussiness_info.country' | translate:translationData}}</label>
+        <select ng-model="businessInfo.country"  class="form-control" ng-change="GetStates(businessInfo.country)"  ng-model="cntry" required>
+           <option ng-selected="" ng-repeat="countries in country" value="{{countries.code}}">{{countries.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-xs-4 city-con">
+        <label>{{'settings.bussiness_info.city' | translate:translationData}}</label>
+        <input ng-model="businessInfo.city"  type="text" class="form-control" placeholder="{{'settings.bussiness_info.city' | translate:translationData}}">
+      </div>
+      <div class="form-group col-xs-4 city-con">
+        <label>{{'settings.bussiness_info.state' | translate:translationData}}</label>
+        <select ng-model="businessInfo.state"  class="form-control" ng-options="states.code as states.name for states in state">
+        </select>
+      </div>
+      <div class="form-group col-xs-4 city-con">
+        <label>{{'settings.bussiness_info.postal_code' | translate:translationData}}</label>
+        <input ng-model="businessInfo.pin_code"  type="text"  class="form-control" placeholder="400082" />
+      </div>
+  </div>
+	<div class="col-md-6">
+	  <h2 class="blank">&nbsp;</h2>
+    <div class="form-group name-num">
+      <label>{{'settings.bussiness_info.business_reg' | translate:translationData}}</label>
+      <input ng-model="businessInfo.reg_name"  type="text" class="form-control" placeholder="{{'settings.bussiness_info.klb_placeholder' | translate:translationData}}">
+      <input ng-model="businessInfo.reg_number"  type="text" class="form-control" placeholder="{{'settings.bussiness_info.reg_placeholder' | translate:translationData}}">
+    </div>
+    <div class="form-group url">
+      <label>{{'settings.bussiness_info.web_url' | translate:translationData}}</label>
+      <input  ng-model="businessInfo.web_url"   type="url" class="form-control" placeholder="{{'settings.bussiness_info.url_placeholder' | translate:translationData}}">
+    </div>
+    <div class="form-group contact-info">
+      <label>{{'settings.bussiness_info.contact_info' | translate:translationData}}</label>
+      <textarea ng-model="businessInfo.contact_info"  class="form-control"></textarea>
+    </div>
+    <div class="form-group check-con online">
+      <label>{{'settings.bussiness_info.online_booking' | translate:translationData}}</label>
+      <div class="checkbox">
+          <label>
+            <input ng-model="businessInfo.online_booking"  type="checkbox"><span></span> {{'settings.bussiness_info.online_booking_location' | translate:translationData}}
+          </label>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+<style>
+h2{
+	font-size: 16px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+.table{
+	width: 100%;
+}
+.table thead tr th{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+.table tbody tr td{
+	text-align: left;
+	padding: 0 10px;
+	font-size: 12px;
+}
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+</style>
+<h2><%= t('.Recall Patient Report') %></h2>
+<table class="table" cellspacing="0"  border="1">
+	<thead>
+		<tr>
+			<th><%= t('.Recall on') %></th>
+			<th><%= t('.Type') %></th>
+			<th><%= t('.Patient') %></th>
+			<th><%= t('.Last practitioner') %></th>
+			<th><%= t('.Note') %></th>
+			<th><%= t('.Phone') %> #</th>
+			<th><%= t('.Recall') %>?</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @result.each do |recall| %>
+			<tr>
+				<td><%= recall[:recall_on]%> </td>
+				<td><%= recall[:type]%></td>
+				<td><%= recall[:patient]%></td>
+				<td><%= recall[:practitioner]%></td>
+				<td><%= recall[:notes] %></td>
+				<td><%= recall[:phone]%></td>
+				<td><%= recall[:is_selected] %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>	

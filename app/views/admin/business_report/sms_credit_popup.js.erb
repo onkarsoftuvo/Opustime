@@ -1,0 +1,3 @@
+$('#SmsModal').append("<%= escape_javascript render(:partial => 'add_sms_credit' ,
+                    locals: {:comp_id => @comp_id }) %>");
+$('#smsCredits').modal('show');

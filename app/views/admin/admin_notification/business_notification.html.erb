@@ -1,0 +1,95 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Business Notification
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Notification</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Business Notification Report</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group filter-con">
+                  <label>Filters</label>
+                  <div class="col-md-3">
+                    <select class="form-control">
+                      <option>Country</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-control">
+                      <option>City</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-info">Filter</button>
+                  </div>
+                  <div class="col-md-2 pull-right text-right">
+                    <button class="btn btn-default">Clear Filter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table id="example1" class="table table-bordered custom_table">
+              <thead>
+              <tr>
+                <th>Trial Expire Notification</th>
+                <th>SMS Credit</th>
+                <th>Add Card Notification</th>
+                <th>Card Expire</th>
+                <th class="no_sort text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1</td>
+                <td>Kalambi</td>
+                <td>200</td>
+                <td>14</td>
+                <td class="action_btns text-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-eye"></i></button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>

@@ -1,0 +1,2247 @@
+@media (max-width: 875px) {
+	.top-butn {
+		margin-left: 20px;
+	}
+	.data-range form input[type="text"] {
+		padding-left: 5px;
+	}
+	.data-range span {
+		margin: 0px 12px 0px -30px;
+	}
+}
+@media (min-width: 900px) {
+	.chipsdemoContactChips .contact-item {
+		float: left;
+		width: 33%;
+	}
+}
+@media (min-width:992px) {
+	.info span, .user-icn span {
+		opacity: 0;
+		box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		display: block !important;
+		visibility: visible;
+		pointer-events: none;
+		bottom: 35px;
+	}
+	.user-icn span {
+		bottom: 40px !important;
+	}
+	.info:hover span {
+		opacity: 1;
+		bottom: 25px !important;
+	}
+	.user-icn:hover span {
+		opacity: 1;
+		bottom: 28px !important;
+	}
+	.info.bottom span {
+		bottom: auto !important;
+		top: 35px !important
+	}
+	.info.bottom:hover span {
+		top: 25px !important;
+	}
+	.left-side span {
+		left: 25%;
+		margin-left: -50px
+	}
+	.left-side span:after {
+		left: 18.5%;
+	}
+	.right-side span {
+		margin-left: -260px
+	}
+	.right-side span:after {
+		left: 91%;
+	}
+}
+@media (min-width:1400px) {
+	.fc-view, .fc-view > table{
+		height: 100%;
+	}
+	.fc-head-container.fc-widget-header{
+		height: 22px;
+	}
+	.fc-widget-content {
+	    height: 100%;
+	}
+	.fc-time-grid-container{
+		min-height: 100%;
+	}
+}
+@media (max-width:1365px) {
+	.fc-toolbar .fc-center{
+		width: 250px;
+	}
+	.privacy_btn{
+		padding:0;
+		width: 105px; 
+	}
+	.bus-con{
+		clear: both;
+	}
+}
+@media (max-width:1330px) {
+	.top-btn button {
+		width: 80px;
+	}
+}
+@media (max-width:1300px) {
+	.side-bar-header {
+		padding: 0 10px 4px
+	}
+	.side-bar-search {
+		padding: 10px;
+	}
+	.side-bar-links {
+		padding: 10px;
+	}
+	.side-bar-con {
+		width: 206px;
+	}
+	.city-con {
+		width: 100%;
+	}
+	.city-con input[type="text"], .city-con select {
+		width: 336px;
+	}
+	.contact-info textarea {
+		width: 100%;
+	}
+	.addProd-btn{
+		width: 44%;
+	}
+	.total-list button.btn.btn-black {
+   		 padding: 6px 0px;
+	}
+	.data-export select {
+		width: 30%;
+		margin-right: 10px;
+	}
+	.data-export input[type="text"] {
+		width: 10%;
+		margin-right: 10px;
+	}
+	.data-export label {
+		margin-right: 10px;
+	}
+	/*.form-content input[type="text"], .form-content input[type="email"], .form-content input[type="password"], .booking input[type="url"], .form-content textarea{ width:190px;}*/
+	.form-group.col-xs-8.city-con1 {
+		clear: both;
+		width: 100%;
+		padding: 0;
+	}
+	.form-group.col-xs-4.city-con.pra-info {
+		float: left;
+		width: 30%;
+	}
+	.pra-info input[type="text"], .pra-info select {
+		width: 95%;
+	}
+	.qust-sec input[type="text"] {
+		width: 60% !important;
+	}
+	.avail-con select {
+		width: 20%;
+		padding-left: 5px;
+	}
+	.full-wid{width:100%; /*margin-bottom:10px;*/}
+	.full-detail> .col-sm-4,.full-detail> .col-sm-5{width:50%;}
+	.full-detail> .col-sm-3{width:100%;}
+	.note-detail{margin-top:10px; min-height:90px;}
+	.patient-container .full-wid:nth-child(2){ width:450px;}
+	.patient-container .full-wid:nth-child(3){ width:calc(100% - 450px);}
+	.below-links a{padding:15px 7px}
+	.patient_center_filter{
+		height: auto;
+	}
+	.patient_center_filter .center_divider{
+		display: none;
+	}
+	.patient_center_filter .form-group{
+		width: 30%;
+		margin-bottom: 5px;
+	}
+	.patient_center_filter .form-group.cal{
+		width: 30%;
+	}
+	.patient_center_filter .form-group label{
+		margin-top: 5px;
+	}
+	.inner_filter .patient_center_filter label.without_upcoming{
+		padding-top: 10px;
+	}
+	.btn-black{
+		font-size:10px;
+		width: 54%;
+	}
+}
+@media (max-width:1200px) {
+	.recent-message h4 {
+		font-size: 11px;
+	}
+	.recent-message .date {
+		margin-left: 4px;
+	}
+	.recent-message .date i {
+		font-size: 15px;
+	}
+	.recent-message h3 {
+		font-size: 13px;
+	}
+	.message-con h2 a {
+		margin-top: -6px;
+		padding: 5px 6px;
+	}
+	.info-container {
+		padding-left: 100px;
+	}
+	.top-btn button {
+		width: 68px;
+	}
+	.sms-con .sms-btns a {
+		width: 125px;
+	}
+	.plan table a {
+		width: 100px;
+	}
+	.plan .table > tbody > tr > td strong {
+		width: 100px;
+	}
+	.form-content .col-md-6 {
+		padding: 0 15px;
+	}
+	.password {
+		padding: 0 !important;
+	}
+	.fname {
+		padding-left: 0 !important;
+	}
+	.avail-con select {
+		width: 100% !important;
+	}
+	.avail-con .col-xs-9 {
+		padding-left: 20px;
+	}
+	.communication.detail-box{margin-bottom:5px;}
+	.side-title{padding-right:0; padding-left:5px;}
+	.ExpenseDetails .productInfo .modal-body{ padding:0 0 10px;}
+	.treatment-ans-con{width:100%;}
+	.treatment-container .border-center{display:none;}
+	.app_sidebar{
+		position: absolute;
+		z-index: 10;
+		height: calc(100% - 70px);
+	}
+	.mapping_area{
+		width: 100% !important;
+		padding-left: 70px;
+	}
+	.fc-toolbar{
+		margin-bottom: 3em;
+	}
+	.fc-toolbar .fc-right{
+		padding-right: 10px;
+	   /* position: absolute;
+	    right: 0;
+	    top: 66px;*/
+	}
+	.privacy_btn{
+		font-size: 0;
+		width: 45px;
+	}
+	.privacy_btn i{
+		font-size: 14px;
+		margin: 0;
+	}
+	.fc-toolbar .fc-center{
+		margin-right: -50px;
+	}
+	.fc-toolbar .fc-right button{
+		font-size: 11px;
+	}
+	.fc-toolbar .fc-center{
+		width: 225px;
+	}
+}
+@media (max-width:1100px) {
+	.info-container .col-md-6 {
+		width: 100%;
+	}
+	.blank {
+		display: none;
+	}
+	.contact-info label {
+		width: 100%;
+	}
+	.top-btn button {
+		padding: 0px 4px;
+		font-size: 11px;
+		margin-left: 10px;
+	}
+	.booking {
+		clear: both;
+	}
+	.fname {
+		padding: 0 !important;
+	}
+	/*.detail-box > .col-sm-9,.detail-box > .col-sm-3{ width:100%;}
+	.detail-box .gray_btns{text-align:right; padding-top:10px;}
+	.detail-box .gray_btns button{ float:none;}*/
+	.productsdetails > .col-sm-9{width:100%;}
+	.new-patient .panel-heading{ padding:15px 15px 5px;}
+	.productsdetails > .col-sm-9 .patient-name{width:100%; margin:0; padding:0;}
+	.productsdetails > .col-sm-9 .patient-name h2{}
+	.top-button-links{left:40px;}
+	.productsdetails div:last-child{ padding:0 15px; width:100%;}
+	.productsdetails div:last-child{margin-top:0;}
+	.productsdetails > .col-sm-9 .patient-name .top-button-links{padding-top:0; width:100%;}
+	.productsdetails > .col-sm-9 .patient-name> .col-sm-4{width:30%; padding:0;}
+	.productsdetails > .col-sm-9 .patient-name> .col-sm-8{width:70%;}
+	.productsdetails > .col-sm-9 .patient-name> .col-sm-8 .patient-con{width:100%; margin-top:0;}
+	.productsdetails .patient-name> .col-sm-8 .patient-con .col-sm-6{width:50%; margin:0; padding:0;}
+	.productsdetails .patient-name> .col-sm-8 .patient-con .clearfix{width:100%;}
+	.full-detail> .col-sm-4,.full-detail> .col-sm-5{width:100%;}
+	.full-detail> .col-sm-3{width:100%;}
+	.contact-list .full-detail>.col-sm-3{ width:100%;}
+	.note-detail{margin-top:10px; min-height:90px;}
+	.patient-container .full-wid:nth-child(2){ width:100%; padding-right: 15px;}
+	.patient-container .full-wid:nth-child(3){ width:100%; padding-left: 15px;}
+	.below-links a{padding:15px 7px}
+	.clientfulldetail .drop-down .panel-heading{top:-46px;}
+	.patient-container{margin-top:10px;}
+	.detail-box li{display:block; float:left; width:33.33%;}
+	.detail-box .list-payment li{ width:100%;}
+	.treatment-ans-con > .row > .col-sm-5,.treatment-ans-con > .row > .col-sm-7{ width:100%;}
+	.treatment-container .gray_btns > .pull-left{width:100%;}
+	.gray_btns button{width:112px;}
+	.gray_btns button.delete-btn{ width:50px;}
+}
+@media (max-width:1200px) {
+	.top-search-con {
+		width: 400px;
+	}
+	#templateForm > .col-md-6 {
+		width: 100%;
+	}
+	.contact-info textarea {
+		width: 100%
+	}
+	.qust-sec input.prob[type="text"] {
+		width: 73% !important;
+	}
+	.inner-con .tab-content .main-tabing .col-md-6 {
+		margin-bottom: 10px !important;
+		padding: 0 !important;
+	}
+	.inner-con .tab-content .main-tabing .col-md-6:last-child {
+		margin-bottom: 0 !important;
+	}
+	.dashboard-con h2 {
+		font-size: 15px;
+	}
+	.inner-search form input[type="text"] {
+		width: 130px;
+	}
+	.recent-message p {
+		line-height: 20px;
+	}
+	.action a {
+		margin-left: 5px;
+	}
+	.top-links {
+		padding: 35px 25px 33px 0;
+	}
+	.form-content input[type="text"], .form-content input[type="email"] {
+		width: 100%;
+	}
+	.form-content select {
+		width: 100%;
+	}
+	.form-content {
+		overflow-x: hidden;
+		padding-right: 15px;
+		padding-top: 15px;
+	}
+	.form-content h2 {
+		margin-top: 0;
+	}
+	.p-name select {
+		width: 170px;
+	}
+	.range {
+		clear: both;
+	}
+	.top-links {
+		padding: 35px 25px 33px 0;
+	}
+	/*.info-hover span{ bottom:0; left:auto; margin-left: 24px; margin-bottom: -38px;}
+		.info-hover span::after{left:-8px; transform:rotate(90deg); margin-left:-12px; left:0; bottom: 40px;}*/
+	.info-hover span {
+		right: -28px;
+		left: auto;
+		margin-left: 0;
+	}
+	.info-hover span::after {
+		left: auto;
+		right: 28px;
+	}
+	/*.name-con{ width:50%;}*/
+	.name-con {
+		padding-right: 15px;
+	}
+	.settings .col-md-9 {
+		width: 64%;
+	}
+	.settings .col-md-3 {
+		width: 36%;
+	}
+	.open-nav li a {
+		font-size: 14px;
+	}
+	.open-nav li.active a {
+		font-size: 12px;
+	}
+	.top-btn button {
+		width: 75px;
+	}
+	.top-links select {
+		float: left;
+	}
+	.select-con {
+		float: left !important;
+	}
+	.select-account .dropdown-menu a {
+		padding: 5px 15px;
+	}
+	.settings {
+		margin: 0 20px;
+	}
+	.info-container {
+		padding-left: 120px;
+		padding-right: 0;
+	}
+	.city-con1 {
+		padding: 0;
+		width: 100%;
+	}
+	.city-con1 input {
+		width: 100% !important;
+	}
+	.pra-info {
+		width: 30%;
+	}
+	.description textarea {
+		width: 100%;
+	}
+	.fac-con {
+		clear: both;
+	}
+	.password {
+		width: 100% !important;
+	}
+	.password input[type="password"] {
+		width: 100%;
+	}
+	.notify, .appointment, .booking input[type="url"] {
+		width: 100%;
+	}
+	.avail h2 {
+		float: none;
+	}
+	.avail-con select {
+		margin: 5px 0;
+	}
+	.avail-con select:first-child, .avail-con select:nth-child(2) {
+		margin-top: 0;
+	}
+	.avail-con span {
+		display: block;
+		width: 100%;
+		text-align: center;
+		line-height: 20px;
+	}
+	.avail-con select {
+		margin: 0 8.7px;
+		width: 43%;
+	}
+	.bottom span::after {
+		bottom: 40px;
+		top: auto;
+		transform: rotate(90deg)
+	}
+	.bottom span {
+		top: auto;
+	}
+	.avail .nav-tabs a {
+		padding: 7px 5px;
+		font-size: 11px;
+		margin-right: 2px;
+	}
+	.form-content label {
+		line-height: 20px;
+	}
+	.clear select {
+		width: 300px;
+	}
+	.side-label {
+		margin-bottom: 0;
+	}
+	.online .info {
+		margin-top: 2px;
+	}
+	.side-label + select {
+		margin-bottom: 15px;
+	}
+	.info {
+		margin-top: 2px;
+	}
+	.plan {
+		clear: both;
+	}
+	.happens label i {
+		top: 0;
+	}
+	.plan-type select {
+		width: 110px;
+	}
+	.plan-type label {
+		margin-top: 12px;
+	}
+	.checkup textarea {
+		width: 100%;
+	}
+	.medi p {
+		width: 80% !important;
+	}
+	.treatment textarea {
+		height: 90px !important;
+		margin-bottom: 30px;
+	}
+	.btn4 button {
+		margin-left: 10px;
+	}
+	.qust-sec input[type="text"] {
+		width: 65% !important;
+	}
+	.qust-sec label {
+		line-height: 45px !important;
+	}
+	.treatment-con {
+		overflow: visible;
+	}
+	.form-group.fulwid {
+		clear: both;
+	}
+	.col2 {
+		clear: both;
+	}
+	.import-btn button {
+		padding: 2px 5px;
+		width: auto !important;
+		margin-left: 8px;
+		font-size: 11px;
+	}
+	.import-data table tbody a {
+		padding: 10px;
+	}
+	.import-btn-con {
+		width: 200px;
+	}
+	.import-data table tbody a.delete {
+		margin-left: 6px;
+	}
+	.import-data table thead th {
+		font-size: 13px;
+	}
+	.data-export label {
+		margin: 10px 0;
+	}
+	.data-export input[type="text"] {
+		float: none;
+	}
+	.data-export button[type="submit"] {
+		margin-top: 15px;
+	}
+	.export ul.select-con {
+		float: right !important;
+	}
+	.logo-height {
+		overflow: auto;
+	}
+	.clear-div {
+		clear: both;
+	}
+	.push-right {
+		padding-left: 0;
+	}
+	.margin-count .col-md-3 {
+		width: 50%;
+		float: left;
+	}
+	.margin-count .col-md-3 select {
+		width: 104px;
+	}
+	.logo-height-con select {
+		width: 40%;
+	}
+	.productInfo h4 {
+		width: 100% !important;
+	}
+}
+@media (max-width:991px) {
+	.qust-sec input.prob[type="text"] {
+		width: 63% !important;
+	}
+	.bus-con {
+		clear: both;
+	}
+	.top-links {
+		padding: 3px 25px 33px 0;
+	}
+	.name-num {
+		clear: both;
+	}
+	.questions_attributes {
+		width: 100%;
+	}
+	.problem-con label {
+		padding-left: 25px;
+	}
+	.select-con {
+		clear: both
+	}
+	.top-search-con {
+		clear: both;
+		float: left;
+		width: 100%;
+	}
+	.resposive-layout > .col-sm-6, .resposive-layout > .col-sm-5, .resposive-layout > .col-sm-7 {
+		width: 100%;
+	}
+	.products h3 {
+		padding: 0 15px;
+	}
+	.tax-include {
+		margin-top: 30px;
+		margin-left: 0;
+	}
+	.top-btn button i {
+		font-size: 22px;
+		position: relative;
+		top: 4px;
+	}
+	.productsdetails > .col-sm-9 .patient-name> .col-sm-4{width:22%;}
+	.productsdetails > .col-sm-9 .patient-name> .col-sm-8{width:100%; padding:0;}
+	.productsdetails .patient-name> .col-sm-8 .patient-con .col-sm-6{ padding:0;}
+	.productsdetails > .col-sm-9 .patient-name .top-button-links{ position:absolute; width:auto;left: 10px;top: 18px;}
+
+	.detail-box li{width:50%;}
+	.filter-title{font-size:14px; line-height:14px;}
+}
+@media (max-width:800px) {
+	.qust-sec input.prob[type="text"] {
+		width: 55% !important;
+	}
+	.top-links {
+		padding: 6px 25px 17px 0;
+	}
+}
+@media (min-width:992px) {
+	.info span, .user-icn span {
+		opacity: 0;
+		box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		display: block !important;
+		visibility: visible;
+		pointer-events: none;
+		bottom: 35px;
+	}
+	.user-icn span {
+		bottom: 40px !important;
+	}
+	.info:hover span {
+		opacity: 1;
+		bottom: 25px !important;
+	}
+	.user-icn:hover span {
+		opacity: 1;
+		bottom: 28px !important;
+	}
+	.info.bottom span {
+		bottom: auto !important;
+		top: 35px !important
+	}
+	.info.bottom:hover span {
+		top: 25px !important;
+	}
+	.left-side span {
+		left: 25%;
+		margin-left: -50px
+	}
+	.left-side span:after {
+		left: 18.5%;
+	}
+	.right-side span {
+		margin-left: -260px
+	}
+	.right-side span:after {
+		left: 91%;
+	}
+}
+@media (max-width:1330px) {
+	.top-btn button {
+		width: 80px;
+	}
+}
+@media (max-width:1300px) {
+	.side-bar-header {
+		padding: 0 10px 4px
+	}
+	.side-bar-search {
+		padding: 10px;
+	}
+	.side-bar-links {
+		padding: 10px;
+	}
+	.side-bar-con {
+		width: 206px;
+	}
+	.city-con {
+		width: 100%;
+	}
+	.city-con input[type="text"], .city-con select {
+		width: 403px;
+	}
+	.contact-info textarea {
+		width: 100%;
+	}
+	.data-export select {
+		width: 30%;
+		margin-right: 10px;
+	}
+	.data-export input[type="text"] {
+		width: 10%;
+		margin-right: 10px;
+	}
+	.data-export label {
+		margin-right: 10px;
+	}
+	/*.form-content input[type="text"], .form-content input[type="email"], .form-content input[type="password"], .booking input[type="url"], .form-content textarea{ width:190px;}*/
+	.form-group.col-xs-8.city-con1 {
+		clear: both;
+		width: 100%;
+		padding: 0;
+	}
+	.form-group.col-xs-4.city-con.pra-info {
+		float: left;
+		width: 30%;
+	}
+	.pra-info input[type="text"], .pra-info select {
+		width: 95%;
+	}
+	.qust-sec input[type="text"] {
+		width: 60% !important;
+	}
+	.avail-con select {
+		width: 20%;
+		padding-left: 5px;
+	}
+}
+@media (max-width:1200px) {
+	.recent-message h4 {
+		font-size: 11px;
+	}
+	.recent-message .date {
+		margin-left: 4px;
+	}
+	.recent-message .date i {
+		font-size: 15px;
+	}
+	.recent-message h3 {
+		font-size: 13px;
+	}
+	.message-con h2 a {
+		margin-top: -6px;
+		padding: 5px 6px;
+	}
+	.info-container {
+		padding-left: 100px;
+	}
+	.top-btn button {
+		width: 68px;
+	}
+	.sms-con .sms-btns a {
+		width: 125px;
+	}
+	.plan table a {
+		width: 100px;
+	}
+	.plan .table > tbody > tr > td strong {
+		width: 100px;
+	}
+	.form-content .col-md-6 {
+		padding: 0 15px;
+	}
+	.password {
+		padding: 0 !important;
+	}
+	.fname {
+		padding-left: 0 !important;
+	}
+	.avail-con select {
+		width: 100% !important;
+	}
+	.avail-con .col-xs-9 {
+		padding-left: 20px;
+	}
+}
+@media (max-width:1100px) {
+	.info-container .col-md-6 {
+		width: 100%;
+	}
+	.blank {
+		display: none;
+	}
+	.contact-info label {
+		width: 100%;
+	}
+	.top-btn button {
+		padding: 0px 4px;
+		font-size: 11px;
+		margin-left: 10px;
+	}
+	.booking {
+		clear: both;
+	}
+	.fname {
+		padding: 0 !important;
+	}
+}
+@media (max-width:1200px) {
+	#templateForm > .col-md-6 {
+		width: 100%;
+	}
+	.contact-info textarea {
+		width: 100%
+	}
+	.qust-sec input.prob[type="text"] {
+		width: 73% !important;
+	}
+	.inner-con .tab-content .main-tabing .col-md-6 {
+		margin-bottom: 10px !important;
+		padding: 0 !important;
+	}
+	.inner-con .tab-content .main-tabing .col-md-6:last-child {
+		margin-bottom: 0 !important;
+	}
+	.dashboard-con h2 {
+		font-size: 14px;
+	}
+	.inner-search form input[type="text"] {
+		width: 130px;
+	}
+	.recent-message p {
+		line-height: 20px;
+	}
+	.action a {
+		margin-left: 5px;
+	}
+	.top-links {
+		padding: 35px 25px 33px 0;
+	}
+	.form-content input[type="text"], .form-content input[type="email"] {
+		width: 100%;
+	}
+	.form-content select {
+		width: 100%;
+	}
+	.form-content {
+		overflow-x: hidden;
+		padding-right: 15px;
+		padding-top: 15px;
+	}
+	.form-content h2 {
+		margin-top: 0;
+	}
+	.p-name select {
+		width: 100%;
+	}
+	.range {
+		clear: both;
+	}
+	.top-links {
+		padding: 35px 25px 33px 0;
+	}
+	/*.info-hover span{ bottom:0; left:auto; margin-left: 24px; margin-bottom: -38px;}
+			.info-hover span::after{left:-8px; transform:rotate(90deg); margin-left:-12px; left:0; bottom: 40px;}*/
+	.info-hover span {
+		right: -50px;
+		left: auto;
+		margin-left: 0;
+	}
+	.info-hover span::after {
+		left: auto;
+		right: 50px;
+	}
+	/*.name-con{ width:50%;}*/
+	.name-con {
+		padding-right: 2px;
+	}
+	.settings .col-md-9 {
+		width: 72%;
+	}
+	.settings .col-md-3 {
+		width: 24%;
+	}
+	.open-nav li a {
+		font-size: 14px;
+	}
+	.open-nav li.active a {
+		font-size: 12px;
+	}
+	.top-btn button {
+		width: 50px;
+	}
+	.top-links select {
+		float: left;
+	}
+	.select-con {
+		float: left !important;
+	}
+	.select-account .dropdown-menu a {
+		padding: 5px 15px;
+	}
+	.settings {
+		margin: 0 20px;
+	}
+	.info-container {
+		padding-left: 120px;
+		padding-right: 0;
+	}
+	.city-con1 {
+		padding: 0;
+		width: 100%;
+	}
+	.city-con1 input {
+		width: 100% !important;
+	}
+	.pra-info {
+		width: 30%;
+	}
+	.description textarea {
+		width: 100%;
+	}
+	.fac-con {
+		clear: both;
+	}
+	.password {
+		width: 100% !important;
+	}
+	.password input[type="password"] {
+		width: 100%;
+	}
+	.notify, .appointment, .booking input[type="url"] {
+		width: 100%;
+	}
+	.avail h2 {
+		float: none;
+	}
+	.avail-con select {
+		margin: 5px 0;
+	}
+	.avail-con select:first-child, .avail-con select:nth-child(2) {
+		margin-top: 0;
+	}
+	.avail-con span {
+		display: block;
+		width: 100%;
+		text-align: center;
+		line-height: 20px;
+	}
+	.avail-con select {
+		margin: 0 8.7px;
+		width: 43%;
+	}
+	.bottom span::after {
+		bottom: 108px;
+		top: auto;
+		right: 85px;
+		transform: rotate(180deg);
+	}
+	.bottom span {
+		right: -88px;
+		top: 27px;
+	}
+	.bottom-arrow span::after {
+		bottom: 54px;
+	}
+	.bottom-invoice span{
+		right: -180px;
+	}
+	.bottom-invoice span:after{
+		right: 178px;
+		bottom: 72px;
+	}
+	.invoice-note span{
+		right: -149px;
+	}
+	.invoice-note span:after{
+		right: 143px;
+	}
+
+	.avail .nav-tabs a {
+		padding: 7px 5px;
+		font-size: 11px;
+		margin-right: 2px;
+	}
+	.form-content label {
+		line-height: 20px;
+	}
+	.clear select {
+		width: 300px;
+	}
+	.side-label {
+		margin-bottom: 0;
+	}
+	.online .info {
+		margin-top: 2px;
+	}
+	.side-label + select {
+		margin-bottom: 15px;
+	}
+	.info {
+		margin-top: 2px;
+	}
+	.plan {
+		clear: both;
+	}
+	.happens label i {
+		top: 0;
+	}
+	.plan-type select {
+		width: 110px;
+	}
+	.plan-type label {
+		margin-top: 12px;
+	}
+	.checkup textarea {
+		width: 100%;
+	}
+	.medi p {
+		width: 80% !important;
+	}
+	.treatment textarea {
+		height: 90px !important;
+		margin-bottom: 30px;
+	}
+	.btn4 button {
+		margin-left: 10px;
+	}
+	.qust-sec input[type="text"] {
+		width: 65% !important;
+	}
+	.qust-sec label {
+		line-height: 45px !important;
+	}
+	.treatment-con {
+		overflow: visible;
+	}
+	.form-group.fulwid {
+		clear: both;
+	}
+	.col2 {
+		clear: both;
+	}
+	.import-btn button {
+		padding: 2px 5px;
+		width: auto !important;
+		margin-left: 8px;
+		font-size: 11px;
+	}
+	.import-data table tbody a {
+		padding: 10px;
+	}
+	.import-btn-con {
+		width: 200px;
+	}
+	.import-data table tbody a.delete {
+		margin-left: 6px;
+	}
+	.import-data table thead th {
+		font-size: 13px;
+	}
+	.data-export label {
+		margin: 10px 0;
+	}
+	.data-export input[type="text"] {
+		float: none;
+	}
+	.data-export button[type="submit"] {
+		margin-top: 15px;
+	}
+	.export ul.select-con {
+		float: right !important;
+	}
+	.logo-height {
+		overflow: auto;
+	}
+	.clear-div {
+		clear: both;
+	}
+	.push-right {
+		padding-left: 0;
+	}
+	.margin-count .col-md-3 {
+		width: 50%;
+		float: left;
+	}
+	.margin-count .col-md-3 select {
+		width: 173px;
+	}
+	.logo-height-con select {
+		width: 58%;
+	}
+	.productInfo h4 {
+		width: 100% !important;
+	}
+	.form-group {
+	    margin-bottom: 27px;
+	}
+	.patient-hover span{
+		right:-100px;
+	}
+	.patient-hover span:after{
+		right:100px;
+	}
+	.patientEmail-hover span{
+		right:-165px;
+	}
+	.patientEmail-hover span:after{
+		right:165px;
+	}
+	.form-content input[type="url"]{
+		width: 383px;
+	}
+	.name-num input:last-child {
+	    margin-left: 29px;
+	}
+}
+@media (max-width:991px) {
+	.qust-sec input.prob[type="text"] {
+		width: 63% !important;
+	}
+	.bus-con {
+		clear: both;
+	}
+	.top-links {
+		padding: 3px 25px 33px 0;
+	}
+	.name-num {
+		clear: both;
+	}
+	.questions_attributes {
+		width: 100%;
+	}
+	.problem-con label {
+		padding-left: 25px;
+	}
+}
+@media (max-width:800px) {
+	.qust-sec input.prob[type="text"] {
+		width: 55% !important;
+	}
+	.top-links {
+		padding: 6px 25px 17px 0;
+	}
+	.ta-scroll-window {
+	    width: 92%;
+	}
+}
+@media (max-width: 875px) {
+	.top-butn {
+		margin-left: 20px;
+	}
+	.data-range form input[type="text"] {
+		padding-left: 5px;
+	}
+	.data-range span {
+		margin: 0px 12px 0px -30px;
+	}
+}
+@media (max-width:1100px) {
+	.top-links {
+		padding: 20px 25px 33px 0;
+	}
+	.top-btn button i {
+		font-size: 22px;
+		position: relative;
+		top: 4px;
+	} 
+	.resposive-layout > .col-sm-6, .resposive-layout > .col-sm-5, .resposive-layout > .col-sm-7 {
+		width: 100%;
+		padding:0;
+	}
+	.yes-no{padding:0 15px;}
+	.tax-include {
+		margin-left: 0;
+		margin-top: 30px;
+	}
+	.productsdetails .col-sm-2, .productsdetails .right, .productsdetails .col-sm-3 {
+		width: 34%;
+		line-height: 25px;
+		padding-right:0;
+		padding-left: 13px;
+	}
+	.contact-list .col-sm-3, .contact-list .col-sm-2 {
+		width: 40%;
+	}
+	.contact-list .more-contacts .col-sm-3{ width:25%;}
+	.invoice-list ul li {
+		display: block;
+	}
+	.invoice-list ul.right-ul {
+		margin: 0 10px;
+	}
+	.contact-list .col-sm-3:nth-child(1) {
+		line-height: 25px;
+	}
+	.productsdetails div:last-child {
+		display: inline-block;
+		float: none;
+		margin-top: 5px;
+		width: 31%;
+	}
+	.productsdetails.contact-list div:last-child {
+		width: 20%;
+	}
+	uib-accordion .panel-default > .panel-heading {
+		padding: 6px 0;
+	}
+	.product-con .panel-group {
+		margin-top: 0;
+	}
+	.sms-detail .col-sm-4 {
+		width: 100%;
+	}
+	.PatientList ul li {
+		display: block;
+	}
+	/*.PatientList ul li h4 span{display:none;}*/
+	/*.PatientList ul li:last-child {
+		width: 100% !important;
+	}*/
+	.PatientList ul li button.pro-value {
+	    font-size: 12px;
+	  }
+	.PatientList, .PatientList ul {
+		overflow: hidden;
+	}
+	.PatientList ul li h4::after {
+		display: none;
+	}
+	.PatientList ul li button.pro-value {
+		width: 100%;
+	}
+	.PatientList ul li h4, .PatientList ul li h3 {
+		line-height: 30px;
+	}
+	.invoice-list ul li {
+		display: inline-block;
+		overflow: hidden;
+		width: 24%;
+	}
+	.invoice-list ul {
+		float: left;
+		width: 100%;
+	}
+	.invoice-list ul.right-ul {
+		width: calc(100% - 20px);
+	}
+	.invoice-list ul.right-ul li {
+		width: 49%;
+		text-align: center;
+	}
+	.invoice-list ul.right-ul li h4, .invoice-list ul.right-ul li span {
+		float: none;
+		display: inline;
+	}
+	.invoice-list-details .btn-black, .invoice-list-details .btn-pink {
+		width: 30.33%;
+		margin-bottom: 10px;
+		margin-left: 10px;
+	}
+	.invoice-info ul.invoice-detail-list li:nth-child(2n) {
+		padding-left: 10%;
+	}
+	.payment-list ul {
+		float: left;
+		width: auto;
+	}
+	.payment-list ul li{width:190px;}
+	.payment-list ul.right-ul.same-size {
+	    text-align: center;
+	    width: 145px;
+	}
+	.payment-list ul.right-ul li{ width:100%;}
+	.exp md-autocomplete{width:auto;}
+	.form-content .select-width{
+		width: 100%;
+	}
+}
+@media (max-width:991px){
+	.PatientList ul li {
+		display: block;
+		width: 50% !important;
+	}	
+	.invoice-list ul li{width:49%;}
+}
+@media (max-width: 1280px){
+	.img-con img{
+		max-width: 100%;
+	}
+	.header.top-header{
+		display: flex;
+		height: 20vh;
+	}
+	.settings_menu ul li > span {
+    	top: 18px;
+	}
+	.img-con {
+        width: 122px;
+	    padding: 3px;
+	    height: 82px;
+	}
+	.img-con img{
+		height: 100%;
+	}
+	.check-con{
+		clear: both;
+	}
+	.invoice-col {
+	    width: 36.333%;
+	}
+	.focussed .btn-default,.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+	   font-size: 9px;
+	    }
+	.ta-scroll-window,.fulwid textarea{
+		width: 98%;
+	}
+	.invoice-LabelTitle {
+	    width: 63.333%;
+	}
+	.service {
+	    width: 75%;
+		}
+		.cat-con input[type="text"] {
+	    width: 200px;
+	}
+	.appoint-cat{
+		width: 50.333%;
+	}
+	.appoint-dur{
+		width:30.667%;
+	}
+	.booking input[type="text"] {
+	    width: 74%;
+	}
+	.booking select {
+	    width: 333px;
+	}
+	.booking textarea {
+	    width: 75%;
+	 }
+	.upload-btn {
+		line-height: 39px;
+	}
+	.push-right{
+		width: 34%;
+		float: left;
+	}
+	.set-width{
+		width: 31%;
+		float: left;
+	}
+	.set-width select{
+		width:80%;
+	}
+	.line-height-setting{
+		padding-top:1%;
+	}
+	.check-con .checkbox {
+		clear: none;
+	}
+	.appoint-emailEnab{
+		margin-top: 2%;
+		clear: both;
+	}	
+	.appoint-emailEnab label{
+		float: left;
+		padding-top: 3%;
+	}
+	.appoint-emailEnab .checkbox{
+		clear: none;
+	}
+	.check-label label{
+		padding: 1% 4%;
+	}
+	.form-content .col-md-12 {
+		padding: 3%;
+	}
+	.thrdPrty{
+		width: 35%;
+	}
+	.patient-notAppl{
+		width: 27%;
+	}
+	.pad-sm-resp{
+		width: 30%;
+		padding-left: 0px;
+		padding-right: 3px;
+	}
+	.table-thPrice{
+		width: 15%;
+	}
+	.span-totalPrice{
+		padding-left: 5px;
+	}
+	.btndiv{
+		width: 80%;
+	}
+	.top-button-links {
+	    top: 23px;
+	    /*left: 27px;*/
+	}
+	.invoice-margin{
+		margin-top: 3px;
+	}
+	.invoice-margin table{
+		margin-bottom: 35px;
+	}
+}
+@media (min-width: 1280px) and (max-width: 1365px){
+	.text-widthEnable{
+		width: 65.667%;
+	}
+	.payment_topbar .col-sm-8{
+		padding-right: 6%;
+	}	
+}
+@media (max-width: 1255px){
+	.invoice-LabelTitle {
+	    width: 62.333%;
+	}
+	.invoice-col {
+   		 width: 36.333%;
+	}
+	.focussed .btn-default,.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+   		 font-size: 10px;
+	}
+	.invoice-title input.invoice-num[type="text"] {
+    	width: 80%;
+	}
+	.total-list-full-details {
+    	width: 30%;
+	}
+}
+@media (max-width: 1200px){
+		.img-con img{
+			max-width: 100%;
+		}
+		.img-con {
+		    width: 140px;
+			padding: 10px;
+		}
+		.invoice-setCol{
+			width: 97%;
+		}
+		.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+		   font-size: 15px;
+		    }
+		.extra-bus textarea,.ta-scroll-window, .fulwid textarea { 
+		     width: 75%;
+		}
+		.focussed .btn-default {
+		    font-size: 15px;
+		}
+		.invoice-LabelTitle {
+		    width: 50.333%;
+		}
+		.invoice-title input.invoice-num[type="text"] {
+		    width: 72%;
+		}
+}
+@media (max-width: 1024px){
+	.img-con img{
+		max-width: 100%;
+	}
+	.btndiv {
+    	width: 75%;
+	}
+	.img-con {
+	    width: 115px;
+		padding: 9px 0px;
+		height: 85px;
+	}
+	.img-con img{
+		height: 100%;
+	}
+	.check-con{
+		clear: both;
+	}
+	.invoice-setCol{
+		width: 97%;
+	}
+	.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+	   font-size: 15px;
+	 }
+	.extra-bus textarea,.ta-scroll-window, .fulwid textarea { 
+	     width: 80%;
+	}
+	.focussed .btn-default {
+	    font-size: 15px;
+	}
+	.invoice-LabelTitle {
+	    width: 50.333%;
+	}
+	.invoice-title input.invoice-num[type="text"] {
+	    width: 72%;
+	}
+	.form-content textarea {
+    	width: 100%;
+	}
+	.service,.multiple-sel {
+		width: 100%;
+	}
+	.appoint-cat {
+    	width: 37.333%;
+	}
+	.comp-url{
+		width:100%;
+	}
+	.clear select {
+    width: 90%;
+	}
+	.push-right,.set-width{
+		width: 33%;
+		float: left;
+	}
+	.set-width select{
+		width:80%;
+	}
+	.line-height-setting{
+		padding-top:9%;
+	}
+	.check-con .checkbox {
+    	clear: none;
+	}
+	.appoint-emailEnab{
+		margin-top: 2%;
+		clear: both;
+	}	
+	.appoint-emailEnab label{
+		float: left;
+		padding-top: 3%;
+	}
+	.appoint-emailEnab .checkbox{
+		clear: none;
+	}
+	.check-label label{
+		padding: 1% 4%;
+	}
+	
+	.remind-period{
+		width:100%;
+	}
+	.form-content .col-md-12 {
+    	padding: 3%;
+	}
+	.booking-notifi span{
+		right: -100px;
+	}
+	.booking-notifi span:after{
+		right: 100px;
+	}
+	.appoint-catInfo span{
+		right: -186px;
+	}
+	.appoint-catInfo span:after{
+		right: 186px;
+	}
+	.remind-appointDef,.skip-info{
+		overflow: unset;
+	}
+	.remind-appointDef span{
+		right: -100px;
+	}
+	.remind-appointDef span:after{
+		right: 100px;
+		bottom:51px;
+	}
+	.remind-periodDef span{
+		right: -132px;
+	}
+	.remind-periodDef span:after{
+		right: 132px;
+		bottom:36px;
+	}
+	.skip-info span{
+		right: -147px;
+	}
+	.skip-info span:after{
+		right: 147px;
+		bottom: 54px;
+	}
+	.pushit-left .checkbox{
+		padding: 2%;
+	}
+	.addres-hover span{
+		right: -81px;
+	}
+	.addres-hover span:after{
+		right: 81px;
+	}
+	.book-terms span{
+		right: -150px;
+	}
+	.book-terms span:after{
+		right: 150px;
+	}
+	.reports_filters .arr_con .btn {
+		font-size: 11px;
+	}
+	.popUp .cross_bar {
+    	width: 135px;
+	}
+	.rightSide_content {
+    	width: calc(100% - 135px);
+	}
+	.taxAmount span:after{
+		bottom: 54px;
+	}
+	.topBar_content h6 {
+	    font-size: 12px;
+	}
+	.topBar_content button {
+   		width: 65px;
+   		font-size: 10px;
+	}
+	.patient-span span{
+		right: -173px;
+	}
+	.patient-span span:after{
+		right: 173px;
+	}
+	.total-list td {
+    	padding: 10px 2px 9px;
+	}
+	.total-list-full-details {
+ 	   width: 37%;
+ 	   margin-top: 3%;
+	}
+	.appointDetail li{
+		width: 100%;
+	}
+	.detailName{
+		width: 49.333%;
+	}
+	.detailN{
+		width: 40%;
+		clear: both;
+		margin-left:0;
+	}
+	.top-btn .save.new_patient {
+   		 width: 50px;
+	}
+	.product-search .top-search-con{
+		clear: none;
+		float: left;
+		width: 82%;
+		margin-left: 1%;
+	}
+	.settings .col-md-3 {
+	  	 width: 17%;
+		 float: left;
+	}
+	.product-search input[type="text"] {
+    	font-size: 12px;
+	}
+	.table_view .table > thead > tr > th{
+	    font-size: 13px;
+	    padding: 0px;
+	    text-align: center;
+    }
+    .table_view .table > tbody > tr > td{
+    	text-align: center;
+    }
+    .table-thPrice{
+    	width:17%;
+    }
+    .table-thTax{
+    	width: 13%;
+    }
+    .topBar_content h3 {
+	    font-size: 14px;
+	}
+	.topBar_content h3 span {
+	    font-size: 11px;
+	}
+	.product-search .communicate-search{
+		width: 65%;
+	}
+	.top-btn button i {
+		font-size: 0;
+	 }
+	 .paymnt-btn button i{
+	 	font-size: 22px;
+	 }
+	 .chart_con{
+		width:100%;
+	}
+	.chart-container chart-legend {
+	    right: 0px;
+		top: 57%;
+	}
+	.PatientList ul li:last-child {
+	    margin-right: 0px;
+	    float: left;
+	}
+	.settings .top-btn{
+		width: 26%;
+	}
+	.productsdetails div:last-child {
+    	width: 7%;
+    	 padding: 0 2px;
+	}
+	.productsdetails > .col-sm-9 {
+    	width: 90%;
+	}
+	.top-button-links {
+	    left: 0px;
+	}   
+	.patient-con h4 {
+   		 font-size: 12px;
+	}
+	.invoiceDetails div:last-child {
+    	width: 48%;
+	}
+	.btn-black{
+		font-size:10px;
+		width: 54%;
+	}
+	.addProd-btn{
+		width: 44%;
+	}
+	.total-list button.btn.btn-black {
+   		 padding: 6px 0px;
+	}
+	.total-list thead tr th:nth-child(2n){
+		width: 18%;
+	}
+	.payementDetails div:last-child{
+		width: 28%;
+	}
+	.addPay-btn{
+		width: 100%;
+	}	
+	.skyBlue_theme .payementDetails .col-sm-4 button.auto_wid {
+	    padding: 1px 2px;
+	    min-width: 120px;
+	}
+	.product-detailDe div:last-child,.settings .recallbtn{
+		width: 31%;
+	}
+	.radio_con .col-sm-1{
+		width: 12.333%;
+	}
+	.settings .btn4 {
+   		 width: 50%;
+	}
+	.appointments .appointments_body{
+		width: 100%;
+	}
+	.dashboard-con .col-md-4{
+		width: 49.333%;
+	}
+	.clear-it {
+	    width: 79%;
+	}
+	.settings .logo-height{
+		width: 50%;
+	}
+	.non-edit-small {
+	    margin-right: 5px;
+	    width: 19%;
+	}
+	.data-import select{
+		width: 28%;
+	}
+	.integration_con{
+		clear: both;
+	}
+	.form-content .email-content{
+		padding: 0;
+	}
+	.remind-period{
+		padding-left: 0;
+	}
+	.reminder .remind-padLeft{
+		padding-left: 15px;
+	}
+	.form-content .email-text-box{
+		padding: 0;
+	}
+	.cal-range select{
+		width: 24% !important;
+	}
+	.invoice_ammount ul li {
+	    font-size: 12px;
+	    padding: 0 0px;
+	}
+	.time-setwidth select{
+		width: 40% !important;
+	}
+	.left_side_con {
+	    width: calc(100% - 269px);
+	}
+	.right_side_con {
+	    width: 275px;
+	    float: right;
+	}
+	.left_side_con .detail_content {
+		width:100%;
+	}
+	.detail_content > .app_info{
+		width: 100%;
+		padding-left: 20px;
+	}
+	.left_side_con .col-sm-5{
+		width: 90%;
+		padding-left: 55px;
+	}
+	.loginForm .form-group .col-sm-3{
+		padding-left: 0;
+		padding-right: 0px;
+	}
+	 .top-btn  button{
+		width: 60px;
+	}
+	.top-btn .save{
+		width: 50px;
+	}
+	.settings_menu ul li > span {
+    	top: 12px;
+	}
+	.topBar_content .reschedule_btn{
+		width: 85px;
+	}
+	.trim_row .col-sm-1{
+		width: 12.333%;
+	}
+	.trim_row .col-sm-6{
+		width: 57.5%;
+	}
+	.trim_row .col-sm-5{
+		width:70%;
+	}
+	.trim_row .col-sm-3{
+		width: 47%;
+	}
+	.trim_row .note-prod{
+		width: 100%;
+	}
+	.trim_row .range-slct{
+		width: 41.66666667%;
+	}
+	.marg-delete{
+		padding: 0 60px 0 0 !important;
+	}
+	.marg-cncl{
+		padding: 0 10px 0 0 !important;
+	}
+}
+@media (max-width: 980px){
+	.img-con img{
+		max-width: 80%;
+	}
+	.btndiv {
+    width: 70%;
+	}	
+	.book-img{
+		padding: 4px;
+	}
+	.ta-scroll-window,.fulwid textarea,.extra-bus textarea{
+		width: 84%;
+	}
+	.invoice-title input.invoice-num[type="text"] {
+	    width: 100%;
+	}
+	.invoice-col {
+	    width: 30.333%;
+	}
+	.appoint-cat {
+    	width: 40.333%;
+	}
+	.booking input[type="text"] ,.booking select {
+	    width: 100%;
+	}
+	.clear select {
+    	width: 90%;
+	}
+	.push-right,.set-width{
+		width: 35%;
+		float: left;
+	}
+	.push-right select{
+		width: 56%;
+	}
+	.set-width select{
+		width:80%;
+	}
+	.line-height-setting {
+		padding-top:3%;
+	}
+	.check-con .checkbox {
+    	clear: none;
+	}
+	.appoint-emailEnab{
+		margin-top: 2%;
+	}	
+	.appoint-emailEnab label{
+		float: left;
+		padding-top: 3%;
+	}
+	.appoint-emailEnab .checkbox{
+		clear: none;
+	}
+	.check-label label{
+		padding: 1% 4%;
+	}
+	.skip-info span{
+		right: -54px;
+	}
+	.skip-info span:after{
+		right: 54px;
+		bottom: 54px;
+	}
+	.last-nameAcc span{
+		right: 0;
+	}
+	.last-nameAcc span:after{
+		right: 5px;
+	}
+	.uplBtn{
+		line-height: 45px;
+	}
+	.pushit-left .checkbox{
+		padding: 2%;
+	}
+	.addres-hover span{
+		right: -167px;
+	}
+	.addres-hover span:after{
+		right: 167px;
+	}
+	.graph {
+	    padding: 28px;
+	}
+		.chart-container chart-legend {
+		right: -75px;
+	}
+	.chart_menu {
+	    width: 286px;
+	    margin-left: 13%;
+	}
+	.reports_filters label {
+	    font-size: 11px;
+	    margin-right: 5px;
+	}
+	.reports_filters select {
+    	font-size: 11px;
+    	padding: 0 9px;
+	}
+	.all-catReport {
+	    min-width: 141px;
+	}
+	.chart_btn > button {
+	    width: 65.3px;
+	}
+	.table-responsive{
+		overflow-x: auto;
+	}
+	.resp-contact{
+		width: 100%;
+	}
+	.productsdetails .col-sm-4 button, .productsdetails .col-sm-2 button, .productsdetails .col-sm-3 button, .productsdetails .col-sm-1 button, .productsdetails .col-sm-6 button, .PatientList ul li button {
+       width: 35px;
+	}
+	.PatientList ul li button.pro-value {
+	    width: 70%;
+	    float: left;
+    }
+    .productsdetails div:last-child {
+    	width: 7%;
+	}
+	.invoiceDetails div:last-child {
+    	width: 50%;
+	}
+	.productsdetails > .col-sm-9 {
+    	width: 74%;
+	}
+	.productsdetails > .col-sm-9 .patient-name > .col-sm-8 {
+	    width: 100%;
+	    padding-right: 0;
+	    padding-left: 0;
+	}
+	.productsdetails  .col-sm-9{
+		padding-right: 0;
+	}
+	 .btn-black{
+		font-size:10px;
+	}
+	.payementDetails div:last-child{
+		width: 30%;
+	}
+	 .payementDetails .pay-totalResp button.auto_wid {
+	    padding: 1px 2px;
+	    min-width: 120px;
+	}
+	.product-detailDe div:last-child{
+		width: 31%;
+	}
+	.import-data table tbody tr td {
+	    font-size: 12px;
+	    padding: 24px 8px;
+	}
+	.productsdetails > .col-sm-9 .patient-name > #pateintSet-width {
+	    width: 40%;
+	}
+	.productsdetails > .col-sm-9 .patient-name .top-button-links {
+	   	left: 56px;
+	    top: 13px;
+	}
+
+}
+@media (max-width: 900px){
+	.img-con img{
+		max-width: 80%;
+	}
+	.ta-scroll-window ,.fulwid textarea,.extra-bus textarea {
+	    width: 88%;
+	}
+	.upload-btn {
+	    line-height: 52px;
+	}
+	 .invoice-LabelTitle {
+	    width: 61%;
+	}
+	.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+		 font-size: 15px;
+	}
+	.invoice-col {
+	width: 29.333%;
+	}
+	.invoiceDate{
+		width: 100%;
+	}
+	.invoiceTax{
+		width: 69%;
+	}
+	.invoiceNote{
+		width:71%;
+	}
+	.PatientList ul li button.pro-value {
+	    width: 95%;
+	    float: left;
+    }
+	.blue_theme .productsdetails .col-sm-4 button.auto_wid {
+	     min-width: 140px;
+	}
+	.productsdetails div:last-child {
+    	padding: 0;
+	}
+	.content_box select {
+    	padding: 0 19px 0 0px;
+	}
+	.input-group-addon {
+    	padding: 1px 1px;
+	}
+	.payment_table > tbody > tr > td {
+	    padding: 10px 6px;
+	}
+	.span-totalPrice{
+		padding:0;
+	}
+	.paymentTotal {
+		width: 140%;
+		display: inline-block;
+	}
+	.dashboard_overview ul li {
+	    margin-top: 1%;
+	    width: 32.66%;
+	}
+	.chart-container chart-legend {
+	    right: -100px;
+	    top: 46%;
+	}
+	.invoiceDetails div:last-child {
+    	width: 65%;
+	}
+}
+@media (max-width: 850px){
+	.img-con img{
+		max-width: 80%;
+	}
+	.ta-scroll-window ,.fulwid textarea,.extra-bus textarea {
+	    width: 93%;
+	}
+	.ta-scroll-window ,.fulwid textarea,.extra-bus textarea {
+	    width: 93%;
+	}
+	.upload-btn {
+	    line-height: 36px;
+	}
+	 .invoice-LabelTitle {
+	    width: 58%;
+	}
+	.focussed .btn-default,.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+		 font-size: 12px;
+	}
+	.invoice-col {
+		width: 33.333%;
+	}
+	.appoint-cat {
+    	width: 53.333%;
+	}
+	.book-img{
+		width: 244.5px;
+		padding: 10px; 
+	}
+	.sms-container .email-content label {
+	    margin-right: 0;
+	    padding-bottom: 3%;
+	}
+	.filter_btns button, .side_filter > button {
+	    height: 48px;
+	    font-size: 11px;
+	    padding: 0 14px 0 8px;
+	}
+	.side_filter label {
+	    font-size: 11px;
+	    padding: 15px 3px;
+	}
+	.side_filter label.text_box input[type="text"], .side_filter div.text_box input[type="text"] {
+	    width: 126px;
+	}
+	.filter_btns > span {
+    	font-size: 11px;
+	}
+	.btn {
+		padding: 6px 0px;
+	}
+	.product-search .searchPayment{
+		width:80%;
+	}
+	.settings_menu ul li > span {
+    	top: 39px;
+	}
+}
+@media (max-width: 800px){
+	.invoice-LabelTitle {
+	    width: 64%;
+	}
+	.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+   	 	font-size: 11px;
+	}
+	.invoice-col {
+    	width: 35.333%;
+	}
+	.extra-bus textarea,.ta-scroll-window ,.fulwid textarea{
+    width: 97%;
+	}
+	.focussed .btn-default {
+    font-size: 11px;
+	}
+	.booking-info span{
+		right: -22px;
+	}
+	.booking-info span:after{
+		right: 22px;
+	}
+	.booking-notifi span{
+		right: -100px;
+	}
+	.booking-notifi span:after{
+		right: 100px;
+	}
+	.book-terms span{
+		right: -155px;
+	}
+	.book-terms span:after{
+		right: 155px;		
+	}
+	.reports-table .table > thead > tr > th {
+	    font-size: 11px;
+	    padding: 10px 0px;
+	    padding-right: 20px;
+	}
+	.pad-set-3{
+		padding-left: 3px;
+	}
+	.note-text textarea{
+		width: 94%;
+	}
+}
+@media (max-width: 786px){
+	.img-con img{
+		max-width: 80%;
+	}
+	.upload-btn {
+	    line-height: 38px;
+	 }
+ 	.header.top-header{
+		display: flex;
+		height: 20vh;
+	}
+ 	.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+  	 font-size: 9px;
+    }
+    .invoice-LabelTitle {
+   	 width: 64.333%;
+	}
+	.invoice-col {
+	 width: 35.333%;
+	}
+	.extra-bus textarea,.ta-scroll-window,.fulwid textarea {
+	    width: 97%;
+	}
+	.focussed .btn-default {
+    	font-size: 9px;
+	}
+	.appoint-cat {
+    	width: 68.333%;
+	}
+	.book-img{
+		width: 244.5px;
+		padding: 8px; 
+	}
+	.payment_topbar .col-sm-8{
+		padding-right: 6%;
+	}	
+	.import-data table tbody tr td {
+	    font-size: 11px;
+	}
+	.settings_menu ul li > span {
+    	top: 25px;
+    }
+}

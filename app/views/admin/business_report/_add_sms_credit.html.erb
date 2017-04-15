@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade bs-example-modal-xs" id="smsCredits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add SMS Credits</h4>
+      </div>
+      <%= form_tag  business_sms_credit_path(comp_id) , :method=> :post, :class => "form-horizontal modal-body" do %>
+          <div class="form-group">
+            <!--<label class="col-sm-3 control-label">Email</label>-->
+            <%= label_tag :SMS_Credit ,nil,:class => "col-sm-2 control-label"%>
+            <div class="col-sm-9">
+              <!--<input type="email" class="form-control" placeholder="">-->
+              <%= text_field_tag :sms_no, params[:sms_no], :required => true, :class =>"form-control" , :placeholder => "5"%>
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <%= submit_tag "Cancel",class: "btn btn-default", :type => "reset" %>
+
+            <%= submit_tag "Save", class: "btn btn-info pull-right" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#smsCredits').modal('show');
+</script>

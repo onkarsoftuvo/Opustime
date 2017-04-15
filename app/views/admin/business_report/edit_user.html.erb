@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      User Name
+    </h1>
+    <ol class="breadcrumb">
+      <i class="fa fa-dashboard"></i>
+      <%= render_breadcrumbs :tag => :li %>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Edit User</h3>
+          </div>
+          <p style= "color:green;" id="notice"><%= flash[:notice] %></p>
+          <p style= "color:#ff0000;" id="warning"> <%= flash[:alert] %></p>
+
+          <%= form_for(@user, url: admin_admin_company_path(@user) , html: { :id=>'edit_user_from', :class => "box-body"},:remote=>true) do |f|%>
+              <div class="form-group">
+                <%= f.label :User_Name, :class => "control-label"%>
+                <%= f.text_field :first_name,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :Phone_No, :class => "control-label"%>
+                <%= f.text_field :phone,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :Email_ID, :class => "control-label"%>
+                <%= f.text_field :email,:required => true, :class =>"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :Permission_Type, :class => "control-label"%>
+
+                <%= f.select(:role, [['scheduler','scheduler'],['receptionist','receptionist'],['practitioner','practitioner'],['bookkeeper','bookkeeper'],['administrator','administrator']], {},  { :class => "form-control" }) %>
+
+                <!--<%= f.collection_select(:id, User.all, :id, :role,{},{ :class => "form-control" }) %>-->
+              </div>
+              <%= f.hidden_field :comming_from, :value => "admin" %>
+              <div class="box-footer">
+                <%= link_to "business/#{session[:comp_id]}/details_list", class: "btn btn-default" do %> Cancel
+                <%end%>
+
+                <%= f.submit "Save", class: "btn btn-info pull-right"  %>
+              </div>
+          <% end %>
+
+
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<script>
+  $(function () {
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+  });
+
+  $('#edit_user_from').bind('ajax:success', function (xhr, response, status) {
+      if (response.flag == true && status == 'success') {
+          toast.success_message(response.message)
+          setTimeout(function(){window.history.back();}, 3000);
+      }
+      else {
+          console.log('/**********************************/');
+          toast.multiple_error_messages(response.errors);
+      }
+  });
+
+</script>

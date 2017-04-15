@@ -1,0 +1,6 @@
+development:
+  api_login_key:  '8w8a8ZJ4F'
+  api_transaction_key:  '8svb2t7N53V5WvYE'
+production:
+  api_login_key:  '8w8a8ZJ4F'
+  api_transaction_key:  '8svb2t7N53V5WvYE'

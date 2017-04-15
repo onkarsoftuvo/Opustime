@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ex type:</strong>
+  <%= @export.ex_type %>
+</p>
+
+<p>
+  <strong>Ex date range:</strong>
+  <%= @export.ex_date_range %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @export.company %>
+</p>
+
+<%= link_to 'Edit', edit_export_path(@export) %> |
+<%= link_to 'Back', exports_path %>

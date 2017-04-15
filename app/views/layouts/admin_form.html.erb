@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpusTime</title>
+
+  <%= stylesheet_link_tag 'application_v3','admin_forms', media: 'all' %>
+  <%= javascript_include_tag 'application_v3' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+  <base href="/">
+  <%= csrf_meta_tags %>
+  <link href="//fonts.googleapis.com/css?family=Quicksand:400,700,300" rel="stylesheet"/>
+  <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700,700italic,600italic" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
+</head>
+
+
+<body class="hold-transition skin-blue sidebar-mini"  ng-controller="MainCntl" ng-class="{'NotLoggedIn' : !isLoggedIn}">
+<div class=" container-fluid main-content" ng-class="{'Login' : !isLoggedIn}">
+  <div class="row">
+    <div ui-view="" id="ng-view" class="slide-animation no-animate">
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    var _elev = window._elev || {};
+    (function () {
+        var i, e;
+        i = document.createElement("script"), i.type = 'text/javascript';
+        i.async = 1, i.src = "https://static.elev.io/js/v3.js", e = document.getElementsByTagName("script")[0], e.parentNode.insertBefore(i, e);
+    })();
+    _elev.account_id = '57bcf30f62932';
+</script>
+<script>
+    _elev.user = {
+        first_name: '<%= current_user.present? ? current_user.first_name : "Anonymous" %>',
+        last_name: '<%= current_user.present? ? (current_user.last_name) : "" %>',
+        email: '<%= current_user.present? ? (current_user.email) : "" %>',
+        phone_number: '<%= current_user.present? ? (current_user.phone) : "" %>',
+        user_hash: '<%= OpenSSL::HMAC.hexdigest("sha256", CONFIG[:elev_api_key] , (current_user.present? ? current_user.try(:email) : "")) %>',
+        groups: '<%= current_user.present? ? (current_user.try(:company).try(:subscription).try(:name)) : "Trial" %>',
+        traits: {
+            Plan: '<%= current_user.present? ? (current_user.try(:company).try(:subscription).try(:name)) : "Trial" %>',
+            rate: '<%= current_user.present? ? (current_user.try(:company).try(:subscription).try(:cost)) : 0  %>',
+            user_type: '<%= current_user.present? ? (current_user.role) : "Anonymous" %>'
+        }
+    };
+</script>
+
+</body>
+
+</html>

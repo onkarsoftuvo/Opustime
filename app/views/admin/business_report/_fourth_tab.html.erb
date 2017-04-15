@@ -1,0 +1,74 @@
+<div class="tab-pane" id="tab_5">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="box-header remove_padding">
+        <h3 class="box-title">Invoices</h3>
+      </div>
+      <table id="example6" class="table table-bordered custom_table">
+        <thead>
+        <tr>
+          <th>Invoice ID</th>
+          <th>Customer ID</th>
+          <th>User Amount</th>
+          <th>Created By</th>
+          <th>Last Changed</th>
+          <th>Last Changed By</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @comp.invoices.active_invoice.each do |invoice|%>
+        <tr>
+          <td><%= invoice.id %></td>
+          <td><%= invoice.patientid%></td>
+          <td><%= invoice.invoice_amount %></td>
+          <td><%= invoice.creater.try(:full_name) %></td>
+          <td><%= invoice.updated_at %></td>
+          <td><%= invoice.updater.try(:full_name) %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+      <hr>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+      <div class="box-header remove_padding">
+        <h3 class="box-title">Payments</h3>
+      </div>
+      <table id="example7" class="table table-bordered custom_table">
+        <thead>
+
+        <tr>
+          <th>Invoice ID</th>
+          <th>Customer ID</th>
+          <th>User Amount</th>
+          <th>Created By</th>
+          <th>Last Changed</th>
+          <th>Last Changed By</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @comp.payments.each do |payment|%>
+        <tr>
+          <td><%= payment.invoices.ids.join(" #")%></td>
+          <td><%= payment.invoices.first.try(:patientid)%></td>
+          <td><%= @comp.invoices.first.try(:invoice_amount) %></td>
+
+          <td><%= payment.business.name %></td>
+          <td><%= payment.business.updated_at %></td>
+          <td><%= payment.invoices.first.try(:invoice_amount) %></td>
+
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>{{'settings.dir.chooseColor' | translate}}</label>
+      <ul class="swatches"></ul>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>{{'settings.dir.btnText' | translate}}</label>
+      <input type="text" id="btn_text" class="form-control">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>{{'settings.dir.btnPreview' | translate}}</label>
+      <div id="preview">
+        <div id="OB_Opus" >
+          <a href="javascript:void(0);" style="background-color:#CD5C5C" id="OB_openbtn" onClick="openIframe()"><!-- {{'settings.dir.onlineBooking' | translate}} --> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>{{'settings.dir.codeForWeb' | translate}}</label>
+      <textarea class="form-control" id="code"></textarea>
+      <button type="button" class="btn btn-default" id="copyembeded">{{'settings.dir.copyEmbed' | translate}}<span>{{'settings.dir.copied' | translate}}</span></button>
+    </div>
+  </div>
+</div>

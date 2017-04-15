@@ -1,0 +1,28 @@
+<form ng-submit="referralForm.$valid && referralSubmit(referral)" name="referralForm" id="referralForm" novalidate>
+  <div class="col-md-6" >
+  	<h2 class="min-wid">{{'settings.referral.heading_ref_source' | translate:translationData}}
+    	<i class="ic info info-hover bottom">
+          <span>{{'settings.referral.heading_ref_source_info' | translate:translationData}}</span>
+      </i>
+    </h2>
+    <div class="form-group ref">
+      <label>{{'settings.referral.heading_ref_source' | translate:translationData}}</label>
+      <input type="text" class="form-control" placeholder="" ng-model="referral.referral_source" required>
+    </div>
+    <div class="form-group sub-cat">
+      <div ng-if="referral.referral_type_subcats_attributes.length">
+    	  <label>{{'settings.referral.label_sub' | translate:translationData}}</label>
+        <div class="ref-clone" ng-repeat="categories in referral.referral_type_subcats_attributes" >
+            <input type="text"  class="form-control" placeholder="{{'settings.referral.label_sub' | translate:translationData}}" ng-model="categories.sub_name" required/>
+            <a ng-click="removeReferral($index)"><i class="ic cross"></i></a>
+        </div>
+      </div>
+      <div ng-if="!referral.referral_type_subcats_attributes.length">
+          <label>{{'settings.referral_nocatmsg' | translate:translationData}}</label>
+      </div>
+    </div>
+    <div class="form-group sub-btn" id="temp">
+    	<a ng-click="AddReferral()">{{'settings.referral.button_sub' | translate:translationData}}</a>
+    </div>
+  </div>
+</form>

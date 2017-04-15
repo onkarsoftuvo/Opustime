@@ -1,0 +1,82 @@
+<div class="dashboard-con settings">
+	<form ng-submit="SMSSettingForm.$valid && SMSSubmit(smsSettings)" name="SMSSettingForm" novalidate>
+        <div class="top_tabbing" ng-if="true">
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.subscription_sub_modules.subscription" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.subscription_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.subscription_total == 2}">
+            <a ui-sref="settings.subscription" href="">{{'sidebar_menu.opusTime_subscription' | translate:translationData}}</a>
+          </div>
+          <div class="col" ng-if="DashboardLinks.setting_sub_modules.subscription_sub_modules.sms_setting" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.subscription_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.subscription_total == 2}">
+            <a ui-sref="settings.sms-setting" href="" class="active">{{'sidebar_menu.SMS_Settings' | translate:translationData}}</a>      
+          </div>
+        </div>
+    	<div class="top-container">
+            <div class="col-md-9 col-xs-6 top-links">
+                <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>     
+            </div>
+            <div class="col-md-3 col-xs-6 top-btn">
+                <button class="save" type="submit">{{'button.save' | translate:translationData}}</button>
+                <button class="cancel" type="button">{{'button.cancel' | translate:translationData}}</button>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 form-content" ng-scrollbars rebuild-on-resize>
+        	<div class="col-md-6">
+            	<h2 class="section-title">{{'settings.invoice.heading_general' | translate:translationData}}</h2>
+                <div class="form-group booking clear-it">
+                    <label>{{'settings.sms_setting.label_purchase' | translate:translationData}}
+                        <i class="ic info info-hover">
+                            <span>{{'settings.sms_setting.label_purchase_info' | translate:translationData}}</span>
+                        </i>
+                    </label>
+                    <select class="form-control" ng-model="smsSettings.sms_alert_no">
+                        <option value="100">100</option>
+                        <option value="250">250</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                <label>{{'settings.sms_setting.label_forward' | translate:translationData}}
+               			<i class="ic info info-hover">
+                            <span>{{'settings.sms_setting.label_forward_info' | translate:translationData}}</span>
+                        </i>
+                </label>
+                <input type="text" class="form-control" placeholder="00000-00000" ng-model="smsSettings.mob_no">
+              </div>
+              <div class="form-group">
+                <label>{{'settings.sms_setting.label_forward_patient' | translate:translationData}}
+               			<i class="ic info info-hover">
+                            <span>{{'settings.sms_setting.label_forward_patient_info' | translate:translationData}}</span>
+                        </i>
+                </label>
+                <input type="email" class="form-control" placeholder="{{'label.email_address' | translate:translationData}}" ng-model="smsSettings.email">
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+            	<div class="sms-con">
+                	<h4>{{'settings.sms_setting.label_remain' | translate:translationData}}</h4>
+                    <strong>{{smsCount}}</strong>
+                    <h4>{{'settings.sms_setting.label_purchase_sms' | translate:translationData}}</h4>
+                    <div class="sms-btns">
+                    	<a ng-click="openConfirm(plans)" ng-repeat="plans in smsPlans">{{plans.no_sms}} {{'settings.sms_setting.creadits' | translate:translationData}} ${{plans.amount}}</a>
+                    </div>
+                    <h5>{{'settings.sms_setting.purchase_all_price' | translate:translationData}}</h5>
+					<h5>{{'settings.sms_setting.label_purchase_card' | translate:translationData}}</h5>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal -->
+<script type="text/ng-template" id="smsConfirm.html">
+    <div class="modal-body confirm-body">
+		<div class="confirm">
+            <h3>{{'settings.sms_setting.confirmation' | translate:translationData}}</h3>
+            <p>{{'settings.sms_setting.confirmation_msg_1' | translate:translationData}} ${{plan.amount}} {{'settings.sms_setting.confirmation_msg_2' | translate:translationData}}</p>
+            <a href="" ng-click="hitSmsUPdate(plan.id);">{{'button.confirm' | translate:translationData}}</a>
+            <a href="" ng-click="cancel()">{{'button.cancel' | translate:translationData}}</a>
+        </div>
+    </div>
+</script>

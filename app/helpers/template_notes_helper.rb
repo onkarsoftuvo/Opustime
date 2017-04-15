@@ -1,0 +1,2 @@
+module TemplateNotesHelper
+end

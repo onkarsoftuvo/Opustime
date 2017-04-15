@@ -1,0 +1,280 @@
+<form ng-submit="UserForm.$valid && UpdateUser(user)" id="UserForm" name="UserForm" novalidate>
+    	<div class="col-md-6">
+      	<h2>{{'settings.user_practitioners.heading_personal_detail' | translate:translationData}}</h2>
+          <div class="form-group col-md-6 col-xs-6 name-con clearfix fname">
+            <label>{{'label.first_name' | translate:translationData}}</label>
+            <input type="text" class="form-control" placeholder="{{'S_label_firstname' | translate:translationData}}" ng-model="user.user_basic.first_name" required>
+          </div>
+          <div class="form-group col-md-6 col-xs-6 name-con fname">
+            <label>{{'label.last_name' | translate:translationData}}</label>
+            <input type="text" class="form-control" placeholder="{{'S_label_lastname' | translate:translationData}}" ng-model="user.user_basic.last_name" required>
+          </div>
+          <div class="form-group col-xs-4 city-con">
+            <label>{{'label.title' | translate:translationData}}</label>
+            <select class="form-control" ng-model="user.user_basic.title">
+                <option value="dr">{{'title.dr' | translate:translationData}}</option>
+                <option value="mr">{{'title.mr' | translate:translationData}}</option>
+                <option value="mrs">{{'title.mrs' | translate:translationData}}</option>
+                <option value="Miss">{{'title.miss' | translate:translationData}}</option>
+                <option value="Master">{{'title.master' | translate:translationData}}</option>
+                <option value="Professor">{{'title.professor' | translate:translationData}}</option>
+                <option value="Sir">{{'title.sir' | translate:translationData}}</option>
+                <option value="Lord">{{'title.lord' | translate:translationData}}</option>
+                <option value="Lady">{{'title.lady' | translate:translationData}}</option>
+                <option value="Dame">{{'title.dame' | translate:translationData}}</option>
+                <option value="Reverend">{{'title.reverend' | translate:translationData}}</option>
+                <option value="Sister">{{'title.sister' | translate:translationData}}</option>
+                <option value="Rabbi">{{'title.rabbi' | translate:translationData}}</option>
+                <option value="King">{{'title.king' | translate:translationData}}</option>
+                <option value="Zombie Lord">{{'title.zombie_lord' | translate:translationData}}</option>
+            </select>
+          </div>
+          <div class="form-group col-xs-8 city-con1">
+            <label>{{'label.phone' | translate:translationData}}</label>
+            <input type="text" class="form-control" placeholder="+91 00000-00000" ng-model="user.user_basic.phone">
+          </div>
+          <div class="form-group">
+            <label>{{'label.email_address' | translate:translationData}}</label>
+            <input type="email" class="form-control" placeholder="{{'s_label_emailaddress_placeholder' | translate:translationData}}" ng-model="user.user_basic.email" required>
+          </div>
+          <div class="form-group">
+            <label>{{'settings.user_practitioners.label_timezone' | translate:translationData}}
+            	<i class="ic info info-hover left-side">
+                    <span>{{'settings.user_practitioners.label_timezone_info' | translate:translationData}}</span>
+                </i>
+            </label>
+            <select class="form-control" ng-model="user.user_basic.time_zone">
+                <option ng-repeat="timezones in timezone" value="{{timezones.time_zone}}">
+                {{timezones.printable_string[0].formatted_text}}</option>
+            </select>
+          </div>
+          <div class="ifPractitioner angular-animate" ng-show="user.user_basic.is_doctor">
+              <h2>{{'settings.user_practitioners.label_practitioner_info' | translate:translationData}}</h2>
+              <div class="remove-margin">
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <label>{{'settings.user_practitioners.label_type' | translate:translationData}}</label>
+                  </div>
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <label>{{'settings.user_practitioners.label_num' | translate:translationData}}</label>
+                  </div>
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <label>{{'settings.user_practitioners.label_business_name' | translate:translationData}}</label>
+                  </div>
+               </div>
+               <div ng-repeat="user_refers in user.user_refer" ng-animate="'animate'">
+
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <input type="text"  class="form-control" ng-model="user_refers.ref_type" placeholder="400082"/>
+                  </div>
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <input type="text"  class="form-control"  ng-model="user_refers.number" placeholder="400082"/>
+                  </div>
+                  <div class="form-group col-xs-4 city-con pra-info">
+                    <select class="form-control" ng-model="user_refers.business_id">
+                       <option ng-repeat="businessLists in businessList" value="{{businessLists.id}}">{{businessLists.name}}</option>
+                    </select>
+                  </div>
+                  <div class="pra-icns">
+                    <a href="" ng-click="removePractitioner($index)"><i class="ic cross"></i></a>
+                  </div>
+              </div>
+              <div class="pra-icns">
+                <a href="" ng-click="newPractitioner(businessList[0].id)"><i class="ic add"></i></a>
+              </div>
+              <div class="form-group">
+                <label>{{'settings.user_practitioners.label_designation' | translate:translationData}}
+                    <i class="ic info info-hover left-side">
+                        <span>{{'settings.user_practitioners.label_designation_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <input type="text" class="form-control" placeholder="Businessman" ng-model="user.practi_info.designation">
+               </div>
+               <div class="form-group description">
+                <label>{{'settings.user_practitioners.label_description' | translate:translationData}}</label>
+                <textarea class="form-control" ng-model="user.practi_info.desc"></textarea>
+               </div>
+               <div class="form-group check-con online-booking">
+                <label>{{'settings.user_practitioners.label_online_booking' | translate:translationData}}</label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="user.practi_info.is_online"><span></span> {{'settings.user_practitioners.label_online_booking_check' | translate:translationData}}
+                    </label>
+                </div>
+              </div>
+          </div>
+      </div>
+    	<div class="col-md-6">
+        	<h2 class="hv-info">{{'settings.user_practitioners.label_change_password' | translate:translationData}}
+            	<i class="ic info info-hover bottom">
+                    <span>{{'settings.user_practitioners.label_change_password_info' | translate:translationData}}</span>
+                </i>
+            </h2>
+            <div class="form-group col-md-6 col-xs-6 name-con clearfix password">
+                <label>{{'settings.user_practitioners.label_password' | translate:translationData}}</label>
+                <input type="password" class="form-control" placeholder="{{'settings.user_practitioners.label_password' | translate:translationData}}"  password-match="user.user_basic.password" ng-model="user.user_basic.password" required>
+              </div>
+              <div class="form-group col-md-6 col-xs-6 name-con password">
+                <label>{{'settings.user_practitioners.label_confirm_password' | translate:translationData}}</label>
+                <input type="password" class="form-control" placeholder="{{'settings.user_practitioners.label_confirm_password' | translate:translationData}}"  ng-model="user.user_basic.password_confirmation" required name="password2">
+
+                 <div class="msg-block" ng-show="UserForm.$error &&  user.password_confirmation !=null" >
+                  <span class="msg-error" ng-show="UserForm.password2.$error.unique">{{'settings.user_practitioners.label_pass_not_match' | translate:translationData}}</span>
+                </div>
+
+              </div>
+        	  <div class="form-group fac-con clearfix">
+                <label>{{'settings.user_practitioners.label_factor' | translate:translationData}}
+                	<i class="ic info info-hover">
+                        <span>{{'settings.user_practitioners.label_factor_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <a href="">{{'settings.user_practitioners.label_factor_authentication' | translate:translationData}}</a>
+              </div>
+              <h2>{{'settings.user_practitioners.heading_zulu_setting' | translate:translationData}}</h2>
+              <div class="form-group col-md-7 col-xs-7 name-con clearfix">
+                <label>{{'settings.user_practitioners.label_is_person' | translate:translationData}}</label>
+                 <div>
+                <label class="on-off">
+                    <input type="checkbox" ng-model="user.user_basic.is_doctor" ng-change="togglePracti()">
+                    <span class="bg"></span>
+                </label>
+              </div>
+              </div>
+              <div class="form-group col-md-5 col-xs-5 name-con">
+                <label>{{'settings.user_practitioners.label_account_Active' | translate:translationData}}</label>
+                <div>
+                <label class="on-off">
+                    <input type="checkbox" ng-model="user.user_basic.acc_active">
+                    <span class="bg"></span>
+                </label>
+              </div>
+              </div>
+              <div class="form-group"  ng-if="user.user_basic.role!='administrator'">
+
+                    <label>{{'settings.user_practitioners.label_security_role' | translate:translationData}}</label>
+                    <select class="form-control" ng-model="user.user_basic.role"
+                    >
+                        <option value="scheduler">{{'settings.user_practitioners.label_security_role_option1' | translate:translationData}}</option>
+                        <option value="receptionist">{{'settings.user_practitioners.label_security_role_option2' | translate:translationData}}</option>
+                        <option value="practitioner">{{'settings.user_practitioners.label_security_role_option3' | translate:translationData}}</option>
+                        <option value="bookkeeper">{{'settings.user_practitioners.label_security_role_option4' | translate:translationData}}</option>
+                        <option value="power receptionist">{{'settings.user_practitioners.label_security_role_option5' | translate:translationData}}</option>
+                        <option value="administrator">{{'settings.user_practitioners.label_security_role_option6' | translate:translationData}}</option>
+                    </select>
+               </div>
+              <div class="ifPractitioner angular-animate" ng-show="user.user_basic.is_doctor">
+                <h2>{{'settings.user_practitioners.heading_select_service' | translate:translationData}}</h2>
+                <div class="form-group check-con cate">
+                  <div class="checkbox" ng-repeat="appointment_service in user.appointment_services">
+                      <label>
+                        <input type="checkbox" value="{{appointment_service.name}}" ng-model="appointment_service.is_selected"><span></span> {{appointment_service.name}}
+                      </label>
+                  </div>
+
+                  <div class="form-group">
+                      <label>{{'settings.user_practitioners.label_app_type' | translate:translationData}}</label>
+                      <select class="form-control" ng-model="user.practi_info.default_type">
+                        <option value="N/A">{{'label.not_available' | translate}}</option>
+                          <option selected="user.practi_info.default_type" value="{{appointment_service.id}}" ng-repeat="appointment_service in user.appointment_services | filter : {is_selected : true}">{{appointment_service.name}}</option>
+                      </select>
+
+                 </div>
+                 <div class="form-group notify-con">
+                      <label>{{'settings.user_practitioners.label_cancel_app' | translate:translationData}}</label>
+                      <div class="notify">
+                      	<h3>{{'settings.user_practitioners.label_notify_by' | translate:translationData}}</h3>
+                          <select class="form-control" ng-model="user.practi_info.notify_by">
+                              <option value="sms">{{'select.option_SMS' | translate:translationData}}</option>
+                              <option value="email">{{'select.option_email' | translate:translationData}}</option>
+                              <option value="sms&email">{{'select.option_sms_email' | translate:translationData}}</option>
+                          </select>
+                      </div>
+                      <div class="appointment">
+                      	<h3>{{'settings.user_practitioners.label_only_if' | translate:translationData}} <br />{{'settings.user_practitioners.label_app_within' | translate:translationData}}</h3>
+                          <select class="form-control" ng-modal="user.practi_info.cancel_time">
+                            <option value="Any Time">{{'label.AnyTime' | translate}}</option>
+                            <option ng-repeat="n in range(1,14)" value="{{n}}">{{n}} {{'settings.online_booking.label-min-option_day' | translate:translationData}}</option>
+                          </select>
+                      </div>
+                 </div>
+                 <div class="form-group online-booking">
+                  <label>{{'settings.user_practitioners.label_external_calendar' | translate:translationData}}
+                  	<i class="ic info info-hover">
+                          <span>{{'settings.user_practitioners.label_external_calendar_info' | translate:translationData}}</span>
+                      </i>
+                  </label>
+                  <div class="checkbox">
+                      <label>
+                        <input type="checkbox" ng-model="user.practi_info.allow_external_calendar"><span></span> {{'settings.user_practitioners.label_external_calendar_check' | translate:translationData}}
+                      </label>
+                  </div>
+                </div>
+             </div>
+         </div>
+      </div>
+      <div class="col-md-12 avail ifPractitioner angular-animate" ng-show="user.user_basic.is_doctor">
+      	<h2>{{'settings.user_practitioners.label_avail' | translate:translationData}}</h2>
+
+         <tabset>
+            <tab heading="{{availabilityc.business_name}}" ng-repeat="availabilityc in user.user_availability">
+            	<div class="col-md-6" ng-repeat="availableDays in availabilityc.days">
+              	<div class="col-xs-2">
+                  	<div class="form-group check-con online-booking">
+                          <div class="checkbox">
+                              <label>
+                                <input  type="checkbox" ng-model="availableDays.is_selected"><span></span>
+                              </label>
+                          </div>
+                       </div>
+                  </div>
+                  <div class="col-xs-10 avail-con">
+                  	<div class="avail-master">
+                          <div class="col-xs-3">
+                              <h6>{{availableDays.day_name}}</h6>
+                              <a href="" class="break" ng-click="NewBreak($parent.$index, $index)">{{'settings.user_practitioners.link_break' | translate:translationData}}</a>
+                          </div>
+                          <div class="col-xs-9">
+                              <select class="form-control" ng-model="availableDays.start_hr">
+                                  <option ng-repeat="n in range(00,23)">{{n}}</option>
+                              </select>
+                              <select class="form-control" ng-model="availableDays.start_min">
+                                  <option ng-repeat="n in range(00,55,5)">{{n}}</option>
+                              </select>
+                              <span>{{'communication.to' | translate}}</span>
+                              <select class="form-control" ng-model="availableDays.end_hr">
+                                  <option ng-repeat="n in range(00,23)">{{n}}</option>
+                              </select>
+                              <select class="form-control" ng-model="availableDays.end_min">
+                                  <option ng-repeat="n in range(00,55,5)">{{n}}</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="avail-master">
+                        <div class="abreak clearfix" ng-repeat="availableDaysBreaks in availableDays.cust_break">
+                          <div class="col-xs-3">
+                              <a href="" class="remove" ng-click="RemoveBreak($parent.$parent.$index, $parent.$index, $index)">{{'settings.user_practitioners.link_remove' | translate:translationData}}</a>
+                          </div>
+                          <div class="col-xs-9">
+                              <select class="form-control" ng-model="availableDaysBreaks.start_hr">
+                                   <option ng-repeat="n in range(00,23)">{{n}}</option>
+                              </select>
+                              <select class="form-control" ng-model="availableDaysBreaks.start_min">
+                                 <option ng-repeat="n in range(00,55,5)">{{n}}</option>
+                              </select>
+                              <span>To</span>
+                              <select class="form-control" ng-model="availableDaysBreaks.end_hr">
+                                  <option ng-repeat="n in range(00,23)">{{n}}</option>
+                              </select>
+                              <select class="form-control" ng-model="availableDaysBreaks.end_min">
+                                  <option ng-repeat="n in range(00,55,5)">{{n}}</option>
+                              </select>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </tab>
+         </tabset>
+      </div>
+</form>
+

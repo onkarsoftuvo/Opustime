@@ -1,0 +1,340 @@
+.blue_theme .navbar-inverse .navbar-nav> li:after{
+	background-color: #fff;
+}
+.blue_theme .navbar-inverse,.blue_theme .navbar-inverse .navbar-nav> li.active:after,.blue_theme .navbar-twitch > .container .full-nav,.blue_theme .top-btn .save{
+	background-color: #343f6a;
+}
+.blue_theme .settings_menu{
+	background-color: rgba(52,63,106,0.9);
+}
+.blue_theme .top_tabbing .col a{
+	background-color: #325881;
+	border-color: #5f86b1;	
+}
+.blue_theme .top_tabbing .col a:hover,.blue_theme .top_tabbing .col a.active{
+	background: #5077a1;
+}
+.blue_theme .top_tabbing .col a.active{
+	pointer-events: none;
+}
+.blue_theme .open-nav li a,.blue_theme .open-nav li.active a{
+	color: #37618f;
+}
+.blue_theme .top-btn .cancel{
+	background-color: #cf1939;
+}
+.blue_theme .info{
+	background: url(/assets/info_blue.png) no-repeat;
+}
+.blue_theme .user-icn{
+	background: url(/assets/user-icn_blue.png) no-repeat;
+}
+.blue_theme .check-con .checkbox label span{
+	background-image: url(/assets/checkbox_blue.png);
+}
+.blue_theme .side-bar h5,.blue_theme .avail-con h6{
+	color: #37628f;
+}
+.blue_theme .on-off input[type="checkbox"] + span{
+	background-color: #cf1939;	
+}
+.blue_theme .fac-con a:hover{
+	background-color: #5278a0;	
+}
+.blue_theme .side-bar-links ul li a.active, .blue_theme .side-bar-links ul li a:hover{
+	color: #37628f;	
+}
+.blue_theme .info-hover span:after,.blue_theme md-tooltip.md-default-theme.customtooltip .md-content:after,.blue_theme .side-bar-header a span:after{
+	background: url(/assets/info-arrow_blue.png) no-repeat;
+}
+.blue_theme .email-toolbar .btn-default{
+	background-color: #37628f;
+	border-color: #37628f;
+	color: #fff;
+}
+.blue_theme .email-toolbar .btn-default[disabled],.blue_theme .btn-default[disabled]{
+	background-color: #5b85b0;
+	border-color: #5b85b0;
+}
+.blue_theme .plan table a{
+	background-color: #ce1938;
+}
+.blue_theme .productsdetails .col-sm-4 button, .blue_theme .productsdetails .col-sm-2 button, .blue_theme .productsdetails .col-sm-3 button, .blue_theme .productsdetails .col-sm-1 button, .blue_theme .productsdetails .col-sm-6 button, .blue_theme .PatientList ul li button,.blue_theme .select-account .dropdown-menu ul,.blue_theme .select-account .dropdown-menu,.blue_theme .select-account > a,.blue_theme .embed_content .input-group-addon,.blue_theme .facebook_content button[type="button"].add_online,.blue_theme .confirm a,.blue_theme .xero button.connect,.blue_theme  .facebookBooking .addToFacebook,.blue_theme .data-import .integration_error,.blue_theme .integration_tabbing a.active,.blue_theme .plan table a.select-plan,.blue_theme .subscription a,.blue_theme .upload-btn,.blue_theme .info-hover span,.blue_theme .bus-icn,.blue_theme .fac-con a,.blue_theme .avail .nav-tabs li.active a,.blue_theme .on-off input[type="checkbox"]:checked + span,.blue_theme md-tooltip.customtooltip .md-content,.blue_theme .side-bar-header a span,.blue_theme .bus-icn-other,.blue_theme .multiple-sel .md-chips .md-chip,.blue_theme .online_booking_tabbing a,.blue_theme .view-sample,.blue_theme .sms-con .sms-btns a,.blue_theme .dataImport button,.blue_theme .data-export button[type="submit"],.blue_theme .import-data table tbody a{
+	background-color: #37628f;
+	color: #fff;
+}
+.blue_theme .productsdetails .col-sm-4 button.pro-value, .blue_theme .productsdetails .col-sm-6 button.pro-value, .blue_theme .PatientList ul li button.pro-value{
+	background-color: #edf2f6;
+	color: #313538;
+}
+.blue_theme .upload-btn{
+	border-color: #37628f;
+}
+.blue_theme .select-account .dropdown-menu ul a{
+	color: #ccc;
+}
+.blue_theme .select-account .dropdown-menu ul a:hover{
+	color: #fff;
+}
+.blue_theme .chimp_link a,.blue_theme .mailchip label,.blue_theme .integration_tabbing a,.blue_theme .mailchip_info a,.blue_theme .sms-con h5,.blue_theme .import-data table tbody tr td,.blue_theme .plan table th,.blue_theme .subscription h4 span,.blue_theme .subscription strong,.blue_theme .plan .table>tbody>tr>td strong{
+	color: #37628f;	
+}
+.blue_theme .online_booking_tabbing a:hover,.blue_theme .online_booking_tabbing a.active{
+	background-color: #5b85b0;
+}
+.blue_theme .select-account > a:hover, .blue_theme .select-account > a:focus{
+	background-color: #5b85b0 !important;	
+}
+.blue_theme .sms-con strong{
+	background: #cf1939;
+}
+.blue_theme .data-export button[type="submit"]{
+	border-color: #37628f;
+}
+.blue_theme .import-data table tbody a.delete,.blue_theme .hide-app a{
+	background-color: #ce1938;
+}
+.blue_theme .chart_date > a.left{
+	background: url(/assets/new_arrow_left_blue.png) left no-repeat;
+}
+.blue_theme .chart_date > a.right{
+	background: url(/assets/new_arrow_right_blue.png) right no-repeat;
+}
+.blue_theme .app_sidebar,.blue_theme .close_menu{
+	background-color: #4f5b8e;
+}
+.blue_theme .tabbings li a,.blue_theme .skip_ahead ul li a,.blue_theme .availability a{
+	background-color: #343f6a;
+}
+.blue_theme .skip_ahead ul li a:hover,.blue_theme .availability a:hover{
+	background-color: #fff;
+}
+.blue_theme .btm_links li a{
+	border-color: #343f6a
+}
+.blue_theme .btm_links li a:hover{
+	background-color: #343f6a;
+}
+.blue_theme .fc-toolbar .fc-center button{
+	background-color: #343f6a;
+}
+.blue_theme .fc-toolbar .fc-center{
+	border-color: #343f6a;
+}
+.blue_theme .cart-btn span,.blue_theme .invoice-list ul li h4{
+	color: #343f6a;
+}
+.blue_theme .fc-toolbar .fc-right button.fc-state-active{
+	background-color: #4f5b8e;
+	border-color: #4f5b8e;
+}
+.blue_theme .red-text,.blue_theme .pagination>li>a, .blue_theme .pagination>li>span,.blue_theme .PatientList ul li h4,.blue_theme .productsdetails .col-sm-2 span, .blue_theme .productsdetails .col-sm-4 span, .blue_theme .productsdetails .right span, .blue_theme .productsdetails .col-sm-3 span{
+	color: #4f5b8e;
+}
+.blue_theme .pagination>.active>a,.blue_theme .pagination>.active>span, .blue_theme .pagination>.active>a:hover, .blue_theme .pagination>.active>span:hover, .blue_theme .pagination>.active>a:focus, .blue_theme .pagination>.active>span:focus{
+	background-color: #4f5b8e;
+	color: #fff;
+	border-color: #4f5b8e;
+}
+.blue_theme .patient-links{
+	background-color: #343f6a;
+}
+.blue_theme .below-links{
+	background-color: #4f5b8e;
+}
+.blue_theme .btn-pink, .blue_theme .gray_btns button.primary-btn, .blue_theme .btn-pink{
+	background-color: #343f6a;
+}
+.blue_theme .btn-pink:hover, .blue_theme .gray_btns button.primary-btn:hover, .blue_theme .btn-pink:focus{
+	background-color: #4f5b8e;	
+}
+.blue_theme .patient-links a{
+	background-color: #fff;
+	color: #343f6a;
+}
+.blue_theme .patient-con h4,.blue_theme .full-detail h4 label{
+	color: #343f6a;
+}
+.blue_theme .details-pages .date{
+	background-color: #343f6a;
+}
+.blue_theme .note-detail{
+	color: #343f6a;
+	border-color: #343f6a;
+	background-color: #e1e4ef
+}
+.blue_theme .cross{
+	background-image: url(/assets/cross_blue.png);
+}
+.blue_theme .waitlist a{
+	background: #343f6a;
+	color: #fff
+}
+.blue_theme .waitlist a:hover{
+	background: #fff;
+	color: #343f6a;
+}
+.blue_theme .waitlist a.dots{
+	background: none;
+}
+.blue_theme .waitlist a.dots:hover{
+	color: #fff;
+}
+.blue_theme .availability a.active{
+	background: #fff;
+	color: #000;
+}
+.blue_theme .radios_btns label span{
+	background: #343f6a;
+}
+.blue_theme .radios_btns label span:after{
+	background: #343f6a;
+}
+.blue_theme .radios_btns label input[type="radio"]:checked + span:after {
+    background: #e2e4e5;
+}
+.blue_theme .round-black{
+	background: #343f6a
+}
+.blue_theme .contact_icn{
+	background-image: url(/assets/contact-icon-blue.png);
+}
+.blue_theme .email_icon{
+	background-image: url(/assets/email-icon-blue.png);
+}
+.blue_theme .open-popups{
+	background-image: url(/assets/add-blue.png);
+}
+.blue_theme .btn-delete-icon,.blue_theme header.top-header .navbar-nav>li>a:hover, .blue_theme header.top-header .navbar-nav>li>a:focus{
+	color: #37628f; 
+}
+
+.blue_theme .navbar-inverse .navbar-nav> li > a > .full-nav:before{
+	border-color: transparent #343f6a transparent transparent
+}
+.blue_theme .btm_links li a:hover, .blue_theme .top_icn a:hover, .blue_theme .tabbings li a:hover{
+	background-color: #343f6a;
+}
+.blue_theme .radios label span{
+	background-image: url(/assets/radios_blue.png);
+}
+.blue_theme .checkboxs label span{
+	background-image: url(/assets/checkboxes_blue.png);
+}
+.blue_theme .waitlistprac span small{
+	background-color: #343f6a;
+}
+.blue_theme .waitlistprac span small:after{
+	color: #343f6a;	
+}
+.blue_theme .waitListAcc .panel-open .radios label small,.blue_theme .waitListAcc .radios label small:hover{
+	color: red;
+}
+.blue_theme .skip_ahead h5{
+	opacity: 1;
+}
+.blue_theme md-tooltip.md-default-theme.customtooltip ul li h6{
+	color: #fff;
+}
+.blue_theme .medi .radio span{
+	background-image: url(/assets/radio_blue.png);
+}
+.blue_theme .loginForm h3{
+	color: #37618f;
+}
+.blue_theme .btn.btn-blue{
+	background-color: #37628f;
+	columns: #fff;
+}
+.blue_theme .form-link i{
+	color: #36618c;
+}
+.blue_theme .login-check span{
+	background-image: url(/assets/login-check-blue.png);
+}
+.blue_theme .invoice-listing li h6 a,.blue_theme .invoice-listing li a:hover,.blue_theme .invoice-listing li > a span{
+	background-color: #4f5b8e;
+}
+.blue_theme .fileattach h4{
+	color: #36618c;
+}
+.blue_theme .merge button, .blue_theme .sms button,.blue_theme .attach-des-con span{
+	background: #36618c;
+}
+.blue_theme .merge button[type="button"], .blue_theme .sms button[type="button"]{
+	background: #cf1939;
+}
+.blue_theme .attachments > a, .blue_theme .no_note > p > a{
+	color: #36618c;
+	background-image: url(/assets/add-blue.png);
+}
+.blue_theme .basket{
+	background-image: url(/assets/basket_blue.png);
+}
+.blue_theme .filter-btn button{
+	background-color: #343f6a;
+	color: #fff;
+}
+.blue_theme .address-heading h5{
+	color: #343f6a;
+}
+.blue_theme .data-export .non-edit-small input{
+	background-image: url(/assets/cal_blue.png);
+}
+.blue_theme .top-btn .save.invc_icn{
+	background: #343f6a url(/assets/icn4.png) no-repeat center;
+}
+.blue_theme .creditFromContent button{
+	background-color: #37628f;
+}
+.blue_theme .creditFromContent input[type="text"], .blue_theme .creditFromContent select{
+	/*background-color: #e1dcdc;
+	border-color: #e1dcdc;*/
+}
+.blue_theme .user-profile>li>a:hover{
+	background-image: url(/assets/support-hover_blue.png);
+	color: #343f6a;
+}
+.blue_theme .user-profile>li:nth-child(2)>a:hover{
+	background-image: url(/assets/profile-hover_blue.png) 
+}
+.blue_theme .modal-large_modal .content_box .check-con input[type="checkbox"] + span{
+	background-image: url(/assets/checkbox_blue.png);
+	width: 40px;
+    height: 40px;
+    background-size: 40px auto;
+    background-position: 0px -36px;
+}
+.blue_theme .modal-large_modal .content_box .check-con input[type="checkbox"]:checked + span{
+	background-position: 0px 0px;	
+}
+.blue_theme .sendIcon{
+	background-image: url(/assets/contact-icon-blue.png);
+}
+.blue_theme .next_app_con ul li:before{
+	background-color: #343f6a;
+}
+.blue_theme .noRecordToDisplay h4 span{
+	color: #37628f;
+}
+.blue_theme .alert-form input[type="text"]{
+	color: #4f5b8e !important;
+	border-color: #4f5b8e;
+}
+.blue_theme .tab_contents .btn-info,
+.blue_theme .tab_contents .btn-info:hover, 
+.blue_theme .tab_contents .btn-info:focus, 
+.blue_theme .tab_contents .btn-info:active,
+.blue_theme .tab_contents  .btn-info.active, 
+.blue_theme .tab_contents .open .dropdown-toggle.btn-info{
+	background-color: #37628f;
+	border-color: #37628f;
+}
+.blue_theme .tab_contents .btn-danger:hover,
+.blue_theme .tab_contents .btn-danger:focus, 
+.blue_theme .tab_contents .btn-danger:active, 
+.blue_theme .tab_contents .btn-danger.active, 
+.blue_theme .tab_contents .open .dropdown-toggle.btn-danger{
+	background-color: #cf1939;
+	border-color: #cf1939;
+}

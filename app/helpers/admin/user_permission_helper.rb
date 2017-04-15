@@ -1,0 +1,2 @@
+module Admin::UserPermissionHelper
+end

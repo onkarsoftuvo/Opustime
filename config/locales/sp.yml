@@ -1,0 +1,949 @@
+sp:
+  patient_mailer:
+      invoice_email:
+        Hi: "Hola"
+        Hello: "Hola"
+        Please find attached your invoice details with this email: "Adjunte los detalles de su factura con este correo electrónico"
+        Thank you: "Gracias"
+        The OpusTime Team: "El equipo OpusTime"
+
+      account_statement_email:
+         Hi: "Hola"
+         Hello: "Hola"
+         Please find attached your account statement for the month of: "Adjunte su estado de cuenta para el mes de enero de"
+         Thank you: "Gracias"
+         The OpusTime Team : "El equipo OpusTime"
+  invoices:
+       invoice_print:
+           DOB: "Fecha de nacimiento"
+           Invoice to: "Factura a"
+           Invoice: "Factura"
+           Appointment_Date: "Día de la Cita"
+           Unit_Price: "Unidad Precio"
+           Price: "Precio"
+           Qty: "Cantidad"
+           Tax: "Impuesto"
+           Discount: "Descuento"
+           Price: "Precio"
+           Amount: "Cantidad"
+           Outstanding: "Excepcional"
+           Balance: "Equilibrar"
+           payment_methods: "Métodos du pago"
+           allocated: "asignado"
+           Notes: "Notas"
+           Registration_Number: "Registro d' numbero"
+           Registration_Name: "Nombre d' Registro"
+           Your: "Tu"
+           is: "es"
+           next: "siguiente"
+           Code: "Código"
+           Item: "It"
+           Price: "Precio"
+           with: "con"
+           Invoice_Amount: "Cantidad Factura"
+           Professional_Number_Type: "Profesionales tipo - número"
+
+  patients:
+       account_statement_pdf:
+          Outstanding: "Excepcional"
+          invoices: "Factura"
+          only: "solamente"
+          Invoice to: "Factura À"
+          Extra: "Extra"
+          Invoices: "Factura"
+          INVOICE ID: "ID de FACTURA"
+          PROFESSIONAL: "Profesionales"
+          PROFESSIONAL type/number: "Profesionales tipo / número"
+          CHARGES: "CARGAS"
+          TAX: "IMPUESTO"
+          PAYMENT: "PAIEMENT"
+          BALANCE: "ÉQUILIBRAR"
+          tax: "impuesto"
+          Amount: "cantidad"
+          Outstanding_Balance: "Excepcional"
+          Registration: "Registro"
+          Payment: "Paiement"
+
+       account_history:
+          Patient: "Client"
+          History: "Historia"
+          Report: "Informe"
+          DOB: "Fecha de nacimiento"
+          Occupation: "Ocupación"
+          for: "para"
+          Appointments: "Cita"
+          Date: "Fecha"
+          Time: "Hora"
+          Type: "Tipo"
+          Professional: "Professionnel"
+          Treatment Notes: "Notas de tratamiento"
+          Created: "creado"
+          Medicare No: "Medicare Non"
+
+       history_report_footer:
+          Created: "Creado"
+          page: "page"
+          of: "de"
+
+  remainder_mailer:
+       send_email:
+          Location: "ubicación"
+          Service: "Servicio"
+          practitioner: "facultativo"
+          cancel: "cancelar"
+          appointment: "cita"
+          reschedule: "reprogramar"
+          Time: "Hora"
+
+       send_patient_reply_on_email:
+          Hi: "Hola"
+
+  subscription_mailer:
+       auto_payment_by_wallet:
+          Auto Payment Reminder: "Recordatorio de pago automático"
+          Welcome: "Bienvenido"
+          to: "à"
+          we have used your: "Hemos usado tu"
+          full wallet balance: "Balance completo de la cartera"
+          partial wallet balance: "Balance de cartera parcial"
+          to make payment: "Hacer el pago"
+          of your current billing cycle : "De su ciclo de facturación actual"
+          of: "de"
+          and now your: "Y ahora tu"
+          next billing cycle will be: "Siguiente ciclo de facturación"
+          and: "y"
+          debit: "débito"
+          your: "tu"
+          credit card: "tarjeta de crédito"
+          for remaining payable amount: "Por el monto pendiente de pago"
+
+       cancel_subscription:
+          Subscription: "Suscripción"
+          Cancelled: "Cancelado"
+          Welcome: "Bienvenido"
+          to: "à"
+          your: "tu"
+          has been cancelled: "ha sido cancelado"
+          Please buy a new plan to continue Opustime services: "Por favor, compre un nuevo plan para continuar los servicios de Opustime"
+
+       days_left_subscription_expiry:
+          Welcome: "Bienvenido"
+          to: "à"
+          Trial subscription reminder: "Abonnement d'essai"
+          Auto Renew Subscription Reminder: "Rappel d'abonnement automatique"
+          we are notifying you that you have: "Nous vous informons que vous avoir"
+          remaining to expire your: "Restant pour expirer tu"
+          subscription plan: "Plan d'abonnement"
+          Please buy a new plan to continue Opustime services: "Veuillez acheter un nouveau plan pour continuer les services d'Opustime"
+          to: "à"
+          remaining to: "Restant à"
+          auto renew your: "Renouveler automatiquement tu"
+
+       expire_trial_subscription:
+          Hello: "Hola"
+          Subscription: "Abonnement"
+          Expired: "Expiré"
+          The time has come to enter your payment details in OpusTime in order to continue using it: "Le moment est venu d'entrer vos détails de paiement dans OpusTime afin de continuer à l'utiliser"
+          You can log into Opustime and go to: "Vous pouvez vous connecter à Opustime et"
+          settings: "paramètres"
+          subscription: "abonnement"
+          and enter your payment details there: "et entrer vos détails de paiement là"
+          You will need to do this soon to avoid interruption of service: "Vous devrez le faire bientôt pour éviter l'interruption du service"
+          If you don’t wish to continue using: "Si vous ne souhaitez pas continuer à utiliser"
+          you can cancel your account on that same page: "Vous pouvez annuler tu compte sur cette même page"
+          We will cancel it for you in a few more days if you prefer not dealing with it: "Nous allons l'annuler pour vous dans quelques jours de plus si vous préférez ne pas y faire face"
+          Thank you so much for giving: "Merci beaucoup d'avoir donné"
+          a try: "un essai"
+          we hope to see you again soon: "Nous espérons te revoir bientôt"
+          Team: "Équipe"
+
+       high_to_low_plan_change:
+           Low to High Rate Plan Switch: "Commutateur de régime bas à haut"
+           Welcome: "Bienvenue"
+           to: "à"
+           you have switched your plan from cost: "Vous avez changé tu plan de coût"
+           and we are charging you just: "Et nous vous facturons juste"
+           and credit to your wallet: "Et crédit à tu portefeuille"
+           Now: "Maintenant"
+           is: "est"
+           enjoy full access of Opustime features and your next billing cycle: "Profiter pleinement des fonctionnalités Opustime et de votre prochain cycle de facturation"
+
+       low_to_high_plan_change:
+          Hello: "Hola"
+          Low to High Rate Plan Switch: "Interruptor de plan de baja a alta tasa"
+          This is to inform you that you have switched from low to high rate plan of OpusTime subscription: "Esto es para informarle que ha cambiado de plano de tarifa baja a alta de la suscripción de OpusTime"
+          Now you will get the services of: "Ahora obtendrá los servicios del"
+          plan: "plan"
+          Enjoy full access to OpusTime features for a month: "Disfrute del pleno acceso a las funciones de OpusTime durante un mes"
+          Happy Client Management: "Gestión de clientes feliz!"
+          Thank You: "Gracias"
+          The Opustime Team: "El equipo OpusTime"
+
+       new_subscription:
+           New Subscription Purchased: "Nueva suscripción comprada"
+           Hello: "Hola"
+           Welcome to OpusTime: "Bienvenido a OpusTime"
+           Cheers: "¡¡Aclamaciones!!"
+           You have been subscribed to OpusTime Quintet Plan and we are charging you just: "Se ha suscrito al OpusTime Quintet Plan y le cobramos sólo"
+           Now you can enjoy full access to OpusTime features: "Ahora puede disfrutar de un acceso completo a las funciones de OpusTime"
+           Under this plan you can have: "Bajo este plan, usted puede tener"
+           professionals at work in your practice: "profesionales en el trabajo en su práctica"
+           Thank You: "Gracias"
+           The Opustime Team: "El equipo OpusTime"
+
+       payment_deduction:
+           Credit Card Payment: "Paiement par carte de crédit"
+           Welcome: "Bienvenido"
+           to: "à"
+           we: "Nous"
+           have: "avons"
+           debited: "débité"
+           from: "De"
+           your: "tu"
+           credit card: "carte de crédit"
+
+       trial_subscription:
+           Hello: "Hola"
+           Account Notification: "Notificación de cuenta"
+           Welcome to OpusTime: "¡Bienvenido a OpusTime!"
+           Thank You: "Gracias"
+           Thank you for choosing us: "Gracias por elegirnos"
+           We are pleased to have you and are eager to give you a tour through our OpusTime’s rich features: "Estamos encantados de contar con usted y estamos deseosos de darle un tour a través de las características ricas de OpusTime"
+           To access your OpusTime account you can visit your personal URL: "Para acceder a su cuenta OpusTime, puede visitar su URL personal"
+           Your user name is: "Su nombre de usuario es"
+           Feel free to contact our dedicated team for any kind of assistance: "No dude en ponerse en contacto con nuestro equipo dedicado para cualquier tipo de asistencia"
+           You can also write to us at: "También puede escribirnos a"
+           or can call us on any of the numbers mentioned on the website: "o puede llamarnos a cualquiera de los números mencionados en el sitio web"
+           Join us and become a proud user of OpusTime: "Únase a nosotros y conviértase en un usuario orgulloso de OpusTime"
+           The Opustime Team: "El equipo de OpusTime"
+
+  admin:
+       owners:
+           mailer:
+              confirmation_instructions:
+                 Welcome: "Bienvenido"
+                 You can confirm your account email through the link below: "Vous pouvez confirmer le courriel de votre compte via le lien ci-dessous"
+
+              reset_password_instructions:
+                 Hello: "Hola"
+                 Someone has requested a link to change your password: "Quelqu'un a demandé un lien pour changer votre mot de passe"
+                 You can do this through the link below: "Vous pouvez le faire via le lien ci-dessous"
+                 If you didnot request this: "Si vous n'avez pas demandé ce"
+                 please ignore this email: "Veuillez ignorer cet email"
+                 Your password wont change until you access the link above and create a new one: "Tu mot de passe ne changera pas jusqu'à ce que vous accédiez au lien ci-dessus et créez un nouveau"
+
+              unlock_instructions:
+                 Hello: "Hola"
+                 Your account has been locked due to an excessive number of unsuccessful sign in attempts: "Tu compte a été verrouillé en raison d'un nombre excessif de tentatives infructueuses de connexion"
+                 Click the link below to unlock your account: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte"
+
+  admin_mailer:
+       active_or_inactive:
+           Welcome: "Bienvenido"
+           to: "à"
+           Hello: "Hola"
+           Account Activation: "Activation de compte"
+           Account Deactivation: "Désactivation du compte"
+           your account have been activated by Super Admin: "Tu compte a été activé par Super Admin"
+           Now you can login your account: "Vous pouvez maintenant vous connecter à tu compte"
+           your account have been deactivated by Super Admin: "Votre compte a été désactivé par Super Admin"
+           Please contact to Super Admin to active your account: "Veuillez contacter Super Admin pour activer votre compte"
+
+       delete_account:
+           Account Deleted: "Compte supprimé"
+           Welcome: "Bienvenido"
+           to: "à"
+           your account is deleted by Super Admin: "tu compte est supprimé par Super Admin"
+
+       welcome_email:
+           New Admin Account: "Nouveau compte administrateur"
+           Welcome: "Bienvenido"
+           to: "à"
+           your account under role: "Votre compte sous le rôle"
+           user is created successfully and pending for Super Admin approval: "Utilisateur est créé avec succès et en attente pour approbation Super Admin"
+           After approval you can login your account: "Après l'approbation, vous pouvez vous connecter à votre compte"
+
+  appointmentmailer:
+       appointment_cancellation:
+           Appointment Cancellation: "Cancelación de Cita"
+           Hello: "Hola"
+           Your: "Su"
+           appointment: "cita"
+           has been cancelled: "ha sido cancelado"
+           The selected reason for cancellation was: "El motivo seleccionado para la cancelación fue"
+           This is an automatic notification from Opus Time: "Esta es una notificación automática de OpusTime"
+           Replies to this address are not manitored: "Las respuestas a esta dirección no se supervisan"
+           The Opus Time Team: "El equipo OpusTime"
+           Contact: "Contact"
+           Support: "Soutien"
+           Website: "Site Internet"
+           Facebook: "Facebook"
+           Twitter: "gazouillement"
+           Thank You: "Gracias"
+
+       appointment_cancellation_for_patient:
+           Appointment Cancellation: "Cancelación de Cita"
+           Hello: "Hola"
+           Your: "Su"
+           appointment: "cita"
+           has been cancelled: "ha sido cancelado"
+           The selected reason for cancellation was: "El motivo seleccionado para la cancelación fue"
+           This is an automatic notification from Opus Time: "Esta es una notificación automática de OpusTime"
+           Replies to this address are not manitored: "Las respuestas a esta dirección no se supervisan"
+           The Opus Time Team: "L'équipe Opus Time"
+           Contact: "Contact"
+           Support: "Soutien"
+           Website: "Site Internet"
+           Facebook: "Facebook"
+           Twitter: "gazouillement"
+           Thank You: "Gracias"
+
+       reschedule_appointment:
+           Reschedule Appointment: "Reescalonamiento del paciente"
+           Hello: "Hola"
+           Kindly note that your appointment for: "Por favor tenga en cuenta que su cita para"
+           has been rescheduled: "ha sido reprogramada a"
+           This is an automatic notification from Opus Time: "Esta es una notificación automática de OpusTime"
+           Replies to this address are not manitored: "No se supervisa ninguna respuesta a esta dirección"
+           Thank you: "Gracias"
+           The Opus Time Team: "El equipo OpusTime"
+           Contact: "Contact"
+           Support: "Soutien"
+           Website: "Site Internet"
+           Facebook: "Facebook"
+           Twitter: "gazouillement"
+
+       doctor_reschedule_appointment:
+           Appointment Cancellation: "Annulation de rendez-vous"
+           Hello: "Hola"
+           your: "Tu"
+           appointment: "cita"
+           has been rescheduled: "ha sido reprogramada a"
+           This is an automatic notification from Opus Time: "Esta es una notificación automática de OpusTime"
+           Replies to this address are not manitored: "No se supervisa ninguna respuesta a esta dirección"
+           The Opus Time Team: "L'équipe Opus Time"
+           Thank you: "Gracias"
+           Contact: "Contact"
+           Support: "Soutien"
+           Website: "Site Internet"
+           Facebook: "Facebook"
+           Twitter: "gazouillement"
+
+  user_mailer:
+       google_authenticator_qr_code:
+           Authentication OTP Code: "Code OTP d'authentification"
+           Please use this otp code: "Veuillez utiliser ce code otp"
+           One Time Password: "Mot de passe à usage unique"
+           to login into Opustime: "Se connecter à Opustime"
+           This code is valid for 5 minutes only: "Ce code est valable pour 5 minutes seulement"
+           After that you have to regenerate new code to login: "Après cela, vous devez régénérer un nouveau code pour vous connecter"
+
+       password_reset:
+           To reset your password: "Pour réinitialiser votre mot de passe"
+           click the URL below: "Cliquez sur l'URL ci-dessous"
+           If you did not request your password to be reset: "Si vous n'avez pas demandé que votre mot de passe soit réinitialisé"
+           just ignore this email and your password will continue to stay the same: "Ignorez ce courriel et votre mot de passe restera le même"
+
+       welcome_email:
+           Welcome: "Bienvenido"
+           to: "à"
+           Your account have successfully created on: "Tu compte a été créé avec succès"
+           your email is: "Tu email est"
+           your password is: "Tu mot de passe est"
+           To login to the site just follow this link: "Pour vous connecter au site, suivez ce lien"
+           Thanks for joining and have a great day: "Merci de vous joindre et bonne journée"
+
+  appointment_booking:
+       appointment_booking_alert:
+           New: "Nouveau"
+           Online Booking: "Reservation en ligne"
+           Hi: "Hola"
+           just booked in online for an appointment with you: "Réservé en ligne pour un rendez-vous avec vous"
+           Location: "Emplacement"
+           Service: "Un service"
+           Patient Detail: "Détails du patient"
+           Time: "Temps"
+           This is an automatic email notification from Opustime: "Il s'agit d'une notification par e-mail automatique d'Opustime"
+           Replies to this address are not monitored: "Les réponses à cette adresse ne sont pas surveillées"
+           The Opus Time Team: "L'équipe Opus Time"
+           Contact: "Contact"
+           Support: "Soutien"
+           Website: "Site Internet"
+           Facebook: "Facebook"
+           Twitter: "gazouillement"
+
+       appointment_booking_alert_to_patient:
+           Appointment Reminder: "Recordatorio de cita"
+           Hello: "Hola"
+           This is an automatic appointment reminder: "Este es un recordatorio de cita automática"
+           Please check the details below: "Por favor, compruebe los detalles a continuación"
+           Location: "Emplacement"
+           Service: "Un service"
+           practitioner: "praticien"
+           Time: "Temps"
+           cancel: "Annuler"
+           reschedule: "Reprogrammer"
+           appointment: "cita"
+           Thank You: "Gracias"
+           The OpusTime Team: "El equipo OpusTime"
+
+  appointments:
+       appointment_show_online_booking_pdf:
+           Book: "Livre"
+           appointment: "cita"
+           booking confirmed: "réservation confirmée"
+           Fantastic: "Fantastique"
+           Your booking was successful: "Tu réservation a réussi"
+           Location: "Emplacement"
+           Service: "Un service"
+           Practitioner: "praticien"
+           Time: "Temps"
+           Powered by OpusTime: "Propulsé par OpusTime"
+
+       future_appnt_print:
+          Future: "Avenir"
+          appointments: "cita"
+          Appointment: "Cita"
+          Appointment Date: "Date de Cita"
+          Service Type: "Type de Service"
+          Practitioner: "praticien"
+          Patient: "Patient"
+          Time: "Temps"
+          Location: "Emplacement"
+          has no appointment in future: "N'a pas de rendez-vous à l'avenir"
+
+  daily_reports:
+       daily_report_pdf:
+          Daily Report: "Rapport journalier"
+          Payment: "Paiement"
+          DATE/TIME: "DATE / TEMPS"
+          Patient: "Patient"
+          Source: "La source"
+
+  patient_reports:
+       birthday_list_pdf:
+          Patient Birthday Report: "Rapport d'anniversaire du patient"
+          Day: "journée"
+          Name: "prénom"
+          Email Address: "Adresse e-mail"
+          Phone: "Phone"
+          Address: "Adresse"
+
+       patient_list_pdf:
+          Patients Report: "Patients Rapport"
+          Name: "prénom"
+          Email Address: "Adresse e-mail"
+          Phone: "Phone"
+          Address: "Adresse"
+          Total Invoice: "Facture totale"
+          Paid Amount: "Montant payé"
+          Outstanding Balance: "Solde impayé"
+
+       patients_without_upcoming_appnt_pdf:
+          Appointment: "Rendez-vous"
+          Report: "Rapport"
+          Name: "prénom"
+          Email Address: "Adresse e-mail"
+          Phone: "Phone"
+          Address: "Adresse"
+          DOB: "Date de la facture"
+          Occupation: "Occupation"
+
+       recall_patients_pdf:
+          Recall Patient Report: "Rappel du patient"
+          Recall on: "Rappel sur"
+          Type: "Type"
+          Patient: "Patient"
+          Last practitioner: "Dernier pratiquant"
+          Note: "Remarque"
+          Phone: "Phone"
+          Recall: "Rappel"
+
+  payments:
+        payment_print:
+          Untitled Document: "Documento sin titulo"
+          Receipt: "Recibo"
+          Amount: "Cantidad"
+          invoice: "factura"
+          Item: "ít."
+          Practitioner: "Facultativo"
+          payment type: "tipo de pago"
+          Tax: "Impuesto"
+          payment: "pago"
+          Payment: "pago"
+          Allocated: "Asignado"
+          Registration: "Registro"
+
+  practitioner_reports:
+        generate_pdf:
+          Practitioner: "praticien"
+          Report: "Rapport"
+          Appointments: "Rendez-vous"
+          Invoices: "Factures"
+          All: "Tout"
+          Paid: "payé"
+          Outstanding: "Solde"
+          Revenue: "Revenu"
+
+  referral_type_patients:
+        generate_pdf:
+          Referral Type Report: "Rapport de type de référence"
+          Extra Info: "plus d'infos"
+          Patient Name: "Nom du patient"
+          Source Type: "Type de Source"
+          Source Name: "Nom de la source"
+
+  reports:
+        generate_pdf:
+          Appointment: "Rendez-vous"
+          Report: "Rapport"
+          Practitioner: "praticien"
+          Service Type: "type de service"
+          Contact No: "Contact Non"
+          Email Address: "Adresse e-mail"
+          Business Location: "Lieu d'affaires"
+
+  revenue_reports:
+        revenue_pdf:
+          Revenue: "Revenu"
+          Report: "Rapport"
+          Practitioner: "praticien"
+          Payment Type: "Type de paiement"
+          Product: "Produit"
+          Services: "Prestations de service"
+          Business: "Entreprise"
+          Total Payment: "Total Paiement"
+
+  treatment_notes:
+        export_tr_note_to_pdf:
+          Treatment Note: "Note de traitement"
+          Occupation: "Occupation"
+          Medicare No: "Medicare Non"
+          Address: "adresse"
+          Practitioner: "praticien"
+          Created: "Créé"
+          DOB: "Date de la facture"
+          Last updated: "Dernière mise à jour"
+
+  activerecord:
+      errors:
+        models:
+          company:
+            attributes:
+              company_name:
+                blank: "Le nom de l'entreprise est obligatoire"
+                taken: "Nom de la société déjà provisionné"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+              email:
+                blank: "Email est requis"
+                invalid: "email is invalid Format"
+              password:
+                blank: " mot de passe est requis"
+                too_short:
+                  one: "Le mot de passe est trop court (en 1 caractère)"
+                  other: "Le mot de passe est trop court (la longueur du mot de passe doit être comprise entre% {count} et 20 caractères)"
+                too_long:
+                  one: "Le mot de passe est trop long (en 1 caractère)"
+                  other: "Le mot de passe est trop long (la longueur du mot de passe doit être comprise entre 6 et% {count} caractères)"
+              first_name:
+                blank: "est requis"
+              last_name:
+                blank: "est requis"
+              communication_email:
+                blank: "Communication_email ne peut pas être vide"
+              attendees:
+                inclusion: "N'est pas inclus dans la liste"
+          account:
+            attributes:
+              company_name:
+                blank: "est requis"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+              communication_email:
+                blank: "est requis"
+                invalid: "E-mail non valide Format"
+          patient:
+            attributes:
+              first_name:
+                blank: "est requis"
+              last_name:
+                blank: "est requis"
+              email:
+                invalid: "E-mail non valide Format"
+              invoice_email:
+                invalid: "E-mail non valide Format"
+              emergency_contact:
+                not_a_number: "Doit être un entier"
+          patient_contact:
+            attributes:
+              contact_no:
+                invalid: "Est invalide Format"
+                not_a_number: "Doit être un entier"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+                too_short:
+                  one: "Est trop court (le minimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+          appointment_type:
+            attributes:
+              name:
+                blank: "est requis"
+              duration_time:
+                not_a_number: "Doit être un entier"
+                blank: "Ne peut pas être vide"
+                less_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+          appointment_types_appointment:
+            attributes:
+              appointment_type_id:
+                blank: "est requis"
+          appointment_types_wait_list:
+            attributes:
+              appointment_type_id:
+                blank: "est requis"
+          appointments_business:
+            attributes:
+              business_id:
+                blank: "est requis"
+          appointment:
+            attributes:
+              repeat_by:
+                inclusion: "N'est pas inclus dans la liste"
+              repeat_start:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              repeat_end:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              patient_id:
+                blank: "est requis"
+              appnt_date:
+                blank: "est requis"
+              appnt_time_start:
+                blank: "est requis"
+              appnt_time_end:
+                blank: "est requis"
+              user_id:
+                blank: "est requis"
+          availability:
+            attributes:
+              user_id:
+                blank: "est requis"
+              repeat:
+                inclusion: "N'est pas inclus dans la liste"
+              repeat_every:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              ends_after:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              avail_date:
+                blank: "est requis"
+              avail_time_start:
+                blank: "est requis"
+              avail_time_end:
+                blank: "est requis"
+          billable_item:
+            attributes:
+              name:
+                blank: "est requis"
+              price:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+                greater_than: "Doit être supérieur à% {count}"
+              tax:
+                blank: "est requis"
+          billable_items_concession:
+            attributes:
+              value:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+          business:
+            attributes:
+              name:
+                blank: "est requis"
+              web_url:
+                blank: "est requis"
+                invalid: "Est invalide Format"
+              address:
+                blank: "est requis"
+              contact_info:
+                blank: "est requis"
+              city:
+                blank: "est requis"
+              state:
+                blank: "est requis"
+              country:
+                blank: "est requis"
+              reg_name:
+                blank: "est requis"
+              reg_number:
+                blank: "est requis"
+          concession:
+            attributes:
+              name:
+                blank: "est requis"
+          communication:
+                    attributes:
+                      message:
+                        blank: "est requis"
+          document_and_printing:
+            attributes:
+              in_page_size:
+                inclusion: "N'est pas inclus dans la liste"
+              tn_page_size:
+                inclusion: "N'est pas inclus dans la liste"
+          letter_template:
+            attributes:
+              template_name:
+                blank: "est requis"
+              template_body:
+                blank: "est requis"
+          invoice:
+            attributes:
+              invoice_items:
+                invalid: "Est invalide Format"
+                blank: "est requis"
+          invoice_item:
+            attributes:
+              source_item:
+                blank: "est requis"
+              quantity:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+                greater_than: "Doit être supérieur à% {count}"
+              unit_price:
+                not_a_number: "Doit être un entier"
+                greater_than: "Doit être supérieur à% {count}"
+              discount:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+          invoice_setting:
+            attributes:
+              title:
+                blank: "est requis"
+              starting_invoice_number:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+          medical_alert:
+            attributes:
+              alertName:
+                too_short:
+                  one: "est trop court (manimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+          online_booking:
+            attributes:
+              company:
+                invalid: "Est invalide Format"
+              notify_by:
+                blank: "est requis"
+                inclusion: "N'est pas inclus dans la liste"
+          practi_info:
+            attributes:
+              cancel_time:
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+                less_than_or_equal_to: "Doit être inférieur ou égal à% {count}"
+          practitioner_avail:
+            attributes:
+              day:
+                invalid: "Est invalide Format"
+          payment:
+            attributes:
+              patient:
+                blank: "est requis"
+              businessid:
+                blank: "est requis"
+          payment_type:
+            attributes:
+              name:
+                blank: "est requis"
+          payment_types_payment:
+            attributes:
+              amount:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+                greater_then: "Doit être supérieur à% {count}"
+          product:
+            attributes:
+              name:
+                blank: "est requis"
+              price:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              cost_price:
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              stock_number:
+                greater_than_or_equal_to: "Doit être supérieur ou égal à% {count}"
+              tax:
+                blank: "est requis"
+          product_stock:
+            attributes:
+              quantity:
+                not_a_number: "Doit être un entier"
+          expense:
+            attributes:
+              expense_products:
+                invalid: "Est invalide Format"
+                blank: "est requis"
+              total_expense:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+              tax_amount:
+                not_a_number: "Doit être un entier"
+          expense_product:
+            attributes:
+              unit_cost_price:
+                blank: "est requis"
+                not_a_number: "Doit être un entier"
+                greater_than: "Doit être supérieur à% {count}"
+          contact:
+            attributes:
+              first_name:
+                blank: "est requis"
+              contact_type:
+                invalid: "Est invalide Format"
+              provider_number:
+                blank: "est requis"
+              email:
+                invalid: "Est invalide Format"
+          contact_no:
+            attributes:
+              contact_number:
+                invalid: "Est invalide Format"
+                not_a_number: "Doit être un entier"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+                too_short:
+                  one: "Est trop court (le minimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+          recall_type:
+            attributes:
+              name:
+                blank: "est requis"
+          recall:
+            attributes:
+              recall_types_recall:
+                blank: "est requis"
+          referral_type_subcat:
+            attributes:
+              sub_name:
+                blank: "est requis"
+          referral_type:
+            attributes:
+              referral_source:
+                blank: "est requis"
+              referral_type_subcats:
+                invalid: "Est invalide Format"
+          sms_setting:
+            attributes:
+              email:
+                invalid: "Est invalide Format"
+              sms_alert_no:
+                not_a_number: "Doit être un entier"
+              default_sms:
+                not_a_number: "Doit être un entier"
+              mob_no:
+                not_a_number: "Doit être un entier"
+                too_short:
+                  one: "Est trop court (le minimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+          tax_setting:
+            attributes:
+              name:
+                blank: "est requis"
+              amount:
+                not_a_number: "Doit être un entier"
+                greater_then: "Doit être supérieur à% {count}"
+                less_then: "Doit être inférieur à% {count}"
+          template_note:
+            attributes:
+              name:
+                blank: "est requis"
+          treatment_note:
+            attributes:
+              patient:
+                blank: "est requis"
+              treatment_notes_template_note:
+                blank: "est requis"
+          user:
+            attributes:
+              practi_info:
+                invalid: "Est invalide Format"
+              password:
+                blank: "est requis"
+                confirmation: "Ne correspond pas à% {attribute}"
+                too_short:
+                  one: "Est trop court (le minimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+              email:
+                blank: "est requis"
+                invalid: "Est invalide Format"
+              first_name:
+                blank: "est requis"
+              last_name:
+                blank: "est requis"
+              phone:
+                not_a_number: "Doit être un entier"
+                too_short:
+                  one: "Est trop court (le minimum est 1 caractère)"
+                  other: "Est trop court (le minimum est% {count} caractères)"
+                too_long:
+                  one: "Est trop long (maximum 1 caractère)"
+                  other: "Est trop long (maximum est% {count} caractères)"
+          wait_list:
+            attributes:
+              wait_lists_patient:
+                blank: "est requis"
+              appointment_types_wait_list:
+                blank: "est requis"
+              wait_lists_businesses:
+                blank: "est requis"
+              wait_lists_users:
+                blank: "est requis"
+          wait_lists_business:
+            attributes:
+              business_id:
+                blank: "est requis"
+          wait_lists_patient:
+            attributes:
+              patient_id:
+                blank: "est requis"
+          wait_lists_user:
+            attributes:
+              user_id:
+                blank: "est requis"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

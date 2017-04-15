@@ -1,0 +1,174 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Trial User
+    </h1>
+    <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Home</li>
+      <li class="active">Business</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Trial List Report</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+
+              <table id="trial_user" class="display" data-source="<%= list_trial_user_path(format: :json) %>">
+                <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Business Name</th>
+                  <th>Total User</th>
+                  <th>Last Login</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Days Remaining</th>
+                  <th>Plan Type</th>
+                  <th class="no_sort text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+
+                </table>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.col -->
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-xs" id="smsCredits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Trial</h4>
+      </div>
+      <form class="form-horizontal">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Enter Days</label>
+
+            <div class="col-md-10">
+              <input type="text" id="extended_days" maxlength="4" class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" data-company_id='' class="btn btn-primary add">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ./wrapper -->
+
+<script>
+    var subscription = {}
+    $(document).ready(function () {
+
+    });
+
+
+    $(function () {
+        $("#example1").DataTable();
+//    $('#example2').DataTable({
+//      "paging": true,
+//      "lengthChange": false,
+//      "searching": false,
+//      "ordering": true,
+//      "info": true,
+//      "autoWidth": false
+//    });
+    });
+
+
+    $('.add').bind('click', function () {
+        var btn = $(this);
+        company_id = $(btn)[0].getAttribute('data-company_id');
+        days = $('#extended_days').val();
+        if (days != '') {
+            $(btn).buttonLoader('start');
+            $.post('/list/trial_user/extend_trail',
+                    {
+                        id: company_id,
+                        days: $('#extended_days').val()
+
+                    },
+                    function (data, status) {
+                        if (data.flag == true && status == 'success') {
+                            setTimeout(function () {
+                                $(btn).buttonLoader('stop');
+                                $('#smsCredits').modal('hide');
+                                $('#company_' + company_id + '_end_date')[0].innerHTML = data.extended_end_date;
+                                $('#company_' + company_id + '_days')[0].innerHTML = data.remaining_days;
+                                // reset text field value
+                                $('#extended_days').val('');
+                            }, 500);
+                        } else {
+
+                        }
+                    });
+        }
+
+    });
+
+
+//    function open_modal(company_id) {
+//        // set company id
+//        $('.add')[0].setAttribute('data-company_id', company_id);
+//        $('#smsCredits').modal('show');
+//    }
+
+    jQuery(document).ready(function() {
+        $('#trial_user').dataTable({
+            "language": {
+                "processing": "<img src='../assets/reload.gif'>"
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": $('#trial_user').data('source'),
+            "pagingType": "full_numbers",
+            'columns': [
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': false, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': true, 'searchable': true },
+                { 'sortable': false, 'searchable': false}
+
+            ]
+            // optional, if you want full pagination controls.
+            // Check dataTables documentation to learn more about
+            // available options.
+        });
+    });
+    function day_edit(company_id) {
+        //console.log("id")
+        $('.add')[0].setAttribute('data-company_id', company_id);
+        $("#smsCredits").modal("show");
+    }
+</script>

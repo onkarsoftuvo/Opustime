@@ -1,0 +1,214 @@
+<div class="dashboard-con settings">
+    <form ng-submit="updateBooking(booking_info.logo, booking_info)" name="OnlineBookingSetting">
+    <div class="top_tabbing" ng-if="true">
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.booking_sub_modules.appointment_type" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.booking_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.booking_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.booking_total == 3}">
+        <a ui-sref="settings.appointment" href="">{{'settings.top_links.appointment_types' | translate:translationData}}</a>
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.booking_sub_modules.online_booking" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.booking_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.booking_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.booking_total == 3}">
+        <a ui-sref="settings.online-booking" href="" class="active">{{'settings.dir.onlineBooking' | translate:translationData}}</a>      
+      </div>
+      <div class="col" ng-if="DashboardLinks.setting_sub_modules.booking_sub_modules.appointment_reminder" ng-class="{'col-sm-12' : DashboardLinks.setting_sub_modules.booking_total == 1, 'col-sm-6' : DashboardLinks.setting_sub_modules.booking_total == 2, 'col-sm-4' : DashboardLinks.setting_sub_modules.booking_total == 3}">
+        <a ui-sref="settings.appointment-reminders" href="">{{'sidebar_menu.Reminders' | translate:translationData}}</a>      
+      </div>
+    </div>
+    <div class="top-container">
+        <div class="col-md-9 col-xs-6 top-links">
+            <div class="top-links-container" ng-include="'templates/settings/common/top-links.html'"></div>    
+        </div>
+        <div class="col-md-3 col-xs-6 top-btn">
+            <button class="save" type="submit">{{'button.save' | translate:translationData}}</button>
+            <button class="cancel" type="reset">{{'button.cancel' | translate:translationData}}</button>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 form-content" ng-scrollbars rebuild-on-resize>
+    	<div class="col-md-6">
+        	<h2>{{'settings.online_booking.heading_online_booking' | translate:translationData}}</h2>
+            <div class="form-group check-con online show">
+                <label>{{'settings.online_booking.label_turn_on' | translate:translationData}}</label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="booking_info.allow_online"><span></span> <p>{{'settings.online_booking.label_turn_on_checkbox' | translate:translationData}}</p>
+                    </label>
+                </div>
+           </div>
+           <div class="form-group booking">
+                <label>{{'settings.online_booking.label_address' | translate:translationData}}</label>
+                <a href="{{booking_info.show_address}}" target="blank" class="comp-url" ng-show="booking_info.allow_online">{{booking_info.show_address}}</a>
+                <p ng-show="!booking_info.allow_online">{{'settings.online_booking.not_enable' | translate:translationData}}</p>
+           </div>
+           <div class="form-group booking">
+                <label>{{'settings.online_booking.label_ga_code' | translate:translationData}}</label>
+                <input type="text" class="form-control" placeholder="e.g. UA-XXXXXXX-Y" ng-model="booking_info.ga_code">
+           </div>
+           <div class="form-group booking clear">
+                <label>{{'settings.online_booking.label_maxi' | translate:translationData}}</label>
+                <div class="clearfix"></div>
+                <select class="form-control" ng-model="booking_info.min_appointment">
+                <option ng-repeat="n in range(1,5)">{{n}}</option>
+                <option>{{'settings.online_booking.unlimited' | translate:translationData}}</option>
+                </select>
+                <i class="ic info info-hover booking-info">
+                    <span>{{'settings.online_booking.unlimited_info' | translate:translationData}}</span>
+                </i>
+           </div>
+            <div class="form-group check-con online show">
+                <label>{{'settings.online_booking.label-show_price' | translate:translationData}}</label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="booking_info.show_price"><span></span> {{'settings.online_booking.label-show_price_option' | translate:translationData}}
+                    </label>
+                </div>
+           </div>
+           <div class="form-group check-con online show">
+                <label>{{'settings.online_booking.label-hide_price' | translate:translationData}}
+                	<i class="ic info info-hover">
+                        <span>{{'settings.online_booking.label-hide_price_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="booking_info.hide_end_time"><span></span> {{'settings.online_booking.label-hide_price_option' | translate:translationData}}
+                    </label>
+                </div>
+           </div>
+           <div class="form-group check-con online show">
+                <label>{{'settings.online_booking.label-show_dob' | translate:translationData}}</label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="booking_info.show_dob"><span></span> {{'settings.online_booking.label-show_dob_option' | translate:translationData}}
+                    </label>
+                </div>
+           </div>
+           <div class="form-group check-con online show">
+                <label>{{'settings.online_booking.label-require' | translate:translationData}}</label>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="booking_info.req_patient_addr"><span></span> {{'settings.online_booking.label-require_option' | translate:translationData}}
+                    </label>
+                </div>
+           </div>
+        </div>
+    	<div class="col-md-6">
+        	<h2 class="blank">&nbsp;</h2>
+        	 <div class="form-group booking">
+                <label class="side-label">{{'settings.online_booking.label_min' | translate:translationData}}
+                    <i class="ic info info-hover">
+                        <span>{{'settings.online_booking.label_min_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <select class="form-control" ng-model="booking_info.min_cancel_appoint_time">
+                	<option value="1h">1 {{'settings.online_booking.label-min-option_hour' | translate:translationData}}</option>
+                    <option value="2h">2 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="4h">4 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="6h">6 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="5h">12 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="1d">1 {{'settings.online_booking.label-min-option_day' | translate:translationData}}</option>
+                    <option value="2d">2 {{'settings.online_booking.label-min-option_days' | translate:translationData}}</option>
+                    <option value="3d">3 {{'settings.online_booking.label-min-option_days' | translate:translationData}}</option>
+                    <option value="4d">4 {{'settings.online_booking.label-min-option_days' | translate:translationData}}</option>
+                </select>
+           </div>
+           <div class="form-group booking clear-it booking-info">
+                <label>{{'settings.online_booking.label_min_advance' | translate:translationData}}
+                    <i class="ic info info-hover right-side">
+                        <span>{{'settings.online_booking.label_min_advance_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <select class="form-control" ng-model="booking_info.advance_booking_time">
+                	<option value="1h">1 {{'settings.online_booking.label-min-option_hour' | translate:translationData}}</option>
+                    <option value="2h">2 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="4h">4 {{'settings.online_booking.label-min-option_hours' | translate:translationData}}</option>
+                    <option value="tomorrow">{{'settings.online_booking.label-min-option_tommorow' | translate:translationData}}</option>
+                    <option value="2d">2 {{'settings.online_booking.label-min-option_days' | translate:translationData}}</option>
+                </select>
+           </div>
+           <div class="form-group booking">
+
+                <label  class="">{{'settings.online_booking.label_logo' | translate:translationData}}
+                    <i class="ic info info-hover">
+                        <span>{{'settings.online_booking.label_logo_info' | translate:translationData}}</span>
+                    </i>
+                       </label>
+                       <div class="clearfix">
+                        <div class="img-con book-img">
+                            <img ng-src="{{booking_info.logo}}" alt="" ng-hide="OnlineBookingSetting.file.$valid"/>
+                          <img ng-show="OnlineBookingSetting.file.$valid" ngf-src="booking_info.logo"
+               class="thumb">
+                        </div>
+                    <input type="button" value="UPLOAD" ngf-select ng-model="booking_info.logo" name="file"    
+             accept="image/*" class="upload-btn">
+             
+                    </div>
+           </div>
+           <div class="form-group booking clear-it booking-notifi">
+                <label>{{'settings.online_booking.label_booking_noti' | translate:translationData}}
+                    <i class="ic info info-hover">
+                        <span>{{'settings.online_booking.label_booking_noti_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <select class="form-control" ng-model="booking_info.notify_by" >
+                	<option value="None">{{'select.option_none' | translate:translationData}}</option>
+                    <option value="sms">{{'select.option_SMS' | translate:translationData}}</option>
+                    <option value="email">{{'select.option_email' | translate:translationData}}</option>
+                    <option value="sms_email">{{'select.option_sms_email' | translate:translationData}}</option>
+                </select>
+           </div>
+           <div class="form-group booking">
+                <label>{{'settings.online_booking.label_time_selection' | translate:translationData}}
+                    <i class="ic info info-hover">
+                        <span>{{'settings.online_booking.label_time_selection_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <textarea class="form-control" ng-model="booking_info.time_sel_info"></textarea>
+           </div>
+           <div class="form-group booking">
+                <label>{{'settings.online_booking.label-term_of_use' | translate:translationData}}
+                    <i class="ic info info-hover book-terms">
+                        <span>{{'settings.online_booking.label-term_of_use_info' | translate:translationData}}</span>
+                    </i>
+                </label>
+                <textarea class="form-control" ng-model="booking_info.terms"></textarea>
+           </div>
+        </div>
+        <div class="online_booking_tabbing">
+            <a href="" ng-class="{'active': booking_btn}" ng-click="open_booking_btn()">{{'settings.online_booking.booking_btn' | translate:translationData}}</a>
+            <a href="" ng-class="{'active': facebook_content}" ng-click="open_facebook_content()">{{'settings.online_booking.facebook' | translate:translationData}}</a>
+            <a href="" ng-class="{'active': embed_content}" ng-click="open_embed_content()">{{'settings.online_booking.embedWidget' | translate:translationData}}</a>            
+        </div>
+        <div class="OB_content">
+            <div class="booking_btn" ng-if="booking_btn">
+                <h2>{{'settings.online_booking.onlineBookingBtn' | translate:translationData}}</h2>
+                <p>{{'settings.online_booking.customize' | translate:translationData}}</p>
+                <p>{{'settings.online_booking.once_you' | translate:translationData}}</p>
+
+                <div class="dir_content" custom-Booking-Btn></div>
+            </div>
+            <div class="facebook_content" ng-if="facebook_content">
+                <h2>{{'settings.online_booking.facebookPage' | translate:translationData}}</h2>
+                <p>{{'settings.online_booking.addAnOnline' | translate:translationData}}</p>
+                <ol>
+                    <li>{{'settings.online_booking.clickBtn' | translate:translationData}}</li>
+                    <li>{{'settings.online_booking.chooseFacebook' | translate:translationData}}</li>
+                    <li>{{"settings.online_booking.clickAddPage" | translate:translationData}}</li>
+                </ol>
+                <div custom-Facebook style="margin-bottom:15px;" FacebookPageId="FacebookPageId"></div>
+                <p class="mailchip_info" ng-repeat="page_id in FacebookPageId">
+                    <a href="http://www.facebook.com/pages/_/{{page_id}}"  target="blank">http://www.facebook.com/pages/_/{{page_id}}</a>
+                    <span>|</span>
+                    <a href="" ng-click="remove_page_id(page_id)">{{'settings.user_practitioners.link_remove' | translate:translationData}}</a>
+                </p>
+            </div>
+            <div class="embed_content" ng-if="embed_content">
+                <h2>{{'settings.online_booking.embedBooking' | translate:translationData}}</h2>
+                <p>{{'settings.online_booking.addOnlineBooking' | translate:translationData}}</p>
+                <div custom-Booking-Iframe></div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<script>        
+    var head = document.head, script = document.createElement("script");
+    script.src = "/custom_btn/button.js";
+    head.appendChild(script);
+</script>

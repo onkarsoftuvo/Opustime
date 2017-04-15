@@ -1,0 +1,2 @@
+module XeroSessionsHelper
+end

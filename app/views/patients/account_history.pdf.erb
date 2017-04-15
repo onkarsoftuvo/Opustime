@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><%= t('.Patient') %> <%= t('.History') %> <%= t('.Report') %></title>
+  <style>
+      thead { display: table-header-group }
+      tfoot { display: table-row-group }
+      tr { page-break-inside: avoid }
+  </style>
+</head>
+<body style="margin:0;">
+<div style="margin:auto; width:800px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; ">
+	<div style=" overflow:auto;">
+        <div style="width:50%; float:left; padding:24px 30px; box-sizing:border-box;">
+            <h3 style="font-size:16px; margin:0; text-transform:uppercase;"><%= @result[:patient_name]%></h3>
+            <h5 style=" font-size:14px; margin:5px 0;"><%= t('.DOB') %>: <span style="color:#7b7b7b; font-weight:400;"><%= @result[:dob]%></span></h5>
+            <h5 style=" font-size:14px; margin:5px 0;"><%= t('.Occupation') %> : <span style="color:#7b7b7b; font-weight:400;"><%= @result[:occupation]%></span></h5>
+            <h5 style=" font-size:14px; margin:5px 0;"><%= t('.Medicare No') %> : <span style="color:#7b7b7b; font-weight:400;"><%= @result[:medicare_no]%></span></h5>
+        </div>
+        <div style="width:50%; float:left; padding:19px 0; box-sizing:border-box; text-align:right;">
+            <h5 style="font-size:15px; color:#7b7b7b; margin-top:0; font-weight:400;"><%= t('.Patient') %> <%= t('.History') %> <%= t('.for') %> <%= @result[:patient_name]%> </h5>
+        </div>
+    </div>
+    <div style=" padding:0 30px; box-sizing:border-box; margin-top:0px;">
+                <% if @appointments.length > 0 %>
+                    <h1 style="margin:0; color:#b93e5b; text-transform:uppercase; font-size:19.19px; font-weight:400; padding: 0 25px; line-height: 44px; margin:0 -30px;"> <%= t('.Appointments') %></h1>
+                    <table style="width:800px; margin:10px -30px 0; " cellpadding="0" >
+                        <tbody>
+                    <thead>
+                    	<tr>
+                            <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 30px; background:#c0dbf0;"><%= t('.Date') %></th>
+                            <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.Time') %></th>
+                            <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.Type') %></th>
+                            <th style="font-size:12.8px; text-transform:uppercase; text-align:left; font-weight:700; padding:12.5px 5px; background:#c0dbf0;"><%= t('.Professional') %></th>
+                        </tr>
+                    </thead>	
+                    <% @appointments.each do |appnt| %>
+                        <tr>
+                            <td style="font-size:12.8px; font-weight:400; padding:12.5px 30px;"><%= appnt.appnt_date %> </td>
+                            <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px; width:180px;"><%= "#{appnt.appnt_time_start.strftime("%H:%M%p")}-#{appnt.appnt_time_end.strftime("%H:%M%p")}"  %></td>
+                            <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= appnt.appointment_type.try(:name) %> </td>
+                            <td style="font-size:12.8px; font-weight:400; padding:12.5px 5px;"><%= appnt.user.try(:full_name) %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+        <hr style="margin:20px -30px 0; border-color:#edf2f6; border-bottom:0;">
+	        <h1 style="margin:0; color:#b93e5b; text-transform:uppercase; font-size:19.19px; font-weight:400; padding: 0 25px; line-height: 55px; margin:0 -30px;"> <%= t('.Treatment Notes') %></h1>
+	        <% @result[:treatment_notes].each do |note| %>
+		        <h1 style="margin:0; color:#373737; text-transform:uppercase; font-size:16px; font-weight:400; padding: 0 25px; line-height: 40px; margin:0 -30px; background:#e8eaec;"><%= note[:treatment_title]%></h1>
+		        <ul style="list-style:none; padding:0; overflow:auto; margin:15px 0; width:100%;">
+		        	<li style="float:left; font-size:16px; color:#7b7b7b; margin-right:20px;"><%= t('.Professional') %>:  <%= note[:practitioner_name] %></li>
+		            <li style="float:left; font-size:16px; color:#7b7b7b; margin-right:20px; width:300px;"><%= t('.Created') %>: <%= note[:note_created_at] %></li>
+		        </ul>
+				<% note[:treatment_sections_attributes].each do |section| %>	        
+			        <h3 style="font-size:12.8px; color:#000; margin:0 -30px; background:#c0dbf0; padding:12.5px 30px;"><%= section[:name]%></h3>
+			        <ul style="list-style:none; padding:0; margin:0;">
+			        	<% section[:treatment_questions_attributes].each do |quest| %>
+				        	<li style="margin:0 -30px; border-bottom:solid 1px #edf2f6; padding:10px 30px;">
+				            	<h4 style=" font-size:12.8px; color:#b93e5b; margin:0;"><%= quest[:title] %></h4>
+				                <p style="font-size:12.8px; color:#7b7b7b; line-height:18px;">
+			                		<%= quest[:ans] %>	
+			                	</p>
+				            </li>
+			            <% end %>
+			        </ul>
+		        <% end %>
+        	<% end %>
+</div>
+</div>
+</body>
+</html>
